@@ -1,5 +1,3 @@
-# sway
-
 # Description
 
 # User Stories
