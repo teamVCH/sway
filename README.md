@@ -5,6 +5,10 @@ An app for capturing, sharing, and collaborating on musical ideas and sketches.
 
 ## User Stories
 
+![Listen Flow](https://github.com/teamVCH/sway/blob/master/wireframes/listen-flow.png)
+
+![Record Flow](https://github.com/teamVCH/sway/blob/master/wireframes/record-flow_and_settings.png)
+
 ### Compositions List
 * The user is presented with a list of compositions. Each item in the list includes the name of the composition's originator, the title, the running time, and possibly other information, such as the number of collaborators, favorites count. 
 	
