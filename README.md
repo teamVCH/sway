@@ -22,9 +22,9 @@ An app for capturing, sharing, and collaborating on musical ideas and sketches.
 * The user can:
      * Play the composition
      * Scrub the composition - Move the player cursor to a specific point to listen (optional) 
-	* Like the composition (optional: leave a comment)
-	* Click on any avatar, which will open that user's **User Profile** page
-	* The user can join the collaboration, which will open the **Record Composition** page with the composition's audio imported as the **Backing Track**
+     * Like the composition (optional: leave a comment)
+     * Click on any avatar, which will open that user's **User Profile** page
+     * The user can join the collaboration, which will open the **Record Composition** page with the composition's audio imported as the **Backing Track**
 
 ### Record New Composition
 * A large, red Record button is shown to the user, which toggles recording on/off
