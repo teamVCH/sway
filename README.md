@@ -1,7 +1,7 @@
 #Sway
 
 ## Description
-An app for capturing, sharing, and collaborating on musical ideas and sketches.
+An app for capturing, sharing, and collaborating on musical ideas.
 
 ## User Stories
 
