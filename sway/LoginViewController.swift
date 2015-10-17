@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
   }
 
   private func presentLogin() {
-    // TODO: Add ustom logo and text
+    // TODO: Add custom logo and text
     let loginViewController = PFLogInViewController()
     loginViewController.delegate = self
     loginViewController.fields = PFLogInFields(rawValue: PFLogInFields.UsernameAndPassword.rawValue
