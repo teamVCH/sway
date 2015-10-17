@@ -16,6 +16,7 @@
 		2A6A23321BD0AA2800ED0706 /* TuneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23311BD0AA2800ED0706 /* TuneViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE791BD243B3007281E2 /* ParseCredentials.plist */; settings = {ASSET_TAGS = (); }; };
 		F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */; settings = {ASSET_TAGS = (); }; };
+		F102CE801BD24657007281E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102CE7F1BD24657007281E2 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		F1A4A2449414017605381302 /* libPods-sway.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115E2CB371C884526F352A59 /* libPods-sway.a */; };
 		F1C519311BD23E2C00E57350 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519301BD23E2C00E57350 /* Foundation.framework */; };
 		F1C519331BD23E3700E57350 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519321BD23E3700E57350 /* UIKit.framework */; };
@@ -49,6 +50,7 @@
 		D58D79382ACFBC82DCA911A6 /* Pods-sway.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sway.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sway/Pods-sway.debug.xcconfig"; sourceTree = "<group>"; };
 		F102CE791BD243B3007281E2 /* ParseCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParseCredentials.plist; sourceTree = "<group>"; };
 		F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TwitterCredentials.plist; sourceTree = "<group>"; };
+		F102CE7F1BD24657007281E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F1C519301BD23E2C00E57350 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1C519321BD23E3700E57350 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1C519341BD23E4300E57350 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -115,11 +117,10 @@
 		2A6A231A1BD095A800ED0706 /* sway */ = {
 			isa = PBXGroup;
 			children = (
+				F102CE7E1BD2462F007281E2 /* Views */,
+				F102CE7D1BD245DD007281E2 /* ViewControllers */,
 				2A6A231B1BD095A800ED0706 /* AppDelegate.swift */,
 				2A6A231F1BD095A800ED0706 /* Main.storyboard */,
-				2A6A23311BD0AA2800ED0706 /* TuneViewCell.swift */,
-				2A6A232F1BD0A9EF00ED0706 /* MainTunesViewController.swift */,
-				2A6A232D1BD0A9AD00ED0706 /* TrackDetailViewController.swift */,
 				2A6A23221BD095A800ED0706 /* Assets.xcassets */,
 				2A6A23241BD095A800ED0706 /* LaunchScreen.storyboard */,
 				2A6A23271BD095A800ED0706 /* Info.plist */,
@@ -160,6 +161,24 @@
 				9C359999855D3D2778633D8C /* Pods-sway.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F102CE7D1BD245DD007281E2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2A6A232D1BD0A9AD00ED0706 /* TrackDetailViewController.swift */,
+				2A6A232F1BD0A9EF00ED0706 /* MainTunesViewController.swift */,
+				F102CE7F1BD24657007281E2 /* LoginViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F102CE7E1BD2462F007281E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2A6A23311BD0AA2800ED0706 /* TuneViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +292,7 @@
 				2A6A231C1BD095A800ED0706 /* AppDelegate.swift in Sources */,
 				2A6A232E1BD0A9AD00ED0706 /* TrackDetailViewController.swift in Sources */,
 				2A6A23321BD0AA2800ED0706 /* TuneViewCell.swift in Sources */,
+				F102CE801BD24657007281E2 /* LoginViewController.swift in Sources */,
 				2A6A23301BD0A9EF00ED0706 /* MainTunesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
