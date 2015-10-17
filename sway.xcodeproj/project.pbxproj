@@ -8,20 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		2A6A231C1BD095A800ED0706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A231B1BD095A800ED0706 /* AppDelegate.swift */; };
-		2A6A231E1BD095A800ED0706 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A231D1BD095A800ED0706 /* ViewController.swift */; };
 		2A6A23211BD095A800ED0706 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A231F1BD095A800ED0706 /* Main.storyboard */; };
 		2A6A23231BD095A800ED0706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A23221BD095A800ED0706 /* Assets.xcassets */; };
 		2A6A23261BD095A800ED0706 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A23241BD095A800ED0706 /* LaunchScreen.storyboard */; };
 		2A6A232E1BD0A9AD00ED0706 /* TrackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A232D1BD0A9AD00ED0706 /* TrackDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2A6A23301BD0A9EF00ED0706 /* MainTunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A232F1BD0A9EF00ED0706 /* MainTunesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2A6A23321BD0AA2800ED0706 /* TuneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23311BD0AA2800ED0706 /* TuneViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		316BB5540C8B9D64EEEB94FD /* Pods_sway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97535B11B5A7A9E2D2157C8C /* Pods_sway.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE791BD243B3007281E2 /* ParseCredentials.plist */; settings = {ASSET_TAGS = (); }; };
+		F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */; settings = {ASSET_TAGS = (); }; };
+		F1A4A2449414017605381302 /* libPods-sway.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115E2CB371C884526F352A59 /* libPods-sway.a */; };
+		F1C519311BD23E2C00E57350 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519301BD23E2C00E57350 /* Foundation.framework */; };
+		F1C519331BD23E3700E57350 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519321BD23E3700E57350 /* UIKit.framework */; };
+		F1C519351BD23E4300E57350 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519341BD23E4300E57350 /* CoreGraphics.framework */; };
+		F1C519371BD23E4F00E57350 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519361BD23E4F00E57350 /* AudioToolbox.framework */; };
+		F1C519391BD23E5C00E57350 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519381BD23E5C00E57350 /* CFNetwork.framework */; };
+		F1C5193B1BD23E6D00E57350 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C5193A1BD23E6D00E57350 /* CoreLocation.framework */; };
+		F1C5193D1BD23E7A00E57350 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C5193C1BD23E7A00E57350 /* libz.1.1.3.tbd */; };
+		F1C5193F1BD23E8500E57350 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C5193E1BD23E8500E57350 /* MobileCoreServices.framework */; };
+		F1C519411BD23E9200E57350 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519401BD23E9200E57350 /* QuartzCore.framework */; };
+		F1C519431BD23E9D00E57350 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519421BD23E9D00E57350 /* Security.framework */; };
+		F1C519451BD23EAB00E57350 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519441BD23EAA00E57350 /* StoreKit.framework */; };
+		F1C519471BD23EB600E57350 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519461BD23EB600E57350 /* SystemConfiguration.framework */; };
+		F1C519491BD23EBF00E57350 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519481BD23EBF00E57350 /* Accounts.framework */; };
+		F1C5194B1BD23EC800E57350 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C5194A1BD23EC800E57350 /* Twitter.framework */; };
+		F1C5194D1BD23ED100E57350 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C5194C1BD23ED100E57350 /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		115E2CB371C884526F352A59 /* libPods-sway.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sway.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A6A23181BD095A800ED0706 /* sway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A6A231B1BD095A800ED0706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2A6A231D1BD095A800ED0706 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2A6A23201BD095A800ED0706 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2A6A23221BD095A800ED0706 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A6A23251BD095A800ED0706 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,9 +45,26 @@
 		2A6A232D1BD0A9AD00ED0706 /* TrackDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackDetailViewController.swift; sourceTree = "<group>"; };
 		2A6A232F1BD0A9EF00ED0706 /* MainTunesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTunesViewController.swift; sourceTree = "<group>"; };
 		2A6A23311BD0AA2800ED0706 /* TuneViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuneViewCell.swift; sourceTree = "<group>"; };
-		97535B11B5A7A9E2D2157C8C /* Pods_sway.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sway.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C359999855D3D2778633D8C /* Pods-sway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sway.release.xcconfig"; path = "Pods/Target Support Files/Pods-sway/Pods-sway.release.xcconfig"; sourceTree = "<group>"; };
 		D58D79382ACFBC82DCA911A6 /* Pods-sway.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sway.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sway/Pods-sway.debug.xcconfig"; sourceTree = "<group>"; };
+		F102CE791BD243B3007281E2 /* ParseCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParseCredentials.plist; sourceTree = "<group>"; };
+		F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TwitterCredentials.plist; sourceTree = "<group>"; };
+		F1C519301BD23E2C00E57350 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F1C519321BD23E3700E57350 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F1C519341BD23E4300E57350 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F1C519361BD23E4F00E57350 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F1C519381BD23E5C00E57350 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		F1C5193A1BD23E6D00E57350 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F1C5193C1BD23E7A00E57350 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
+		F1C5193E1BD23E8500E57350 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F1C519401BD23E9200E57350 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F1C519421BD23E9D00E57350 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F1C519441BD23EAA00E57350 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F1C519461BD23EB600E57350 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F1C519481BD23EBF00E57350 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		F1C5194A1BD23EC800E57350 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		F1C5194C1BD23ED100E57350 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		F1C5194E1BD23F0A00E57350 /* sway-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sway-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,7 +72,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				316BB5540C8B9D64EEEB94FD /* Pods_sway.framework in Frameworks */,
+				F1C5194D1BD23ED100E57350 /* Social.framework in Frameworks */,
+				F1C5194B1BD23EC800E57350 /* Twitter.framework in Frameworks */,
+				F1C519491BD23EBF00E57350 /* Accounts.framework in Frameworks */,
+				F1C519471BD23EB600E57350 /* SystemConfiguration.framework in Frameworks */,
+				F1C519451BD23EAB00E57350 /* StoreKit.framework in Frameworks */,
+				F1C519431BD23E9D00E57350 /* Security.framework in Frameworks */,
+				F1C519411BD23E9200E57350 /* QuartzCore.framework in Frameworks */,
+				F1C5193F1BD23E8500E57350 /* MobileCoreServices.framework in Frameworks */,
+				F1C5193D1BD23E7A00E57350 /* libz.1.1.3.tbd in Frameworks */,
+				F1C5193B1BD23E6D00E57350 /* CoreLocation.framework in Frameworks */,
+				F1C519391BD23E5C00E57350 /* CFNetwork.framework in Frameworks */,
+				F1C519371BD23E4F00E57350 /* AudioToolbox.framework in Frameworks */,
+				F1C519351BD23E4300E57350 /* CoreGraphics.framework in Frameworks */,
+				F1C519331BD23E3700E57350 /* UIKit.framework in Frameworks */,
+				F1C519311BD23E2C00E57350 /* Foundation.framework in Frameworks */,
+				F1A4A2449414017605381302 /* libPods-sway.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				2A6A231B1BD095A800ED0706 /* AppDelegate.swift */,
-				2A6A231D1BD095A800ED0706 /* ViewController.swift */,
 				2A6A231F1BD095A800ED0706 /* Main.storyboard */,
 				2A6A23311BD0AA2800ED0706 /* TuneViewCell.swift */,
 				2A6A232F1BD0A9EF00ED0706 /* MainTunesViewController.swift */,
@@ -76,6 +123,9 @@
 				2A6A23221BD095A800ED0706 /* Assets.xcassets */,
 				2A6A23241BD095A800ED0706 /* LaunchScreen.storyboard */,
 				2A6A23271BD095A800ED0706 /* Info.plist */,
+				F1C5194E1BD23F0A00E57350 /* sway-Bridging-Header.h */,
+				F102CE791BD243B3007281E2 /* ParseCredentials.plist */,
+				F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */,
 			);
 			path = sway;
 			sourceTree = "<group>";
@@ -83,7 +133,22 @@
 		BDDB45E9C310587ED9CED011 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				97535B11B5A7A9E2D2157C8C /* Pods_sway.framework */,
+				F1C5194C1BD23ED100E57350 /* Social.framework */,
+				F1C5194A1BD23EC800E57350 /* Twitter.framework */,
+				F1C519481BD23EBF00E57350 /* Accounts.framework */,
+				F1C519461BD23EB600E57350 /* SystemConfiguration.framework */,
+				F1C519441BD23EAA00E57350 /* StoreKit.framework */,
+				F1C519421BD23E9D00E57350 /* Security.framework */,
+				F1C519401BD23E9200E57350 /* QuartzCore.framework */,
+				F1C5193E1BD23E8500E57350 /* MobileCoreServices.framework */,
+				F1C5193C1BD23E7A00E57350 /* libz.1.1.3.tbd */,
+				F1C5193A1BD23E6D00E57350 /* CoreLocation.framework */,
+				F1C519381BD23E5C00E57350 /* CFNetwork.framework */,
+				F1C519361BD23E4F00E57350 /* AudioToolbox.framework */,
+				F1C519341BD23E4300E57350 /* CoreGraphics.framework */,
+				F1C519321BD23E3700E57350 /* UIKit.framework */,
+				F1C519301BD23E2C00E57350 /* Foundation.framework */,
+				115E2CB371C884526F352A59 /* libPods-sway.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -108,7 +173,6 @@
 				2A6A23141BD095A800ED0706 /* Sources */,
 				2A6A23151BD095A800ED0706 /* Frameworks */,
 				2A6A23161BD095A800ED0706 /* Resources */,
-				30BF802B5C26E5DBBF690C2A /* Embed Pods Frameworks */,
 				D17F01014BB6EEA6902A8DE6 /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -126,6 +190,7 @@
 		2A6A23101BD095A800ED0706 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = VCH;
 				TargetAttributes = {
@@ -158,6 +223,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A6A23261BD095A800ED0706 /* LaunchScreen.storyboard in Resources */,
+				F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */,
+				F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */,
 				2A6A23231BD095A800ED0706 /* Assets.xcassets in Resources */,
 				2A6A23211BD095A800ED0706 /* Main.storyboard in Resources */,
 			);
@@ -166,21 +233,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		30BF802B5C26E5DBBF690C2A /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sway/Pods-sway-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		970AA5E000E96A5AC9D4C1B8 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,7 +270,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A6A231E1BD095A800ED0706 /* ViewController.swift in Sources */,
 				2A6A231C1BD095A800ED0706 /* AppDelegate.swift in Sources */,
 				2A6A232E1BD0A9AD00ED0706 /* TrackDetailViewController.swift in Sources */,
 				2A6A23321BD0AA2800ED0706 /* TuneViewCell.swift in Sources */,
@@ -334,10 +385,13 @@
 			baseConfigurationReference = D58D79382ACFBC82DCA911A6 /* Pods-sway.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = sway/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vch.sway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "sway/sway-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -346,10 +400,12 @@
 			baseConfigurationReference = 9C359999855D3D2778633D8C /* Pods-sway.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = sway/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vch.sway;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "sway/sway-Bridging-Header.h";
 			};
 			name = Release;
 		};
