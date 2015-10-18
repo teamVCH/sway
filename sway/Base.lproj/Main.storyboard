@@ -226,7 +226,7 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcg-J4-LJE" customClass="Waver">
-                                <rect key="frame" x="0.0" y="245" width="320" height="79"/>
+                                <rect key="frame" x="0.0" y="225" width="320" height="79"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2cf-VV-8YR" customClass="SCWaveformView">
@@ -244,16 +244,8 @@
                                     <action selector="cancelRecord:" destination="w4D-iw-MiP" eventType="touchUpInside" id="7v8-hA-hkO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2L-Gm-k7G">
-                                <rect key="frame" x="251" y="333" width="49" height="30"/>
-                                <state key="normal" title="Record"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNG-JK-rJW">
-                                <rect key="frame" x="20" y="333" width="30" height="30"/>
-                                <state key="normal" title="Play"/>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vy8-WA-ol6">
-                                <rect key="frame" x="40" y="386" width="240" height="128"/>
+                                <rect key="frame" x="0.0" y="338" width="320" height="210"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>

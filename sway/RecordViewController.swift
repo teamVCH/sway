@@ -37,6 +37,8 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.view.backgroundColor = UIColor(hue: 0.4694, saturation: 0.04, brightness: 0.92, alpha: 1.0) /* #e2edeb */
+        
         let rcView = UINib(nibName: "RecordingControlView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! RecordingControlView
         rcView.frame = controlView.bounds
         controlView.addSubview(rcView)
@@ -53,13 +55,8 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         
         rcView.delegate = self
         
-        
-        
-        
         setupWaveformView(backingWaveformView)
         setupWaveformView(recordingWaveformView)
-        
-        
     }
     
     func setupWaveformView(waveformView: SCWaveformView) {
