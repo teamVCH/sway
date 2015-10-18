@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--Listen-->
+        <!--Top Charts-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainTunesViewController" customModule="sway" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,13 +52,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Listen" image="headphone" id="9yV-Wq-Tpp"/>
-                    <navigationItem key="navigationItem" id="h0X-1Q-sWu"/>
+                    <navigationItem key="navigationItem" title="Top Charts" id="S6R-rq-dEh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2169" y="400"/>
         </scene>
-        <!--You-->
+        <!--Profile-->
         <scene sceneID="SMD-B2-fK3">
             <objects>
                 <viewController id="76W-HG-441" customClass="UserProfileViewController" customModule="sway" customModuleProvider="target" sceneMemberID="viewController">
@@ -72,6 +72,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="You" image="profile" id="bG5-Tq-jZ4"/>
+                    <navigationItem key="navigationItem" title="Profile" id="eh4-vp-zy9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xA6-NZ-sGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -188,10 +189,10 @@
             </objects>
             <point key="canvasLocation" x="733" y="-283"/>
         </scene>
-        <!--Record-->
+        <!--Drafts-->
         <scene sceneID="Gzx-nQ-nls">
             <objects>
-                <viewController id="UYs-yp-Us6" customClass="RecordViewController" customModule="sway" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UYs-yp-Us6" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zUX-Ks-5sz"/>
                         <viewControllerLayoutGuide type="bottom" id="TpQ-L9-G6e"/>
@@ -202,10 +203,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Record" image="record" id="3mS-NF-YS3"/>
+                    <navigationItem key="navigationItem" title="Drafts" id="EaQ-sR-cPw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FEN-Hs-uUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2069" y="-462"/>
+            <point key="canvasLocation" x="2001" y="-602"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="7oR-Mg-YnA">
@@ -219,11 +221,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ftm-UK-jWv">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ftm-UK-jWv" customClass="SCWaveformView">
                                 <rect key="frame" x="0.0" y="105" width="320" height="79"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2cf-VV-8YR">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcg-J4-LJE" customClass="Waver">
+                                <rect key="frame" x="0.0" y="245" width="320" height="79"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2cf-VV-8YR" customClass="SCWaveformView">
                                 <rect key="frame" x="0.0" y="225" width="320" height="79"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -234,6 +240,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYm-kF-JcR">
                                 <rect key="frame" x="20" y="53" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelRecord:" destination="w4D-iw-MiP" eventType="touchUpInside" id="7v8-hA-hkO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2L-Gm-k7G">
                                 <rect key="frame" x="251" y="333" width="49" height="30"/>
@@ -243,13 +252,23 @@
                                 <rect key="frame" x="20" y="333" width="30" height="30"/>
                                 <state key="normal" title="Play"/>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vy8-WA-ol6">
+                                <rect key="frame" x="40" y="386" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="backingWaveformView" destination="Ftm-UK-jWv" id="sWw-EE-Gvs"/>
+                        <outlet property="controlView" destination="Vy8-WA-ol6" id="Nfy-K1-Yue"/>
+                        <outlet property="recordingWaveformView" destination="2cf-VV-8YR" id="vRW-hu-Ehz"/>
+                        <outlet property="recordingWaver" destination="pcg-J4-LJE" id="WJd-eN-Oyf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i2h-pw-T1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2433" y="-462"/>
+            <point key="canvasLocation" x="2610" y="-462"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kKe-hn-drW">

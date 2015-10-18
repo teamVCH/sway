@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "193B689DF4132D2E2AF37ACAC58B0521CDDD59B6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "193B689DF4132D2E2AF37ACAC58B0521CDDD59B6" : 0,
+    "9C87DA8C6DE62E8D8A0ECD09464E66BEC3DD07AF" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F5D3EE81-13A9-4C02-A444-F77BA135D0FF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "193B689DF4132D2E2AF37ACAC58B0521CDDD59B6" : "sway\/",
+    "9C87DA8C6DE62E8D8A0ECD09464E66BEC3DD07AF" : "AudioTest\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "sway",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "sway.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/teamVCH\/sway.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "193B689DF4132D2E2AF37ACAC58B0521CDDD59B6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/melophonic\/AudioTest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9C87DA8C6DE62E8D8A0ECD09464E66BEC3DD07AF"
+    }
+  ]
+}

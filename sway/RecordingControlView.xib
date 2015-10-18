@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RecordingControlView" customModule="sway" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7aH-wK-o5R">
+                    <rect key="frame" x="233" y="16" width="135" height="120"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqg-rx-RY4">
+                            <rect key="frame" x="13" y="0.0" width="108" height="30"/>
+                            <state key="normal" title="Start Recording"/>
+                            <state key="selected" title="Stop Recording"/>
+                            <connections>
+                                <action selector="onTapRecord:" destination="iN0-l3-epB" eventType="touchUpInside" id="DyV-CJ-KjC"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18a-3R-75h">
+                            <rect key="frame" x="23" y="30" width="88" height="30"/>
+                            <state key="normal" title="Start Playing"/>
+                            <state key="selected" title="Stop Playing"/>
+                            <connections>
+                                <action selector="onTapPlay:" destination="iN0-l3-epB" eventType="touchUpInside" id="UI2-Pe-3J8"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecn-nd-fex">
+                            <rect key="frame" x="41" y="60" width="52" height="30"/>
+                            <state key="normal" title="Bounce"/>
+                            <connections>
+                                <action selector="onTapBounce:" destination="iN0-l3-epB" eventType="touchUpInside" id="J8W-8r-g3o"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kvd-FT-7NS">
+                            <rect key="frame" x="0.0" y="90" width="135" height="30"/>
+                            <state key="normal" title="Load Backing Track"/>
+                            <connections>
+                                <action selector="loadBackingTrack:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZLU-lg-EJa"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3H-Lg-zun">
+                    <rect key="frame" x="8" y="8" width="36" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play backing audio while recording" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bk-TU-lNF">
+                    <rect key="frame" x="65" y="568.5" width="210.5" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="whm-Ey-Oko">
+                    <rect key="frame" x="8" y="561" width="51" height="31"/>
+                </switch>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="whm-Ey-Oko" secondAttribute="bottom" constant="8" id="OLH-4u-pl3"/>
+                <constraint firstItem="1bk-TU-lNF" firstAttribute="centerY" secondItem="whm-Ey-Oko" secondAttribute="centerY" id="TXU-ry-64e"/>
+                <constraint firstItem="1bk-TU-lNF" firstAttribute="leading" secondItem="whm-Ey-Oko" secondAttribute="trailing" constant="8" id="Zfi-Sn-cGI"/>
+                <constraint firstItem="7aH-wK-o5R" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="fIE-UC-wxn"/>
+                <constraint firstItem="D3H-Lg-zun" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="md4-Rb-DkT"/>
+                <constraint firstItem="D3H-Lg-zun" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="p6b-dZ-8fa"/>
+                <constraint firstItem="whm-Ey-Oko" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="plq-lx-woh"/>
+                <constraint firstItem="7aH-wK-o5R" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uxr-Ep-1aO"/>
+            </constraints>
+            <connections>
+                <outlet property="currentTimeLabel" destination="D3H-Lg-zun" id="KVn-rH-gUn"/>
+                <outlet property="playBackingAudioWhileRecordingSwitch" destination="whm-Ey-Oko" id="sog-Wh-Zpb"/>
+                <outlet property="playButton" destination="18a-3R-75h" id="hee-KA-OXm"/>
+                <outlet property="recordButton" destination="Tqg-rx-RY4" id="87o-Wt-aMw"/>
+            </connections>
+            <point key="canvasLocation" x="303" y="298"/>
+        </view>
+    </objects>
+</document>
