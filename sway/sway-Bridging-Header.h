@@ -10,3 +10,5 @@
 #import <Bolts/Bolts.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <Waver/Waver.h>
+#import <SCWaveformView/SCWaveformView.h>

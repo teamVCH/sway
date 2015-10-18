@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "26B30B55786342F2524A0F47"
-               BuildableName = "Pods_sway.framework"
+               BlueprintIdentifier = "B09DC01D7255F69A56514516"
+               BuildableName = "libPods-sway.a"
                BlueprintName = "Pods-sway"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

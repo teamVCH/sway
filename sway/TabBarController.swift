@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +22,11 @@ class TabBarController: UITabBarController {
     }
     
 
+    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+        if (item.title == "Record") {
+            performSegueWithIdentifier("RecordModalSegue", sender: nil)
+        }
+    }
     /*
     // MARK: - Navigation
 

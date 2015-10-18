@@ -36,6 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    //set colors
+    UINavigationBar.appearance().barTintColor = UIColor(hue: 0.4722, saturation: 0.2, brightness: 0.48, alpha: 1.0) /* #627b77 */
+    UITabBar.appearance().barTintColor = UIColor(hue: 0.4722, saturation: 0.2, brightness: 0.48, alpha: 1.0) /* #627b77 */
+    
     Parse.setApplicationId(parseCredentials.consumerKey, clientKey: parseCredentials.consumerSecret)
     PFTwitterUtils.initializeWithConsumerKey(twitterCredentials.consumerKey, consumerSecret: twitterCredentials.consumerSecret)
     

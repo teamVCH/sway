@@ -8,4 +8,6 @@ target 'sway' do
     pod 'ParseTwitterUtils'
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
+    pod 'SCWaveformView'
+    pod 'Waver'
 end

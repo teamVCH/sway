@@ -29,6 +29,8 @@ PODS:
   - ParseUI (1.1.6):
     - Bolts/Tasks (~> 1.2)
     - Parse (~> 1.8)
+  - SCWaveformView (2.0.6)
+  - Waver (0.3.0)
 
 DEPENDENCIES:
   - FBSDKCoreKit
@@ -37,6 +39,8 @@ DEPENDENCIES:
   - ParseFacebookUtilsV4
   - ParseTwitterUtils
   - ParseUI
+  - SCWaveformView
+  - Waver
 
 SPEC CHECKSUMS:
   Bolts: 805a4a87413e49d4a0c2b7d469084cbc46b09342
@@ -46,5 +50,7 @@ SPEC CHECKSUMS:
   ParseFacebookUtilsV4: aadebfaaaf4a45bf0a0992863bf48c8fc49189e3
   ParseTwitterUtils: 0155d1a4e388690aa5d80405a586474e66606968
   ParseUI: 8a22e448c03f825203d8c379c80523517f68baa3
+  SCWaveformView: 78b3503675aafcdaf9c283d68cb45c9fc735af87
+  Waver: d81cff527411747698621223299102ac661258ae
 
 COCOAPODS: 0.38.2
