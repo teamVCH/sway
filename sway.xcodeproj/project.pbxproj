@@ -18,9 +18,9 @@
 		2A6A23391BD2FE4200ED0706 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23381BD2FE4200ED0706 /* RecordViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2A6A233B1BD2FE6000ED0706 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A233A1BD2FE6000ED0706 /* UserProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2A6A233F1BD3313700ED0706 /* AVFoundationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A233E1BD3313700ED0706 /* AVFoundationHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		2A6A23411BD3317700ED0706 /* simple-drum-beat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A23401BD3317700ED0706 /* simple-drum-beat.wav */; settings = {ASSET_TAGS = (); }; };
 		2A6A23451BD3391800ED0706 /* RecordingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23441BD3391800ED0706 /* RecordingControlView.swift */; settings = {ASSET_TAGS = (); }; };
 		2A6A23471BD3397800ED0706 /* RecordingControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A23461BD3397800ED0706 /* RecordingControlView.xib */; settings = {ASSET_TAGS = (); }; };
+		683C58B71BD42D2700CFECFF /* simple-drum-beat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */; settings = {ASSET_TAGS = (); }; };
 		F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE791BD243B3007281E2 /* ParseCredentials.plist */; settings = {ASSET_TAGS = (); }; };
 		F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */; settings = {ASSET_TAGS = (); }; };
 		F102CE801BD24657007281E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102CE7F1BD24657007281E2 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -57,9 +57,9 @@
 		2A6A23381BD2FE4200ED0706 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		2A6A233A1BD2FE6000ED0706 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		2A6A233E1BD3313700ED0706 /* AVFoundationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVFoundationHelper.swift; sourceTree = "<group>"; };
-		2A6A23401BD3317700ED0706 /* simple-drum-beat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "simple-drum-beat.wav"; path = "../../AudioTest/AudioTest/simple-drum-beat.wav"; sourceTree = "<group>"; };
 		2A6A23441BD3391800ED0706 /* RecordingControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingControlView.swift; sourceTree = "<group>"; };
 		2A6A23461BD3397800ED0706 /* RecordingControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordingControlView.xib; sourceTree = "<group>"; };
+		683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "simple-drum-beat.wav"; sourceTree = "<group>"; };
 		9C359999855D3D2778633D8C /* Pods-sway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sway.release.xcconfig"; path = "Pods/Target Support Files/Pods-sway/Pods-sway.release.xcconfig"; sourceTree = "<group>"; };
 		D58D79382ACFBC82DCA911A6 /* Pods-sway.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sway.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sway/Pods-sway.debug.xcconfig"; sourceTree = "<group>"; };
 		F102CE791BD243B3007281E2 /* ParseCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParseCredentials.plist; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 		2A6A231A1BD095A800ED0706 /* sway */ = {
 			isa = PBXGroup;
 			children = (
-				2A6A23401BD3317700ED0706 /* simple-drum-beat.wav */,
+				683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */,
 				2A6A233D1BD3159400ED0706 /* API */,
 				2A6A233C1BD3158F00ED0706 /* Models */,
 				F102CE7E1BD2462F007281E2 /* Views */,
@@ -281,9 +281,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				683C58B71BD42D2700CFECFF /* simple-drum-beat.wav in Resources */,
 				2A6A23261BD095A800ED0706 /* LaunchScreen.storyboard in Resources */,
 				F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */,
-				2A6A23411BD3317700ED0706 /* simple-drum-beat.wav in Resources */,
 				F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */,
 				2A6A23471BD3397800ED0706 /* RecordingControlView.xib in Resources */,
 				2A6A23231BD095A800ED0706 /* Assets.xcassets in Resources */,
