@@ -58,6 +58,7 @@ class RecordingControlView: UIView {
     }
     
     @IBAction func onTapPlay(sender: UIButton) {
+        //UIBarButtonPause_2x
         if sender.selected {
             delegate?.stopPlaying(self)
             isPlaying = false
