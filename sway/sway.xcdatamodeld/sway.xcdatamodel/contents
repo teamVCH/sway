@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
+    <entity name="Recording" representedClassName=".Recording" syncable="YES">
+        <attribute name="backingAudio" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="lastModified" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="recordingAudio" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Recording" positionX="-63" positionY="-18" width="128" height="105"/>
+    </elements>
+</model>
