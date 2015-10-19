@@ -14,7 +14,11 @@ let recordingEntityName = "Recording"
 class Recording: NSManagedObject {
     
     var backingAudioUrl, recordingAudioUrl: NSURL?
+    var publishedDate: NSDate?
     
+    func isDraft() -> Bool {
+        return publishedDate != nil
+    }
     
     func writeAudioFiles() -> Bool {
         var backingResult = true

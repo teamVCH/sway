@@ -21,6 +21,7 @@ class TuneViewCell: UITableViewCell {
     @IBOutlet weak var likeCount: UILabel!
     @IBOutlet weak var tags: UILabel!
     @IBOutlet weak var userButton: UIButton!
+    @IBOutlet weak var statsView: UIView!
     
     var playing : Bool = false
     var audioPlayer : AVAudioPlayerExt?
@@ -40,9 +41,12 @@ class TuneViewCell: UITableViewCell {
             } else {
                 tuneTitle.text = title
             }
+            statsView.hidden = recording.isDraft()
         }
-        
     }
+
+    
+    
     
     // TODO: cache formatter
     func formatTimeElapsed(sinceDate: NSDate) -> String {

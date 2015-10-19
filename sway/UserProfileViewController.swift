@@ -84,6 +84,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             cell.recording = drafts[indexPath.row]
         }
         
+        // hide user button from user profile page
+        cell.userButton.hidden = true
+        
         return cell
         
     }
