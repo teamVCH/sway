@@ -17,6 +17,7 @@ extension Recording {
     @NSManaged var backingAudio: NSData?
     @NSManaged var lastModified: NSDate?
     @NSManaged var recordingAudio: NSData?
+    @NSManaged var bouncedAudio: NSData?
     @NSManaged var title: String?
 
 }

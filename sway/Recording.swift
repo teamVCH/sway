@@ -13,7 +13,7 @@ let recordingEntityName = "Recording"
 
 class Recording: NSManagedObject {
     
-    var backingAudioUrl, recordingAudioUrl: NSURL?
+    var backingAudioUrl, recordingAudioUrl, bouncedAudioUrl: NSURL?
     var publishedDate: NSDate?
     
     func isDraft() -> Bool {
@@ -21,52 +21,39 @@ class Recording: NSManagedObject {
     }
     
     func writeAudioFiles() -> Bool {
-        var backingResult = true
-        var recordingResult = true
-        
-        if let backingAudio = backingAudio {
-            if let backingAudioUrl = backingAudioUrl {
-                backingResult = writeToUrl(backingAudioUrl, data: backingAudio)
-                if backingResult {
-                    print("Wrote \(backingAudio.length) bytes to \(backingAudioUrl)")
-                }
-            }
-        }
-        
-        if let recordingAudio = recordingAudio {
-            if let recordingAudioUrl = recordingAudioUrl {
-                recordingResult = writeToUrl(recordingAudioUrl, data: recordingAudio)
-                if recordingResult {
-                    print("Wrote \(recordingAudio.length) bytes to \(recordingAudioUrl)")
-                }
-            }
-        }
-        
-        return backingResult && recordingResult
+        let backingResult = writeAudioFile(backingAudio, audioUrl: backingAudioUrl)
+        let recordingResult = writeAudioFile(recordingAudio, audioUrl: recordingAudioUrl)
+        let bouncedResult = writeAudioFile(bouncedAudio, audioUrl: bouncedAudioUrl)
+        return backingResult && recordingResult && bouncedResult
     }
     
-    func readAudioFiles() -> Bool {
-        var backingResult = true
-        var recordingResult = true
-        
-        if let backingAudioUrl = backingAudioUrl {
-            if backingAudioUrl.checkResourceIsReachableAndReturnError(nil) {
-                backingAudio = readFromUrl(backingAudioUrl)
-                backingResult = backingAudio != nil
+    func writeAudioFile(audioData: NSData?, audioUrl: NSURL?) -> Bool {
+        if let audioData = audioData {
+            if let audioUrl = audioUrl {
+                return writeToUrl(audioUrl, data: audioData)
+            } else {
+                print("audioData was not null but audioUrl was")
+                return false
             }
         }
-        
-        if let recordingAudioUrl = recordingAudioUrl {
-            if recordingAudioUrl.checkResourceIsReachableAndReturnError(nil) {
-                recordingAudio = readFromUrl(recordingAudioUrl)
-                recordingResult = recordingAudio != nil
-            }
-        }
-        
-        return backingResult && recordingResult
+        return true
     }
     
+    func readAudioFiles() {
+        backingAudio = readAudioFile(backingAudioUrl)
+        recordingAudio = readAudioFile(recordingAudioUrl)
+        bouncedAudio = readAudioFile(bouncedAudioUrl)
+     }
     
+    func readAudioFile(audioUrl: NSURL?) -> NSData? {
+        var audioData: NSData?
+        if let audioUrl = audioUrl {
+            if audioUrl.checkResourceIsReachableAndReturnError(nil) {
+                audioData = readFromUrl(audioUrl)
+            }
+        }
+        return audioData
+    }
     
     func writeToUrl(outputUrl: NSURL, data: NSData) -> Bool {
         return data.writeToURL(outputUrl, atomically: true)
@@ -78,6 +65,19 @@ class Recording: NSManagedObject {
         } catch let error as NSError {
             print("Error reading \(url): \(error)")
             return nil
+        }
+    }
+
+    
+    static func formatTime(interval: NSTimeInterval, includeMs: Bool) -> String {
+        let ti = NSInteger(interval)
+        let ms = Int((interval % 1) * 1000)
+        let seconds = ti % 60
+        let minutes = (ti / 60) % 60
+        if includeMs {
+            return String(format: "%0.2d:%0.2d.%0.2d", minutes, seconds, ms)
+        } else {
+            return String(format: "%0.2d:%0.2d", minutes, seconds)
         }
     }
     

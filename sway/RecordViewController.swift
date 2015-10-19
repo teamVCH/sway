@@ -81,9 +81,12 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
             if recording.recordingAudio != nil {
                 recording.recordingAudioUrl = helper.getDocumentUrl(defaultRecordingAudioName)
             }
+            if recording.bouncedAudio != nil {
+                recording.bouncedAudioUrl = helper.getDocumentUrl(defaultBouncedAudioName)
+            }
+            
             // write any stored audio data to the filesystem
             recording.writeAudioFiles()
-            
             updateBackingAudio()
             updateRecordingAudio()
             

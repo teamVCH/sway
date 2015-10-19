@@ -10,7 +10,7 @@ import UIKit
 
 let tuneViewCell = "TuneViewCell"
 
-class TuneViewCell: UITableViewCell {
+class TuneViewCell: UITableViewCell, AVAudioPlayerDelegate {
 
     @IBOutlet weak var WaveFormView: SCWaveformView!
     @IBOutlet weak var playButton: UIButton!
@@ -42,6 +42,18 @@ class TuneViewCell: UITableViewCell {
                 tuneTitle.text = title
             }
             statsView.hidden = recording.isDraft()
+            
+            let audioData = recording.recordingAudio != nil ? recording.recordingAudio : recording.backingAudio
+            if let audioData = audioData {
+            
+                audioPlayer = try! AVAudioPlayerExt(data: audioData)
+                audioPlayer!.delegate = self
+                audioPlayer!.prepareToPlay()
+            
+                length.text = Recording.formatTime(audioPlayer!.duration, includeMs: false)
+            } else {
+                length.text = "0:00"
+            }
         }
     }
 
@@ -116,6 +128,13 @@ class TuneViewCell: UITableViewCell {
             playButton.setImage(UIImage(named: "UIBarButtonPause_2x"), forState: UIControlState.Normal)
             audioPlayer?.play()
         }
+    }
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        playing = false
+        playButton.setImage(UIImage(named: "UIBarButtonPlay_2x"), forState: UIControlState.Normal)
+        
+        
     }
     
     func setBackingAudio(view: SCWaveformView, url: NSURL) {
