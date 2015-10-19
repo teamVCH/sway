@@ -68,9 +68,10 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         }
         */
         
-        // if it wasn't set in the segue, make a new one
-
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         if let recording = recording {
             isNew = false
             // create temp files
@@ -83,11 +84,17 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
             // write any stored audio data to the filesystem
             recording.writeAudioFiles()
             
+            updateBackingAudio()
+            updateRecordingAudio()
+            
         } else {
+             // if it wasn't set in the segue, make a new one
             recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
         }
         
+        
     }
+    
     
     func setupWaveformView(waveformView: SCWaveformView) {
         // Setting the waveform colors
@@ -168,6 +175,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         recordingWaveformView.hidden = false
         
         updateRecordingAudio()
+
     }
     
     func updateRecordingAudio() {
@@ -309,25 +317,29 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         }
     }
     
+    func updateBackingAudio() {
+        if let url = recording.backingAudioUrl {
+            do {
+                backingAudioPlayer = try AVAudioPlayerExt(contentsOfURL: url)
+                backingAudioPlayer!.prepareToPlay()
+                backingAudioPlayer!.delegate = self
+                
+                backingWaveformView.asset = AVAsset(URL: url)
+                duration = backingWaveformView.asset.duration
+                backingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, duration!)
+                backingWaveformView.layoutIfNeeded()
+            } catch let error as NSError {
+                print("setBackingAudio: Error = \(error.localizedDescription)")
+            }
+        }
+    }
+    
     
     func setBackingAudio(view: RecordingControlView, url: NSURL) {
         rcView = view
-        do {
-            recording.backingAudioUrl = url
-            
-            backingAudioPlayer = try AVAudioPlayerExt(contentsOfURL: url)
-            backingAudioPlayer!.prepareToPlay()
-            backingAudioPlayer!.delegate = self
-            
-            backingWaveformView.asset = AVAsset(URL: url)
-            duration = backingWaveformView.asset.duration
-            backingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, duration!)
-            backingWaveformView.layoutIfNeeded()
-            
-            
-        } catch let error as NSError {
-            print("setBackingAudio: Error = \(error.localizedDescription)")
-        }
+        recording.backingAudioUrl = url
+        updateBackingAudio()
+
         
     }
     

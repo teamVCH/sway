@@ -112,6 +112,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             print("Not implemented") // TODO
         } else {
             // drafts
+            selectedDraft = drafts[indexPath.row]
             performSegueWithIdentifier(loadDraftSegue, sender: self)
         
         }
@@ -132,13 +133,12 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == loadDraftSegue {
-            let recordViewController = segue.destinationViewController as! RecordViewController
-            recordViewController.recording = selectedDraft
-        
+        if let segueId = segue.identifier {
+            if segueId == loadDraftSegue {
+                let recordViewController = segue.destinationViewController as! RecordViewController
+                recordViewController.recording = selectedDraft
+            }
         }
-        
-        
     }
     
 

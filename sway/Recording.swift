@@ -27,12 +27,18 @@ class Recording: NSManagedObject {
         if let backingAudio = backingAudio {
             if let backingAudioUrl = backingAudioUrl {
                 backingResult = writeToUrl(backingAudioUrl, data: backingAudio)
+                if backingResult {
+                    print("Wrote \(backingAudio.length) bytes to \(backingAudioUrl)")
+                }
             }
         }
         
         if let recordingAudio = recordingAudio {
             if let recordingAudioUrl = recordingAudioUrl {
                 recordingResult = writeToUrl(recordingAudioUrl, data: recordingAudio)
+                if recordingResult {
+                    print("Wrote \(recordingAudio.length) bytes to \(recordingAudioUrl)")
+                }
             }
         }
         
