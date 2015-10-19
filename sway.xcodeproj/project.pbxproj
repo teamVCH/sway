@@ -149,7 +149,6 @@
 				2A6A231B1BD095A800ED0706 /* AppDelegate.swift */,
 				2A6A233E1BD3313700ED0706 /* AVFoundationHelper.swift */,
 				2A6A231F1BD095A800ED0706 /* Main.storyboard */,
-				2A6A23461BD3397800ED0706 /* RecordingControlView.xib */,
 				2A6A23221BD095A800ED0706 /* Assets.xcassets */,
 				2A6A23241BD095A800ED0706 /* LaunchScreen.storyboard */,
 				2A6A23271BD095A800ED0706 /* Info.plist */,
@@ -228,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				2A6A23441BD3391800ED0706 /* RecordingControlView.swift */,
+				2A6A23461BD3397800ED0706 /* RecordingControlView.xib */,
 				2A6A23311BD0AA2800ED0706 /* TuneViewCell.swift */,
 			);
 			name = Views;
