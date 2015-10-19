@@ -25,6 +25,7 @@
 		680A74431BD4AC6500D7D605 /* sway.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 680A74411BD4AC6500D7D605 /* sway.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		680A744A1BD4B14900D7D605 /* Recording+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74481BD4B14900D7D605 /* Recording+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		680A744B1BD4B14900D7D605 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74491BD4B14900D7D605 /* Recording.swift */; settings = {ASSET_TAGS = (); }; };
+		680A744F1BD4C4C400D7D605 /* TuneViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 680A744D1BD4C4C400D7D605 /* TuneViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		683C58B71BD42D2700CFECFF /* simple-drum-beat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */; settings = {ASSET_TAGS = (); }; };
 		F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE791BD243B3007281E2 /* ParseCredentials.plist */; settings = {ASSET_TAGS = (); }; };
 		F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */; settings = {ASSET_TAGS = (); }; };
@@ -69,6 +70,7 @@
 		680A74421BD4AC6500D7D605 /* sway.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sway.xcdatamodel; sourceTree = "<group>"; };
 		680A74481BD4B14900D7D605 /* Recording+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recording+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		680A74491BD4B14900D7D605 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
+		680A744D1BD4C4C400D7D605 /* TuneViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TuneViewCell.xib; sourceTree = "<group>"; };
 		683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "simple-drum-beat.wav"; sourceTree = "<group>"; };
 		9C359999855D3D2778633D8C /* Pods-sway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sway.release.xcconfig"; path = "Pods/Target Support Files/Pods-sway/Pods-sway.release.xcconfig"; sourceTree = "<group>"; };
 		D58D79382ACFBC82DCA911A6 /* Pods-sway.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sway.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sway/Pods-sway.debug.xcconfig"; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				2A6A23441BD3391800ED0706 /* RecordingControlView.swift */,
 				2A6A23461BD3397800ED0706 /* RecordingControlView.xib */,
 				2A6A23311BD0AA2800ED0706 /* TuneViewCell.swift */,
+				680A744D1BD4C4C400D7D605 /* TuneViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				683C58B71BD42D2700CFECFF /* simple-drum-beat.wav in Resources */,
+				680A744F1BD4C4C400D7D605 /* TuneViewCell.xib in Resources */,
 				2A6A23261BD095A800ED0706 /* LaunchScreen.storyboard in Resources */,
 				F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */,
 				F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */,

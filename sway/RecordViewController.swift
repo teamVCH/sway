@@ -22,9 +22,8 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     var recorder: AVAudioRecorderExt!
     var rcView: RecordingControlView!
     var duration: CMTime?
-    
-    // set this to load a specific draft
-    var recordingId: NSManagedObjectID?
+
+    var isNew = true
     var recording: Recording!
     
     // Retreive the managedObjectContext from AppDelegate
@@ -56,21 +55,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         setupWaveformView(backingWaveformView)
         setupWaveformView(recordingWaveformView)
         
-        
-        do {
-            let fetchRequest = NSFetchRequest(entityName: recordingEntityName)
-            if let fetchResults = try managedObjectContext.executeFetchRequest(fetchRequest) as? [Recording] {
-                print("Found \(fetchResults.count) drafts")
-                //for draft in fetchResults {
-                //    managedObjectContext.deleteObject(draft)
-                //}
-                //try managedObjectContext.save()
-            }
-        } catch let error as NSError {
-            print("Error loading drafts: \(error)")
-        }
-        
-        
+        /*
         if let recordingId = recordingId {
             do {
                 self.recording = try managedObjectContext.existingObjectWithID(recordingId) as! Recording
@@ -81,8 +66,13 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         } else {
             self.recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
         }
+        */
+        
+        // if it wasn't set in the segue, make a new one
+
         
         if let recording = recording {
+            isNew = false
             // create temp files
             if recording.backingAudio != nil {
                 recording.backingAudioUrl = helper.getDocumentUrl(defaultBackingAudioName)
@@ -93,6 +83,8 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
             // write any stored audio data to the filesystem
             recording.writeAudioFiles()
             
+        } else {
+            recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
         }
         
     }
@@ -345,11 +337,16 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     }
     
     @IBAction func cancelRecord(sender: AnyObject) {
+        if isNew {
+            managedObjectContext.deleteObject(recording)
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func doneRecording(sender: UIButton) {
         do {
+            recording.lastModified = NSDate()
+            recording.readAudioFiles()
             try managedObjectContext.save()
         } catch let error as NSError {
             print("Error saving recording: \(error)")

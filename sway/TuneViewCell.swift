@@ -8,6 +8,8 @@
 
 import UIKit
 
+let tuneViewCell = "TuneViewCell"
+
 class TuneViewCell: UITableViewCell {
 
     @IBOutlet weak var WaveFormView: SCWaveformView!
@@ -29,11 +31,38 @@ class TuneViewCell: UITableViewCell {
         }
     }
     
+    var recording: Recording! {
+        didSet {
+            let title = recording.title != nil ? recording.title! : "Untitled"
+            if recording.lastModified != nil {
+                let age = formatTimeElapsed(recording.lastModified!)
+                tuneTitle.text =  "\(title) (\(age) ago)"
+            } else {
+                tuneTitle.text = title
+            }
+        }
+        
+    }
+    
+    // TODO: cache formatter
+    func formatTimeElapsed(sinceDate: NSDate) -> String {
+        let formatter = NSDateComponentsFormatter()
+        formatter.unitsStyle =  NSDateComponentsFormatterUnitsStyle.Abbreviated
+        formatter.collapsesLargestUnit = true
+        formatter.maximumUnitCount = 1
+        let interval = NSDate().timeIntervalSinceDate(sinceDate)
+        return formatter.stringFromTimeInterval(interval)!
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 //        setTrack(WaveFormView, url: tune.trackURL)
         setupWaveformView(WaveFormView)
+        
+        layoutMargins = UIEdgeInsetsZero
+        separatorInset = UIEdgeInsetsZero
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
