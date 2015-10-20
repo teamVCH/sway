@@ -6,7 +6,6 @@
 //  Copyright © 2015 VCH. All rights reserved.
 //
 
-import SwiftyJSON
 
 typealias ServiceResponse = (JSON, NSError?) -> Void
 
