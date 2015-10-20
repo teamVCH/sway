@@ -36,7 +36,7 @@ class SwayRestManager: NSObject {
     }
   }
   
-  func makeHTTPGetRequest(path: String, params: NSDictionary?, onCompletion: ServiceResponse) {
+  private func makeHTTPGetRequest(path: String, params: NSDictionary?, onCompletion: ServiceResponse) {
     let request = NSMutableURLRequest(URL: NSURL(string: path)!)
     request.addValue(parseCredentials.consumerKey, forHTTPHeaderField: "X-Parse-Application-Id")
     request.addValue(parseCredentials.restKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
@@ -47,7 +47,7 @@ class SwayRestManager: NSObject {
 
     if let params = params {
       do {
-        let paramsJSON = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
+        let paramsJSON = try NSJSONSerialization.dataWithJSONObject(params, options: .PrettyPrinted)
         let paramsJSONString = NSString(data: paramsJSON, encoding: NSUTF8StringEncoding)
         let whereClause = paramsJSONString?.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.alphanumericCharacterSet())
         let requestURL = NSURL(string: String(format: "%@?%@%@", path, "where=", whereClause!))
@@ -64,12 +64,41 @@ class SwayRestManager: NSObject {
     task.resume()
   }
   
-  func getAllRecordings(params: NSDictionary?, onCompletion: (JSON) -> Void) {
-    let route = "\(baseURL)Recordings"
+  private func makeHTTPPostRequest(path: String, body: [String: AnyObject], onCompletion: ServiceResponse) {
+    let err: NSError? = nil
+    let request = NSMutableURLRequest(URL: NSURL(string: path)!)
+    
+    // Set the method to POST
+    request.HTTPMethod = "POST"
+    
+    do {
+      // Set the POST body for the request
+      request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(body, options: .PrettyPrinted)
+    } catch {
+      // TODO
+      print("error posting")
+    }
+    
+    let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+      let json:JSON = JSON(data: data!)
+      onCompletion(json, err)
+    })
+    task.resume()
+  }
+  
+  
+  func getAllRecordings(onCompletion: (JSON) -> Void) {
+    let route = "\(baseURL)classes/Recordings"
     makeHTTPGetRequest(route, params: nil, onCompletion: { json, err in
       onCompletion(json as JSON)
     })
   }
   
+  func createNewRecording(params: [String: AnyObject], onCompletion: (JSON) -> Void) {
+    let route = "\(baseURL)classes/Recordings"
+    makeHTTPPostRequest(route, body: params) { (json, err) -> Void in
+      onCompletion(json as JSON)
+    }
+  }
   
 }
