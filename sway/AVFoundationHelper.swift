@@ -16,6 +16,7 @@ class AVFoundationHelper: NSObject {
         AVFoundationHelper.initializeAudioSession(completion)
         //self.documentsFolderUrl = AVFoundationHelper.getDocumentsFolderUrl()!
         self.documentsFolderUrl = NSURL(fileURLWithPath: AVFoundationHelper.createTempDirectory()!)
+        print(documentsFolderUrl)
     }
     
     static func initializeAudioSession(completion: (allowed: Bool) -> ()) {
@@ -175,6 +176,15 @@ class AVAudioPlayerExt: AVAudioPlayer {
             updater!.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
         }
         return super.play()
+    }
+    
+    override func playAtTime(time: NSTimeInterval) -> Bool {
+        if let _ = delegate as? AVAudioPlayerExtDelegate {
+            updater = CADisplayLink(target: self, selector: Selector("trackPlayer"))
+            updater!.frameInterval = 1
+            updater!.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
+        }
+        return super.playAtTime(time)
     }
     
     override func stop() {
