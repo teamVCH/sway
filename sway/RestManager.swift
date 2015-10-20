@@ -1,16 +1,15 @@
 //
-//  SwayRestManager.swift
+//  RestManager.swift
 //  sway
 //
 //  Created by Vicki Chun on 10/20/15.
 //  Copyright © 2015 VCH. All rights reserved.
 //
 
-
 typealias ServiceResponse = (JSON, NSError?) -> Void
 
-class SwayRestManager: NSObject {
-  static let sharedInstance = SwayRestManager()
+class RestManager: NSObject {
+  static let sharedInstance = RestManager()
   
   let baseURL = "https://api.parse.com/1/"
   
@@ -42,8 +41,6 @@ class SwayRestManager: NSObject {
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     
-    //var params = ["Query1" : "\(searchString)"]
-
     if let params = params {
       do {
         let paramsJSON = try NSJSONSerialization.dataWithJSONObject(params, options: .PrettyPrinted)

@@ -33,7 +33,7 @@
 		F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE791BD243B3007281E2 /* ParseCredentials.plist */; settings = {ASSET_TAGS = (); }; };
 		F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */; settings = {ASSET_TAGS = (); }; };
 		F102CE801BD24657007281E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102CE7F1BD24657007281E2 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		F1755AC01BD6BDED005557F6 /* SwayRestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1755ABF1BD6BDED005557F6 /* SwayRestManager.swift */; settings = {ASSET_TAGS = (); }; };
+		F1755AC01BD6BDED005557F6 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1755ABF1BD6BDED005557F6 /* RestManager.swift */; settings = {ASSET_TAGS = (); }; };
 		F1A4A2449414017605381302 /* libPods-sway.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115E2CB371C884526F352A59 /* libPods-sway.a */; };
 		F1C519311BD23E2C00E57350 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519301BD23E2C00E57350 /* Foundation.framework */; };
 		F1C519331BD23E3700E57350 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519321BD23E3700E57350 /* UIKit.framework */; };
@@ -88,7 +88,7 @@
 		F102CE791BD243B3007281E2 /* ParseCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParseCredentials.plist; sourceTree = "<group>"; };
 		F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TwitterCredentials.plist; sourceTree = "<group>"; };
 		F102CE7F1BD24657007281E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F1755ABF1BD6BDED005557F6 /* SwayRestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwayRestManager.swift; sourceTree = "<group>"; };
+		F1755ABF1BD6BDED005557F6 /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		F1C519301BD23E2C00E57350 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1C519321BD23E3700E57350 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1C519341BD23E4300E57350 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -195,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				F1E1E87C1BD6EBD600AA5D6A /* SwiftyJSON */,
-				F1755ABF1BD6BDED005557F6 /* SwayRestManager.swift */,
+				F1755ABF1BD6BDED005557F6 /* RestManager.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -390,7 +390,7 @@
 			files = (
 				2A6A23451BD3391800ED0706 /* RecordingControlView.swift in Sources */,
 				680A744A1BD4B14900D7D605 /* Recording+CoreDataProperties.swift in Sources */,
-				F1755AC01BD6BDED005557F6 /* SwayRestManager.swift in Sources */,
+				F1755AC01BD6BDED005557F6 /* RestManager.swift in Sources */,
 				2A6A231C1BD095A800ED0706 /* AppDelegate.swift in Sources */,
 				2A6A233B1BD2FE6000ED0706 /* UserProfileViewController.swift in Sources */,
 				680A744B1BD4B14900D7D605 /* Recording.swift in Sources */,

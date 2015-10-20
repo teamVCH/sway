@@ -39,7 +39,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
 
   
   internal func renderTunes() {
-    SwayRestManager.sharedInstance.getAllRecordings() { (json) -> () in
+    RestManager.sharedInstance.getAllRecordings() { (json) -> () in
       dispatch_async(dispatch_get_main_queue(), {
         let results : JSON = json["results"]
         print("Results:\(results)")
