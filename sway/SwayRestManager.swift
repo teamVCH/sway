@@ -94,6 +94,14 @@ class SwayRestManager: NSObject {
     })
   }
   
+  func getRecording(recordingId: String, onCompletion: (JSON) -> Void) {
+    let route = "\(baseURL)classes/Recordings/\(recordingId)"
+    makeHTTPGetRequest(route, params: nil, onCompletion: { json, err in
+      onCompletion(json as JSON)
+    })
+
+  }
+  
   func createNewRecording(params: [String: AnyObject], onCompletion: (JSON) -> Void) {
     let route = "\(baseURL)classes/Recordings"
     makeHTTPPostRequest(route, body: params) { (json, err) -> Void in
