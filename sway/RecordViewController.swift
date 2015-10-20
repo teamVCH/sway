@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+let saveRecordingSegue = "saveRecordingSegue"
+
 class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAudioPlayerExtDelegate, AVAudioRecorderDelegate {
     
     @IBOutlet weak var backingWaveformView: SCWaveformView!
@@ -358,26 +360,24 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func doneRecording(sender: UIButton) {
-        do {
-            recording.lastModified = NSDate()
-            recording.readAudioFiles()
-            try managedObjectContext.save()
-        } catch let error as NSError {
-            print("Error saving recording: \(error)")
-        }
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    
-    /*
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if let segueId = segue.identifier {
+            if segueId == saveRecordingSegue {
+                var saveViewController: SaveRecordingViewController!
+                if let _ = segue.destinationViewController as? UINavigationController {
+                    let destinationNavigationController = segue.destinationViewController as! UINavigationController
+                    saveViewController = destinationNavigationController.topViewController as! SaveRecordingViewController
+                } else {
+                    saveViewController = segue.destinationViewController as! SaveRecordingViewController
+                }
+                saveViewController.recording = recording
+            }
+        }
     }
-    */
     
 }

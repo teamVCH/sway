@@ -135,7 +135,13 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         // Pass the selected object to the new view controller.
         if let segueId = segue.identifier {
             if segueId == loadDraftSegue {
-                let recordViewController = segue.destinationViewController as! RecordViewController
+                var recordViewController: RecordViewController!
+                if let _ = segue.destinationViewController as? UINavigationController {
+                    let destinationNavigationController = segue.destinationViewController as! UINavigationController
+                    recordViewController = destinationNavigationController.topViewController as! RecordViewController
+                } else {
+                    recordViewController = segue.destinationViewController as! RecordViewController
+                }
                 recordViewController.recording = selectedDraft
             }
         }
