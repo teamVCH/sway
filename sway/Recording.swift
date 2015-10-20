@@ -17,7 +17,7 @@ class Recording: NSManagedObject {
     var publishedDate: NSDate?
     
     func isDraft() -> Bool {
-        return publishedDate != nil
+        return publishedDate == nil
     }
     
     func writeAudioFiles() -> Bool {
