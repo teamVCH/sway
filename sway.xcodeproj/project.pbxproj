@@ -33,10 +33,6 @@
 		F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE791BD243B3007281E2 /* ParseCredentials.plist */; settings = {ASSET_TAGS = (); }; };
 		F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */; settings = {ASSET_TAGS = (); }; };
 		F102CE801BD24657007281E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102CE7F1BD24657007281E2 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		F1755AB71BD6BBEC005557F6 /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1755AB21BD6BBEC005557F6 /* Info-iOS.plist */; settings = {ASSET_TAGS = (); }; };
-		F1755AB81BD6BBEC005557F6 /* Info-OSX.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1755AB31BD6BBEC005557F6 /* Info-OSX.plist */; settings = {ASSET_TAGS = (); }; };
-		F1755AB91BD6BBEC005557F6 /* Info-watchOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1755AB41BD6BBEC005557F6 /* Info-watchOS.plist */; settings = {ASSET_TAGS = (); }; };
-		F1755ABA1BD6BBEC005557F6 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1755AB61BD6BBEC005557F6 /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 		F1755AC01BD6BDED005557F6 /* SwayRestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1755ABF1BD6BDED005557F6 /* SwayRestManager.swift */; settings = {ASSET_TAGS = (); }; };
 		F1A4A2449414017605381302 /* libPods-sway.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115E2CB371C884526F352A59 /* libPods-sway.a */; };
 		F1C519311BD23E2C00E57350 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519301BD23E2C00E57350 /* Foundation.framework */; };
@@ -54,6 +50,10 @@
 		F1C519491BD23EBF00E57350 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519481BD23EBF00E57350 /* Accounts.framework */; };
 		F1C5194B1BD23EC800E57350 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C5194A1BD23EC800E57350 /* Twitter.framework */; };
 		F1C5194D1BD23ED100E57350 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C5194C1BD23ED100E57350 /* Social.framework */; };
+		F1E1E8821BD6EBD600AA5D6A /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1E1E87D1BD6EBD600AA5D6A /* Info-iOS.plist */; settings = {ASSET_TAGS = (); }; };
+		F1E1E8831BD6EBD600AA5D6A /* Info-OSX.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1E1E87E1BD6EBD600AA5D6A /* Info-OSX.plist */; settings = {ASSET_TAGS = (); }; };
+		F1E1E8841BD6EBD600AA5D6A /* Info-watchOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1E1E87F1BD6EBD600AA5D6A /* Info-watchOS.plist */; settings = {ASSET_TAGS = (); }; };
+		F1E1E8851BD6EBD600AA5D6A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1E8811BD6EBD600AA5D6A /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,11 +88,6 @@
 		F102CE791BD243B3007281E2 /* ParseCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParseCredentials.plist; sourceTree = "<group>"; };
 		F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TwitterCredentials.plist; sourceTree = "<group>"; };
 		F102CE7F1BD24657007281E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F1755AB21BD6BBEC005557F6 /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
-		F1755AB31BD6BBEC005557F6 /* Info-OSX.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-OSX.plist"; sourceTree = "<group>"; };
-		F1755AB41BD6BBEC005557F6 /* Info-watchOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
-		F1755AB51BD6BBEC005557F6 /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
-		F1755AB61BD6BBEC005557F6 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		F1755ABF1BD6BDED005557F6 /* SwayRestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwayRestManager.swift; sourceTree = "<group>"; };
 		F1C519301BD23E2C00E57350 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1C519321BD23E3700E57350 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -110,6 +105,11 @@
 		F1C5194A1BD23EC800E57350 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		F1C5194C1BD23ED100E57350 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F1C5194E1BD23F0A00E57350 /* sway-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sway-Bridging-Header.h"; sourceTree = "<group>"; };
+		F1E1E87D1BD6EBD600AA5D6A /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		F1E1E87E1BD6EBD600AA5D6A /* Info-OSX.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-OSX.plist"; sourceTree = "<group>"; };
+		F1E1E87F1BD6EBD600AA5D6A /* Info-watchOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
+		F1E1E8801BD6EBD600AA5D6A /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
+		F1E1E8811BD6EBD600AA5D6A /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +162,6 @@
 			children = (
 				683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */,
 				2A6A233D1BD3159400ED0706 /* API */,
-				F1755AB11BD6BBEC005557F6 /* SwiftyJSON */,
 				2A6A233C1BD3158F00ED0706 /* Models */,
 				F102CE7E1BD2462F007281E2 /* Views */,
 				F102CE7D1BD245DD007281E2 /* ViewControllers */,
@@ -195,6 +194,7 @@
 		2A6A233D1BD3159400ED0706 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				F1E1E87C1BD6EBD600AA5D6A /* SwiftyJSON */,
 				F1755ABF1BD6BDED005557F6 /* SwayRestManager.swift */,
 			);
 			name = API;
@@ -258,17 +258,16 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		F1755AB11BD6BBEC005557F6 /* SwiftyJSON */ = {
+		F1E1E87C1BD6EBD600AA5D6A /* SwiftyJSON */ = {
 			isa = PBXGroup;
 			children = (
-				F1755AB21BD6BBEC005557F6 /* Info-iOS.plist */,
-				F1755AB31BD6BBEC005557F6 /* Info-OSX.plist */,
-				F1755AB41BD6BBEC005557F6 /* Info-watchOS.plist */,
-				F1755AB51BD6BBEC005557F6 /* SwiftyJSON.h */,
-				F1755AB61BD6BBEC005557F6 /* SwiftyJSON.swift */,
+				F1E1E87D1BD6EBD600AA5D6A /* Info-iOS.plist */,
+				F1E1E87E1BD6EBD600AA5D6A /* Info-OSX.plist */,
+				F1E1E87F1BD6EBD600AA5D6A /* Info-watchOS.plist */,
+				F1E1E8801BD6EBD600AA5D6A /* SwiftyJSON.h */,
+				F1E1E8811BD6EBD600AA5D6A /* SwiftyJSON.swift */,
 			);
-			name = SwiftyJSON;
-			path = "../../../../Downloads/SwiftyJSON-master/Source";
+			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,16 +335,16 @@
 			files = (
 				683C58B71BD42D2700CFECFF /* simple-drum-beat.wav in Resources */,
 				680A744F1BD4C4C400D7D605 /* TuneViewCell.xib in Resources */,
+				F1E1E8831BD6EBD600AA5D6A /* Info-OSX.plist in Resources */,
+				F1E1E8821BD6EBD600AA5D6A /* Info-iOS.plist in Resources */,
 				2A6A23261BD095A800ED0706 /* LaunchScreen.storyboard in Resources */,
 				6800F9661BD6AC0A00453AFF /* Record.storyboard in Resources */,
+				F1E1E8841BD6EBD600AA5D6A /* Info-watchOS.plist in Resources */,
 				F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */,
-				F1755AB91BD6BBEC005557F6 /* Info-watchOS.plist in Resources */,
 				F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */,
 				2A6A23471BD3397800ED0706 /* RecordingControlView.xib in Resources */,
-				F1755AB71BD6BBEC005557F6 /* Info-iOS.plist in Resources */,
 				2A6A23231BD095A800ED0706 /* Assets.xcassets in Resources */,
 				2A6A23211BD095A800ED0706 /* Main.storyboard in Resources */,
-				F1755AB81BD6BBEC005557F6 /* Info-OSX.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +395,7 @@
 				2A6A233B1BD2FE6000ED0706 /* UserProfileViewController.swift in Sources */,
 				680A744B1BD4B14900D7D605 /* Recording.swift in Sources */,
 				6800F9631BD6AAD600453AFF /* SaveRecordingViewController.swift in Sources */,
+				F1E1E8851BD6EBD600AA5D6A /* SwiftyJSON.swift in Sources */,
 				2A6A233F1BD3313700ED0706 /* AVFoundationHelper.swift in Sources */,
 				2A6A232E1BD0A9AD00ED0706 /* TrackDetailViewController.swift in Sources */,
 				2A6A23491BD40E8500ED0706 /* Tune.swift in Sources */,
@@ -403,7 +403,6 @@
 				680A74431BD4AC6500D7D605 /* sway.xcdatamodeld in Sources */,
 				6800F9681BD6B86B00453AFF /* TagCell.swift in Sources */,
 				2A6A23391BD2FE4200ED0706 /* RecordViewController.swift in Sources */,
-				F1755ABA1BD6BBEC005557F6 /* SwiftyJSON.swift in Sources */,
 				2A6A234B1BD40E9000ED0706 /* User.swift in Sources */,
 				2A6A23371BD2F85000ED0706 /* TabBarController.swift in Sources */,
 				F102CE801BD24657007281E2 /* LoginViewController.swift in Sources */,
