@@ -25,6 +25,8 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         self.refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl)
         
+        tableView.registerNib(UINib(nibName: tuneViewCell, bundle: nil), forCellReuseIdentifier: tuneViewCell)
+
         tableView.delegate = self
         tableView.dataSource = self
         
