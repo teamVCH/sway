@@ -42,7 +42,7 @@ class RecordingControlView: UIView {
     
     var currentTime: NSTimeInterval = 0 {
         didSet {
-            currentTimeLabel.text = formatTime(currentTime)
+            currentTimeLabel.text = Recording.formatTime(currentTime, includeMs: true)
         }
     }
     
@@ -72,13 +72,7 @@ class RecordingControlView: UIView {
         delegate?.bounce(self)
     }
     
-    func formatTime(interval: NSTimeInterval) -> String {
-        let ti = NSInteger(interval)
-        let ms = Int((interval % 1) * 1000)
-        let seconds = ti % 60
-        let minutes = (ti / 60) % 60
-        return String(format: "%0.2d:%0.2d.%0.2d", minutes, seconds, ms)
-    }
+
     
     
     

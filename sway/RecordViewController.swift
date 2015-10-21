@@ -7,17 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
 class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAudioPlayerExtDelegate, AVAudioRecorderDelegate {
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func cancelRecord(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
     
     @IBOutlet weak var backingWaveformView: SCWaveformView!
     @IBOutlet weak var controlView: UIView!
@@ -30,7 +22,12 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     var recorder: AVAudioRecorderExt!
     var rcView: RecordingControlView!
     var duration: CMTime?
-    var backingAudioUrl, recordingAudioUrl, bouncedAudioUrl: NSURL?
+
+    var isNew = true
+    var recording: Recording!
+    
+    // Retreive the managedObjectContext from AppDelegate
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     
     override func viewDidLoad() {
@@ -57,7 +54,50 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         
         setupWaveformView(backingWaveformView)
         setupWaveformView(recordingWaveformView)
+        
+        /*
+        if let recordingId = recordingId {
+            do {
+                self.recording = try managedObjectContext.existingObjectWithID(recordingId) as! Recording
+            } catch let error as NSError {
+                print("Error loading draft \(recordingId): \(error)")
+            }
+            
+        } else {
+            self.recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
+        }
+        */
+        
+        
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        if let recording = recording {
+            isNew = false
+            // create temp files
+            if recording.backingAudio != nil {
+                recording.backingAudioUrl = helper.getDocumentUrl(defaultBackingAudioName)
+            }
+            if recording.recordingAudio != nil {
+                recording.recordingAudioUrl = helper.getDocumentUrl(defaultRecordingAudioName)
+            }
+            if recording.bouncedAudio != nil {
+                recording.bouncedAudioUrl = helper.getDocumentUrl(defaultBouncedAudioName)
+            }
+            
+            // write any stored audio data to the filesystem
+            recording.writeAudioFiles()
+            updateBackingAudio()
+            updateRecordingAudio()
+            
+        } else {
+             // if it wasn't set in the segue, make a new one
+            recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
+        }
+        
+        
+    }
+    
     
     func setupWaveformView(waveformView: SCWaveformView) {
         // Setting the waveform colors
@@ -90,8 +130,8 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     func startRecording(view: RecordingControlView, playBackingAudio: Bool) {
         rcView = view
         do {
-            recordingAudioUrl = helper.getDocumentUrl(defaultRecordingAudioName)
-            recorder = try AVAudioRecorderExt(URL: recordingAudioUrl!, settings: helper.audioRecordingSettings())
+            recording.recordingAudioUrl = helper.getDocumentUrl(defaultRecordingAudioName)
+            recorder = try AVAudioRecorderExt(URL: recording.recordingAudioUrl!, settings: helper.audioRecordingSettings())
             
             guard let recorder = recorder else {
                 return
@@ -138,12 +178,13 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         recordingWaveformView.hidden = false
         
         updateRecordingAudio()
+
     }
     
     func updateRecordingAudio() {
         
         
-        if let recordingUrl = recordingAudioUrl {
+        if let recordingUrl = recording.recordingAudioUrl {
             if recordingUrl.checkResourceIsReachableAndReturnError(nil) {
                 recordingWaveformView.asset = AVAsset(URL: recordingUrl)
                 if let duration = duration {
@@ -240,14 +281,14 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     
     
     func bounce(view: RecordingControlView) {
-        if let recordingAudioUrl = recordingAudioUrl {
+        if let recordingAudioUrl = recording.recordingAudioUrl {
             let fileManager = NSFileManager.defaultManager()
             
             let bouncedAudioUrl = helper.getDocumentUrl(defaultBouncedAudioName)
             
             do {
                 
-                if let backingAudioUrl = backingAudioUrl {
+                if let backingAudioUrl = recording.backingAudioUrl {
                     helper.bounce(backingAudioUrl, recordingAudioUrl: recordingAudioUrl, outputAudioUrl: bouncedAudioUrl, completion: { (status: AVAssetExportSessionStatus, error: NSError?) -> Void in
                         switch status {
                         case AVAssetExportSessionStatus.Failed: print("bounce failed \(error!)")
@@ -272,47 +313,71 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
             
             
             
-            self.recordingAudioUrl = nil
+            recording.recordingAudioUrl = nil
             updateRecordingAudio()
         } else {
             print("Nothing to bounce")
         }
     }
     
+    func updateBackingAudio() {
+        if let url = recording.backingAudioUrl {
+            do {
+                backingAudioPlayer = try AVAudioPlayerExt(contentsOfURL: url)
+                backingAudioPlayer!.prepareToPlay()
+                backingAudioPlayer!.delegate = self
+                
+                backingWaveformView.asset = AVAsset(URL: url)
+                duration = backingWaveformView.asset.duration
+                backingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, duration!)
+                backingWaveformView.layoutIfNeeded()
+            } catch let error as NSError {
+                print("setBackingAudio: Error = \(error.localizedDescription)")
+            }
+        }
+    }
+    
     
     func setBackingAudio(view: RecordingControlView, url: NSURL) {
         rcView = view
-        do {
-            backingAudioUrl = url
-            
-            backingAudioPlayer = try AVAudioPlayerExt(contentsOfURL: url)
-            backingAudioPlayer!.prepareToPlay()
-            backingAudioPlayer!.delegate = self
-            
-            backingWaveformView.asset = AVAsset(URL: url)
-            duration = backingWaveformView.asset.duration
-            backingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, duration!)
-            backingWaveformView.layoutIfNeeded()
-            
-            
-        } catch let error as NSError {
-            print("setBackingAudio: Error = \(error.localizedDescription)")
-        }
-        
-        
-        
+        recording.backingAudioUrl = url
+        updateBackingAudio()
+
         
     }
     
-
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func cancelRecord(sender: AnyObject) {
+        if isNew {
+            managedObjectContext.deleteObject(recording)
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func doneRecording(sender: UIButton) {
+        do {
+            recording.lastModified = NSDate()
+            recording.readAudioFiles()
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print("Error saving recording: \(error)")
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

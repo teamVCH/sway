@@ -14,7 +14,8 @@ class AVFoundationHelper: NSObject {
     
     init(completion: (allowed: Bool) -> ()) {
         AVFoundationHelper.initializeAudioSession(completion)
-        self.documentsFolderUrl = AVFoundationHelper.getDocumentsFolderUrl()!
+        //self.documentsFolderUrl = AVFoundationHelper.getDocumentsFolderUrl()!
+        self.documentsFolderUrl = NSURL(fileURLWithPath: AVFoundationHelper.createTempDirectory()!)
     }
     
     static func initializeAudioSession(completion: (allowed: Bool) -> ()) {
@@ -51,11 +52,27 @@ class AVFoundationHelper: NSObject {
         //return documentsFolderUrl!.URLByAppendingPathComponent("Recording.m4a")
     }
     
+    static func createTempDirectory() -> String? {
+        let fileManager = NSFileManager.defaultManager()
+        
+        let tempDirectoryTemplate = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent("sway")
+        do {
+            try fileManager.createDirectoryAtPath(tempDirectoryTemplate, withIntermediateDirectories: true, attributes: nil)
+            return tempDirectoryTemplate
+            
+        } catch let error as NSError {
+            print("Error creating temp folder: \(error)")
+            return nil
+        }
+        
+    }
+    
     func getDocumentUrl(baseName: String) -> NSURL {
         let uniqueId = NSProcessInfo.processInfo().globallyUniqueString
         let uniqueFileName = "\(baseName)_\(uniqueId).\(defaultAudioExtension)"
         return documentsFolderUrl.URLByAppendingPathComponent(uniqueFileName)
     }
+    
     
     
     // AVAudioRecorder settings
