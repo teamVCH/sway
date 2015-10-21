@@ -13,7 +13,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     
     var refreshControl:UIRefreshControl!
-    var tunes:[Tune]!
+    var tunes:[Tune]?
 
     override func viewDidLoad() {
         
@@ -32,28 +32,22 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 400
-      
-      renderTunes()
-
+        
+        renderTunes()
+        
     }
-
-  
-  internal func renderTunes() {
-    RestManager.sharedInstance.getAllRecordings() { (json) -> () in
-      dispatch_async(dispatch_get_main_queue(), {
-        let results : JSON = json["results"]
-        print("Results:\(results)")
-        // TODO: convert each json result to a Tune
-/*        for result in results {
-          var tune = Tune(result)
-          tunes.append(tune)
+    
+    
+    internal func renderTunes() {
+        RestManager.sharedInstance.getAllRecordings() { (tunes: [Tune]?, error: NSError?) -> () in
+            dispatch_async(dispatch_get_main_queue(), {
+                if tunes != nil {
+                    self.tunes = tunes
+                    self.tableView.reloadData()
+                }
+            })
         }
-
-        self.tableView?.reloadData()
-*/
-      })
     }
-  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,8 +68,11 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      //  return tunes.count
-        return 21
+        if tunes == nil {
+            return 0
+        } else {
+            return tunes!.count
+        }
     }
 
     /*

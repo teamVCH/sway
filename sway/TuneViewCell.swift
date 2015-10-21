@@ -16,8 +16,8 @@ class TuneViewCell: UITableViewCell, AVAudioPlayerDelegate {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var tuneTitle: UILabel!
     @IBOutlet weak var length: UILabel!
-    @IBOutlet weak var collabCount: UILabel!
     @IBOutlet weak var replayCount: UILabel!
+    @IBOutlet weak var collabCount: UILabel!
     @IBOutlet weak var likeCount: UILabel!
     @IBOutlet weak var tags: UILabel!
     @IBOutlet weak var userButton: UIButton!
@@ -28,7 +28,12 @@ class TuneViewCell: UITableViewCell, AVAudioPlayerDelegate {
     
     var tune : Tune! {
         didSet{
-            //set stuff
+            print("setting tune in cell")
+            let title = tune.title == nil ? "Untitled" : tune.title!
+            tuneTitle.text = title
+            replayCount.text = "\(tune.replayCount!)"
+            likeCount.text = "\(tune.likeCount!)"
+            collabCount.text = "\(tune.collaboratorCount!)"
         }
     }
     

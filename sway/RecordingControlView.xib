@@ -10,34 +10,34 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7aH-wK-o5R">
-                    <rect key="frame" x="233" y="16" width="135" height="127"/>
+                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7aH-wK-o5R">
+                    <rect key="frame" x="233" y="16" width="135" height="125"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqg-rx-RY4">
-                            <rect key="frame" x="13.5" y="0.0" width="108" height="30"/>
+                            <rect key="frame" x="14" y="0.0" width="108" height="30"/>
                             <state key="normal" title="Start Recording"/>
                             <state key="selected" title="Stop Recording"/>
                             <connections>
                                 <action selector="onTapRecord:" destination="iN0-l3-epB" eventType="touchUpInside" id="DyV-CJ-KjC"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18a-3R-75h">
-                            <rect key="frame" x="52" y="30" width="31" height="37"/>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18a-3R-75h">
+                            <rect key="frame" x="50" y="30" width="35" height="35"/>
                             <state key="normal" image="UIBarButtonPlay_2x"/>
                             <state key="selected" image="UIBarButtonPause_2x"/>
                             <connections>
                                 <action selector="onTapPlay:" destination="iN0-l3-epB" eventType="touchUpInside" id="UI2-Pe-3J8"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecn-nd-fex">
-                            <rect key="frame" x="41.5" y="67" width="52" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecn-nd-fex">
+                            <rect key="frame" x="42" y="65" width="52" height="30"/>
                             <state key="normal" title="Bounce"/>
                             <connections>
                                 <action selector="onTapBounce:" destination="iN0-l3-epB" eventType="touchUpInside" id="J8W-8r-g3o"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kvd-FT-7NS">
-                            <rect key="frame" x="0.0" y="97" width="135" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kvd-FT-7NS">
+                            <rect key="frame" x="0.0" y="95" width="135" height="30"/>
                             <state key="normal" title="Load Backing Track"/>
                             <connections>
                                 <action selector="loadBackingTrack:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZLU-lg-EJa"/>
