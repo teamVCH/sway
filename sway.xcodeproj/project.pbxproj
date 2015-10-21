@@ -22,6 +22,7 @@
 		2A6A23471BD3397800ED0706 /* RecordingControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A23461BD3397800ED0706 /* RecordingControlView.xib */; settings = {ASSET_TAGS = (); }; };
 		2A6A23491BD40E8500ED0706 /* Tune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23481BD40E8500ED0706 /* Tune.swift */; settings = {ASSET_TAGS = (); }; };
 		2A6A234B1BD40E9000ED0706 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A234A1BD40E9000ED0706 /* User.swift */; settings = {ASSET_TAGS = (); }; };
+
 		6800F9631BD6AAD600453AFF /* SaveRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6800F9621BD6AAD600453AFF /* SaveRecordingViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		6800F9661BD6AC0A00453AFF /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6800F9641BD6AC0A00453AFF /* Record.storyboard */; settings = {ASSET_TAGS = (); }; };
 		6800F9681BD6B86B00453AFF /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6800F9671BD6B86B00453AFF /* TagCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -238,6 +239,7 @@
 				2A6A232D1BD0A9AD00ED0706 /* TrackDetailViewController.swift */,
 				2A6A23381BD2FE4200ED0706 /* RecordViewController.swift */,
 				2A6A232F1BD0A9EF00ED0706 /* MainTunesViewController.swift */,
+				2A6A234C1BD5D38F00ED0706 /* SaveViewController.swift */,
 				F102CE7F1BD24657007281E2 /* LoginViewController.swift */,
 				2A6A233A1BD2FE6000ED0706 /* UserProfileViewController.swift */,
 				2A6A23361BD2F85000ED0706 /* TabBarController.swift */,
@@ -389,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A6A23451BD3391800ED0706 /* RecordingControlView.swift in Sources */,
+				2A6A234D1BD5D38F00ED0706 /* SaveViewController.swift in Sources */,
 				680A744A1BD4B14900D7D605 /* Recording+CoreDataProperties.swift in Sources */,
 				F1755AC01BD6BDED005557F6 /* RestManager.swift in Sources */,
 				2A6A231C1BD095A800ED0706 /* AppDelegate.swift in Sources */,

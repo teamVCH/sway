@@ -12,6 +12,7 @@ let tuneViewCell = "TuneViewCell"
 
 class TuneViewCell: UITableViewCell, AVAudioPlayerDelegate {
 
+    @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var WaveFormView: SCWaveformView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var tuneTitle: UILabel!

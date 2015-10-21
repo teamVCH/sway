@@ -146,6 +146,7 @@
             <connections>
                 <outlet property="WaveFormView" destination="9F6-ve-hOZ" id="fKL-cb-ru5"/>
                 <outlet property="collabCount" destination="gCf-Hz-rI5" id="GRH-ey-Jqy"/>
+                <outlet property="cellView" destination="9rb-iq-y8c" id="kFA-fT-aj6"/>
                 <outlet property="length" destination="My5-5F-0Vp" id="mjb-uj-mD8"/>
                 <outlet property="likeCount" destination="BLb-Vu-9Hi" id="8ff-Fu-c45"/>
                 <outlet property="playButton" destination="tbA-so-xWo" id="kEk-1s-jzk"/>

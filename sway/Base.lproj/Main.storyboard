@@ -33,11 +33,12 @@
                     <navigationItem key="navigationItem" title="Top Charts" id="S6R-rq-dEh"/>
                     <connections>
                         <outlet property="tableView" destination="PFH-V3-Awz" id="Z9y-0b-Fpl"/>
+                        <segue destination="E4S-Ni-YtX" kind="push" identifier="TuneToDetailSegue" id="Pvx-cX-8yB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2169" y="400"/>
+            <point key="canvasLocation" x="2237" y="432"/>
         </scene>
         <!--Profile-->
         <scene sceneID="SMD-B2-fK3">
@@ -61,7 +62,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hina Sakazaki" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="min-3x-u30">
                                             <rect key="frame" x="91" y="8" width="111.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="Nei-KW-XTZ">
@@ -80,13 +81,13 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trombone, voice, beatbox" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18Y-Yn-FjN">
                                             <rect key="frame" x="91" y="48" width="178" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice to jam with you all!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mT3-tH-c7g">
                                             <rect key="frame" x="91" y="66" width="141" height="16"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="YOA-1f-yw6">
@@ -114,7 +115,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tRf-8W-g5a" customClass="TuneViewCell" customModule="sway" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TuneViewCell" id="tRf-8W-g5a" customClass="TuneViewCell" customModule="sway" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="229" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tRf-8W-g5a" id="P96-TS-71G">
@@ -198,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9O-Om-8WO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2643" y="400"/>
+            <point key="canvasLocation" x="2689" y="494"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="2xE-lD-jQA">
@@ -246,7 +247,7 @@
             </objects>
             <point key="canvasLocation" x="1227" y="400"/>
         </scene>
-        <!--Drafts-->
+        <!--Record-->
         <scene sceneID="Gzx-nQ-nls">
             <objects>
                 <viewController id="UYs-yp-Us6" sceneMemberID="viewController">
@@ -260,11 +261,67 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Record" image="record" id="3mS-NF-YS3"/>
-                    <navigationItem key="navigationItem" title="Drafts" id="EaQ-sR-cPw"/>
+                    <navigationItem key="navigationItem" id="EaQ-sR-cPw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FEN-Hs-uUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2101" y="-462"/>
+        </scene>
+        <!--Record View Controller-->
+        <scene sceneID="7oR-Mg-YnA">
+            <objects>
+                <viewController id="w4D-iw-MiP" customClass="RecordViewController" customModule="sway" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bfA-6h-Cto"/>
+                        <viewControllerLayoutGuide type="bottom" id="r1Y-xG-2Qy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8l4-zg-g1F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ftm-UK-jWv" customClass="SCWaveformView">
+                                <rect key="frame" x="0.0" y="105" width="320" height="79"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcg-J4-LJE" customClass="Waver">
+                                <rect key="frame" x="0.0" y="225" width="320" height="79"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2cf-VV-8YR" customClass="SCWaveformView">
+                                <rect key="frame" x="0.0" y="225" width="320" height="79"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQt-Kr-stW">
+                                <rect key="frame" x="265" y="53" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneRecording:" destination="w4D-iw-MiP" eventType="touchUpInside" id="G21-eO-EzZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYm-kF-JcR">
+                                <rect key="frame" x="20" y="53" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelRecord:" destination="w4D-iw-MiP" eventType="touchUpInside" id="7v8-hA-hkO"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vy8-WA-ol6">
+                                <rect key="frame" x="0.0" y="338" width="320" height="210"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="backingWaveformView" destination="Ftm-UK-jWv" id="sWw-EE-Gvs"/>
+                        <outlet property="controlView" destination="Vy8-WA-ol6" id="Nfy-K1-Yue"/>
+                        <outlet property="recordingWaveformView" destination="2cf-VV-8YR" id="vRW-hu-Ehz"/>
+                        <outlet property="recordingWaver" destination="pcg-J4-LJE" id="WJd-eN-Oyf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i2h-pw-T1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2594" y="-462"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kKe-hn-drW">
@@ -303,7 +360,7 @@
         <image name="record" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EhG-hc-yqr"/>
+        <segue reference="66j-kX-y09"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
