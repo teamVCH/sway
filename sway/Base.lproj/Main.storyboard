@@ -146,7 +146,7 @@
                     <connections>
                         <outlet property="tableView" destination="FeI-Hz-gLi" id="ft3-hj-46s"/>
                         <outlet property="typeControl" destination="YOA-1f-yw6" id="NhM-Pw-Bpq"/>
-                        <segue destination="w4D-iw-MiP" kind="modal" identifier="loadDraftSegue" id="EGb-bC-Wk9"/>
+                        <segue destination="jEz-L9-uHD" kind="modal" identifier="loadDraftSegue" id="66j-kX-y09"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xA6-NZ-sGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -388,6 +388,7 @@
             </objects>
             <point key="canvasLocation" x="3024" y="-462"/>
         </scene>
+
         <!--Tab Bar Controller-->
         <scene sceneID="kKe-hn-drW">
             <objects>
@@ -402,12 +403,20 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="h7A-de-Vgq"/>
                         <segue destination="UYs-yp-Us6" kind="relationship" relationship="viewControllers" id="SLy-ni-0Wg"/>
                         <segue destination="76W-HG-441" kind="relationship" relationship="viewControllers" id="iuu-L9-WY2"/>
-                        <segue destination="w4D-iw-MiP" kind="modal" identifier="RecordModalSegue" id="JXS-6k-yqV"/>
+                        <segue destination="jEz-L9-uHD" kind="modal" identifier="RecordModalSegue" id="EhG-hc-yqr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ODL-ee-Utt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1637" y="400"/>
+        </scene>
+        <!--Record-->
+        <scene sceneID="p7c-5z-e2f">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Record" id="jEz-L9-uHD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OPQ-oQ-G0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2594" y="-462"/>
         </scene>
     </scenes>
     <resources>
@@ -417,7 +426,7 @@
         <image name="record" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EGb-bC-Wk9"/>
+        <segue reference="EhG-hc-yqr"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

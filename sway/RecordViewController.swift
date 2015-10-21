@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+let saveRecordingSegue = "saveRecordingSegue"
+
 class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAudioPlayerExtDelegate, AVAudioRecorderDelegate {
     
     @IBOutlet weak var backingWaveformView: SCWaveformView!
@@ -21,7 +23,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     var backingAudioPlayer, recordingAudioPlayer: AVAudioPlayerExt?
     var recorder: AVAudioRecorderExt!
     var rcView: RecordingControlView!
-    var duration: CMTime?
+    var duration: NSTimeInterval?
 
     var isNew = true
     var recording: Recording!
@@ -153,11 +155,24 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
             recordingWaver.hidden = false
             recordingWaveformView.hidden = true
             
+            resetPositions()
+            
             if recorder.prepareToRecord() {
-                if playBackingAudio {
-                    backingAudioPlayer?.play()
+                let shortStartDelay: NSTimeInterval = 0.01
+                let now = recorder.deviceCurrentTime
+                
+                 if playBackingAudio {
+                    backingAudioPlayer?.playAtTime(now + shortStartDelay)
                 }
-                recorder.record()
+                if let duration = duration {
+                    print("willRecord for duration: \(duration)")
+                    let delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(duration) * Double(NSEC_PER_SEC)))
+                    dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), {
+                        self.recorder!.stop()
+                    })
+                }
+                recorder.recordAtTime(now + shortStartDelay)
+                
             } else {
                 print("Failed to record.")
             }
@@ -178,6 +193,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         recordingWaveformView.hidden = false
         
         updateRecordingAudio()
+        print("stopRecording")
 
     }
     
@@ -187,8 +203,8 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         if let recordingUrl = recording.recordingAudioUrl {
             if recordingUrl.checkResourceIsReachableAndReturnError(nil) {
                 recordingWaveformView.asset = AVAsset(URL: recordingUrl)
-                if let duration = duration {
-                    recordingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, duration)
+                if let asset = backingWaveformView.asset {
+                    recordingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, asset.duration)
                 }
                 
                 do {
@@ -214,14 +230,23 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     func startPlaying(view: RecordingControlView) {
         rcView = view
         
+        resetPositions()
+        
+        let shortStartDelay: NSTimeInterval = 0.01
+        let now = recorder.deviceCurrentTime
+        
+        backingAudioPlayer?.playAtTime(now + shortStartDelay)
+        recordingAudioPlayer?.playAtTime(now + shortStartDelay)
+    }
+    
+    
+    func resetPositions() {
         backingAudioPlayer?.currentTime = 0
         recordingAudioPlayer?.currentTime = 0
         
         backingWaveformView.progressTime = CMTimeMakeWithSeconds(0, 10000)
         recordingWaveformView.progressTime = CMTimeMakeWithSeconds(0, 10000)
         
-        backingAudioPlayer?.play()
-        recordingAudioPlayer?.play()
     }
     
     
@@ -279,6 +304,12 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         
     }
     
+    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
+        print("finishRecording")
+        rcView.isRecording = false
+        stopRecording(rcView)
+    }
+    
     
     func bounce(view: RecordingControlView) {
         if let recordingAudioUrl = recording.recordingAudioUrl {
@@ -328,8 +359,10 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
                 backingAudioPlayer!.delegate = self
                 
                 backingWaveformView.asset = AVAsset(URL: url)
-                duration = backingWaveformView.asset.duration
-                backingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, duration!)
+                //duration = backingWaveformView.asset.duration
+                duration = backingAudioPlayer!.duration
+                print("backingAudioDuration: \(duration!)")
+                backingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, backingWaveformView.asset.duration)
                 backingWaveformView.layoutIfNeeded()
             } catch let error as NSError {
                 print("setBackingAudio: Error = \(error.localizedDescription)")
@@ -370,14 +403,24 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     }
     
     
-    /*
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if let segueId = segue.identifier {
+            if segueId == saveRecordingSegue {
+                var saveViewController: SaveRecordingViewController!
+                if let _ = segue.destinationViewController as? UINavigationController {
+                    let destinationNavigationController = segue.destinationViewController as! UINavigationController
+                    saveViewController = destinationNavigationController.topViewController as! SaveRecordingViewController
+                } else {
+                    saveViewController = segue.destinationViewController as! SaveRecordingViewController
+                }
+                saveViewController.recording = recording
+            }
+        }
     }
-    */
     
 }

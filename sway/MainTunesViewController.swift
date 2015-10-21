@@ -32,9 +32,28 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 400
+      
+      renderTunes()
 
-        // Do any additional setup after loading the view.
     }
+
+  
+  internal func renderTunes() {
+    RestManager.sharedInstance.getAllRecordings() { (json) -> () in
+      dispatch_async(dispatch_get_main_queue(), {
+        let results : JSON = json["results"]
+        print("Results:\(results)")
+        // TODO: convert each json result to a Tune
+/*        for result in results {
+          var tune = Tune(result)
+          tunes.append(tune)
+        }
+
+        self.tableView?.reloadData()
+*/
+      })
+    }
+  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -55,7 +74,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return tunes.count
+      //  return tunes.count
         return 21
     }
 

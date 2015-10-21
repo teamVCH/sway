@@ -22,7 +22,10 @@
 		2A6A23471BD3397800ED0706 /* RecordingControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A23461BD3397800ED0706 /* RecordingControlView.xib */; settings = {ASSET_TAGS = (); }; };
 		2A6A23491BD40E8500ED0706 /* Tune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23481BD40E8500ED0706 /* Tune.swift */; settings = {ASSET_TAGS = (); }; };
 		2A6A234B1BD40E9000ED0706 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A234A1BD40E9000ED0706 /* User.swift */; settings = {ASSET_TAGS = (); }; };
-		2A6A234D1BD5D38F00ED0706 /* SaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A234C1BD5D38F00ED0706 /* SaveViewController.swift */; settings = {ASSET_TAGS = (); }; };
+
+		6800F9631BD6AAD600453AFF /* SaveRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6800F9621BD6AAD600453AFF /* SaveRecordingViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		6800F9661BD6AC0A00453AFF /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6800F9641BD6AC0A00453AFF /* Record.storyboard */; settings = {ASSET_TAGS = (); }; };
+		6800F9681BD6B86B00453AFF /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6800F9671BD6B86B00453AFF /* TagCell.swift */; settings = {ASSET_TAGS = (); }; };
 		680A74431BD4AC6500D7D605 /* sway.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 680A74411BD4AC6500D7D605 /* sway.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		680A744A1BD4B14900D7D605 /* Recording+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74481BD4B14900D7D605 /* Recording+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		680A744B1BD4B14900D7D605 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74491BD4B14900D7D605 /* Recording.swift */; settings = {ASSET_TAGS = (); }; };
@@ -31,6 +34,7 @@
 		F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE791BD243B3007281E2 /* ParseCredentials.plist */; settings = {ASSET_TAGS = (); }; };
 		F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */; settings = {ASSET_TAGS = (); }; };
 		F102CE801BD24657007281E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102CE7F1BD24657007281E2 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		F1755AC01BD6BDED005557F6 /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1755ABF1BD6BDED005557F6 /* RestManager.swift */; settings = {ASSET_TAGS = (); }; };
 		F1A4A2449414017605381302 /* libPods-sway.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115E2CB371C884526F352A59 /* libPods-sway.a */; };
 		F1C519311BD23E2C00E57350 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519301BD23E2C00E57350 /* Foundation.framework */; };
 		F1C519331BD23E3700E57350 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519321BD23E3700E57350 /* UIKit.framework */; };
@@ -47,6 +51,10 @@
 		F1C519491BD23EBF00E57350 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519481BD23EBF00E57350 /* Accounts.framework */; };
 		F1C5194B1BD23EC800E57350 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C5194A1BD23EC800E57350 /* Twitter.framework */; };
 		F1C5194D1BD23ED100E57350 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C5194C1BD23ED100E57350 /* Social.framework */; };
+		F1E1E8821BD6EBD600AA5D6A /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1E1E87D1BD6EBD600AA5D6A /* Info-iOS.plist */; settings = {ASSET_TAGS = (); }; };
+		F1E1E8831BD6EBD600AA5D6A /* Info-OSX.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1E1E87E1BD6EBD600AA5D6A /* Info-OSX.plist */; settings = {ASSET_TAGS = (); }; };
+		F1E1E8841BD6EBD600AA5D6A /* Info-watchOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1E1E87F1BD6EBD600AA5D6A /* Info-watchOS.plist */; settings = {ASSET_TAGS = (); }; };
+		F1E1E8851BD6EBD600AA5D6A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1E8811BD6EBD600AA5D6A /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +76,9 @@
 		2A6A23461BD3397800ED0706 /* RecordingControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordingControlView.xib; sourceTree = "<group>"; };
 		2A6A23481BD40E8500ED0706 /* Tune.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tune.swift; sourceTree = "<group>"; };
 		2A6A234A1BD40E9000ED0706 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		2A6A234C1BD5D38F00ED0706 /* SaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveViewController.swift; sourceTree = "<group>"; };
+		6800F9621BD6AAD600453AFF /* SaveRecordingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveRecordingViewController.swift; sourceTree = "<group>"; };
+		6800F9651BD6AC0A00453AFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Record.storyboard; sourceTree = "<group>"; };
+		6800F9671BD6B86B00453AFF /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		680A74421BD4AC6500D7D605 /* sway.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sway.xcdatamodel; sourceTree = "<group>"; };
 		680A74481BD4B14900D7D605 /* Recording+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recording+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		680A74491BD4B14900D7D605 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
@@ -79,6 +89,7 @@
 		F102CE791BD243B3007281E2 /* ParseCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParseCredentials.plist; sourceTree = "<group>"; };
 		F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TwitterCredentials.plist; sourceTree = "<group>"; };
 		F102CE7F1BD24657007281E2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F1755ABF1BD6BDED005557F6 /* RestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		F1C519301BD23E2C00E57350 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F1C519321BD23E3700E57350 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1C519341BD23E4300E57350 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -95,6 +106,11 @@
 		F1C5194A1BD23EC800E57350 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		F1C5194C1BD23ED100E57350 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F1C5194E1BD23F0A00E57350 /* sway-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sway-Bridging-Header.h"; sourceTree = "<group>"; };
+		F1E1E87D1BD6EBD600AA5D6A /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		F1E1E87E1BD6EBD600AA5D6A /* Info-OSX.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-OSX.plist"; sourceTree = "<group>"; };
+		F1E1E87F1BD6EBD600AA5D6A /* Info-watchOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
+		F1E1E8801BD6EBD600AA5D6A /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
+		F1E1E8811BD6EBD600AA5D6A /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +169,7 @@
 				2A6A231B1BD095A800ED0706 /* AppDelegate.swift */,
 				2A6A233E1BD3313700ED0706 /* AVFoundationHelper.swift */,
 				2A6A231F1BD095A800ED0706 /* Main.storyboard */,
+				6800F9641BD6AC0A00453AFF /* Record.storyboard */,
 				2A6A23221BD095A800ED0706 /* Assets.xcassets */,
 				2A6A23241BD095A800ED0706 /* LaunchScreen.storyboard */,
 				2A6A23271BD095A800ED0706 /* Info.plist */,
@@ -178,6 +195,8 @@
 		2A6A233D1BD3159400ED0706 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				F1E1E87C1BD6EBD600AA5D6A /* SwiftyJSON */,
+				F1755ABF1BD6BDED005557F6 /* RestManager.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -224,6 +243,7 @@
 				F102CE7F1BD24657007281E2 /* LoginViewController.swift */,
 				2A6A233A1BD2FE6000ED0706 /* UserProfileViewController.swift */,
 				2A6A23361BD2F85000ED0706 /* TabBarController.swift */,
+				6800F9621BD6AAD600453AFF /* SaveRecordingViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -235,8 +255,21 @@
 				2A6A23461BD3397800ED0706 /* RecordingControlView.xib */,
 				2A6A23311BD0AA2800ED0706 /* TuneViewCell.swift */,
 				680A744D1BD4C4C400D7D605 /* TuneViewCell.xib */,
+				6800F9671BD6B86B00453AFF /* TagCell.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		F1E1E87C1BD6EBD600AA5D6A /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				F1E1E87D1BD6EBD600AA5D6A /* Info-iOS.plist */,
+				F1E1E87E1BD6EBD600AA5D6A /* Info-OSX.plist */,
+				F1E1E87F1BD6EBD600AA5D6A /* Info-watchOS.plist */,
+				F1E1E8801BD6EBD600AA5D6A /* SwiftyJSON.h */,
+				F1E1E8811BD6EBD600AA5D6A /* SwiftyJSON.swift */,
+			);
+			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,7 +337,11 @@
 			files = (
 				683C58B71BD42D2700CFECFF /* simple-drum-beat.wav in Resources */,
 				680A744F1BD4C4C400D7D605 /* TuneViewCell.xib in Resources */,
+				F1E1E8831BD6EBD600AA5D6A /* Info-OSX.plist in Resources */,
+				F1E1E8821BD6EBD600AA5D6A /* Info-iOS.plist in Resources */,
 				2A6A23261BD095A800ED0706 /* LaunchScreen.storyboard in Resources */,
+				6800F9661BD6AC0A00453AFF /* Record.storyboard in Resources */,
+				F1E1E8841BD6EBD600AA5D6A /* Info-watchOS.plist in Resources */,
 				F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */,
 				F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */,
 				2A6A23471BD3397800ED0706 /* RecordingControlView.xib in Resources */,
@@ -356,14 +393,18 @@
 				2A6A23451BD3391800ED0706 /* RecordingControlView.swift in Sources */,
 				2A6A234D1BD5D38F00ED0706 /* SaveViewController.swift in Sources */,
 				680A744A1BD4B14900D7D605 /* Recording+CoreDataProperties.swift in Sources */,
+				F1755AC01BD6BDED005557F6 /* RestManager.swift in Sources */,
 				2A6A231C1BD095A800ED0706 /* AppDelegate.swift in Sources */,
 				2A6A233B1BD2FE6000ED0706 /* UserProfileViewController.swift in Sources */,
 				680A744B1BD4B14900D7D605 /* Recording.swift in Sources */,
+				6800F9631BD6AAD600453AFF /* SaveRecordingViewController.swift in Sources */,
+				F1E1E8851BD6EBD600AA5D6A /* SwiftyJSON.swift in Sources */,
 				2A6A233F1BD3313700ED0706 /* AVFoundationHelper.swift in Sources */,
 				2A6A232E1BD0A9AD00ED0706 /* TrackDetailViewController.swift in Sources */,
 				2A6A23491BD40E8500ED0706 /* Tune.swift in Sources */,
 				2A6A23321BD0AA2800ED0706 /* TuneViewCell.swift in Sources */,
 				680A74431BD4AC6500D7D605 /* sway.xcdatamodeld in Sources */,
+				6800F9681BD6B86B00453AFF /* TagCell.swift in Sources */,
 				2A6A23391BD2FE4200ED0706 /* RecordViewController.swift in Sources */,
 				2A6A234B1BD40E9000ED0706 /* User.swift in Sources */,
 				2A6A23371BD2F85000ED0706 /* TabBarController.swift in Sources */,
@@ -389,6 +430,14 @@
 				2A6A23251BD095A800ED0706 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6800F9641BD6AC0A00453AFF /* Record.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6800F9651BD6AC0A00453AFF /* Base */,
+			);
+			name = Record.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
