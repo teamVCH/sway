@@ -30,47 +30,47 @@ An app for capturing, sharing, and collaborating on musical ideas.
 ## Optional
 
 ### Compositions List
-	* The user can filter the list by tags without leaving the screen
-	* The user can play/preview any composition from this page (optional)
-	* Click on any avatar, which will open that user's **User Profile** page
-    * The user can join the collaboration, which will open the **Record Composition** page with the composition's audio imported as the **Backing Track**
+* The user can filter the list by tags without leaving the screen
+* The user can play/preview any composition from this page (optional)
+* Click on any avatar, which will open that user's **User Profile** page
+* The user can join the collaboration, which will open the **Record Composition** page with the composition's audio imported as the **Backing Track**
 
 ### Composition Details
-	* Detailed information about the composition is shown, including all summary information, tags, favorites count, creation date, and a list of collaborators and a brief description about their contribution (could just be a series of tags)
-	* The user can:
-	     * Play the composition
-	     * Scrub the composition - Move the player cursor to a specific point to listen (optional) 
-	     * Like the composition (optional: leave a comment)
+* Detailed information about the composition is shown, including all summary information, tags, favorites count, creation date, and a list of collaborators and a brief description about their contribution (could just be a series of tags)
+* The user can:
+     * Play the composition
+     * Scrub the composition - Move the player cursor to a specific point to listen (optional) 
+     * Like the composition (optional: leave a comment)
 
 ### Record New Composition/Collaborate on Existing Composition
-	* **Save as Draft** - The user can save recorded audio as a Draft
-	* **Load from Draft** - The user can load an existing composition from their own profile or their drafts to create a new composition. 
+* **Save as Draft** - The user can save recorded audio as a Draft
+* **Load from Draft** - The user can load an existing composition from their own profile or their drafts to create a new composition. 
 
 ### General
-	* Be able to scrub recordings
-	* Be able to mix using sliders to change volume levels
-	* tags
+* Be able to scrub recordings
+* Be able to mix using sliders to change volume levels
+* tags
 
 ### User Profile
-	* Details about the user
-		* Header: avatar, bio and links and other data 
-		* Body: a **Compositions List** including all the user's compositions in reverse chronological order 
-	      * If the user displayed is also the account owner, controls for editing the profile content will be available
+* Details about the user
+	* Header: avatar, bio and links and other data 
+	* Body: a **Compositions List** including all the user's compositions in reverse chronological order 
+      * If the user displayed is also the account owner, controls for editing the profile content will be available
 
 
 ## Bonus
 
 ### Compositions List
-	* Recommend tags like "most popular tags" before going to a list
+* Recommend tags like "most popular tags" before going to a list
 
 ### User Profile
-    * If user hasn't published/have drafts yet, prompt a record button.
-    * Follow a user
-    * Upload your own profile pictures
+* If user hasn't published/have drafts yet, prompt a record button.
+* Follow a user
+* Upload your own profile pictures
 
 ### Settings
-	* Settings to control the app behavior
-	* Connectivity options (Facebook, Dropbox)
+* Settings to control the app behavior
+* Connectivity options (Facebook, Dropbox)
 
 ### Notifications
 
