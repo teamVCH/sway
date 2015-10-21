@@ -33,11 +33,12 @@
                     <navigationItem key="navigationItem" title="Top Charts" id="S6R-rq-dEh"/>
                     <connections>
                         <outlet property="tableView" destination="PFH-V3-Awz" id="Z9y-0b-Fpl"/>
+                        <segue destination="E4S-Ni-YtX" kind="push" identifier="TuneToDetailSegue" id="Pvx-cX-8yB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2169" y="400"/>
+            <point key="canvasLocation" x="2237" y="432"/>
         </scene>
         <!--Profile-->
         <scene sceneID="SMD-B2-fK3">

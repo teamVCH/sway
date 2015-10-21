@@ -67,6 +67,9 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier("TuneViewCell", forIndexPath: indexPath) as! TuneViewCell
         cell.accessoryType = UITableViewCellAccessoryType.None
         cell.tune = tunes?[indexPath.row]
+        let tapGesture = UITapGestureRecognizer(target:self, action: Selector("handleTap"))
+        cell.addGestureRecognizer(tapGesture)
+
         return cell
     }
 
@@ -74,11 +77,15 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       //  return tunes.count
         return 21
     }
 
+    func handleTap(){
+        self.performSegueWithIdentifier("TuneToDetailSegue", sender: nil)
+    }
     /*
     // MARK: - Navigation
 
