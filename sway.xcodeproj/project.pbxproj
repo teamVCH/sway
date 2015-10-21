@@ -22,6 +22,7 @@
 		2A6A23471BD3397800ED0706 /* RecordingControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A23461BD3397800ED0706 /* RecordingControlView.xib */; settings = {ASSET_TAGS = (); }; };
 		2A6A23491BD40E8500ED0706 /* Tune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23481BD40E8500ED0706 /* Tune.swift */; settings = {ASSET_TAGS = (); }; };
 		2A6A234B1BD40E9000ED0706 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A234A1BD40E9000ED0706 /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		2A6A234D1BD5D38F00ED0706 /* SaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A234C1BD5D38F00ED0706 /* SaveViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		680A74431BD4AC6500D7D605 /* sway.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 680A74411BD4AC6500D7D605 /* sway.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		680A744A1BD4B14900D7D605 /* Recording+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74481BD4B14900D7D605 /* Recording+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		680A744B1BD4B14900D7D605 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74491BD4B14900D7D605 /* Recording.swift */; settings = {ASSET_TAGS = (); }; };
@@ -67,6 +68,7 @@
 		2A6A23461BD3397800ED0706 /* RecordingControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordingControlView.xib; sourceTree = "<group>"; };
 		2A6A23481BD40E8500ED0706 /* Tune.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tune.swift; sourceTree = "<group>"; };
 		2A6A234A1BD40E9000ED0706 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2A6A234C1BD5D38F00ED0706 /* SaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveViewController.swift; sourceTree = "<group>"; };
 		680A74421BD4AC6500D7D605 /* sway.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sway.xcdatamodel; sourceTree = "<group>"; };
 		680A74481BD4B14900D7D605 /* Recording+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recording+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		680A74491BD4B14900D7D605 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				2A6A232D1BD0A9AD00ED0706 /* TrackDetailViewController.swift */,
 				2A6A23381BD2FE4200ED0706 /* RecordViewController.swift */,
 				2A6A232F1BD0A9EF00ED0706 /* MainTunesViewController.swift */,
+				2A6A234C1BD5D38F00ED0706 /* SaveViewController.swift */,
 				F102CE7F1BD24657007281E2 /* LoginViewController.swift */,
 				2A6A233A1BD2FE6000ED0706 /* UserProfileViewController.swift */,
 				2A6A23361BD2F85000ED0706 /* TabBarController.swift */,
@@ -351,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A6A23451BD3391800ED0706 /* RecordingControlView.swift in Sources */,
+				2A6A234D1BD5D38F00ED0706 /* SaveViewController.swift in Sources */,
 				680A744A1BD4B14900D7D605 /* Recording+CoreDataProperties.swift in Sources */,
 				2A6A231C1BD095A800ED0706 /* AppDelegate.swift in Sources */,
 				2A6A233B1BD2FE6000ED0706 /* UserProfileViewController.swift in Sources */,

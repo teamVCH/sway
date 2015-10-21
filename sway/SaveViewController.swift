@@ -10,9 +10,15 @@ import UIKit
 
 class SaveViewController: UIViewController {
 
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var tagsTextField: UITextField!
+    @IBOutlet weak var tunePreview: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let preView = UINib(nibName: "TuneViewCell", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! TuneViewCell
+        preView.frame = tunePreview.bounds
+        tunePreview.addSubview(preView)
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +27,12 @@ class SaveViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func saveAsDraft(sender: AnyObject) {
+    }
 
+    @IBAction func share(sender: AnyObject) {
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -366,7 +366,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         } catch let error as NSError {
             print("Error saving recording: \(error)")
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+//        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     

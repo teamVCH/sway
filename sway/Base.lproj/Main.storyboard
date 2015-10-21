@@ -198,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9O-Om-8WO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2643" y="400"/>
+            <point key="canvasLocation" x="2602" y="487"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="2xE-lD-jQA">
@@ -246,7 +246,7 @@
             </objects>
             <point key="canvasLocation" x="1227" y="400"/>
         </scene>
-        <!--Drafts-->
+        <!--Record-->
         <scene sceneID="Gzx-nQ-nls">
             <objects>
                 <viewController id="UYs-yp-Us6" sceneMemberID="viewController">
@@ -260,7 +260,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Record" image="record" id="3mS-NF-YS3"/>
-                    <navigationItem key="navigationItem" title="Drafts" id="EaQ-sR-cPw"/>
+                    <navigationItem key="navigationItem" id="EaQ-sR-cPw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FEN-Hs-uUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -295,6 +295,7 @@
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="doneRecording:" destination="w4D-iw-MiP" eventType="touchUpInside" id="G21-eO-EzZ"/>
+                                    <segue destination="eDb-9A-mMg" kind="modal" id="NwE-LM-Ux6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYm-kF-JcR">
@@ -321,6 +322,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i2h-pw-T1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2594" y="-462"/>
+        </scene>
+        <!--Save View Controller-->
+        <scene sceneID="AA0-eL-InS">
+            <objects>
+                <viewController id="eDb-9A-mMg" customClass="SaveViewController" customModule="sway" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3x4-mJ-YDd"/>
+                        <viewControllerLayoutGuide type="bottom" id="jvs-ZE-o9I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="apU-y1-4ql">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAw-Ta-psb">
+                                <rect key="frame" x="0.0" y="107" width="320" height="78"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dhw-Si-gxe">
+                                <rect key="frame" x="125" y="221" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngl-ze-Jo2">
+                                <rect key="frame" x="73" y="230" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HM4-rQ-d9X">
+                                <rect key="frame" x="70" y="291" width="37" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pe-3k-OXo">
+                                <rect key="frame" x="15" y="54" width="92" height="30"/>
+                                <state key="normal" title="Save as Draft"/>
+                                <connections>
+                                    <action selector="saveAsDraft:" destination="eDb-9A-mMg" eventType="touchUpInside" id="bgu-4x-eri"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlq-CK-hIa">
+                                <rect key="frame" x="260" y="54" width="40" height="30"/>
+                                <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="share:" destination="eDb-9A-mMg" eventType="touchUpInside" id="2Cp-oI-ZlF"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fVd-Cm-Ked">
+                                <rect key="frame" x="125" y="282" width="124" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tagsTextField" destination="fVd-Cm-Ked" id="hed-Pa-Jfe"/>
+                        <outlet property="titleTextField" destination="dhw-Si-gxe" id="vrz-s9-iiY"/>
+                        <outlet property="tunePreview" destination="tAw-Ta-psb" id="TcE-z2-HQz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hWq-3V-zAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3024" y="-462"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kKe-hn-drW">
