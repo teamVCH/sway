@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Record_Pressed_Icon_32.png",
+      "filename" : "Record_Normal_Icon_256-1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Record_Normal_Icon_256.png",
       "scale" : "2x"
     },
     {

@@ -36,7 +36,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.view.backgroundColor = UIColor(hue: 0.4694, saturation: 0.04, brightness: 0.92, alpha: 1.0) /* #e2edeb */
+        //self.view.backgroundColor = UIColor(hue: 0.4694, saturation: 0.04, brightness: 0.92, alpha: 1.0) /* #e2edeb */
         
         let rcView = UINib(nibName: "RecordingControlView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! RecordingControlView
         rcView.frame = controlView.bounds
@@ -57,6 +57,8 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         setupWaveformView(backingWaveformView)
         setupWaveformView(recordingWaveformView)
         
+        
+        recordingWaver.backgroundColor = UIColor.darkGrayColor()
         /*
         if let recordingId = recordingId {
             do {
@@ -233,10 +235,12 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         resetPositions()
         
         let shortStartDelay: NSTimeInterval = 0.01
-        let now = recorder.deviceCurrentTime
+        if let recorder = recorder {
+            let now = recorder.deviceCurrentTime
         
-        backingAudioPlayer?.playAtTime(now + shortStartDelay)
-        recordingAudioPlayer?.playAtTime(now + shortStartDelay)
+            backingAudioPlayer?.playAtTime(now + shortStartDelay)
+            recordingAudioPlayer?.playAtTime(now + shortStartDelay)
+        }
     }
     
     
@@ -358,12 +362,17 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
                 backingAudioPlayer!.prepareToPlay()
                 backingAudioPlayer!.delegate = self
                 
-                backingWaveformView.asset = AVAsset(URL: url)
-                //duration = backingWaveformView.asset.duration
-                duration = backingAudioPlayer!.duration
-                print("backingAudioDuration: \(duration!)")
-                backingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, backingWaveformView.asset.duration)
-                backingWaveformView.layoutIfNeeded()
+                dispatch_async(dispatch_get_main_queue(),{
+                    self.backingWaveformView.asset = AVAsset(URL: url)
+                    //duration = backingWaveformView.asset.duration
+                    self.duration = self.backingAudioPlayer!.duration
+                    print("backingAudioDuration: \(self.duration!)")
+                    self.backingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, self.backingWaveformView.asset.duration)
+                    self.backingWaveformView.layoutIfNeeded()
+                    
+                    
+                })
+                
             } catch let error as NSError {
                 print("setBackingAudio: Error = \(error.localizedDescription)")
             }

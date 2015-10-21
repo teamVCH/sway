@@ -10,67 +10,85 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7aH-wK-o5R">
-                    <rect key="frame" x="233" y="16" width="135" height="127"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3H-Lg-zun">
+                    <rect key="frame" x="8" y="8" width="36" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-19" translatesAutoresizingMaskIntoConstraints="NO" id="J3x-A1-lQn">
+                    <rect key="frame" x="127" y="8" width="346" height="128"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqg-rx-RY4">
-                            <rect key="frame" x="13.5" y="0.0" width="108" height="30"/>
-                            <state key="normal" title="Start Recording"/>
-                            <state key="selected" title="Stop Recording"/>
-                            <connections>
-                                <action selector="onTapRecord:" destination="iN0-l3-epB" eventType="touchUpInside" id="DyV-CJ-KjC"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18a-3R-75h">
-                            <rect key="frame" x="52" y="30" width="31" height="37"/>
+                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                             <state key="normal" image="UIBarButtonPlay_2x"/>
                             <state key="selected" image="UIBarButtonPause_2x"/>
                             <connections>
                                 <action selector="onTapPlay:" destination="iN0-l3-epB" eventType="touchUpInside" id="UI2-Pe-3J8"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqg-rx-RY4">
+                            <rect key="frame" x="109" y="0.0" width="128" height="128"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="128" id="JYI-D4-pRR"/>
+                                <constraint firstAttribute="height" constant="128" id="Qc2-sk-gnN"/>
+                            </constraints>
+                            <state key="normal" image="record_off"/>
+                            <state key="selected" image="record_on"/>
+                            <connections>
+                                <action selector="onTapRecord:" destination="iN0-l3-epB" eventType="touchUpInside" id="DyV-CJ-KjC"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecn-nd-fex">
-                            <rect key="frame" x="41.5" y="67" width="52" height="30"/>
+                            <rect key="frame" x="218" y="0.0" width="128" height="128"/>
                             <state key="normal" title="Bounce"/>
                             <connections>
                                 <action selector="onTapBounce:" destination="iN0-l3-epB" eventType="touchUpInside" id="J8W-8r-g3o"/>
                             </connections>
                         </button>
+                    </subviews>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eof-qc-50b">
+                    <rect key="frame" x="180" y="136" width="240" height="73"/>
+                    <subviews>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="whm-Ey-Oko">
+                            <rect key="frame" x="48" y="8" width="51" height="31"/>
+                        </switch>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headphones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bk-TU-lNF">
+                            <rect key="frame" x="105" y="16" width="77" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kvd-FT-7NS">
-                            <rect key="frame" x="0.0" y="97" width="135" height="30"/>
+                            <rect key="frame" x="53" y="39" width="135" height="30"/>
                             <state key="normal" title="Load Backing Track"/>
                             <connections>
                                 <action selector="loadBackingTrack:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZLU-lg-EJa"/>
                             </connections>
                         </button>
                     </subviews>
-                </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3H-Lg-zun">
-                    <rect key="frame" x="8" y="8" width="36" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play backing audio while recording" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bk-TU-lNF">
-                    <rect key="frame" x="65" y="568.5" width="210" height="16"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="whm-Ey-Oko">
-                    <rect key="frame" x="8" y="561" width="51" height="31"/>
-                </switch>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Kvd-FT-7NS" secondAttribute="bottom" constant="4" id="Brd-ZB-9ON"/>
+                        <constraint firstAttribute="width" constant="240" id="K9A-1Q-jSN"/>
+                        <constraint firstItem="whm-Ey-Oko" firstAttribute="top" secondItem="eof-qc-50b" secondAttribute="top" constant="8" id="Uo6-LY-WQw"/>
+                        <constraint firstItem="whm-Ey-Oko" firstAttribute="leading" secondItem="eof-qc-50b" secondAttribute="leading" constant="48" id="Upy-dN-cGG"/>
+                        <constraint firstItem="1bk-TU-lNF" firstAttribute="leading" secondItem="whm-Ey-Oko" secondAttribute="trailing" constant="8" id="dRc-LR-6yj"/>
+                        <constraint firstItem="Kvd-FT-7NS" firstAttribute="top" secondItem="whm-Ey-Oko" secondAttribute="bottom" id="mKd-n6-jad"/>
+                        <constraint firstItem="1bk-TU-lNF" firstAttribute="centerY" secondItem="whm-Ey-Oko" secondAttribute="centerY" id="zLS-nz-gQ7"/>
+                        <constraint firstItem="Kvd-FT-7NS" firstAttribute="centerX" secondItem="eof-qc-50b" secondAttribute="centerX" id="zq9-MG-WEe"/>
+                    </constraints>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="whm-Ey-Oko" secondAttribute="bottom" constant="8" id="OLH-4u-pl3"/>
-                <constraint firstItem="1bk-TU-lNF" firstAttribute="centerY" secondItem="whm-Ey-Oko" secondAttribute="centerY" id="TXU-ry-64e"/>
-                <constraint firstItem="1bk-TU-lNF" firstAttribute="leading" secondItem="whm-Ey-Oko" secondAttribute="trailing" constant="8" id="Zfi-Sn-cGI"/>
-                <constraint firstItem="7aH-wK-o5R" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="fIE-UC-wxn"/>
-                <constraint firstItem="D3H-Lg-zun" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="md4-Rb-DkT"/>
-                <constraint firstItem="D3H-Lg-zun" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="p6b-dZ-8fa"/>
-                <constraint firstItem="whm-Ey-Oko" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="plq-lx-woh"/>
-                <constraint firstItem="7aH-wK-o5R" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uxr-Ep-1aO"/>
+                <constraint firstItem="eof-qc-50b" firstAttribute="top" secondItem="J3x-A1-lQn" secondAttribute="bottom" id="5Wn-JE-kvG"/>
+                <constraint firstItem="J3x-A1-lQn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9l0-3G-ztE"/>
+                <constraint firstItem="D3H-Lg-zun" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Qxk-v5-MxU"/>
+                <constraint firstItem="D3H-Lg-zun" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="trx-4V-mBY"/>
+                <constraint firstItem="J3x-A1-lQn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="yb3-am-dc8"/>
+                <constraint firstItem="eof-qc-50b" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="z6R-Qp-w9T"/>
             </constraints>
             <connections>
                 <outlet property="currentTimeLabel" destination="D3H-Lg-zun" id="KVn-rH-gUn"/>
@@ -84,5 +102,7 @@
     <resources>
         <image name="UIBarButtonPause_2x" width="30" height="37"/>
         <image name="UIBarButtonPlay_2x" width="31" height="37"/>
+        <image name="record_off" width="256" height="256"/>
+        <image name="record_on" width="128" height="128"/>
     </resources>
 </document>
