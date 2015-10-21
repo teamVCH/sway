@@ -65,6 +65,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TuneViewCell", forIndexPath: indexPath) as! TuneViewCell
+        cell.accessoryType = UITableViewCellAccessoryType.None
         cell.tune = tunes?[indexPath.row]
         return cell
     }

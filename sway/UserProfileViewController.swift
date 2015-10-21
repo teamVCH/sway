@@ -86,7 +86,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         // hide user button from user profile page
         cell.userButton.hidden = true
-        
+        cell.accessoryType = UITableViewCellAccessoryType.None
         return cell
         
     }
