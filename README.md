@@ -81,3 +81,6 @@ An app for capturing, sharing, and collaborating on musical ideas.
 
 ## Credits
 Thanks to icons from the Noun Project: Edward Boatman, useiconic.com, Kirill Ulitin, & Pantelis Gkavos
+
+## Walkthrough 
+![Walkthrough 1](walkthrough1.gif)
