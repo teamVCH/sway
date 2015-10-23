@@ -371,11 +371,6 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         if isNew {
             managedObjectContext.deleteObject(recording)
         }
-        /*
-        if let tabBarController = self.view.window!.rootViewController as? TabBarController {
-            tabBarController.selectedIndex = tabBarController.lastIndex
-        }
-        */
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 

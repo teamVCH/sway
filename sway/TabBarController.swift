@@ -10,6 +10,9 @@ import UIKit
 
 let recordTabTitle = "Record"
 let recordModalSegue = "RecordModalSegue"
+let savedDraft = "savedDraft"
+let publishedTune = "publishedTune"
+
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
@@ -18,9 +21,14 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSavedDraft", name: savedDraft, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onPublishedTune", name: publishedTune, object: nil)
+        
         // Do any additional setup after loading the view.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -37,6 +45,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     */
 
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        print("shouldSelect")
         // This will break if the modal view controller is not the second tab
         let modalController = viewControllers![1] //as! UIViewController
         
@@ -50,6 +59,23 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             return true
         }
     }
+    
+    func onSavedDraft() {
+        showUserProfile(false)
+        
+    }
+    
+    func onPublishedTune() {
+        showUserProfile(true)
+        
+    }
+    
+    func showUserProfile(publishedTunes: Bool) {
+        let userProfileVC = viewControllers![2] as! UserProfileViewController
+        userProfileVC.selectedType = publishedTunes ? 0 : 1
+        selectedViewController = userProfileVC
+    }
+    
     
     /*
     // MARK: - Navigation

@@ -63,12 +63,15 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
                 // draft
                 
             }
-            try managedObjectContext.save()
 
+            try managedObjectContext.save()
 
         } catch let error as NSError {
             print("Error saving recording: \(error)")
         }
+        
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(saveTypeControl.selectedSegmentIndex == 0 ? publishedTune: savedDraft, object: nil)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 

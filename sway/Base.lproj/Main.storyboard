@@ -90,10 +90,10 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="YOA-1f-yw6">
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YOA-1f-yw6">
                                             <rect key="frame" x="107" y="101" width="105" height="29"/>
                                             <segments>
-                                                <segment title="Public" enabled="NO"/>
+                                                <segment title="Public"/>
                                                 <segment title="Drafts"/>
                                             </segments>
                                         </segmentedControl>
@@ -315,7 +315,7 @@
         <image name="record" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EhG-hc-yqr"/>
+        <segue reference="66j-kX-y09"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

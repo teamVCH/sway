@@ -21,6 +21,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     var drafts = [Recording]()
     var selectedDraft: Recording?
+    var selectedType: Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +34,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 160.0
         
+        
     }
     
     override func viewWillAppear(animated: Bool) {
+        typeControl.selectedSegmentIndex = selectedType
         loadDrafts()
         tableView.reloadData()
     }
