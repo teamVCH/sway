@@ -305,7 +305,7 @@
                 <viewControllerPlaceholder storyboardName="Record" id="jEz-L9-uHD" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPQ-oQ-G0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2594" y="-462"/>
+            <point key="canvasLocation" x="2580.5" y="-370"/>
         </scene>
     </scenes>
     <resources>
@@ -315,7 +315,7 @@
         <image name="record" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="66j-kX-y09"/>
+        <segue reference="EhG-hc-yqr"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
