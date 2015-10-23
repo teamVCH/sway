@@ -113,6 +113,18 @@ class Recording: NSManagedObject {
     func isDraft() -> Bool {
         return publishedDate == nil
     }
+    
+    func getTagsAsString() -> String {
+        var tagString = ""
+        if let tags = tags {
+            for tag in tags {
+                let rTag = tag as! RecordingTag
+                tagString += "#\(rTag.tag!) "
+            }
+        }
+        return tagString
+    }
+    
 
     func bounce(updateWorkingAudio: Bool, completion: (NSURL?, AVAssetExportSessionStatus?, NSError?) -> Void) {
         if let recordingAudioUrl = getAudioUrl(.Recording, create: false) {

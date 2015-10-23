@@ -8,8 +8,14 @@
         <attribute name="publishedDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="recordingAudioPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecordingTag" inverseName="recording" inverseEntity="RecordingTag" syncable="YES"/>
+    </entity>
+    <entity name="RecordingTag" representedClassName=".RecordingTag" syncable="YES">
+        <attribute name="tag" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recording" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recording" inverseName="tags" inverseEntity="Recording" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Recording" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Recording" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="RecordingTag" positionX="-342" positionY="206" width="128" height="73"/>
     </elements>
 </model>

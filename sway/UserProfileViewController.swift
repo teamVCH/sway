@@ -23,7 +23,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     var selectedDraft: Recording?
     var selectedType: Int = 0
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerNib(UINib(nibName: tuneViewCell, bundle: nil), forCellReuseIdentifier: tuneViewCell)
@@ -33,14 +32,17 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 160.0
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         typeControl.selectedSegmentIndex = selectedType
         loadDrafts()
         tableView.reloadData()
+    }
+    
+    @IBAction func onSwitchType(sender: UISegmentedControl) {
+        tableView.reloadData()
+        
     }
     
     private func loadDrafts() {

@@ -65,6 +65,8 @@ class TuneViewCell: UITableViewCell {
                 length.text = "0:00"
             }
 
+            tags.text = recording.getTagsAsString()
+            
         }
     }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -17,7 +18,7 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var addTagButton: UIButton!
     
     var recording: Recording!
-    var tags = [String]()
+    var tags = [RecordingTag]()
     
     // Retreive the managedObjectContext from AppDelegate
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -39,13 +40,20 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
         if let title = recording.title {
             titleField.text = title
         }
-        
+        if let tags = recording.tags {
+            for tag in tags {
+                self.tags.append(tag as! RecordingTag)
+            }
+        }
         
     }
     
     @IBAction func onTapAdd(sender: AnyObject) {
         if let tag = tagField.text {
-            tags.append(tag)
+            let recordingTag = NSEntityDescription.insertNewObjectForEntityForName(recordingTagEntityName, inManagedObjectContext: managedObjectContext) as! RecordingTag
+            recordingTag.tag = tag
+            
+            tags.append(recordingTag)
             tableView.reloadData()
         }
     }
@@ -54,7 +62,12 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
         do {
             recording.lastModified = NSDate()
             recording.title = titleField.text ?? "Untitled"
-
+            
+            
+            recording.tags = Set(tags)
+            
+            
+            
             recording.cleanup()
             
             if saveTypeControl.selectedSegmentIndex == 0 {
@@ -81,7 +94,7 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(tagCell, forIndexPath: indexPath) as! TagCell
-        cell.tagLabel.text = tags[indexPath.row]
+        cell.tagLabel.text = tags[indexPath.row].tag!
         return cell
     }
     

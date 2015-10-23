@@ -96,6 +96,9 @@
                                                 <segment title="Public"/>
                                                 <segment title="Drafts"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="onSwitchType:" destination="76W-HG-441" eventType="valueChanged" id="2qp-pt-k8T"/>
+                                            </connections>
                                         </segmentedControl>
                                     </subviews>
                                     <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
