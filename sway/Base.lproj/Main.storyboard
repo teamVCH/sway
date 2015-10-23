@@ -117,6 +117,11 @@
                                         <constraint firstItem="min-3x-u30" firstAttribute="top" secondItem="vr6-2j-AfJ" secondAttribute="top" constant="8" id="qBd-7u-Urg"/>
                                     </constraints>
                                 </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="vsq-ir-y3B">
+                                    <rect key="frame" x="0.0" y="273" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TuneViewCell" id="tRf-8W-g5a" customClass="TuneViewCell" customModule="sway" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="229" width="320" height="44"/>
