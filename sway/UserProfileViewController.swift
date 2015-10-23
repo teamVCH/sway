@@ -36,29 +36,20 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewWillAppear(animated: Bool) {
         loadDrafts()
-        
         tableView.reloadData()
-        
-        
     }
     
     private func loadDrafts() {
-        
         do {
             let fetchRequest = NSFetchRequest(entityName: recordingEntityName)
             if let fetchResults = try managedObjectContext.executeFetchRequest(fetchRequest) as? [Recording] {
                 print("Found \(fetchResults.count) drafts")
                 drafts = fetchResults
             }
-            
         } catch let error as NSError {
             print("Error loading drafts: \(error)")
         }
-        
-        
     }
-    
-    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rowCount = 0
@@ -71,7 +62,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         }
         return rowCount
     }
-    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(tuneViewCell, forIndexPath: indexPath) as! TuneViewCell
@@ -99,7 +89,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             } else {
                 // drafts
                 let draft = drafts[indexPath.row]
+                draft.cleanup(false)
                 managedObjectContext.deleteObject(draft)
+                try! managedObjectContext.save()
                 loadDrafts()
                 tableView.reloadData()
             }

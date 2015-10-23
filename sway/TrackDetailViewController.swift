@@ -10,6 +10,16 @@ import UIKit
 
 class TrackDetailViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var tune: Tune! {
+        didSet {
+        
+        }
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

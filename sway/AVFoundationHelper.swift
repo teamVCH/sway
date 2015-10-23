@@ -2,10 +2,7 @@
 import Foundation
 import AVFoundation
 
-let defaultAudioExtension = "m4a"
-let defaultBackingAudioName = "BackingAudio"
-let defaultRecordingAudioName = "RecordingAudio"
-let defaultBouncedAudioName = "BouncedAudio"
+
 let defaultBackingAudio = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("simple-drum-beat", ofType: "wav")!)
 
 class AVFoundationHelper: NSObject {
@@ -38,20 +35,7 @@ class AVFoundationHelper: NSObject {
         }
     }
     
-    // get a URL for the saved recording in the app documents folder
-    static func getDocumentsFolderUrl() -> NSURL? {
-        let fileManager = NSFileManager.defaultManager()
-        let documentsFolderUrl: NSURL?
-        do {
-            documentsFolderUrl = try fileManager.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
-        } catch let error as NSError {
-            print("Error accessing documents folder: \(error)")
-            documentsFolderUrl = nil
-        }
-        
-        return documentsFolderUrl
-        //return documentsFolderUrl!.URLByAppendingPathComponent("Recording.m4a")
-    }
+
     
     static func createTempDirectory() -> String? {
         let fileManager = NSFileManager.defaultManager()
@@ -68,11 +52,7 @@ class AVFoundationHelper: NSObject {
         
     }
     
-    func getDocumentUrl(baseName: String) -> NSURL {
-        let uniqueId = NSProcessInfo.processInfo().globallyUniqueString
-        let uniqueFileName = "\(baseName)_\(uniqueId).\(defaultAudioExtension)"
-        return documentsFolderUrl.URLByAppendingPathComponent(uniqueFileName)
-    }
+
     
     
     
@@ -99,7 +79,7 @@ class AVFoundationHelper: NSObject {
     
     
     // combine backing + recording audio into single audio file
-    func bounce(backingAudioUrl: NSURL, recordingAudioUrl: NSURL, outputAudioUrl: NSURL, completion: (AVAssetExportSessionStatus, NSError?) -> Void) {
+    static func bounce(backingAudioUrl: NSURL, recordingAudioUrl: NSURL, outputAudioUrl: NSURL, completion: (AVAssetExportSessionStatus, NSError?) -> Void) {
         let composition = AVMutableComposition()
         let backingTrack:AVMutableCompositionTrack = composition.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
         let recordingTrack:AVMutableCompositionTrack = composition.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())

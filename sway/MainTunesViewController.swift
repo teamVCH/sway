@@ -8,6 +8,8 @@
 
 import UIKit
 
+let tuneToDetailSegue = "TuneToDetailSegue"
+
 class MainTunesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -15,6 +17,8 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     var refreshControl:UIRefreshControl!
     var tunes:[Tune]?
 
+    var selectedTune: Tune?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -58,17 +62,19 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TuneViewCell", forIndexPath: indexPath) as! TuneViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(tuneViewCell, forIndexPath: indexPath) as! TuneViewCell
         cell.accessoryType = UITableViewCellAccessoryType.None
         cell.tune = tunes?[indexPath.row]
-        let tapGesture = UITapGestureRecognizer(target:self, action: Selector("handleTap"))
-        cell.addGestureRecognizer(tapGesture)
+        //let tapGesture = UITapGestureRecognizer(target:self, action: Selector("handleTap"))
+        //cell.addGestureRecognizer(tapGesture)
 
         return cell
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        //self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        selectedTune = tunes![indexPath.row]
+        self.performSegueWithIdentifier(tuneToDetailSegue, sender: nil)
     }
     
     
@@ -81,16 +87,31 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     func handleTap(){
-        self.performSegueWithIdentifier("TuneToDetailSegue", sender: nil)
+        //self.performSegueWithIdentifier(tuneToDetailSegue, sender: nil)
     }
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let segueId = segue.identifier {
+            if segueId == tuneToDetailSegue {
+                var detailViewController: TrackDetailViewController!
+                if let _ = segue.destinationViewController as? UINavigationController {
+                    let destinationNavigationController = segue.destinationViewController as! UINavigationController
+                    detailViewController = destinationNavigationController.topViewController as! TrackDetailViewController
+                } else {
+                    detailViewController = segue.destinationViewController as! TrackDetailViewController
+                }
+                detailViewController.tune = selectedTune
+            }
+        }
+        
+        
+        
     }
-    */
+    
 
 }

@@ -23,7 +23,12 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     var backingAudioPlayer, recordingAudioPlayer: AVAudioPlayerExt?
     var recorder: AVAudioRecorderExt!
     var rcView: RecordingControlView!
-    var duration: NSTimeInterval?
+    var duration: NSTimeInterval? {
+        didSet {
+            recording.duration = duration
+            
+        }
+    }
 
     var isNew = true
     var recording: Recording!
@@ -78,25 +83,14 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     override func viewWillAppear(animated: Bool) {
         if let recording = recording {
             isNew = false
-            // create temp files
-            if recording.backingAudio != nil {
-                recording.backingAudioUrl = helper.getDocumentUrl(defaultBackingAudioName)
-            }
-            if recording.recordingAudio != nil {
-                recording.recordingAudioUrl = helper.getDocumentUrl(defaultRecordingAudioName)
-            }
-            if recording.bouncedAudio != nil {
-                recording.bouncedAudioUrl = helper.getDocumentUrl(defaultBouncedAudioName)
-            }
-            
-            // write any stored audio data to the filesystem
-            recording.writeAudioFiles()
             updateBackingAudio()
             updateRecordingAudio()
-            
+            print("Base: \(recording.baseUrl.path!)")
+            print("Bounced: \(recording.bouncedAudioPath)")
         } else {
              // if it wasn't set in the segue, make a new one
             recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
+            prepareToRecord()
         }
         
         
@@ -131,14 +125,13 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         
     }
     
-    func startRecording(view: RecordingControlView, playBackingAudio: Bool) {
-        rcView = view
+    func prepareToRecord() -> Bool {
         do {
-            recording.recordingAudioUrl = helper.getDocumentUrl(defaultRecordingAudioName)
-            recorder = try AVAudioRecorderExt(URL: recording.recordingAudioUrl!, settings: helper.audioRecordingSettings())
+            
+            recorder = try AVAudioRecorderExt(URL: recording.getAudioUrl(.Recording, create: true)!, settings: helper.audioRecordingSettings())
             
             guard let recorder = recorder else {
-                return
+                return false
             }
             
             recorder.delegate = self
@@ -159,7 +152,19 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
             
             resetPositions()
             
-            if recorder.prepareToRecord() {
+            return recorder.prepareToRecord()
+        
+        } catch let error as NSError {
+            print("Error: \(error)")
+            return false
+        }
+    }
+    
+    
+    func startRecording(view: RecordingControlView, playBackingAudio: Bool) {
+        rcView = view
+
+            if prepareToRecord() {
                 let shortStartDelay: NSTimeInterval = 0.01
                 let now = recorder.deviceCurrentTime
                 
@@ -178,11 +183,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
             } else {
                 print("Failed to record.")
             }
-            
-        } catch let error as NSError {
-            print("Error: \(error)")
-        }
-        
+
         
         
     }
@@ -202,7 +203,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     func updateRecordingAudio() {
         
         
-        if let recordingUrl = recording.recordingAudioUrl {
+        if let recordingUrl = recording.getAudioUrl(.Recording, create: false) {
             if recordingUrl.checkResourceIsReachableAndReturnError(nil) {
                 recordingWaveformView.asset = AVAsset(URL: recordingUrl)
                 if let asset = backingWaveformView.asset {
@@ -231,16 +232,21 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     
     func startPlaying(view: RecordingControlView) {
         rcView = view
-        
+    
         resetPositions()
-        
-        let shortStartDelay: NSTimeInterval = 0.01
-        if let recorder = recorder {
-            let now = recorder.deviceCurrentTime
-        
-            backingAudioPlayer?.playAtTime(now + shortStartDelay)
-            recordingAudioPlayer?.playAtTime(now + shortStartDelay)
+    
+        if backingAudioPlayer != nil && recordingAudioPlayer != nil {
+            let shortStartDelay: NSTimeInterval = 0.01
+            let now = backingAudioPlayer?.deviceCurrentTime
+            backingAudioPlayer?.playAtTime(now! + shortStartDelay)
+            recordingAudioPlayer?.playAtTime(now! + shortStartDelay)
+        } else {
+            backingAudioPlayer?.play()
+            recordingAudioPlayer?.play()
         }
+        
+        
+
     }
     
     
@@ -313,50 +319,18 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         rcView.isRecording = false
         stopRecording(rcView)
     }
-    
-    
+
     func bounce(view: RecordingControlView) {
-        if let recordingAudioUrl = recording.recordingAudioUrl {
-            let fileManager = NSFileManager.defaultManager()
-            
-            let bouncedAudioUrl = helper.getDocumentUrl(defaultBouncedAudioName)
-            
-            do {
-                
-                if let backingAudioUrl = recording.backingAudioUrl {
-                    helper.bounce(backingAudioUrl, recordingAudioUrl: recordingAudioUrl, outputAudioUrl: bouncedAudioUrl, completion: { (status: AVAssetExportSessionStatus, error: NSError?) -> Void in
-                        switch status {
-                        case AVAssetExportSessionStatus.Failed: print("bounce failed \(error!)")
-                        case AVAssetExportSessionStatus.Cancelled: print("bounce cancelled \(error!)")
-                        default:
-                            print("bounce completed")
-                            self.setBackingAudio(view, url: bouncedAudioUrl)
-                            
-                        }
-                    })
-                } else {
-                    // no backing track, just make the recording the backing track
-                    try fileManager.copyItemAtURL(recordingAudioUrl, toURL: bouncedAudioUrl)
-                    setBackingAudio(view, url: bouncedAudioUrl)
-                }
-                
-                
-                
-            } catch let error as NSError {
-                print("bounce i/o error = \(error)")
-            }
-            
-            
-            
-            recording.recordingAudioUrl = nil
-            updateRecordingAudio()
-        } else {
-            print("Nothing to bounce")
-        }
+        recording.bounce(true, completion: { (bouncedAudioUrl: NSURL?, status: AVAssetExportSessionStatus?, error: NSError?) -> Void in
+            self.updateRecordingAudio()
+            self.updateBackingAudio()
+        })
     }
     
+    
+    
     func updateBackingAudio() {
-        if let url = recording.backingAudioUrl {
+        if let url = recording.getAudioUrl(.Backing, create: false) {
             do {
                 backingAudioPlayer = try AVAudioPlayerExt(contentsOfURL: url)
                 backingAudioPlayer!.prepareToPlay()
@@ -382,7 +356,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     
     func setBackingAudio(view: RecordingControlView, url: NSURL) {
         rcView = view
-        recording.backingAudioUrl = url
+        recording.setAudioUrl(.Backing, audioUrl: url)
         updateBackingAudio()
 
         
@@ -399,17 +373,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    @IBAction func doneRecording(sender: UIButton) {
-        do {
-            recording.lastModified = NSDate()
-            recording.readAudioFiles()
-            try managedObjectContext.save()
-        } catch let error as NSError {
-            print("Error saving recording: \(error)")
-        }
-//        self.dismissViewControllerAnimated(true, completion: nil)
-    }
+
     
     
     // MARK: - Navigation

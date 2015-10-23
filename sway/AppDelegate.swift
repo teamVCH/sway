@@ -69,6 +69,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
   
+    // get a URL for the saved recording in the app documents folder
+    static func getDocumentsFolderUrl() -> NSURL? {
+        let fileManager = NSFileManager.defaultManager()
+        let documentsFolderUrl: NSURL?
+        do {
+            documentsFolderUrl = try fileManager.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
+        } catch let error as NSError {
+            print("Error accessing documents folder: \(error)")
+            documentsFolderUrl = nil
+        }
+        
+        return documentsFolderUrl
+    }
+    
     
     
     // MARK: - Core Data stack

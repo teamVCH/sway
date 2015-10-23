@@ -17,7 +17,6 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var addTagButton: UIButton!
     
     var recording: Recording!
-    
     var tags = [String]()
     
     // Retreive the managedObjectContext from AppDelegate
@@ -32,6 +31,13 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(animated: Bool) {
+        recording.bounce(false, completion: { (bouncedAudioUrl: NSURL?, status: AVAssetExportSessionStatus?, error: NSError?) -> Void in
+            
+            
+        })
+        
+    }
 
     
     @IBAction func onTapAdd(sender: AnyObject) {
@@ -44,15 +50,22 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func onTapDone(sender: UIBarButtonItem) {
         do {
             recording.lastModified = NSDate()
-            recording.readAudioFiles()
+            recording.title = titleField.text ?? "Untitled"
+            
+            
+            
+            
+            
+            
+            recording.cleanup()
             
             if saveTypeControl.selectedSegmentIndex == 0 {
-                
+                recording.publishedDate = NSDate()
             } else {
                 // draft
-                try managedObjectContext.save()
+                
             }
-            
+            try managedObjectContext.save()
 
 
         } catch let error as NSError {

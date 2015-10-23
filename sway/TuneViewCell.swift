@@ -10,7 +10,7 @@ import UIKit
 
 let tuneViewCell = "TuneViewCell"
 
-class TuneViewCell: UITableViewCell, AVAudioPlayerDelegate {
+class TuneViewCell: UITableViewCell {
 
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var WaveFormView: SCWaveformView!
@@ -25,7 +25,8 @@ class TuneViewCell: UITableViewCell, AVAudioPlayerDelegate {
     @IBOutlet weak var statsView: UIView!
     
     var playing : Bool = false
-    var audioPlayer : AVAudioPlayerExt?
+    var audioItem : AVPlayerItem?
+    var audioPlayer : AVPlayer?
     
     var tune : Tune! {
         didSet{
@@ -49,21 +50,27 @@ class TuneViewCell: UITableViewCell, AVAudioPlayerDelegate {
             }
             statsView.hidden = recording.isDraft()
             
-            let audioData = recording.recordingAudio != nil ? recording.recordingAudio : recording.backingAudio
-            if let audioData = audioData {
+            // remove the observer from a previous item
+            NSNotificationCenter.defaultCenter().removeObserver(self)
             
-                audioPlayer = try! AVAudioPlayerExt(data: audioData)
-                audioPlayer!.delegate = self
-                audioPlayer!.prepareToPlay()
+            if let audioUrl = recording.getAudioUrl(.Bounced, create: false) {
+                audioItem = AVPlayerItem(URL: audioUrl)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerDidFinishPlaying:", name: AVPlayerItemDidPlayToEndTimeNotification, object: audioItem!)
+                audioPlayer = AVPlayer(playerItem: audioItem!)
+            }
             
-                length.text = Recording.formatTime(audioPlayer!.duration, includeMs: false)
+            if let duration = recording.duration {
+                length.text = Recording.formatTime(Double(duration), includeMs: false)
             } else {
                 length.text = "0:00"
             }
+
         }
     }
 
-    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
     
     
     // TODO: cache formatter
@@ -123,12 +130,12 @@ class TuneViewCell: UITableViewCell, AVAudioPlayerDelegate {
     
     @IBAction func playTapped(sender: AnyObject) {
         if (playing) {
-            audioPlayer?.stop()
+            audioPlayer?.pause()
             playing = false
             playButton.setImage(UIImage(named: "UIBarButtonPlay_2x"), forState: UIControlState.Normal)
         } else {
             playing = true
-            audioPlayer?.currentTime = 0
+            //audioPlayer?.currentTime = 0
             
             WaveFormView.progressTime = CMTimeMakeWithSeconds(0, 10000)
             playButton.setImage(UIImage(named: "UIBarButtonPause_2x"), forState: UIControlState.Normal)
@@ -136,10 +143,10 @@ class TuneViewCell: UITableViewCell, AVAudioPlayerDelegate {
         }
     }
     
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+    func playerDidFinishPlaying(playerItem: AVPlayerItem) {
         playing = false
         playButton.setImage(UIImage(named: "UIBarButtonPlay_2x"), forState: UIControlState.Normal)
-        
+        audioPlayer?.seekToTime(CMTimeMakeWithSeconds(0, Int32(NSEC_PER_SEC)))
         
     }
     
