@@ -30,15 +30,18 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
 
         // Do any additional setup after loading the view.
     }
-
-    override func viewDidAppear(animated: Bool) {
+    
+    override func viewWillAppear(animated: Bool) {
         recording.bounce(false, completion: { (bouncedAudioUrl: NSURL?, status: AVAssetExportSessionStatus?, error: NSError?) -> Void in
             
             
         })
+        if let title = recording.title {
+            titleField.text = title
+        }
+        
         
     }
-
     
     @IBAction func onTapAdd(sender: AnyObject) {
         if let tag = tagField.text {
@@ -51,12 +54,7 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
         do {
             recording.lastModified = NSDate()
             recording.title = titleField.text ?? "Untitled"
-            
-            
-            
-            
-            
-            
+
             recording.cleanup()
             
             if saveTypeControl.selectedSegmentIndex == 0 {

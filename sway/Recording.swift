@@ -9,8 +9,6 @@
 import Foundation
 import CoreData
 
-let documentsFolderUrl = AppDelegate.getDocumentsFolderUrl()!
-
 let recordingEntityName = "Recording"
 
 let defaultAudioExtension = "m4a"
@@ -27,15 +25,7 @@ class Recording: NSManagedObject {
     var audioPaths = Set<String>()
     
     lazy var baseUrl: NSURL = {
-        [unowned self] in
-        /*
-        let pathName = "\(self.objectID)"
-        let basePathUrl = documentsFolderUrl.URLByAppendingPathComponent(pathName)
-        let fileManager = NSFileManager.defaultManager()
-        try! fileManager.createDirectoryAtURL(basePathUrl, withIntermediateDirectories: true, attributes: nil)
-        return basePathUrl
-        */
-        return documentsFolderUrl
+        return AppDelegate.getDocumentsFolderUrl()!
     }()
     
     func getAudioUrl(audioTrack: AudioTrack, create: Bool = false) -> NSURL? {
@@ -99,7 +89,7 @@ class Recording: NSManagedObject {
     private func createAudioUrl(audioTrack: AudioTrack) -> NSURL {
         let uniqueId = NSProcessInfo.processInfo().globallyUniqueString
         let uniqueFileName = "\(audioTrack)_\(uniqueId).\(defaultAudioExtension)"
-        let audioUrl = documentsFolderUrl.URLByAppendingPathComponent(uniqueFileName)
+        let audioUrl = baseUrl.URLByAppendingPathComponent(uniqueFileName)
         audioPaths.insert(audioUrl.lastPathComponent!)
         return audioUrl
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
@@ -41,6 +41,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbA-so-xWo">
                                 <rect key="frame" x="8" y="19" width="31" height="37"/>
                                 <state key="normal" image="UIBarButtonPlay_2x"/>
+                                <state key="selected" image="UIBarButtonPause_2x"/>
                                 <connections>
                                     <action selector="playTapped:" destination="NsA-Qu-O5h" eventType="touchUpInside" id="Esv-by-QQH"/>
                                 </connections>
@@ -145,8 +146,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="WaveFormView" destination="9F6-ve-hOZ" id="fKL-cb-ru5"/>
-                <outlet property="collabCount" destination="gCf-Hz-rI5" id="GRH-ey-Jqy"/>
                 <outlet property="cellView" destination="9rb-iq-y8c" id="kFA-fT-aj6"/>
+                <outlet property="collabCount" destination="gCf-Hz-rI5" id="GRH-ey-Jqy"/>
                 <outlet property="length" destination="My5-5F-0Vp" id="mjb-uj-mD8"/>
                 <outlet property="likeCount" destination="BLb-Vu-9Hi" id="8ff-Fu-c45"/>
                 <outlet property="playButton" destination="tbA-so-xWo" id="kEk-1s-jzk"/>
@@ -159,6 +160,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="UIBarButtonPause_2x" width="30" height="37"/>
         <image name="UIBarButtonPlay_2x" width="31" height="37"/>
         <image name="collaborate" width="700" height="700"/>
         <image name="noun_219" width="1200" height="1200"/>

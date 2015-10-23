@@ -132,47 +132,24 @@ class TuneViewCell: UITableViewCell {
         if (playing) {
             audioPlayer?.pause()
             playing = false
-            playButton.setImage(UIImage(named: "UIBarButtonPlay_2x"), forState: UIControlState.Normal)
+            playButton.selected = false
         } else {
             playing = true
             //audioPlayer?.currentTime = 0
-            
             WaveFormView.progressTime = CMTimeMakeWithSeconds(0, 10000)
-            playButton.setImage(UIImage(named: "UIBarButtonPause_2x"), forState: UIControlState.Normal)
+            playButton.selected = true
             audioPlayer?.play()
         }
     }
     
     func playerDidFinishPlaying(playerItem: AVPlayerItem) {
         playing = false
-        playButton.setImage(UIImage(named: "UIBarButtonPlay_2x"), forState: UIControlState.Normal)
+        playButton.selected = false
         audioPlayer?.seekToTime(CMTimeMakeWithSeconds(0, Int32(NSEC_PER_SEC)))
         
     }
     
-    func setBackingAudio(view: SCWaveformView, url: NSURL) {
-////        rcView = view
-//        do {
-////            backingAudioUrl = url
-//            
-//            audioPlayer = try AVAudioPlayerExt(contentsOfURL: url)
-//            audioPlayer!.prepareToPlay()
-//            audioPlayer!.delegate = self
-//            
-//            backingWaveformView.asset = AVAsset(URL: url)
-//            duration = backingWaveformView.asset.duration
-//            backingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, duration!)
-//            backingWaveformView.layoutIfNeeded()
-//            
-//            
-//        } catch let error as NSError {
-//            print("setBackingAudio: Error = \(error.localizedDescription)")
-//        }
-//        
-//        
-        
-        
-    }
+
 
     
 }
