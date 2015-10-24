@@ -48,6 +48,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     private func loadDrafts() {
         do {
             let fetchRequest = NSFetchRequest(entityName: recordingEntityName)
+            fetchRequest.predicate = NSPredicate(format: "publishedDate == nil")
             if let fetchResults = try managedObjectContext.executeFetchRequest(fetchRequest) as? [Recording] {
                 print("Found \(fetchResults.count) drafts")
                 drafts = fetchResults
