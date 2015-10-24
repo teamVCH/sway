@@ -52,12 +52,12 @@ class Tune: NSObject, Composition {
         
     }
     
-   /* static func initArray(jsonDataArray: [AnyObject]) -> [Tune] {
+    static func initArray(objectArray: [PFObject]) -> [Tune] {
         var tunes = [Tune]()
-        for jsonData in jsonDataArray {
-            tunes.append(Tune(jsonData: jsonData))
+        for object in objectArray {
+            tunes.append(Tune(object: object))
         }
         return tunes
-    }*/
+    }
 
 }

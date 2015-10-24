@@ -17,14 +17,8 @@ class ParseAPI: NSObject {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 print("Successfully retrieved \(objects!.count) recordings.")
-                var tunes = [Tune]()
-                if let objects = objects {
-                    for object in objects {
-                        let tune = Tune(object: object)
-                        tunes.append(tune)
-                    }
-                    onCompletion(tunes: tunes, error: nil)
-                }
+                let tunes = Tune.initArray(objects!)
+                onCompletion(tunes: tunes, error: nil)
             } else {
                 // Log details of the failure
                 print("Error: \(error!) \(error!.userInfo)")
@@ -37,25 +31,19 @@ class ParseAPI: NSObject {
         let tagQuery = PFQuery(className: "Tags")
         tagQuery.whereKey("name", containedIn:tagNames)
         tagQuery.findObjectsInBackgroundWithBlock({ (tags: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
+            if error == nil && tags?.count > 0 {
                 // Get recordings for these tags
                 let recordingsQuery = PFQuery(className:"Recordings")
                 recordingsQuery.includeKey("originator")
                 recordingsQuery.whereKey("tags", containsAllObjectsInArray: tags!)
-                recordingsQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+                recordingsQuery.findObjectsInBackgroundWithBlock({
+                    (objects: [PFObject]?, error: NSError?) -> Void in
                     if error == nil {
                         print("Successfully retrieved \(objects!.count) recordings.")
-                        var tunes = [Tune]()
-                        if let objects = objects {
-                            for object in objects {
-                                let tune = Tune(object: object)
-                                tunes.append(tune)
-                            }
-                            onCompletion(tunes: tunes, error: nil)
-                        }
+                        let tunes = Tune.initArray(objects!)
+                        onCompletion(tunes: tunes, error: nil)
                     }
                 })
-                
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
                 onCompletion(tunes: nil, error: error)
@@ -63,5 +51,12 @@ class ParseAPI: NSObject {
         })
     }
     
-    
+    func getPublishedRecordings(user: PFUser?, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
+        let user = user ?? PFUser.currentUser()
+        let recordings = user?.objectForKey("recordings") as? [PFObject]
+        
+        print("User has \(recordings!.count) published recordings.")
+        let tunes = Tune.initArray(recordings!)
+        onCompletion(tunes: tunes, error: nil)
+    }
 }
