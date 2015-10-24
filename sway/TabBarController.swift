@@ -45,7 +45,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     */
 
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
-        print("shouldSelect")
         // This will break if the modal view controller is not the second tab
         let modalController = viewControllers![1] //as! UIViewController
         
