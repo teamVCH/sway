@@ -17,17 +17,22 @@ class Tune: NSObject, Composition {
     var length : Double? = 0
     let originator: PFUser?
     let tagNames: [String]? = []
-    let lastModified: NSDate? = nil // TODO: get from json
-    let originatorProfileImageUrl : String?
+    let lastModified: NSDate?
+    let tuneProfileImageUrl : String?
     
     let isDraft = false // tunes are always public
-    let audioUrl: NSURL? = nil // TODO: get from json
+    var audioUrl: NSURL? = nil
     
     init(object: PFObject) {
         title = object["title"] as? String
         replayCount = object["replays"] as? Int
+        lastModified = object["updatedAt"] as? NSDate
         originator = object["originator"] as? PFUser
-        originatorProfileImageUrl = originator?.objectForKey("profileImageUrl") as? String
+        tuneProfileImageUrl = originator?.objectForKey("profileImageUrl") as? String
+        let audioData = object["audioData"] as? PFFile
+        if let audioUrlString = audioData?.url {
+            audioUrl = NSURL(string: audioUrlString)
+        }
         
         if let likers = object["likers"] {
             likeCount = likers.count
