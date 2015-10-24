@@ -9,45 +9,50 @@
 import UIKit
 
 class Tune: NSObject, Composition {
-    let json : JSON
     
-    let tuneId: String?
     let title: String?
-    let replayCount: Int?
-    let likeCount: Int?
-    let collaboratorCount: Int?
+    var replayCount: Int? = 0
+    var likeCount: Int? = 0
+    var collaboratorCount: Int? = 0
+    var length : Double? = 0
+    let originator: PFUser?
+    let tagNames: [String]? = []
+    let lastModified: NSDate? = nil // TODO: get from json
+    let originatorProfileImageUrl : String?
     
     let isDraft = false // tunes are always public
-    
-    let length : Double? = 0 // TODO: get from json
     let audioUrl: NSURL? = nil // TODO: get from json
-    let tagNames: [String]? = ["lovesong", "happy"] // TODO: get from json
-    let lastModified: NSDate? = nil // TODO: get from json
     
-    //let originator: User?
-    //let tags: [String]?
-    //let publisher: User?
-    
-    init(json: JSON) {
-        self.json = json
+    init(object: PFObject) {
+        title = object["title"] as? String
+        replayCount = object["replays"] as? Int
+        originator = object["originator"] as? PFUser
+        originatorProfileImageUrl = originator?.objectForKey("profileImageUrl") as? String
         
-        self.tuneId = json["objectID"].stringValue
-        self.title = json["title"].stringValue
-        self.replayCount = json["replays"].intValue
-        self.likeCount = json["likers"].count
-        self.collaboratorCount = json["collaborators"].count
+        if let likers = object["likers"] {
+            likeCount = likers.count
+        }
+        
+        if let collaborators = object["collaborators"] {
+            collaboratorCount = collaborators.count
+        }
+        
+        length = object["length"] as? Double
+        if let tags = object["tags"] as? [PFObject] {
+            for tag in tags {
+                let tagName = tag.objectForKey("name") as! String
+                tagNames?.append(tagName)
+            }
+        }
+        
     }
     
-    convenience init(jsonData: AnyObject) {
-        self.init(json: JSON(jsonData))
-    }
-    
-    static func initArray(jsonDataArray: [AnyObject]) -> [Tune] {
+   /* static func initArray(jsonDataArray: [AnyObject]) -> [Tune] {
         var tunes = [Tune]()
         for jsonData in jsonDataArray {
             tunes.append(Tune(jsonData: jsonData))
         }
         return tunes
-    }
+    }*/
 
 }

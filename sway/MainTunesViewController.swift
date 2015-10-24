@@ -43,7 +43,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     internal func renderTunes() {
-        RestManager.sharedInstance.getAllRecordings() { (tunes: [Tune]?, error: NSError?) -> () in
+        ParseAPI.sharedInstance.getAllRecordings() { (tunes: [Tune]?, error: NSError?) -> () in
             dispatch_async(dispatch_get_main_queue(), {
                 if tunes != nil {
                     self.tunes = tunes
