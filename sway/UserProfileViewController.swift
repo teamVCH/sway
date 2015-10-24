@@ -11,16 +11,107 @@ import CoreData
 
 let loadDraftSegue = "loadDraftSegue"
 
+protocol UserProfileViewControllerDelegate {
+    
+    var detailSegue: String {get}
+    
+    func load()
+    func rowCount() -> Int
+    func setComposition(cell: TuneViewCell, indexPath: NSIndexPath)
+    func deleteComposition(indexPath: NSIndexPath)
+    func prepareForSegue(destinationViewController: UIViewController, indexPath: NSIndexPath)
+    
+}
+
+class DraftRecordingsUserProfileViewControllerDelegate: UserProfileViewControllerDelegate {
+    
+    let detailSegue = loadDraftSegue
+    
+    var drafts = [Recording]()
+
+    // Retreive the managedObjectContext from AppDelegate
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
+    func load() {
+        do {
+            let fetchRequest = NSFetchRequest(entityName: recordingEntityName)
+            fetchRequest.predicate = NSPredicate(format: "publishedDate == nil")
+            if let fetchResults = try managedObjectContext.executeFetchRequest(fetchRequest) as? [Recording] {
+                print("Found \(fetchResults.count) drafts")
+                drafts = fetchResults
+            }
+        } catch let error as NSError {
+            print("Error loading drafts: \(error)")
+        }
+    }
+    
+    func rowCount() -> Int {
+        return drafts.count
+    }
+    
+    func setComposition(cell: TuneViewCell, indexPath: NSIndexPath) {
+        cell.recording = drafts[indexPath.row]
+        cell.userButton.hidden = true
+        cell.accessoryType = UITableViewCellAccessoryType.None
+        
+    }
+    
+    func deleteComposition(indexPath: NSIndexPath) {
+        let draft = drafts[indexPath.row]
+        draft.cleanup(false)
+        managedObjectContext.deleteObject(draft)
+        try! managedObjectContext.save()
+        
+    }
+
+    func prepareForSegue(destinationViewController: UIViewController, indexPath: NSIndexPath) {
+        let recordViewController = destinationViewController as! RecordViewController
+        recordViewController.recording = drafts[indexPath.row]
+    }
+    
+    
+}
+
+class PublishedTunesUserProfileViewControllerDelegate: UserProfileViewControllerDelegate {
+    
+    let detailSegue = "showTuneDetail" // TODO
+    
+    func load() {
+        // TODO
+    }
+    
+    func rowCount() -> Int {
+        return 0 // TODO
+    }
+    
+    func setComposition(cell: TuneViewCell, indexPath: NSIndexPath) {
+        // TODO
+    }
+    
+    func deleteComposition(indexPath: NSIndexPath) {
+        // TODO
+    }
+    
+    func prepareForSegue(destinationViewController: UIViewController, indexPath: NSIndexPath) {
+        // TODO
+    }
+    
+    
+}
+
+
+
 class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var typeControl: UISegmentedControl!
     
-    // Retreive the managedObjectContext from AppDelegate
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var delegates: [UserProfileViewControllerDelegate] = [
+        PublishedTunesUserProfileViewControllerDelegate(),
+        DraftRecordingsUserProfileViewControllerDelegate()
+    ]
     
-    var drafts = [Recording]()
-    var selectedDraft: Recording?
+    var selectedIndex: NSIndexPath?
     var selectedType: Int = 0
     
     override func viewDidLoad() {
@@ -36,87 +127,44 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewWillAppear(animated: Bool) {
         typeControl.selectedSegmentIndex = selectedType
-        loadDrafts()
+        delegate().load()
         tableView.reloadData()
     }
     
     @IBAction func onSwitchType(sender: UISegmentedControl) {
+        delegate().load()
         tableView.reloadData()
-        
     }
     
-    private func loadDrafts() {
-        do {
-            let fetchRequest = NSFetchRequest(entityName: recordingEntityName)
-            fetchRequest.predicate = NSPredicate(format: "publishedDate == nil")
-            if let fetchResults = try managedObjectContext.executeFetchRequest(fetchRequest) as? [Recording] {
-                print("Found \(fetchResults.count) drafts")
-                drafts = fetchResults
-            }
-        } catch let error as NSError {
-            print("Error loading drafts: \(error)")
-        }
+    private func delegate() -> UserProfileViewControllerDelegate {
+        return delegates[typeControl.selectedSegmentIndex]
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rowCount = 0
-        if typeControl.selectedSegmentIndex == 0 {
-            // public
-            print("Not implemented") // TODO
-        } else {
-            // drafts
-            rowCount = drafts.count
-        }
-        return rowCount
+        return delegate().rowCount()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(tuneViewCell, forIndexPath: indexPath) as! TuneViewCell
         
-        if typeControl.selectedSegmentIndex == 0 {
-            // public
-            print("Not implemented") // TODO
-        } else {
-            // drafts
-            cell.recording = drafts[indexPath.row]
-        }
-        
+        delegate().setComposition(cell, indexPath: indexPath)
+
         // hide user button from user profile page
-        cell.userButton.hidden = true
-        cell.accessoryType = UITableViewCellAccessoryType.None
         return cell
         
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            if typeControl.selectedSegmentIndex == 0 {
-                // public
-                print("Not implemented") // TODO
-            } else {
-                // drafts
-                let draft = drafts[indexPath.row]
-                draft.cleanup(false)
-                managedObjectContext.deleteObject(draft)
-                try! managedObjectContext.save()
-                loadDrafts()
-                tableView.reloadData()
-            }
+            delegate().deleteComposition(indexPath)
+            delegate().load()
+            tableView.reloadData()
         }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if typeControl.selectedSegmentIndex == 0 {
-            // public
-            print("Not implemented") // TODO
-        } else {
-            // drafts
-            selectedDraft = drafts[indexPath.row]
-            performSegueWithIdentifier(loadDraftSegue, sender: self)
-        
-        }
-        
-        
+        selectedIndex = indexPath
+        performSegueWithIdentifier(delegate().detailSegue, sender: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,15 +181,13 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if let segueId = segue.identifier {
-            if segueId == loadDraftSegue {
-                var recordViewController: RecordViewController!
+            if segueId == delegate().detailSegue {
                 if let _ = segue.destinationViewController as? UINavigationController {
                     let destinationNavigationController = segue.destinationViewController as! UINavigationController
-                    recordViewController = destinationNavigationController.topViewController as! RecordViewController
+                    delegate().prepareForSegue(destinationNavigationController.topViewController!, indexPath: selectedIndex!)
                 } else {
-                    recordViewController = segue.destinationViewController as! RecordViewController
+                    delegate().prepareForSegue(segue.destinationViewController, indexPath: selectedIndex!)
                 }
-                recordViewController.recording = selectedDraft
             }
         }
     }
