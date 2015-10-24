@@ -103,6 +103,11 @@ class PublishedTunesUserProfileViewControllerDelegate: UserProfileViewController
 
 class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var displayNameLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userInstrumentsLabel: UILabel!
+    @IBOutlet weak var userDescriptionLabel: UILabel!
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var typeControl: UISegmentedControl!
     
@@ -123,6 +128,12 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 160.0
+        
+        // TODO: set from user object
+        displayNameLabel.text = "Display Name"
+        userNameLabel.text = "@username"
+        userInstrumentsLabel.text = "Instrument1, Instrument2, Instrument3"
+        userDescriptionLabel.text = "A short message or description of the user"
     }
     
     override func viewWillAppear(animated: Bool) {
