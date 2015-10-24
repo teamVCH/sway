@@ -80,8 +80,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MIH-y2-3La">
+                                <rect key="frame" x="64" y="80" width="191" height="29"/>
+                                <segments>
+                                    <segment title="Publish Tune"/>
+                                    <segment title="Save as Draft"/>
+                                </segments>
+                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9d-yC-SWl">
-                                <rect key="frame" x="0.0" y="124" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="253" width="320" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZs-az-d9Q">
                                         <rect key="frame" x="16" y="-1" width="36.5" height="31"/>
@@ -106,15 +113,8 @@
                                     <constraint firstItem="oZs-az-d9Q" firstAttribute="leading" secondItem="u9d-yC-SWl" secondAttribute="leading" constant="16" id="nWz-PI-Aaf"/>
                                 </constraints>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MIH-y2-3La">
-                                <rect key="frame" x="64" y="80" width="191" height="29"/>
-                                <segments>
-                                    <segment title="Publish Tune"/>
-                                    <segment title="Save as Draft"/>
-                                </segments>
-                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="37" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c15-21-eKX">
-                                <rect key="frame" x="0.0" y="170" width="320" height="398"/>
+                                <rect key="frame" x="0.0" y="299" width="320" height="269"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="gSu-Fd-xjS">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -135,7 +135,7 @@
                                             </connections>
                                         </button>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sez-fB-CZS">
-                                            <rect key="frame" x="65.5" y="7" width="208.5" height="30"/>
+                                            <rect key="frame" x="65" y="7" width="208.5" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -165,7 +165,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkA-7M-8sY">
-                                                    <rect key="frame" x="16" y="2" width="296" height="21"/>
+                                                    <rect key="frame" x="16" y="2" width="296" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -183,16 +183,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1J-wA-MFs" customClass="SCWaveformView">
+                                <rect key="frame" x="10" y="118" width="300" height="125"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="kFT-xk-5XG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="c15-21-eKX" secondAttribute="trailing" id="3Ss-kV-nd4"/>
-                            <constraint firstItem="u9d-yC-SWl" firstAttribute="top" secondItem="MIH-y2-3La" secondAttribute="bottom" constant="16" id="HFG-6Q-6kc"/>
+                            <constraint firstItem="u9d-yC-SWl" firstAttribute="top" secondItem="p1J-wA-MFs" secondAttribute="bottom" constant="10" id="4Q0-od-CuU"/>
+                            <constraint firstItem="p1J-wA-MFs" firstAttribute="top" secondItem="MIH-y2-3La" secondAttribute="bottom" constant="10" id="Jec-aJ-dEm"/>
                             <constraint firstItem="u9d-yC-SWl" firstAttribute="leading" secondItem="jH2-tH-Kp6" secondAttribute="leading" id="TaU-Os-gcd"/>
                             <constraint firstAttribute="trailing" secondItem="u9d-yC-SWl" secondAttribute="trailing" id="U8e-BV-ZLn"/>
                             <constraint firstItem="c15-21-eKX" firstAttribute="top" secondItem="u9d-yC-SWl" secondAttribute="bottom" constant="16" id="VFq-mJ-W5g"/>
                             <constraint firstItem="Uda-Gf-Kss" firstAttribute="top" secondItem="c15-21-eKX" secondAttribute="bottom" id="bCY-CU-Mjz"/>
                             <constraint firstItem="c15-21-eKX" firstAttribute="leading" secondItem="jH2-tH-Kp6" secondAttribute="leading" id="bT3-Zh-hKu"/>
+                            <constraint firstItem="p1J-wA-MFs" firstAttribute="leading" secondItem="jH2-tH-Kp6" secondAttribute="leading" constant="10" id="ga6-Kg-LCe"/>
+                            <constraint firstAttribute="trailing" secondItem="p1J-wA-MFs" secondAttribute="trailing" constant="10" id="hau-NS-Qe9"/>
                             <constraint firstItem="MIH-y2-3La" firstAttribute="centerX" secondItem="jH2-tH-Kp6" secondAttribute="centerX" id="hhF-OK-zgu"/>
                             <constraint firstItem="MIH-y2-3La" firstAttribute="top" secondItem="36L-RR-VV2" secondAttribute="bottom" constant="16" id="mH4-9y-wCo"/>
                         </constraints>
@@ -210,6 +220,7 @@
                         <outlet property="tableView" destination="c15-21-eKX" id="E1P-5r-eKz"/>
                         <outlet property="tagField" destination="sez-fB-CZS" id="aL1-5B-TKf"/>
                         <outlet property="titleField" destination="ueX-xZ-FMh" id="t9L-XZ-56u"/>
+                        <outlet property="waveformView" destination="p1J-wA-MFs" id="mxQ-GX-nth"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2m-jl-eKy" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -16,6 +16,7 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var tagField: UITextField!
     @IBOutlet weak var addTagButton: UIButton!
+    @IBOutlet weak var waveformView: SCWaveformView!
     
     var recording: Recording!
     var tags = [RecordingTag]()
@@ -34,7 +35,18 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(animated: Bool) {
         recording.bounce(false, completion: { (bouncedAudioUrl: NSURL?, status: AVAssetExportSessionStatus?, error: NSError?) -> Void in
-            
+            if let bouncedAudioUrl = bouncedAudioUrl {
+                
+                dispatch_async(dispatch_get_main_queue(),{
+                    self.waveformView.asset = AVAsset(URL: bouncedAudioUrl)
+                    self.setupWaveformView()
+
+                    self.waveformView.layoutIfNeeded()
+                    
+                    
+                })
+
+            }
             
         })
         if let title = recording.title {
@@ -47,6 +59,44 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        let waveformImage = SaveRecordingViewController.getImageFromView(waveformView)
+        SaveRecordingViewController.saveImage(waveformImage, fileName: "waveform.png")
+        
+    }
+    
+    private func setupWaveformView() {
+        // Setting the waveform colors
+        waveformView.normalColor = UIColor.whiteColor()
+        waveformView.progressColor = UIColor.lightGrayColor()
+        
+        // Set the precision, 1 being the maximum
+        waveformView.precision = 1 // 0.25 = one line per four pixels
+        
+        // Set the lineWidth so we have some space between the lines
+        waveformView.lineWidthRatio = 1
+        
+        // Show only right channel
+        waveformView.channelStartIndex = 0
+        waveformView.channelEndIndex = 0
+    }
+    
+    static func getImageFromView(view: UIView) -> UIImage {
+        UIGraphicsBeginImageContext(view.bounds.size)
+        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let screenShot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return screenShot
+    }
+    
+    static func saveImage(image: UIImage, fileName: String) {
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let destinationPath = (documentsPath as AnyObject).stringByAppendingPathComponent(fileName)
+        print("\(destinationPath)")
+        UIImagePNGRepresentation(image)!.writeToFile(destinationPath, atomically: true)
+    }
+    
     
     @IBAction func onTapAdd(sender: AnyObject) {
         if let tag = tagField.text {
