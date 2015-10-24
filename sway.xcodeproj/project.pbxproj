@@ -32,6 +32,7 @@
 		683C58B71BD42D2700CFECFF /* simple-drum-beat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */; settings = {ASSET_TAGS = (); }; };
 		68F4258D1BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		68F4258E1BDAD96F00AED872 /* RecordingTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258A1BDAD96F00AED872 /* RecordingTag.swift */; settings = {ASSET_TAGS = (); }; };
+		68F425901BDB026900AED872 /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258F1BDB026900AED872 /* Composition.swift */; settings = {ASSET_TAGS = (); }; };
 		F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE791BD243B3007281E2 /* ParseCredentials.plist */; settings = {ASSET_TAGS = (); }; };
 		F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */; settings = {ASSET_TAGS = (); }; };
 		F102CE801BD24657007281E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102CE7F1BD24657007281E2 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -87,6 +88,7 @@
 		683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "simple-drum-beat.wav"; sourceTree = "<group>"; };
 		68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecordingTag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		68F4258A1BDAD96F00AED872 /* RecordingTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingTag.swift; sourceTree = "<group>"; };
+		68F4258F1BDB026900AED872 /* Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
 		9C359999855D3D2778633D8C /* Pods-sway.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sway.release.xcconfig"; path = "Pods/Target Support Files/Pods-sway/Pods-sway.release.xcconfig"; sourceTree = "<group>"; };
 		D58D79382ACFBC82DCA911A6 /* Pods-sway.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sway.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sway/Pods-sway.debug.xcconfig"; sourceTree = "<group>"; };
 		F102CE791BD243B3007281E2 /* ParseCredentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParseCredentials.plist; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				680A74491BD4B14900D7D605 /* Recording.swift */,
 				2A6A23481BD40E8500ED0706 /* Tune.swift */,
 				2A6A234A1BD40E9000ED0706 /* User.swift */,
+				68F4258F1BDB026900AED872 /* Composition.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				2A6A233B1BD2FE6000ED0706 /* UserProfileViewController.swift in Sources */,
 				680A744B1BD4B14900D7D605 /* Recording.swift in Sources */,
 				6800F9631BD6AAD600453AFF /* SaveRecordingViewController.swift in Sources */,
+				68F425901BDB026900AED872 /* Composition.swift in Sources */,
 				F1E1E8851BD6EBD600AA5D6A /* SwiftyJSON.swift in Sources */,
 				2A6A233F1BD3313700ED0706 /* AVFoundationHelper.swift in Sources */,
 				2A6A232E1BD0A9AD00ED0706 /* TrackDetailViewController.swift in Sources */,

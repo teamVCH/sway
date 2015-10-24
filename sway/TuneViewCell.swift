@@ -28,11 +28,10 @@ class TuneViewCell: UITableViewCell {
     var audioItem : AVPlayerItem?
     var audioPlayer : AVPlayer?
     
+    
     var tune : Tune! {
         didSet{
-            print("setting tune in cell")
-            let title = tune.title == nil ? "Untitled" : tune.title!
-            tuneTitle.text = title
+            setComposition(tune)
             replayCount.text = "\(tune.replayCount!)"
             likeCount.text = "\(tune.likeCount!)"
             collabCount.text = "\(tune.collaboratorCount!)"
@@ -41,37 +40,53 @@ class TuneViewCell: UITableViewCell {
     
     var recording: Recording! {
         didSet {
-            let title = recording.title != nil ? recording.title! : "Untitled"
-            if recording.lastModified != nil {
-                let age = formatTimeElapsed(recording.lastModified!)
-                tuneTitle.text =  "\(title) (\(age) ago)"
-            } else {
-                tuneTitle.text = title
-            }
-            statsView.hidden = recording.isDraft()
-            
-            // remove the observer from a previous item
-            NSNotificationCenter.defaultCenter().removeObserver(self)
-            
-            if let audioUrl = recording.getAudioUrl(.Bounced, create: false) {
-                audioItem = AVPlayerItem(URL: audioUrl)
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerDidFinishPlaying:", name: AVPlayerItemDidPlayToEndTimeNotification, object: audioItem!)
-                audioPlayer = AVPlayer(playerItem: audioItem!)
-            }
-            
-            if let duration = recording.duration {
-                length.text = Recording.formatTime(Double(duration), includeMs: false)
-            } else {
-                length.text = "0:00"
-            }
-
-            tags.text = recording.getTagsAsString()
-            
+            setComposition(recording) // set basic values
         }
     }
 
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+
+    
+    func setComposition(composition: Composition) {
+        let title = composition.title != nil ? composition.title! : "Untitled"
+        if composition.lastModified != nil && composition.isDraft {
+            let age = formatTimeElapsed(composition.lastModified!)
+            tuneTitle.text =  "\(title) (\(age) ago)"
+        } else {
+            tuneTitle.text = title
+        }
+        statsView.hidden = composition.isDraft
+        
+        // remove the observer from a previous item
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        
+        if let audioUrl = composition.audioUrl {
+            audioItem = AVPlayerItem(URL: audioUrl)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerDidFinishPlaying:", name: AVPlayerItemDidPlayToEndTimeNotification, object: audioItem!)
+            audioPlayer = AVPlayer(playerItem: audioItem!)
+        }
+        
+        if let length = composition.length {
+            self.length.text = Recording.formatTime(Double(length), includeMs: false)
+        } else {
+            self.length.text = "0:00"
+        }
+        
+        tags.text = getTagsAsString(composition.tagNames)
+
+    }
+    
+    func getTagsAsString(tags: [String]?) -> String {
+        var tagString = ""
+        if let tags = tags {
+            for tag in tags {
+                tagString += "#\(tag) "
+            }
+        }
+        return tagString
     }
     
     

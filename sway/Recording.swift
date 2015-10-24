@@ -20,13 +20,46 @@ enum AudioTrack {
 }
 
 
-class Recording: NSManagedObject {
+class Recording: NSManagedObject, Composition {
     
     var audioPaths = Set<String>()
     
     lazy var baseUrl: NSURL = {
         return AppDelegate.getDocumentsFolderUrl()!
     }()
+    
+    var length: Double? {
+        get {
+            return duration?.doubleValue
+        }
+        set(length) {
+            duration = length != nil ? NSNumber(double: length!) : nil
+        }
+    }
+
+    lazy var isDraft: Bool = {
+        [unowned self] in
+        return self.publishedDate == nil
+    }()
+    
+    lazy var audioUrl: NSURL? = {
+        [unowned self] in
+        return self.getAudioUrl(.Bounced, create: false)
+    }()
+    
+    lazy var tagNames: [String]? = {
+        [unowned self] in
+        var array: [String]?
+        if let tags = self.tags {
+            array = [String]()
+            for tag in tags {
+                let rTag = tag as! RecordingTag
+                array!.append(rTag.tag!)
+            }
+        }
+        return array
+    }()
+    
     
     func getAudioUrl(audioTrack: AudioTrack, create: Bool = false) -> NSURL? {
         if let audioPath = getAudioPath(audioTrack) {
@@ -110,20 +143,8 @@ class Recording: NSManagedObject {
         }
     }
     
-    func isDraft() -> Bool {
-        return publishedDate == nil
-    }
-    
-    func getTagsAsString() -> String {
-        var tagString = ""
-        if let tags = tags {
-            for tag in tags {
-                let rTag = tag as! RecordingTag
-                tagString += "#\(rTag.tag!) "
-            }
-        }
-        return tagString
-    }
+
+
     
 
     func bounce(updateWorkingAudio: Bool, completion: (NSURL?, AVAssetExportSessionStatus?, NSError?) -> Void) {

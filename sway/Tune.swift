@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Tune: NSObject {
+class Tune: NSObject, Composition {
     let json : JSON
     
     let tuneId: String?
@@ -16,8 +16,14 @@ class Tune: NSObject {
     let replayCount: Int?
     let likeCount: Int?
     let collaboratorCount: Int?
-    //let length : Float?
- 
+    
+    let isDraft = false // tunes are always public
+    
+    let length : Double? = 0 // TODO: get from json
+    let audioUrl: NSURL? = nil // TODO: get from json
+    let tagNames: [String]? = ["lovesong", "happy"] // TODO: get from json
+    let lastModified: NSDate? = nil // TODO: get from json
+    
     //let originator: User?
     //let tags: [String]?
     //let publisher: User?
