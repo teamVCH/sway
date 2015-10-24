@@ -185,7 +185,7 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1J-wA-MFs" customClass="SCWaveformView">
                                 <rect key="frame" x="10" y="118" width="300" height="125"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.97851810103375425" green="0.97727654480795534" blue="0.99896343954444444" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="kFT-xk-5XG"/>
                                 </constraints>

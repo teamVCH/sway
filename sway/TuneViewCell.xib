@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
@@ -13,9 +13,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="287" height="74.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9F6-ve-hOZ" customClass="SCWaveformView">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9F6-ve-hOZ">
                         <rect key="frame" x="0.0" y="0.0" width="287" height="75"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waveform" translatesAutoresizingMaskIntoConstraints="NO" id="EvL-PD-Foc">
+                                <rect key="frame" x="0.0" y="0.0" width="287" height="75"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="My5-5F-0Vp">
                                 <rect key="frame" x="50" y="31.5" width="28" height="16.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -120,18 +123,22 @@
                             <constraint firstItem="Lh0-MI-w6q" firstAttribute="leading" secondItem="4cV-Bl-bNg" secondAttribute="leading" id="1X1-CA-kVR"/>
                             <constraint firstItem="My5-5F-0Vp" firstAttribute="leading" secondItem="4cV-Bl-bNg" secondAttribute="leading" id="6eu-xR-S2i"/>
                             <constraint firstItem="tbA-so-xWo" firstAttribute="centerY" secondItem="9F6-ve-hOZ" secondAttribute="centerY" id="6ou-f5-Mpa"/>
+                            <constraint firstItem="EvL-PD-Foc" firstAttribute="top" secondItem="9F6-ve-hOZ" secondAttribute="top" id="7et-zv-flC"/>
                             <constraint firstItem="ty6-p2-KEh" firstAttribute="leading" secondItem="My5-5F-0Vp" secondAttribute="trailing" constant="8" id="AuH-GT-S9a"/>
                             <constraint firstItem="My5-5F-0Vp" firstAttribute="leading" secondItem="4cV-Bl-bNg" secondAttribute="leading" id="BAv-rZ-DF3"/>
                             <constraint firstItem="4cV-Bl-bNg" firstAttribute="top" secondItem="9F6-ve-hOZ" secondAttribute="top" constant="8" id="BJ6-WM-z69"/>
                             <constraint firstItem="Lh0-MI-w6q" firstAttribute="top" secondItem="My5-5F-0Vp" secondAttribute="bottom" constant="4" id="HPR-PL-xcR"/>
                             <constraint firstItem="bFw-FZ-bbN" firstAttribute="centerY" secondItem="9F6-ve-hOZ" secondAttribute="centerY" id="II0-VV-6ng"/>
+                            <constraint firstItem="EvL-PD-Foc" firstAttribute="leading" secondItem="9F6-ve-hOZ" secondAttribute="leading" id="Ix2-4S-zxZ"/>
                             <constraint firstItem="tbA-so-xWo" firstAttribute="leading" secondItem="9F6-ve-hOZ" secondAttribute="leading" constant="8" id="JRc-Ai-e6I"/>
+                            <constraint firstAttribute="bottom" secondItem="EvL-PD-Foc" secondAttribute="bottom" id="Rjm-Jv-EBB"/>
                             <constraint firstAttribute="bottom" secondItem="Lh0-MI-w6q" secondAttribute="bottom" constant="8" id="XAK-gC-K4T"/>
                             <constraint firstItem="ty6-p2-KEh" firstAttribute="bottom" secondItem="My5-5F-0Vp" secondAttribute="bottom" constant="4" id="bRv-sj-1rF"/>
                             <constraint firstItem="Lh0-MI-w6q" firstAttribute="leading" secondItem="4cV-Bl-bNg" secondAttribute="leading" id="cAc-zE-KpL"/>
                             <constraint firstItem="bFw-FZ-bbN" firstAttribute="leading" secondItem="ty6-p2-KEh" secondAttribute="trailing" constant="8" id="fP0-21-cZk"/>
                             <constraint firstItem="4cV-Bl-bNg" firstAttribute="leading" secondItem="9F6-ve-hOZ" secondAttribute="leading" constant="50" id="lQU-GN-dmb"/>
                             <constraint firstItem="ty6-p2-KEh" firstAttribute="top" secondItem="My5-5F-0Vp" secondAttribute="top" constant="-4" id="pBD-Ew-g4X"/>
+                            <constraint firstAttribute="trailing" secondItem="EvL-PD-Foc" secondAttribute="trailing" id="vFH-Vw-IZn"/>
                             <constraint firstAttribute="trailing" secondItem="bFw-FZ-bbN" secondAttribute="trailing" constant="8" id="zTu-fe-rMr"/>
                             <constraint firstItem="My5-5F-0Vp" firstAttribute="top" secondItem="4cV-Bl-bNg" secondAttribute="bottom" constant="4" id="zl1-4O-51r"/>
                         </constraints>
@@ -145,7 +152,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="WaveFormView" destination="9F6-ve-hOZ" id="fKL-cb-ru5"/>
                 <outlet property="cellView" destination="9rb-iq-y8c" id="kFA-fT-aj6"/>
                 <outlet property="collabCount" destination="gCf-Hz-rI5" id="GRH-ey-Jqy"/>
                 <outlet property="length" destination="My5-5F-0Vp" id="mjb-uj-mD8"/>
@@ -156,6 +162,7 @@
                 <outlet property="tags" destination="Lh0-MI-w6q" id="vW5-nZ-0bc"/>
                 <outlet property="tuneTitle" destination="4cV-Bl-bNg" id="ibo-IL-ogX"/>
                 <outlet property="userButton" destination="bFw-FZ-bbN" id="GFi-jp-VRg"/>
+                <outlet property="waveFormView" destination="EvL-PD-Foc" id="gGG-EG-Mdx"/>
             </connections>
         </tableViewCell>
     </objects>
@@ -166,5 +173,6 @@
         <image name="noun_219" width="1200" height="1200"/>
         <image name="profile" width="35" height="35"/>
         <image name="replay" width="167" height="167"/>
+        <image name="waveform" width="300" height="125"/>
     </resources>
 </document>

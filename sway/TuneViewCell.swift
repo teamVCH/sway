@@ -13,7 +13,7 @@ let tuneViewCell = "TuneViewCell"
 class TuneViewCell: UITableViewCell {
 
     @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var WaveFormView: SCWaveformView!
+    @IBOutlet weak var waveFormView: UIImageView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var tuneTitle: UILabel!
     @IBOutlet weak var length: UILabel!
@@ -77,6 +77,10 @@ class TuneViewCell: UITableViewCell {
         
         tags.text = getTagsAsString(composition.tagNames)
 
+        
+        // TODO: get waveform image
+        //waveFormView.image = ...
+        
     }
     
     func getTagsAsString(tags: [String]?) -> String {
@@ -103,10 +107,7 @@ class TuneViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-//        setTrack(WaveFormView, url: tune.trackURL)
-        setupWaveformView(WaveFormView)
-        
+
         layoutMargins = UIEdgeInsetsZero
         separatorInset = UIEdgeInsetsZero
     }
@@ -117,33 +118,7 @@ class TuneViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupWaveformView(waveformView: SCWaveformView) {
-        // Setting the waveform colors
-        waveformView.normalColor = UIColor.whiteColor()
-        waveformView.progressColor = UIColor.lightGrayColor()
-        
-        // Use it inside a scrollView
-        //SCScrollableWaveformView *scrollableWaveformView = [SCScrollableWaveformView new];
-        //scrollableWaveformView.waveformView; // Access the waveformView from there
-        
-        // Set the precision, 1 being the maximum
-        waveformView.precision = 1 // 0.25 = one line per four pixels
-        
-        // Set the lineWidth so we have some space between the lines
-        waveformView.lineWidthRatio = 1
-        
-        // Show stereo if available
-        //waveformView.channelStartIndex = 0//0;
-        //waveformView.channelEndIndex = 0
-        
-        // Show only right channel
-        waveformView.channelStartIndex = 0
-        waveformView.channelEndIndex = 0
-        
-        // Add some padding between the channels
-        waveformView.channelsPadding = 10;
-        
-    }
+
     
     @IBAction func playTapped(sender: AnyObject) {
         if (playing) {
@@ -153,7 +128,7 @@ class TuneViewCell: UITableViewCell {
         } else {
             playing = true
             //audioPlayer?.currentTime = 0
-            WaveFormView.progressTime = CMTimeMakeWithSeconds(0, 10000)
+            //WaveFormView.progressTime = CMTimeMakeWithSeconds(0, 10000)
             playButton.selected = true
             audioPlayer?.play()
         }

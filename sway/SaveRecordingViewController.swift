@@ -68,7 +68,7 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
     
     private func setupWaveformView() {
         // Setting the waveform colors
-        waveformView.normalColor = UIColor.whiteColor()
+        waveformView.normalColor = UIColor.darkGrayColor()
         waveformView.progressColor = UIColor.lightGrayColor()
         
         // Set the precision, 1 being the maximum
