@@ -11,8 +11,24 @@ import CoreData
 
 let recordingTagEntityName = "RecordingTag"
 
-class RecordingTag: NSManagedObject {
+let defaultPartTags = [
+    "melody", "harmony", "rhythm", "beat", "lead", "accompaniment", "ambience", "effects"
+]
 
-// Insert code here to add functionality to your managed object subclass
+let defaultInstrumentTags = [
+    "vocals", "guitar", "keyboard", "bass", "percussion", "strings"
+]
+
+let defaultFeelTags = [
+    "slow", "fast", "medium", "quiet", "loud", "upbeat", "melancholy"
+]
+
+
+class RecordingTag: NSManagedObject {
+    
+    
+    
+    
+    
 
 }
