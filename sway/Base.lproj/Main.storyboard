@@ -159,6 +159,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="displayNameLabel" destination="min-3x-u30" id="9zz-aM-XBs"/>
+                        <outlet property="profileImageView" destination="Nei-KW-XTZ" id="VFn-eS-Sai"/>
                         <outlet property="tableView" destination="FeI-Hz-gLi" id="ft3-hj-46s"/>
                         <outlet property="typeControl" destination="YOA-1f-yw6" id="NhM-Pw-Bpq"/>
                         <outlet property="userDescriptionLabel" destination="mT3-tH-c7g" id="aWa-Mu-niT"/>

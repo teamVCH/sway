@@ -124,6 +124,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var userInstrumentsLabel: UILabel!
     @IBOutlet weak var userDescriptionLabel: UILabel!
     
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var typeControl: UISegmentedControl!
     
@@ -154,6 +155,14 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         }
         userInstrumentsLabel.text = "Instrument1, Instrument2" // TODO
         userDescriptionLabel.text = user!.tagLine
+        
+        let profileImageUrl = PFUser.currentUser()?.objectForKey("profileImageUrl")
+        if let profileImageUrl = profileImageUrl as? String {
+            let imageData = NSData(contentsOfURL: NSURL(string: profileImageUrl)!)
+            let userProfileImage = UIImage(data:imageData!)
+            profileImageView.image = userProfileImage
+        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
