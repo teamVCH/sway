@@ -53,7 +53,7 @@ class DraftRecordingsUserProfileViewControllerDelegate: UserProfileViewControlle
     
     func setComposition(cell: TuneViewCell, indexPath: NSIndexPath) {
         cell.recording = drafts[indexPath.row]
-        cell.userButton.hidden = true
+        cell.userImageView.hidden = true
         cell.accessoryType = UITableViewCellAccessoryType.None
         
     }
@@ -96,7 +96,7 @@ class PublishedTunesUserProfileViewControllerDelegate: UserProfileViewController
     
     func setComposition(cell: TuneViewCell, indexPath: NSIndexPath) {
         cell.tune = published[indexPath.row]
-        cell.userButton.hidden = true
+        cell.userImageView.hidden = true
         cell.accessoryType = UITableViewCellAccessoryType.None
     }
     

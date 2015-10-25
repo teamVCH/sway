@@ -23,7 +23,7 @@ class TuneViewCell: UITableViewCell {
     @IBOutlet weak var collabCount: UILabel!
     @IBOutlet weak var likeCount: UILabel!
     @IBOutlet weak var tags: UILabel!
-    @IBOutlet weak var userButton: UIButton!
+    @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var statsView: UIView!
     
     var playing : Bool = false
@@ -41,13 +41,9 @@ class TuneViewCell: UITableViewCell {
             collabCount.text = "\(tune.collaboratorCount!)"
             
             if let url = tune.tuneProfileImageUrl {
-                let imageData = NSData(contentsOfURL: NSURL(string: url)!)
-                let userProfileImage = UIImage(data:imageData!)
-                userButton.setImage(userProfileImage, forState: UIControlState.Normal)
-                userButton.layer.cornerRadius = 24
-                userButton.clipsToBounds = true
+                userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
             } else {
-                userButton.setImage(UIImage(named: "profile"), forState: UIControlState.Normal)
+                userImageView.image = UIImage(named: "profile")
             }
         }
     }
@@ -122,6 +118,10 @@ class TuneViewCell: UITableViewCell {
 
         layoutMargins = UIEdgeInsetsZero
         separatorInset = UIEdgeInsetsZero
+        
+        userImageView.layer.cornerRadius = 24
+        userImageView.clipsToBounds = true
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -131,6 +131,10 @@ class TuneViewCell: UITableViewCell {
     }
     
 
+    @IBAction func userImageTapped(sender: AnyObject) {
+        // TODO: override default behavior and go to user profile
+        
+    }
     
     @IBAction func playTapped(sender: AnyObject) {
         if (playing) {
