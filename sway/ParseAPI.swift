@@ -114,8 +114,17 @@ class ParseAPI: NSObject {
                     if let waveformData = recording.readFromUrl(waveformUrl) {
                         tune.setValue(PFFile(name: waveformUrl.lastPathComponent, data: waveformData), forKey: "waveform")
                     }
-                    
                 }
+                
+                if let tags = recording.tags {
+                    var tagNames = [String]()
+                    for tag in tags {
+                        let rTag = tag as! RecordingTag
+                        tagNames.append(rTag.tag!)
+                    }
+                    tune.setValue(tagNames, forKey: "tags")
+                }
+                
                 tune.setValue(recording.length, forKey: "length")
                 tune.setValue(1, forKey: "replays")
                 tune.saveInBackgroundWithBlock { (success, error ) -> Void in

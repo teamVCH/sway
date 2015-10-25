@@ -26,13 +26,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cV-Bl-bNg">
-                                <rect key="frame" x="50" y="8" width="33.5" height="19.5"/>
+                                <rect key="frame" x="50" y="8" width="176" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="#happy #lovesong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lh0-MI-w6q">
-                                <rect key="frame" x="50" y="52" width="104" height="14.5"/>
+                                <rect key="frame" x="50" y="52" width="176" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -135,11 +135,12 @@
                             <constraint firstItem="EvL-PD-Foc" firstAttribute="leading" secondItem="9F6-ve-hOZ" secondAttribute="leading" id="Ix2-4S-zxZ"/>
                             <constraint firstItem="tbA-so-xWo" firstAttribute="leading" secondItem="9F6-ve-hOZ" secondAttribute="leading" constant="8" id="JRc-Ai-e6I"/>
                             <constraint firstAttribute="bottom" secondItem="EvL-PD-Foc" secondAttribute="bottom" id="Rjm-Jv-EBB"/>
+                            <constraint firstItem="TAF-XL-CnF" firstAttribute="leading" secondItem="4cV-Bl-bNg" secondAttribute="trailing" constant="8" id="Udn-MA-AZ6"/>
                             <constraint firstAttribute="bottom" secondItem="Lh0-MI-w6q" secondAttribute="bottom" constant="8" id="XAK-gC-K4T"/>
                             <constraint firstAttribute="trailing" secondItem="TAF-XL-CnF" secondAttribute="trailing" constant="8" id="Yd2-Fd-K28"/>
                             <constraint firstItem="ty6-p2-KEh" firstAttribute="bottom" secondItem="My5-5F-0Vp" secondAttribute="bottom" constant="4" id="bRv-sj-1rF"/>
                             <constraint firstItem="Lh0-MI-w6q" firstAttribute="leading" secondItem="4cV-Bl-bNg" secondAttribute="leading" id="cAc-zE-KpL"/>
-                            <constraint firstItem="TAF-XL-CnF" firstAttribute="leading" secondItem="Lh0-MI-w6q" secondAttribute="trailing" constant="80" id="hrh-Zn-Pwd"/>
+                            <constraint firstItem="TAF-XL-CnF" firstAttribute="leading" secondItem="Lh0-MI-w6q" secondAttribute="trailing" constant="8" id="hrh-Zn-Pwd"/>
                             <constraint firstAttribute="trailing" secondItem="ty6-p2-KEh" secondAttribute="trailing" id="htJ-y8-jKb"/>
                             <constraint firstItem="4cV-Bl-bNg" firstAttribute="leading" secondItem="9F6-ve-hOZ" secondAttribute="leading" constant="50" id="lQU-GN-dmb"/>
                             <constraint firstItem="ty6-p2-KEh" firstAttribute="top" secondItem="My5-5F-0Vp" secondAttribute="top" constant="-4" id="pBD-Ew-g4X"/>
