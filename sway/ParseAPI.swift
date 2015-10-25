@@ -90,7 +90,6 @@ class ParseAPI: NSObject {
     
     func deleteRecording(tune: Tune, onCompletion: (error: NSError?) -> Void) {
         let query = PFQuery(className: "Recordings")
-        // TODO: Issue with tune.id not found
         query.getObjectInBackgroundWithId(tune.id!) { (recording: PFObject?, error: NSError?) -> Void in
             if error == nil {
                 recording?.deleteInBackgroundWithBlock({ (deleted: Bool, error: NSError?) -> Void in
@@ -141,18 +140,52 @@ class ParseAPI: NSObject {
             onCompletion(tune: nil, error: error)
             
         }
-        
 
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    func fetchAndSaveTwitterUser(user: PFUser) {
+        if PFTwitterUtils.isLinkedWithUser(user) {
+            let screenName = PFTwitterUtils.twitter()?.screenName
+            let requestString = ("https://api.twitter.com/1.1/users/show.json?screen_name=" + screenName!)
+            
+            let verify: NSURL = NSURL(string: requestString)!
+            let request: NSMutableURLRequest = NSMutableURLRequest(URL: verify)
+            PFTwitterUtils.twitter()?.signRequest(request)
+            
+            let sess = NSURLSession.sharedSession()
+            sess.dataTaskWithRequest(request, completionHandler: {(data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+                dispatch_async(dispatch_get_main_queue()) {
+                    if let error = error {
+                        print("error requesting twitter data")
+                        return
+                    }
+                    else {
+                        do {
+                            let result = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
+                            let names = result.objectForKey("name") as! String
+                            PFUser.currentUser()?.setObject(names, forKey: "username")
+                            
+                            let screenName = result.objectForKey("screen_name") as! String
+                            PFUser.currentUser()?.setObject(screenName, forKey: "screenName")
+                            
+                            let urlString = result.objectForKey("profile_image_url_https") as! String
+                            PFUser.currentUser()?.setObject(urlString, forKey: "profileImageUrl")
+                      
+                            /*let hiResUrlString = urlString.stringByReplacingOccurrencesOfString("_normal", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+                            print("twitter: \(hiResUrlString)")*/
+                            
+                            let description = result.objectForKey("description") as! String
+                            PFUser.currentUser()?.setObject(description, forKey: "tagLine")
+                            
+                            PFUser.currentUser()?.saveInBackground()
+
+                        } catch {
+                            print("exception getting twitter data")
+                        }
+                    }
+                }
+            }).resume()
+
+        }
+    }
 }

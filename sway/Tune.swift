@@ -30,7 +30,10 @@ class Tune: NSObject, Composition {
         replayCount = object["replays"] as? Int
         lastModified = object["updatedAt"] as? NSDate
         originator = object["originator"] as? PFUser
+        
+        let originatorUser = User(object: originator!)
         tuneProfileImageUrl = originator?.objectForKey("profileImageUrl") as? String
+        
         let audioData = object["audioData"] as? PFFile
         if let audioUrlString = audioData?.url {
             audioUrl = NSURL(string: audioUrlString)

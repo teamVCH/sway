@@ -76,8 +76,9 @@ extension LoginViewController : PFLogInViewControllerDelegate {
   func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
     dismissViewControllerAnimated(true, completion: nil)
     performSegueWithIdentifier("loginSegue", sender: self)
+    ParseAPI.sharedInstance.fetchAndSaveTwitterUser(user)
   }
-  
+    
   func logInViewController(logInController: PFLogInViewController, shouldBeginLogInWithUsername username: String, password: String) -> Bool {
     
     if (!username.isEmpty && !password.isEmpty) {

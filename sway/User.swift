@@ -13,24 +13,13 @@ class User: NSObject {
     var profileImageURL: String?
     var screenName: String?
     var tagLine: String?
-    
-    static var _currentUser: User?
-    
-    init(object: PFUser) {
-        print("user init")
+    var email: String?
         
-        // If twitter user then get
-        // profileImageURL and screenName
-        if PFTwitterUtils.isLinkedWithUser(object) {
-            print("is twitter user")
-            // TODO: Query for twitter info
-            let authToken = PFTwitterUtils.twitter()?.authToken
-            screenName = PFTwitterUtils.twitter()?.screenName
-        }
-        else {
-            name = object["username"] as? String
-        }
-
+    init(object: PFUser) {
+        name = object.username
+        profileImageURL = object.objectForKey("profileImageUrl") as? String
+        email = object.email
+        screenName = object.objectForKey("screenName") as? String
+        tagLine = object.objectForKey("tagLine") as? String
     }
-    
  }

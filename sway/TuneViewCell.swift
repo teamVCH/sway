@@ -39,6 +39,14 @@ class TuneViewCell: UITableViewCell {
             }
             likeCount.text = "\(tune.likeCount!)"
             collabCount.text = "\(tune.collaboratorCount!)"
+            
+            // TODO: fetch profile image if needed for this view
+            /*if let tuneProfileImageUrl = tune.tuneProfileImageUrl {
+                let profilePhotoUrl = NSURL(string: tuneProfileImageUrl)
+                let imageData = NSData(contentsOfURL: profilePhotoUrl!)
+                let userProfileImage = UIImage(data:imageData!)
+                userButton.imageView?.image = userProfileImage
+            }*/
         }
     }
     
