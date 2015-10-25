@@ -59,4 +59,60 @@ class ParseAPI: NSObject {
         let tunes = Tune.initArray(recordings!)
         onCompletion(tunes: tunes, error: nil)
     }
+    
+    func publishRecording(user: PFUser?, recording: Recording, waveformImagePath: String, onCompletion: (tune: Tune?, error: NSError?) -> Void) {
+
+        let user = user ?? PFUser.currentUser()
+        
+        if let audioUrl = recording.getAudioUrl(.Bounced) {
+            if let data = recording.readFromUrl(audioUrl) {
+
+                let tune = PFObject(className: "Recordings")
+                tune.setValue(recording.title, forKey: "title")
+                tune.setValue(user, forKey: "originator")
+                tune.setValue("Original", forKey: "type")
+                tune.setValue(PFFile(name: audioUrl.lastPathComponent, data: data), forKey: "audioData")
+                try! tune.setValue(PFFile(name: "waveform.png", contentsAtPath: waveformImagePath), forKey: "waveform")
+                tune.setValue(recording.length, forKey: "length")
+                tune.setValue(1, forKey: "replays")
+                tune.saveInBackgroundWithBlock { (success, error ) -> Void in
+                    print("Recording published: \(success)")
+                    if success {
+                        let query = PFQuery(className: "Recordings")
+                        query.getObjectInBackgroundWithId(tune.objectId!) {
+                            (tune: PFObject?, error: NSError?) -> Void in
+                            if let tune = tune {
+                                onCompletion(tune: Tune(object: tune), error: error)
+                            } else {
+                                onCompletion(tune: nil, error: error)
+                            }
+                        }
+                    } else {
+                        onCompletion(tune: nil, error: error)
+                    }
+                }
+                
+            } else {
+                let error = NSError(domain: "sway", code: 123, userInfo: ["message" : "Unable to read audio data from \(audioUrl)"])
+                onCompletion(tune: nil, error: error)
+            }
+        } else {
+            let error = NSError(domain: "sway", code: 123, userInfo: ["message" : "Unable to get URL for bounced audio"])
+            onCompletion(tune: nil, error: error)
+            
+        }
+        
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

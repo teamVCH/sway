@@ -34,7 +34,9 @@ class TuneViewCell: UITableViewCell {
     var tune : Tune! {
         didSet{
             setComposition(tune)
-            replayCount.text = "\(tune.replayCount!)"
+            if let replays = tune.replayCount {
+                replayCount.text = "\(replays)"
+            }
             likeCount.text = "\(tune.likeCount!)"
             collabCount.text = "\(tune.collaboratorCount!)"
         }

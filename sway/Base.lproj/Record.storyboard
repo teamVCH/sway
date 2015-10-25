@@ -88,7 +88,7 @@
                                 </segments>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9d-yC-SWl">
-                                <rect key="frame" x="0.0" y="253" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="203" width="320" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZs-az-d9Q">
                                         <rect key="frame" x="16" y="-1" width="36.5" height="31"/>
@@ -114,14 +114,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1J-wA-MFs" customClass="SCWaveformView">
-                                <rect key="frame" x="10" y="118" width="300" height="125"/>
+                                <rect key="frame" x="10" y="118" width="300" height="75"/>
                                 <color key="backgroundColor" red="0.97851810103375425" green="0.97727654480795534" blue="0.99896343954444444" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="125" id="kFT-xk-5XG"/>
+                                    <constraint firstAttribute="height" constant="75" id="kFT-xk-5XG"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MtI-lh-OrT">
-                                <rect key="frame" x="8" y="291" width="304" height="72"/>
+                                <rect key="frame" x="8" y="241" width="304" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="1eW-vt-zAh"/>
                                 </constraints>
@@ -129,7 +129,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="edo-io-abF">
-                                <rect key="frame" x="64" y="371" width="191" height="29"/>
+                                <rect key="frame" x="64" y="321" width="191" height="29"/>
                                 <segments>
                                     <segment title="Content Tags"/>
                                     <segment title="Needs Tags"/>
@@ -139,7 +139,7 @@
                                 </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OeG-QD-XKr">
-                                <rect key="frame" x="8" y="407" width="304" height="153"/>
+                                <rect key="frame" x="8" y="357" width="304" height="203"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="riM-ms-2BA">
                                     <size key="itemSize" width="43" height="23"/>

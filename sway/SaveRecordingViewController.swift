@@ -28,6 +28,8 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
     var token: dispatch_once_t = 0
     var sizingCell: TagCell?
     
+    var waveformImagePath: String?
+    
     let xib = UINib(nibName: tagCell, bundle: nil)
     
     // Retreive the managedObjectContext from AppDelegate
@@ -74,7 +76,7 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
     
     override func viewDidAppear(animated: Bool) {
         let waveformImage = SaveRecordingViewController.getImageFromView(waveformView)
-        SaveRecordingViewController.saveImage(waveformImage, fileName: "waveform.png")
+        waveformImagePath = SaveRecordingViewController.saveImage(waveformImage, fileName: "waveform.png")
         
     }
     
@@ -125,11 +127,13 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         return screenShot
     }
     
-    static func saveImage(image: UIImage, fileName: String) {
+    static func saveImage(image: UIImage, fileName: String) -> String {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         let destinationPath = (documentsPath as AnyObject).stringByAppendingPathComponent(fileName)
         print("\(destinationPath)")
         UIImagePNGRepresentation(image)!.writeToFile(destinationPath, atomically: true)
+        return destinationPath
+        
     }
 
     
@@ -143,12 +147,23 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
             }
             
             recording.lastModified = NSDate()
-            recording.title = titleField.text ?? "Untitled"
+            if let title = titleField.text {
+                recording.title = title
+            } else {
+                recording.title = "Untitled"
+            }
+            
             recording.tags = tagSet
             recording.cleanup()
             
             if saveTypeControl.selectedSegmentIndex == 0 {
                 recording.publishedDate = NSDate()
+                ParseAPI.sharedInstance.publishRecording(nil, recording: recording, waveformImagePath: waveformImagePath!, onCompletion: { (tune, error) -> Void in
+                    print("completion")
+                    
+                })
+                
+                
             } else {
                 // draft
                 
