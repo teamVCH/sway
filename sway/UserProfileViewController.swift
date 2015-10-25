@@ -96,6 +96,8 @@ class PublishedTunesUserProfileViewControllerDelegate: UserProfileViewController
     
     func setComposition(cell: TuneViewCell, indexPath: NSIndexPath) {
         cell.tune = published[indexPath.row]
+        cell.userButton.hidden = true
+        cell.accessoryType = UITableViewCellAccessoryType.None
     }
     
     func deleteComposition(indexPath: NSIndexPath) {

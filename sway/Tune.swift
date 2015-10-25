@@ -25,7 +25,7 @@ class Tune: NSObject, Composition {
     var audioUrl: NSURL? = nil
     
     init(object: PFObject) {
-        id = object["objectId"] as? String
+        id = object.objectId! as? String
         title = object["title"] as? String
         replayCount = object["replays"] as? Int
         lastModified = object["updatedAt"] as? NSDate
