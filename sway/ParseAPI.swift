@@ -12,7 +12,6 @@ class ParseAPI: NSObject {
     func getAllRecordings(onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let query = PFQuery(className:"Recordings")
         query.includeKey("originator")
-        query.includeKey("tags")
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -27,7 +26,7 @@ class ParseAPI: NSObject {
         }
     }
   
-    func getRecordingsWithTagNames(tagNames: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
+  /*  func getRecordingsWithTagNames(tagNames: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let tagQuery = PFQuery(className: "Tags")
         tagQuery.whereKey("name", containedIn:tagNames)
         tagQuery.findObjectsInBackgroundWithBlock({ (tags: [PFObject]?, error: NSError?) -> Void in
@@ -50,12 +49,12 @@ class ParseAPI: NSObject {
             }
         })
     }
+*/
     
     
     func getRecordings(recordingIds: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let query = PFQuery(className:"Recordings")
         query.includeKey("originator")
-        query.includeKey("tags")
         query.whereKey("objectId", containedIn: recordingIds)
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -73,7 +72,6 @@ class ParseAPI: NSObject {
     func getRecordingsForUser(user: PFUser, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let query = PFQuery(className:"Recordings")
         query.includeKey("originator")
-        query.includeKey("tags")
         query.whereKey("originator", equalTo: user)
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {

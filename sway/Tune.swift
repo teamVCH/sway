@@ -17,7 +17,7 @@ class Tune: NSObject, Composition {
     var collaboratorCount: Int? = 0
     var length : Double? = 0
     let originator: PFUser?
-    let tagNames: [String]? = []
+    var tagNames: [String]? = []
     let lastModified: NSDate?
     let tuneProfileImageUrl : String?
     let waveformImageUrl: NSURL?
@@ -49,12 +49,7 @@ class Tune: NSObject, Composition {
         }
         
         length = object["length"] as? Double
-        if let tags = object["tags"] as? [PFObject] {
-            for tag in tags {
-                let tagName = tag.objectForKey("name") as! String
-                tagNames?.append(tagName)
-            }
-        }
+        tagNames = object["tags"] as? [String]
         
         let waveform = object["waveform"] as? PFFile
         if let waveformUrlString = waveform?.url {
