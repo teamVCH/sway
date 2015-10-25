@@ -9,52 +9,64 @@
 import UIKit
 import CoreData
 
-class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SaveRecordingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var tableView: UITableView!
+    let kHorizontalInsets: CGFloat = 3.0
+    let kVerticalInsets: CGFloat = 5.0
+    
     @IBOutlet weak var saveTypeControl: UISegmentedControl!
     @IBOutlet weak var titleField: UITextField!
-    @IBOutlet weak var tagField: UITextField!
-    @IBOutlet weak var addTagButton: UIButton!
     @IBOutlet weak var waveformView: SCWaveformView!
+    @IBOutlet weak var tagsTextView: UITextView!
+    @IBOutlet weak var tagsTypeControl: UISegmentedControl!
+    @IBOutlet weak var tagsCollectionView: UICollectionView!
     
     var recording: Recording!
-    var tags = [RecordingTag]()
+    var tags : [[String:RecordingTag]] = [[:], [:]]
+    
+    var defaultTags = [String]()
+    var token: dispatch_once_t = 0
+    var sizingCell: TagCell?
+    
+    let xib = UINib(nibName: tagCell, bundle: nil)
     
     // Retreive the managedObjectContext from AppDelegate
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        defaultTags.appendContentsOf(defaultPartTags)
+        defaultTags.appendContentsOf(defaultInstrumentTags)
+        defaultTags.appendContentsOf(defaultFeelTags)
         
-        tableView.delegate = self
-        tableView.dataSource = self
-
-        // Do any additional setup after loading the view.
+        tagsCollectionView.allowsMultipleSelection = true
+        tagsCollectionView.registerNib(xib, forCellWithReuseIdentifier: tagCell)
+        tagsCollectionView.dataSource = self
+        tagsCollectionView.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
         recording.bounce(false, completion: { (bouncedAudioUrl: NSURL?, status: AVAssetExportSessionStatus?, error: NSError?) -> Void in
             if let bouncedAudioUrl = bouncedAudioUrl {
-                
                 dispatch_async(dispatch_get_main_queue(),{
                     self.waveformView.asset = AVAsset(URL: bouncedAudioUrl)
                     self.setupWaveformView()
-
                     self.waveformView.layoutIfNeeded()
-                    
-                    
                 })
-
             }
-            
         })
+
         if let title = recording.title {
             titleField.text = title
         }
+        
         if let tags = recording.tags {
             for tag in tags {
-                self.tags.append(tag as! RecordingTag)
+                let rTag = tag as! RecordingTag
+                let baseTag = rTag.baseTag!
+                print("baseTag: \(baseTag)")
+                let index = rTag.isNeedsTag ? 1 : 0
+                self.tags[index][baseTag] = rTag
             }
         }
         
@@ -65,6 +77,29 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
         SaveRecordingViewController.saveImage(waveformImage, fileName: "waveform.png")
         
     }
+    
+    private func currentTags() -> [String:RecordingTag] {
+        return tags[tagsTypeControl.selectedSegmentIndex]
+        
+    }
+    
+    private func removeTag(tag: String) {
+        let rTag: RecordingTag = tags[tagsTypeControl.selectedSegmentIndex][tag]!
+        managedObjectContext.delete(rTag)
+        tags[tagsTypeControl.selectedSegmentIndex].removeValueForKey(tag)
+    }
+    
+    private func addTag(tag: String) {
+        let rTag = NSEntityDescription.insertNewObjectForEntityForName(recordingTagEntityName, inManagedObjectContext: managedObjectContext) as! RecordingTag
+        if tagsTypeControl.selectedSegmentIndex == 1 {
+            rTag.tag = "\(needsTagPrefix)_\(tag)"
+        } else {
+            rTag.tag = tag
+        }
+        
+        tags[tagsTypeControl.selectedSegmentIndex][tag] = rTag
+    }
+    
     
     private func setupWaveformView() {
         // Setting the waveform colors
@@ -96,28 +131,20 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
         print("\(destinationPath)")
         UIImagePNGRepresentation(image)!.writeToFile(destinationPath, atomically: true)
     }
-    
-    
-    @IBAction func onTapAdd(sender: AnyObject) {
-        if let tag = tagField.text {
-            let recordingTag = NSEntityDescription.insertNewObjectForEntityForName(recordingTagEntityName, inManagedObjectContext: managedObjectContext) as! RecordingTag
-            recordingTag.tag = tag
-            
-            tags.append(recordingTag)
-            tableView.reloadData()
-        }
-    }
+
     
     @IBAction func onTapDone(sender: UIBarButtonItem) {
         do {
+            var tagSet = Set<RecordingTag>()
+            for index in 0...1 {
+                for rTag in tags[index].values {
+                    tagSet.insert(rTag)
+                }
+            }
+            
             recording.lastModified = NSDate()
             recording.title = titleField.text ?? "Untitled"
-            
-            
-            recording.tags = Set(tags)
-            
-            
-            
+            recording.tags = tagSet
             recording.cleanup()
             
             if saveTypeControl.selectedSegmentIndex == 0 {
@@ -138,24 +165,68 @@ class SaveRecordingViewController: UIViewController, UITableViewDelegate, UITabl
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tags.count
+    @IBAction func onChangeTagType(sender: UISegmentedControl) {
+        tagsCollectionView.reloadData()
+    }
+    // MARK: - UICollectionViewDataSource
+    
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return defaultTags.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(tagCell, forIndexPath: indexPath) as! TagCell
-        cell.tagLabel.text = tags[indexPath.row].tag!
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(tagCell, forIndexPath: indexPath) as! TagCell
+        let tag = defaultTags[indexPath.item]
+        cell.configCell(tag, selected: currentTags().keys.contains(tag))
         return cell
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            tags.removeAtIndex(indexPath.row)
-            tableView.beginUpdates()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            tableView.endUpdates()
+    // MARK: - UICollectionViewFlowLayout Delegate
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+
+        dispatch_once(&token) {
+            self.sizingCell = self.xib.instantiateWithOwner(nil, options: nil)[0] as? TagCell
         }
+        
+        sizingCell!.configCell(defaultTags[indexPath.item], selected: false)
+        sizingCell!.setNeedsLayout()
+        sizingCell!.layoutIfNeeded()
+        var size: CGSize = sizingCell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        size.height = size.height + 1.0
+        return size
     }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(kVerticalInsets, kHorizontalInsets, kVerticalInsets, kHorizontalInsets)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return kHorizontalInsets
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return kVerticalInsets
+    }
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let tag = defaultTags[indexPath.item]
+        addTag(tag)
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagCell
+        cell.backgroundColor = tagCellSelectedColor
+        
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        let tag = defaultTags[indexPath.item]
+        removeTag(tag)
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagCell
+        cell.backgroundColor = tagCellDeselectedColor
+        
+        
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

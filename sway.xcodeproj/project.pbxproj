@@ -24,12 +24,13 @@
 		2A6A234B1BD40E9000ED0706 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A234A1BD40E9000ED0706 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		6800F9631BD6AAD600453AFF /* SaveRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6800F9621BD6AAD600453AFF /* SaveRecordingViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		6800F9661BD6AC0A00453AFF /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6800F9641BD6AC0A00453AFF /* Record.storyboard */; settings = {ASSET_TAGS = (); }; };
-		6800F9681BD6B86B00453AFF /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6800F9671BD6B86B00453AFF /* TagCell.swift */; settings = {ASSET_TAGS = (); }; };
 		680A74431BD4AC6500D7D605 /* sway.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 680A74411BD4AC6500D7D605 /* sway.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		680A744A1BD4B14900D7D605 /* Recording+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74481BD4B14900D7D605 /* Recording+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		680A744B1BD4B14900D7D605 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74491BD4B14900D7D605 /* Recording.swift */; settings = {ASSET_TAGS = (); }; };
 		680A744F1BD4C4C400D7D605 /* TuneViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 680A744D1BD4C4C400D7D605 /* TuneViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		683C58B71BD42D2700CFECFF /* simple-drum-beat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */; settings = {ASSET_TAGS = (); }; };
+		6875FBBC1BDC179E00DBB6F9 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */; settings = {ASSET_TAGS = (); }; };
+		6875FBBD1BDC179E00DBB6F9 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */; settings = {ASSET_TAGS = (); }; };
 		68F4258D1BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		68F4258E1BDAD96F00AED872 /* RecordingTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258A1BDAD96F00AED872 /* RecordingTag.swift */; settings = {ASSET_TAGS = (); }; };
 		68F425901BDB026900AED872 /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258F1BDB026900AED872 /* Composition.swift */; settings = {ASSET_TAGS = (); }; };
@@ -80,12 +81,13 @@
 		2A6A234A1BD40E9000ED0706 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6800F9621BD6AAD600453AFF /* SaveRecordingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveRecordingViewController.swift; sourceTree = "<group>"; };
 		6800F9651BD6AC0A00453AFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Record.storyboard; sourceTree = "<group>"; };
-		6800F9671BD6B86B00453AFF /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		680A74421BD4AC6500D7D605 /* sway.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sway.xcdatamodel; sourceTree = "<group>"; };
 		680A74481BD4B14900D7D605 /* Recording+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recording+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		680A74491BD4B14900D7D605 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		680A744D1BD4C4C400D7D605 /* TuneViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TuneViewCell.xib; sourceTree = "<group>"; };
 		683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "simple-drum-beat.wav"; sourceTree = "<group>"; };
+		6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
 		68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecordingTag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		68F4258A1BDAD96F00AED872 /* RecordingTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingTag.swift; sourceTree = "<group>"; };
 		68F4258F1BDB026900AED872 /* Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
@@ -262,7 +264,8 @@
 				2A6A23461BD3397800ED0706 /* RecordingControlView.xib */,
 				2A6A23311BD0AA2800ED0706 /* TuneViewCell.swift */,
 				680A744D1BD4C4C400D7D605 /* TuneViewCell.xib */,
-				6800F9671BD6B86B00453AFF /* TagCell.swift */,
+				6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */,
+				6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				680A744F1BD4C4C400D7D605 /* TuneViewCell.xib in Resources */,
 				F1E1E8831BD6EBD600AA5D6A /* Info-OSX.plist in Resources */,
 				F1E1E8821BD6EBD600AA5D6A /* Info-iOS.plist in Resources */,
+				6875FBBD1BDC179E00DBB6F9 /* TagCell.xib in Resources */,
 				2A6A23261BD095A800ED0706 /* LaunchScreen.storyboard in Resources */,
 				6800F9661BD6AC0A00453AFF /* Record.storyboard in Resources */,
 				F1E1E8841BD6EBD600AA5D6A /* Info-watchOS.plist in Resources */,
@@ -397,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6875FBBC1BDC179E00DBB6F9 /* TagCell.swift in Sources */,
 				2A6A23451BD3391800ED0706 /* RecordingControlView.swift in Sources */,
 				680A744A1BD4B14900D7D605 /* Recording+CoreDataProperties.swift in Sources */,
 				68F4258D1BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift in Sources */,
@@ -412,7 +417,6 @@
 				2A6A23321BD0AA2800ED0706 /* TuneViewCell.swift in Sources */,
 				68F4258E1BDAD96F00AED872 /* RecordingTag.swift in Sources */,
 				680A74431BD4AC6500D7D605 /* sway.xcdatamodeld in Sources */,
-				6800F9681BD6B86B00453AFF /* TagCell.swift in Sources */,
 				2A6A23391BD2FE4200ED0706 /* RecordViewController.swift in Sources */,
 				2A6A234B1BD40E9000ED0706 /* User.swift in Sources */,
 				F1A5F8FF1BDB20FC00570831 /* ParseAPI.swift in Sources */,

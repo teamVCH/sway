@@ -19,7 +19,6 @@ enum AudioTrack {
     case Bounced
 }
 
-
 class Recording: NSManagedObject, Composition {
     
     var audioPaths = Set<String>()
@@ -60,7 +59,6 @@ class Recording: NSManagedObject, Composition {
         return array
     }()
     
-    
     func getAudioUrl(audioTrack: AudioTrack, create: Bool = false) -> NSURL? {
         if let audioPath = getAudioPath(audioTrack) {
             return baseUrl.URLByAppendingPathComponent(audioPath)
@@ -78,7 +76,6 @@ class Recording: NSManagedObject, Composition {
         setAudioUrl(audioTrack, audioUrl: audioUrl)
         return audioUrl
     }
-    
     
     func setAudioUrl(audioTrack: AudioTrack, audioUrl: NSURL?) {
         if let audioUrl = audioUrl {
@@ -117,8 +114,6 @@ class Recording: NSManagedObject, Composition {
         }
     }
     
-    
-    
     private func createAudioUrl(audioTrack: AudioTrack) -> NSURL {
         let uniqueId = NSProcessInfo.processInfo().globallyUniqueString
         let uniqueFileName = "\(audioTrack)_\(uniqueId).\(defaultAudioExtension)"
@@ -142,10 +137,6 @@ class Recording: NSManagedObject, Composition {
             case .Bounced: bouncedAudioPath = audioPath
         }
     }
-    
-
-
-    
 
     func bounce(updateWorkingAudio: Bool, completion: (NSURL?, AVAssetExportSessionStatus?, NSError?) -> Void) {
         if let recordingAudioUrl = getAudioUrl(.Recording, create: false) {
@@ -187,10 +178,6 @@ class Recording: NSManagedObject, Composition {
     }
     
 
-    
-    
-    
-    
     func writeToUrl(outputUrl: NSURL, data: NSData) -> Bool {
         return data.writeToURL(outputUrl, atomically: true)
     }
@@ -204,7 +191,6 @@ class Recording: NSManagedObject, Composition {
         }
     }
 
-    
     static func formatTime(interval: Double, includeMs: Bool) -> String {
         let ti = NSInteger(interval)
         let ms = Int((interval % 1) * 1000)
@@ -216,8 +202,5 @@ class Recording: NSManagedObject, Composition {
             return String(format: "%0.2d:%0.2d", minutes, seconds)
         }
     }
-    
-    
-    
     
 }

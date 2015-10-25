@@ -10,6 +10,8 @@ import UIKit
 
 let tuneViewCell = "TuneViewCell"
 
+let formatter = NSDateComponentsFormatter()
+
 class TuneViewCell: UITableViewCell {
 
     @IBOutlet weak var cellView: UIView!
@@ -47,8 +49,6 @@ class TuneViewCell: UITableViewCell {
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-    
-
     
     func setComposition(composition: Composition) {
         let title = composition.title != nil ? composition.title! : "Untitled"
@@ -96,7 +96,6 @@ class TuneViewCell: UITableViewCell {
     
     // TODO: cache formatter
     func formatTimeElapsed(sinceDate: NSDate) -> String {
-        let formatter = NSDateComponentsFormatter()
         formatter.unitsStyle =  NSDateComponentsFormatterUnitsStyle.Abbreviated
         formatter.collapsesLargestUnit = true
         formatter.maximumUnitCount = 1
