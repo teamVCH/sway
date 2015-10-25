@@ -149,7 +149,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         user = User(object: PFUser.currentUser()!) // TODO: always current user for now
         displayNameLabel.text = user!.name
-        userNameLabel.text = "@\(user!.screenName!)"
+        if let screenName = user!.screenName {
+            userNameLabel.text = "@\(screenName)"
+        }
         userInstrumentsLabel.text = "Instrument1, Instrument2" // TODO
         userDescriptionLabel.text = user!.tagLine
     }
