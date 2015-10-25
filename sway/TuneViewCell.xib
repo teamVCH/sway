@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="287" height="75"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="My5-5F-0Vp">
-                                <rect key="frame" x="50" y="31.5" width="28" height="16.5"/>
+                                <rect key="frame" x="50" y="31" width="28" height="16.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="#happy #lovesong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lh0-MI-w6q">
-                                <rect key="frame" x="50" y="52.5" width="104" height="14.5"/>
+                                <rect key="frame" x="50" y="52" width="104" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -46,10 +46,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ty6-p2-KEh">
-                                <rect key="frame" x="86" y="27.5" width="201" height="24"/>
+                                <rect key="frame" x="86" y="27" width="201" height="24"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="replay" translatesAutoresizingMaskIntoConstraints="NO" id="ygm-a7-aXu">
-                                        <rect key="frame" x="2" y="1.5" width="20" height="20"/>
+                                        <rect key="frame" x="2" y="2" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="CY1-7b-bgg"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="Lmw-Sc-6Hm"/>
@@ -58,13 +58,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="53" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9h-Hb-R31">
-                                        <rect key="frame" x="23" y="4.5" width="15" height="14.5"/>
+                                        <rect key="frame" x="23" y="4" width="15" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collaborate" translatesAutoresizingMaskIntoConstraints="NO" id="gB1-q3-ujg">
-                                        <rect key="frame" x="76" y="2.5" width="20" height="20"/>
+                                        <rect key="frame" x="76" y="2" width="20" height="20"/>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="02F-rv-XRh"/>
@@ -76,7 +76,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCf-Hz-rI5">
-                                        <rect key="frame" x="98" y="5.5" width="8" height="14.5"/>
+                                        <rect key="frame" x="98" y="5" width="8" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -91,7 +91,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Vu-9Hi">
-                                        <rect key="frame" x="59" y="4.5" width="13.5" height="14.5"/>
+                                        <rect key="frame" x="59" y="4" width="13.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -120,9 +120,6 @@
                                     <constraint firstAttribute="height" constant="45" id="Atd-MW-GQg"/>
                                     <constraint firstAttribute="width" constant="45" id="u8V-Uv-rHT"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="aaN-Te-SUa" appends="YES" id="HJa-Dd-EVD"/>
-                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -173,11 +170,6 @@
                 <outlet property="waveFormView" destination="EvL-PD-Foc" id="gGG-EG-Mdx"/>
             </connections>
         </tableViewCell>
-        <tapGestureRecognizer id="aaN-Te-SUa">
-            <connections>
-                <action selector="userImageTapped:" destination="NsA-Qu-O5h" id="wqy-e0-6Hy"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="UIBarButtonPause_2x" width="30" height="37"/>
