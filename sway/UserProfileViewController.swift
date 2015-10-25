@@ -161,8 +161,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             let imageData = NSData(contentsOfURL: NSURL(string: profileImageUrl)!)
             let userProfileImage = UIImage(data:imageData!)
             profileImageView.image = userProfileImage
+            profileImageView.layer.cornerRadius = 36.5
+            profileImageView.clipsToBounds = true
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {

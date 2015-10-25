@@ -40,13 +40,15 @@ class TuneViewCell: UITableViewCell {
             likeCount.text = "\(tune.likeCount!)"
             collabCount.text = "\(tune.collaboratorCount!)"
             
-            // TODO: fetch profile image if needed for this view
-            /*if let tuneProfileImageUrl = tune.tuneProfileImageUrl {
-                let profilePhotoUrl = NSURL(string: tuneProfileImageUrl)
-                let imageData = NSData(contentsOfURL: profilePhotoUrl!)
+            if let url = tune.tuneProfileImageUrl {
+                let imageData = NSData(contentsOfURL: NSURL(string: url)!)
                 let userProfileImage = UIImage(data:imageData!)
-                userButton.imageView?.image = userProfileImage
-            }*/
+                userButton.setImage(userProfileImage, forState: UIControlState.Normal)
+                userButton.layer.cornerRadius = 24
+                userButton.clipsToBounds = true
+            } else {
+                userButton.setImage(UIImage(named: "profile"), forState: UIControlState.Normal)
+            }
         }
     }
     
