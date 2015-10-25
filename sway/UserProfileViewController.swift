@@ -15,7 +15,7 @@ protocol UserProfileViewControllerDelegate {
     
     var detailSegue: String {get}
     
-    func load()
+    func load(onCompletion: () -> ())
     func rowCount() -> Int
     func setComposition(cell: TuneViewCell, indexPath: NSIndexPath)
     func deleteComposition(indexPath: NSIndexPath)
@@ -28,17 +28,18 @@ class DraftRecordingsUserProfileViewControllerDelegate: UserProfileViewControlle
     let detailSegue = loadDraftSegue
     
     var drafts = [Recording]()
-
+    
     // Retreive the managedObjectContext from AppDelegate
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    func load() {
+    func load(onCompletion: () -> ()) {
         do {
             let fetchRequest = NSFetchRequest(entityName: recordingEntityName)
             fetchRequest.predicate = NSPredicate(format: "publishedDate == nil")
             if let fetchResults = try managedObjectContext.executeFetchRequest(fetchRequest) as? [Recording] {
                 print("Found \(fetchResults.count) drafts")
                 drafts = fetchResults
+                onCompletion()
             }
         } catch let error as NSError {
             print("Error loading drafts: \(error)")
@@ -75,21 +76,33 @@ class DraftRecordingsUserProfileViewControllerDelegate: UserProfileViewControlle
 class PublishedTunesUserProfileViewControllerDelegate: UserProfileViewControllerDelegate {
     
     let detailSegue = "showTuneDetail" // TODO
+    var published = [Tune]()
     
-    func load() {
-        // TODO
+    func load(onCompletion: () -> ()) {
+        ParseAPI.sharedInstance.getRecordingsForUser(PFUser.currentUser()!) { (tunes: [Tune]?, error: NSError?) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                if tunes != nil {
+                    self.published = tunes!
+                    onCompletion()
+                }
+            })
+        }
     }
     
     func rowCount() -> Int {
-        return 0 // TODO
+        return published.count
     }
     
     func setComposition(cell: TuneViewCell, indexPath: NSIndexPath) {
-        // TODO
+        cell.tune = published[indexPath.row]
     }
     
     func deleteComposition(indexPath: NSIndexPath) {
-        // TODO
+        ParseAPI.sharedInstance.deleteRecording(published[indexPath.row]) { (error) -> Void in
+            if (error != nil) {
+                print("error while deleting: \(error)")
+            }
+        }
     }
     
     func prepareForSegue(destinationViewController: UIViewController, indexPath: NSIndexPath) {
@@ -118,9 +131,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     var selectedIndex: NSIndexPath?
     var selectedType: Int = 0
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("user profile load")
         tableView.registerNib(UINib(nibName: tuneViewCell, bundle: nil), forCellReuseIdentifier: tuneViewCell)
 
         tableView.delegate = self
@@ -129,22 +144,24 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 160.0
         
-        // TODO: set from user object
-        displayNameLabel.text = "Display Name"
-        userNameLabel.text = "@username"
-        userInstrumentsLabel.text = "Instrument1, Instrument2, Instrument3"
-        userDescriptionLabel.text = "A short message or description of the user"
+        user = User(object: PFUser.currentUser()!) // TODO: always current user for now
+        displayNameLabel.text = user!.name
+        userNameLabel.text = "@\(user!.screenName!)"
+        userInstrumentsLabel.text = "Instrument1, Instrument2" // TODO
+        userDescriptionLabel.text = user!.tagLine
     }
     
     override func viewWillAppear(animated: Bool) {
         typeControl.selectedSegmentIndex = selectedType
-        delegate().load()
-        tableView.reloadData()
+        delegate().load { () -> () in
+            self.tableView.reloadData()
+        }
     }
-    
+
     @IBAction func onSwitchType(sender: UISegmentedControl) {
-        delegate().load()
-        tableView.reloadData()
+        delegate().load { () -> () in
+            self.tableView.reloadData()
+        }
     }
     
     private func delegate() -> UserProfileViewControllerDelegate {
@@ -168,8 +185,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             delegate().deleteComposition(indexPath)
-            delegate().load()
-            tableView.reloadData()
+            delegate().load { () -> () in
+                self.tableView.reloadData()
+            }
         }
     }
     

@@ -10,6 +10,7 @@ import UIKit
 
 class Tune: NSObject, Composition {
     
+    var id: String?
     let title: String?
     var replayCount: Int? = 0
     var likeCount: Int? = 0
@@ -24,6 +25,7 @@ class Tune: NSObject, Composition {
     var audioUrl: NSURL? = nil
     
     init(object: PFObject) {
+        id = object["objectId"] as? String
         title = object["title"] as? String
         replayCount = object["replays"] as? Int
         lastModified = object["updatedAt"] as? NSDate

@@ -26,7 +26,7 @@ class ParseAPI: NSObject {
             }
         }
     }
-
+  
     func getRecordingsWithTagNames(tagNames: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let tagQuery = PFQuery(className: "Tags")
         tagQuery.whereKey("name", containedIn:tagNames)
@@ -51,13 +51,53 @@ class ParseAPI: NSObject {
         })
     }
     
-    func getPublishedRecordings(user: PFUser?, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
-        let user = user ?? PFUser.currentUser()
-        let recordings = user?.objectForKey("recordings") as? [PFObject]
-        
-        print("User has \(recordings!.count) published recordings.")
-        let tunes = Tune.initArray(recordings!)
-        onCompletion(tunes: tunes, error: nil)
+    
+    func getRecordings(recordingIds: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
+        let query = PFQuery(className:"Recordings")
+        query.includeKey("originator")
+        query.includeKey("tags")
+        query.whereKey("objectId", containedIn: recordingIds)
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                print("Successfully retrieved \(objects!.count) recordings.")
+                let tunes = Tune.initArray(objects!)
+                onCompletion(tunes: tunes, error: nil)
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+                onCompletion(tunes: nil, error: error)
+            }
+        }
+    }
+    
+    func getRecordingsForUser(user: PFUser, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
+        let query = PFQuery(className:"Recordings")
+        query.includeKey("originator")
+        query.includeKey("tags")
+        query.whereKey("originator", equalTo: user)
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                print("Successfully retrieved \(objects!.count) recordings.")
+                let tunes = Tune.initArray(objects!)
+                onCompletion(tunes: tunes, error: nil)
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+                onCompletion(tunes: nil, error: error)
+            }
+        }
+    }
+    
+    func deleteRecording(tune: Tune, onCompletion: (error: NSError?) -> Void) {
+        let query = PFQuery(className: "Recordings")
+        // TODO: Issue with tune.id not found
+        query.getObjectInBackgroundWithId(tune.id!) { (recording: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                recording?.deleteInBackgroundWithBlock({ (deleted: Bool, error: NSError?) -> Void in
+                    onCompletion(error: error)
+                })
+            }
+        }
     }
     
     func publishRecording(user: PFUser?, recording: Recording, waveformImagePath: String, onCompletion: (tune: Tune?, error: NSError?) -> Void) {
