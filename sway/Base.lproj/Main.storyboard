@@ -165,6 +165,7 @@
                         <outlet property="userInstrumentsLabel" destination="18Y-Yn-FjN" id="C2c-By-BUH"/>
                         <outlet property="userNameLabel" destination="Z7M-Hj-XAx" id="5wu-p7-6N5"/>
                         <segue destination="jEz-L9-uHD" kind="modal" identifier="loadDraftSegue" id="66j-kX-y09"/>
+                        <segue destination="E4S-Ni-YtX" kind="push" identifier="userToTuneDetailSegue" id="wYk-7r-5IJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xA6-NZ-sGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -189,7 +190,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tune Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztd-22-E83">
                                         <rect key="frame" x="8" y="8" width="222" height="23"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -332,6 +333,7 @@
         <image name="record" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="wYk-7r-5IJ"/>
         <segue reference="66j-kX-y09"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

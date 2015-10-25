@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 let loadDraftSegue = "loadDraftSegue"
+let userTuneDetailSegue = "userToTuneDetailSegue"
 
 protocol UserProfileViewControllerDelegate {
     
@@ -75,7 +76,7 @@ class DraftRecordingsUserProfileViewControllerDelegate: UserProfileViewControlle
 
 class PublishedTunesUserProfileViewControllerDelegate: UserProfileViewControllerDelegate {
     
-    let detailSegue = "showTuneDetail" // TODO
+    let detailSegue = userTuneDetailSegue
     var published = [Tune]()
     
     func load(onCompletion: () -> ()) {
@@ -106,10 +107,10 @@ class PublishedTunesUserProfileViewControllerDelegate: UserProfileViewController
     }
     
     func prepareForSegue(destinationViewController: UIViewController, indexPath: NSIndexPath) {
-        // TODO
+        if let tuneDetailViewController = destinationViewController as? TrackDetailViewController {
+            tuneDetailViewController.tune = published[indexPath.row]
+        }
     }
-    
-    
 }
 
 
