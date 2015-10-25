@@ -10,4 +10,5 @@ target 'sway' do
     pod 'FBSDKLoginKit'
     pod 'SCWaveformView'
     pod 'Waver'
+    pod 'AFNetworking'
 end

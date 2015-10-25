@@ -12,3 +12,5 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Waver/Waver.h>
 #import <SCWaveformView/SCWaveformView.h>
+#import <AFNetworking/AFNetworking.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>

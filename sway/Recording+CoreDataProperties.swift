@@ -22,5 +22,6 @@ extension Recording {
     @NSManaged var publishedDate: NSDate?
     @NSManaged var duration: NSNumber?
     @NSManaged var tags: NSSet?
-
+    @NSManaged var waveformImagePath: String?
+    
 }

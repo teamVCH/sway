@@ -31,6 +31,7 @@
 		683C58B71BD42D2700CFECFF /* simple-drum-beat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */; settings = {ASSET_TAGS = (); }; };
 		6875FBBC1BDC179E00DBB6F9 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */; settings = {ASSET_TAGS = (); }; };
 		6875FBBD1BDC179E00DBB6F9 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */; settings = {ASSET_TAGS = (); }; };
+		68D97E6E1BDD78A600E769F4 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		68F4258D1BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		68F4258E1BDAD96F00AED872 /* RecordingTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258A1BDAD96F00AED872 /* RecordingTag.swift */; settings = {ASSET_TAGS = (); }; };
 		68F425901BDB026900AED872 /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258F1BDB026900AED872 /* Composition.swift */; settings = {ASSET_TAGS = (); }; };
@@ -88,6 +89,7 @@
 		683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "simple-drum-beat.wav"; sourceTree = "<group>"; };
 		6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
+		68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecordingTag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		68F4258A1BDAD96F00AED872 /* RecordingTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingTag.swift; sourceTree = "<group>"; };
 		68F4258F1BDB026900AED872 /* Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				F102CE791BD243B3007281E2 /* ParseCredentials.plist */,
 				F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */,
 				680A74411BD4AC6500D7D605 /* sway.xcdatamodeld */,
+				68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */,
 			);
 			path = sway;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				2A6A231C1BD095A800ED0706 /* AppDelegate.swift in Sources */,
 				2A6A233B1BD2FE6000ED0706 /* UserProfileViewController.swift in Sources */,
 				680A744B1BD4B14900D7D605 /* Recording.swift in Sources */,
+				68D97E6E1BDD78A600E769F4 /* SwiftExtensions.swift in Sources */,
 				6800F9631BD6AAD600453AFF /* SaveRecordingViewController.swift in Sources */,
 				68F425901BDB026900AED872 /* Composition.swift in Sources */,
 				F1E1E8851BD6EBD600AA5D6A /* SwiftyJSON.swift in Sources */,

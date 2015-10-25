@@ -20,6 +20,7 @@ class Tune: NSObject, Composition {
     let tagNames: [String]? = []
     let lastModified: NSDate?
     let tuneProfileImageUrl : String?
+    let waveformImageUrl: NSURL?
     
     let isDraft = false // tunes are always public
     var audioUrl: NSURL? = nil
@@ -53,6 +54,13 @@ class Tune: NSObject, Composition {
                 let tagName = tag.objectForKey("name") as! String
                 tagNames?.append(tagName)
             }
+        }
+        
+        let waveform = object["waveform"] as? PFFile
+        if let waveformUrlString = waveform?.url {
+            waveformImageUrl = NSURL(string: waveformUrlString)
+        } else {
+            waveformImageUrl = nil
         }
         
     }

@@ -90,8 +90,9 @@ class TuneViewCell: UITableViewCell {
         tags.text = getTagsAsString(composition.tagNames)
 
         
-        // TODO: get waveform image
-        //waveFormView.image = ...
+        if let waveformImageUrl = composition.waveformImageUrl {
+            waveFormView.setImageURLWithFade(waveformImageUrl, alpha: 0.45, completion: nil)
+        }
         
     }
     

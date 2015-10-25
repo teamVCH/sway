@@ -18,6 +18,6 @@ protocol Composition {
     var audioUrl: NSURL? {get}
     var tagNames: [String]? {get}
     var lastModified: NSDate? {get}
-
+    var waveformImageUrl: NSURL? {get}
 
 }

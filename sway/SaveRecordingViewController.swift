@@ -28,8 +28,6 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
     var token: dispatch_once_t = 0
     var sizingCell: TagCell?
     
-    var waveformImagePath: String?
-    
     let xib = UINib(nibName: tagCell, bundle: nil)
     
     // Retreive the managedObjectContext from AppDelegate
@@ -76,8 +74,8 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
     
     override func viewDidAppear(animated: Bool) {
         let waveformImage = SaveRecordingViewController.getImageFromView(waveformView)
-        waveformImagePath = SaveRecordingViewController.saveImage(waveformImage, fileName: "waveform.png")
-        
+        let waveformUrl = recording.getAudioUrl(.Waveform, create: true)
+        SaveRecordingViewController.saveImage(waveformImage, fileUrl: waveformUrl!)
     }
     
     private func currentTags() -> [String:RecordingTag] {
@@ -127,13 +125,8 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         return screenShot
     }
     
-    static func saveImage(image: UIImage, fileName: String) -> String {
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        let destinationPath = (documentsPath as AnyObject).stringByAppendingPathComponent(fileName)
-        print("\(destinationPath)")
-        UIImagePNGRepresentation(image)!.writeToFile(destinationPath, atomically: true)
-        return destinationPath
-        
+    static func saveImage(image: UIImage, fileUrl: NSURL) {
+        UIImagePNGRepresentation(image)!.writeToURL(fileUrl, atomically: true)
     }
 
     
@@ -158,7 +151,7 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
             
             if saveTypeControl.selectedSegmentIndex == 0 {
                 recording.publishedDate = NSDate()
-                ParseAPI.sharedInstance.publishRecording(nil, recording: recording, waveformImagePath: waveformImagePath!, onCompletion: { (tune, error) -> Void in
+                ParseAPI.sharedInstance.publishRecording(nil, recording: recording, onCompletion: { (tune, error) -> Void in
                     print("completion")
                     
                 })

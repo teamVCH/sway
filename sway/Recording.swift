@@ -17,6 +17,7 @@ enum AudioTrack {
     case Backing
     case Recording
     case Bounced
+    case Waveform
 }
 
 class Recording: NSManagedObject, Composition {
@@ -45,6 +46,12 @@ class Recording: NSManagedObject, Composition {
         [unowned self] in
         return self.getAudioUrl(.Bounced, create: false)
     }()
+    
+    lazy var waveformImageUrl: NSURL? = {
+        [unowned self] in
+        return self.getAudioUrl(.Waveform, create: false)
+    }()
+    
     
     lazy var tagNames: [String]? = {
         [unowned self] in
@@ -99,6 +106,9 @@ class Recording: NSManagedObject, Composition {
                 if let bouncedAudioPath = bouncedAudioPath {
                     paths.remove(bouncedAudioPath)
                 }
+                if let waveformImagePath = waveformImagePath {
+                    paths.remove(waveformImagePath)
+                }
             }
             
             let fileManager = NSFileManager.defaultManager()
@@ -127,6 +137,7 @@ class Recording: NSManagedObject, Composition {
             case .Backing: return backingAudioPath
             case .Recording: return recordingAudioPath
             case .Bounced: return bouncedAudioPath
+            case .Waveform: return waveformImagePath
         }
     }
     
@@ -135,6 +146,7 @@ class Recording: NSManagedObject, Composition {
             case .Backing: backingAudioPath = audioPath
             case .Recording: recordingAudioPath = audioPath
             case .Bounced: bouncedAudioPath = audioPath
+            case .Waveform: waveformImagePath = audioPath
         }
     }
 

@@ -99,7 +99,7 @@ class ParseAPI: NSObject {
         }
     }
     
-    func publishRecording(user: PFUser?, recording: Recording, waveformImagePath: String, onCompletion: (tune: Tune?, error: NSError?) -> Void) {
+    func publishRecording(user: PFUser?, recording: Recording, onCompletion: (tune: Tune?, error: NSError?) -> Void) {
 
         let user = user ?? PFUser.currentUser()
         
@@ -111,7 +111,13 @@ class ParseAPI: NSObject {
                 tune.setValue(user, forKey: "originator")
                 tune.setValue("Original", forKey: "type")
                 tune.setValue(PFFile(name: audioUrl.lastPathComponent, data: data), forKey: "audioData")
-                try! tune.setValue(PFFile(name: "waveform.png", contentsAtPath: waveformImagePath), forKey: "waveform")
+                
+                if let waveformUrl = recording.waveformImageUrl {
+                    if let waveformData = recording.readFromUrl(waveformUrl) {
+                        tune.setValue(PFFile(name: waveformUrl.lastPathComponent, data: waveformData), forKey: "waveform")
+                    }
+                    
+                }
                 tune.setValue(recording.length, forKey: "length")
                 tune.setValue(1, forKey: "replays")
                 tune.saveInBackgroundWithBlock { (success, error ) -> Void in
