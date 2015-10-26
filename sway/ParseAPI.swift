@@ -12,6 +12,7 @@ class ParseAPI: NSObject {
     func getAllRecordings(onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let query = PFQuery(className:"Recordings")
         query.includeKey("originator")
+        query.orderByDescending("updatedAt")
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -73,6 +74,7 @@ class ParseAPI: NSObject {
         let query = PFQuery(className:"Recordings")
         query.includeKey("originator")
         query.whereKey("originator", equalTo: user)
+        query.orderByDescending("updatedAt")
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 print("Successfully retrieved \(objects!.count) recordings.")
