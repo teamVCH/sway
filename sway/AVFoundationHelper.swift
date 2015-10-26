@@ -7,13 +7,13 @@ let defaultBackingAudio = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForRe
 
 class AVFoundationHelper: NSObject {
     
-    let documentsFolderUrl: NSURL
+    //let documentsFolderUrl: NSURL
     
     init(completion: (allowed: Bool) -> ()) {
         AVFoundationHelper.initializeAudioSession(completion)
         //self.documentsFolderUrl = AVFoundationHelper.getDocumentsFolderUrl()!
-        self.documentsFolderUrl = NSURL(fileURLWithPath: AVFoundationHelper.createTempDirectory()!)
-        print(documentsFolderUrl)
+        //self.documentsFolderUrl = NSURL(fileURLWithPath: AVFoundationHelper.createTempDirectory()!)
+        //print(documentsFolderUrl)
     }
     
     static func initializeAudioSession(completion: (allowed: Bool) -> ()) {
@@ -37,20 +37,7 @@ class AVFoundationHelper: NSObject {
     
 
     
-    static func createTempDirectory() -> String? {
-        let fileManager = NSFileManager.defaultManager()
-        
-        let tempDirectoryTemplate = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent("sway")
-        do {
-            try fileManager.createDirectoryAtPath(tempDirectoryTemplate, withIntermediateDirectories: true, attributes: nil)
-            return tempDirectoryTemplate
-            
-        } catch let error as NSError {
-            print("Error creating temp folder: \(error)")
-            return nil
-        }
-        
-    }
+
     
 
     

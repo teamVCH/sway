@@ -90,6 +90,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return documentsFolderUrl
     }
     
+    static func createTempDirectory() -> NSURL? {
+        let fileManager = NSFileManager.defaultManager()
+        let tempDirectoryTemplate = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent("sway")
+        do {
+            try fileManager.createDirectoryAtPath(tempDirectoryTemplate, withIntermediateDirectories: true, attributes: nil)
+            return NSURL(fileURLWithPath: tempDirectoryTemplate)
+        } catch let error as NSError {
+            print("Error creating temp folder: \(error)")
+            return nil
+        }
+    }
+    
     
     
     // MARK: - Core Data stack

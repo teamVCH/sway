@@ -8,22 +8,73 @@
 
 import UIKit
 
-class TrackDetailViewController: UIViewController {
+class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
 
+    @IBOutlet weak var waveformView: WaveformView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var tune: Tune! {
-        didSet {
-        
-        }
-    }
+    @IBOutlet weak var publishedOnLabel: UILabel!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var originatorImageView: UIImageView!
     
+    
+    var tune: Tune!
+    
+    var audioPlayer: AVAudioPlayerExt?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if let tune = tune {
+            titleLabel.text = tune.title!
+            if let audioUrl = tune.audioUrl {
+                
+                tune.downloadAndCacheAudio({ (cachedUrl: NSURL?, error: NSError?) -> Void in
+                    do {
+                        try self.audioPlayer = AVAudioPlayerExt(contentsOfURL: cachedUrl!)
+                        self.audioPlayer!.delegate = self
+                        self.audioPlayer!.prepareToPlay()
+                    } catch let error as NSError {
+                        print("Error loading audio player: \(error)")
+                    }
+                    self.waveformView.audioUrl = cachedUrl!
+                })
+                
+                // TODO: use published date & format properly
+                if let date = tune.lastModified {
+                    publishedOnLabel.text = "Published on \(date)"
+                }
+                
+            }
+        }
+        
+    }
+    
+    @IBAction func onTapPlayPause(sender: UIButton) {
+        if let audioPlayer = audioPlayer {
+            if audioPlayer.playing {
+                audioPlayer.stop()
+                sender.selected = false
+            } else {
+                audioPlayer.play()
+                sender.selected = true
+            }
+        }
+    }
+    
+    func audioPlayerUpdateTime(player: AVAudioPlayer) {
+        waveformView.updateTime(audioPlayer!.currentTime)
+        
+    }
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        playButton.selected = false
+        
     }
 
     override func didReceiveMemoryWarning() {

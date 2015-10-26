@@ -102,8 +102,7 @@ class TuneViewCell: UITableViewCell {
         return tagString
     }
     
-    
-    // TODO: cache formatter
+
     func formatTimeElapsed(sinceDate: NSDate) -> String {
         formatter.unitsStyle =  NSDateComponentsFormatterUnitsStyle.Abbreviated
         formatter.collapsesLargestUnit = true

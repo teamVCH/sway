@@ -8,6 +8,8 @@
 
 import UIKit
 
+let tempDirectoryUrl = AppDelegate.createTempDirectory()!
+
 class Tune: NSObject, Composition {
     
     var id: String?
@@ -24,6 +26,8 @@ class Tune: NSObject, Composition {
     
     let isDraft = false // tunes are always public
     var audioUrl: NSURL? = nil
+    
+    var cachedAudioUrl: NSURL?
     
     init(object: PFObject) {
         id = object.objectId! as? String
@@ -68,4 +72,35 @@ class Tune: NSObject, Composition {
         return tunes
     }
 
+    func downloadAndCacheAudio(completion: (NSURL?, NSError?) -> Void) {
+        let request = NSURLRequest(URL: audioUrl!)
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let session = NSURLSession(configuration: config)
+        
+        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) in
+            if error != nil {
+                print("Fetch error: \(error)")
+                completion(nil, error)
+            } else if data != nil {
+                self.cachedAudioUrl = self.createTempUrl(self.audioUrl!)
+                data!.writeToURL(self.cachedAudioUrl!, atomically: true)
+                completion(self.cachedAudioUrl, nil)
+            } else {
+                print("NSURLSessionDataTask returned neither data nor error")
+                completion(nil, nil)
+            }
+        });
+        
+        task.resume()
+    }
+    
+    
+    private func createTempUrl(remoteUrl: NSURL) -> NSURL {
+        //let uniqueId = NSProcessInfo.processInfo().globallyUniqueString
+        // TODO: needs to be unique?
+        let uniqueFileName = remoteUrl.lastPathComponent
+        return tempDirectoryUrl.URLByAppendingPathComponent(uniqueFileName!)
+    }
+    
+    
 }

@@ -32,6 +32,7 @@
 		6875FBBC1BDC179E00DBB6F9 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */; settings = {ASSET_TAGS = (); }; };
 		6875FBBD1BDC179E00DBB6F9 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */; settings = {ASSET_TAGS = (); }; };
 		68D97E6E1BDD78A600E769F4 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		68D97E701BDD9ADE00E769F4 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D97E6F1BDD9ADE00E769F4 /* WaveformView.swift */; settings = {ASSET_TAGS = (); }; };
 		68F4258D1BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		68F4258E1BDAD96F00AED872 /* RecordingTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258A1BDAD96F00AED872 /* RecordingTag.swift */; settings = {ASSET_TAGS = (); }; };
 		68F425901BDB026900AED872 /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258F1BDB026900AED872 /* Composition.swift */; settings = {ASSET_TAGS = (); }; };
@@ -90,6 +91,7 @@
 		6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
 		68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
+		68D97E6F1BDD9ADE00E769F4 /* WaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
 		68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecordingTag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		68F4258A1BDAD96F00AED872 /* RecordingTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingTag.swift; sourceTree = "<group>"; };
 		68F4258F1BDB026900AED872 /* Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				680A744D1BD4C4C400D7D605 /* TuneViewCell.xib */,
 				6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */,
 				6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */,
+				68D97E6F1BDD9ADE00E769F4 /* WaveformView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 			files = (
 				6875FBBC1BDC179E00DBB6F9 /* TagCell.swift in Sources */,
 				2A6A23451BD3391800ED0706 /* RecordingControlView.swift in Sources */,
+				68D97E701BDD9ADE00E769F4 /* WaveformView.swift in Sources */,
 				680A744A1BD4B14900D7D605 /* Recording+CoreDataProperties.swift in Sources */,
 				68F4258D1BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift in Sources */,
 				2A6A231C1BD095A800ED0706 /* AppDelegate.swift in Sources */,
