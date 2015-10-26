@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import CoreData
+
+let collaborateSegue = "collaborateSegue"
+
+// Retreive the managedObjectContext from AppDelegate
+let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
 class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
 
@@ -91,14 +97,29 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     }
     
 
-    /*
-    // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let segueId = segue.identifier {
+            if segueId == collaborateSegue {
+                var recordViewController: RecordViewController!
+                if let _ = segue.destinationViewController as? UINavigationController {
+                    let destinationNavigationController = segue.destinationViewController as! UINavigationController
+                    recordViewController = destinationNavigationController.topViewController as! RecordViewController
+                } else {
+                    recordViewController = segue.destinationViewController as! RecordViewController
+                }
+                let recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
+                recording.isCollaboration = true
+                
+                let backingAudioUrl = recording.getAudioUrl(.Backing, create: true)
+                
+                try! NSFileManager.defaultManager().copyItemAtURL(tune.cachedAudioUrl!, toURL: backingAudioUrl!)
+
+                recordViewController.recording = recording
+            }
+        }
     }
-    */
 
 }
