@@ -38,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2237" y="432"/>
+            <point key="canvasLocation" x="1227" y="1122"/>
         </scene>
         <!--Profile-->
         <scene sceneID="SMD-B2-fK3">
@@ -171,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xA6-NZ-sGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2169" y="1172"/>
+            <point key="canvasLocation" x="2073" y="1122"/>
         </scene>
         <!--Track Detail View Controller-->
         <scene sceneID="Fjr-IQ-a5Z">
@@ -236,6 +236,9 @@
                                 <rect key="frame" x="175" y="445" width="88" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Collaborate"/>
+                                <connections>
+                                    <segue destination="jEz-L9-uHD" kind="modal" identifier="collaborateSegue" id="Bgc-aC-mG4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbd-VF-e57">
                                 <rect key="frame" x="62" y="445" width="31" height="33"/>
@@ -281,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9O-Om-8WO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2689" y="494"/>
+            <point key="canvasLocation" x="1637" y="1986"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="2xE-lD-jQA">
@@ -308,7 +311,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sf7-5a-jxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="733" y="392"/>
+            <point key="canvasLocation" x="809" y="400"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="e1G-Il-gaJ">
@@ -347,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FEN-Hs-uUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2101" y="-462"/>
+            <point key="canvasLocation" x="1637" y="1122"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kKe-hn-drW">
@@ -376,7 +379,7 @@
                 <viewControllerPlaceholder storyboardName="Record" id="jEz-L9-uHD" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPQ-oQ-G0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580.5" y="-370"/>
+            <point key="canvasLocation" x="1637.5" y="1518"/>
         </scene>
     </scenes>
     <resources>
@@ -388,8 +391,8 @@
         <image name="record" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="66j-kX-y09"/>
-        <segue reference="wYk-7r-5IJ"/>
+        <segue reference="Pvx-cX-8yB"/>
+        <segue reference="Bgc-aC-mG4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
