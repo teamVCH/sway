@@ -55,6 +55,14 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
         
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        if let audioPlayer = audioPlayer {
+            if audioPlayer.playing {
+                audioPlayer.stop()
+            }
+        }
+    }
+    
     @IBAction func onTapPlayPause(sender: UIButton) {
         if let audioPlayer = audioPlayer {
             if audioPlayer.playing {

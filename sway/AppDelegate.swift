@@ -42,7 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //set colors
         UINavigationBar.appearance().barTintColor = UIColor(hue: 0.4722, saturation: 0.2, brightness: 0.48, alpha: 1.0) /* #627b77 */
         UITabBar.appearance().barTintColor = UIColor(hue: 0.4722, saturation: 0.2, brightness: 0.48, alpha: 1.0) /* #627b77 */
-        
+
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.blackColor()], forState: UIControlState.Normal)
+
+
         Parse.setApplicationId(parseCredentials.consumerKey, clientKey: parseCredentials.consumerSecret)
         PFTwitterUtils.initializeWithConsumerKey(twitterCredentials.consumerKey, consumerSecret: twitterCredentials.consumerSecret)
         

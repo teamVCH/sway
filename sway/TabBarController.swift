@@ -25,6 +25,10 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSavedDraft", name: savedDraft, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onPublishedTune", name: publishedTune, object: nil)
         
+        for tabBarItem in self.tabBar.items! {
+            tabBarItem.image = tabBarItem.image!.imageWithRenderingMode(.AlwaysOriginal)
+        }
+
         // Do any additional setup after loading the view.
     }
 
