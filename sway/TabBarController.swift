@@ -23,7 +23,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         delegate = self
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSavedDraft", name: savedDraft, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onPublishedTune", name: publishedTune, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onPublishedTune:", name: publishedTune, object: nil)
         
         for tabBarItem in self.tabBar.items! {
             tabBarItem.image = tabBarItem.image!.imageWithRenderingMode(.AlwaysOriginal)
@@ -64,18 +64,27 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func onSavedDraft() {
-        showUserProfile(false)
+        showUserProfile(false, tune: nil)
         
     }
     
-    func onPublishedTune() {
-        showUserProfile(true)
+    func onPublishedTune(notification: NSNotification) {
+        // Get the Tune passed in fron the NSNotification
+        var tune: Tune?
+        if let userInfo = notification.userInfo as? [String: Tune] {
+            tune = userInfo["Tune"]
+        }
+        showUserProfile(true, tune: tune)
         
     }
     
-    func showUserProfile(publishedTunes: Bool) {
+    func showUserProfile(publishedTunes: Bool, tune: Tune?) {
         let userProfileVC = viewControllers![2] as! UserProfileViewController
         userProfileVC.selectedType = publishedTunes ? 0 : 1
+        if let tune = tune {
+            let publishedVC = userProfileVC.delegates[userProfileVC.selectedType] as! PublishedTunesUserProfileViewControllerDelegate
+            publishedVC.addTune(tune)
+        }
         selectedViewController = userProfileVC
     }
     

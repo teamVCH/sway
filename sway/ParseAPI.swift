@@ -135,10 +135,11 @@ class ParseAPI: NSObject {
                     print("Recording published: \(success)")
                     if success {
                         let query = PFQuery(className: "Recordings")
+                        query.includeKey("originator")
                         query.getObjectInBackgroundWithId(tune.objectId!) {
                             (tune: PFObject?, error: NSError?) -> Void in
                             if let tune = tune {
-                                onCompletion(tune: Tune(object: tune), error: error)
+                                onCompletion(tune: Tune(object: tune), error: nil)
                             } else {
                                 onCompletion(tune: nil, error: error)
                             }

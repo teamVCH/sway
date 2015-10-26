@@ -34,7 +34,7 @@ class Tune: NSObject, Composition {
         title = object["title"] as? String
         replayCount = object["replays"] as? Int
         lastModified = object["updatedAt"] as? NSDate
-        originator = object["originator"] as? PFUser        
+        originator = object["originator"] as? PFUser
         tuneProfileImageUrl = originator?.objectForKey("profileImageUrl") as? String
         
         let audioData = object["audioData"] as? PFFile

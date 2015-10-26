@@ -1,4 +1,4 @@
-//
+    //
 //  SaveRecordingViewController.swift
 //  sway
 //
@@ -151,9 +151,10 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
             
             if saveTypeControl.selectedSegmentIndex == 0 {
                 recording.publishedDate = NSDate()
-                ParseAPI.sharedInstance.publishRecording(nil, recording: recording, onCompletion: { (tune, error) -> Void in
-                    print("completion")
-                    
+                ParseAPI.sharedInstance.publishRecording(nil, recording: recording, onCompletion: { (tune: Tune?, error: NSError?) -> Void in
+                    print("complete publish recording")
+                    NSNotificationCenter.defaultCenter().postNotificationName(publishedTune, object: nil, userInfo:["Tune": tune!])
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 })
                 
                 
@@ -168,9 +169,10 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
             print("Error saving recording: \(error)")
         }
         
-        
-        NSNotificationCenter.defaultCenter().postNotificationName(saveTypeControl.selectedSegmentIndex == 0 ? publishedTune: savedDraft, object: nil)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if saveTypeControl.selectedSegmentIndex == 1 {
+            NSNotificationCenter.defaultCenter().postNotificationName(savedDraft, object: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
 
     @IBAction func onChangeTagType(sender: UISegmentedControl) {

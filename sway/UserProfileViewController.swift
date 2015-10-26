@@ -97,6 +97,10 @@ class PublishedTunesUserProfileViewControllerDelegate: UserProfileViewController
         return published.count
     }
     
+    func addTune(tune: Tune) {
+        published.append(tune)
+    }
+    
     func setComposition(cell: TuneViewCell, indexPath: NSIndexPath) {
         cell.tune = published[indexPath.row]
         cell.userImageView.hidden = true
@@ -109,6 +113,8 @@ class PublishedTunesUserProfileViewControllerDelegate: UserProfileViewController
                 print("error while deleting: \(error)")
             }
         }
+        // Remove immediately
+        published.removeAtIndex(indexPath.row)
     }
     
     func prepareForSegue(destinationViewController: UIViewController, indexPath: NSIndexPath) {
@@ -206,8 +212,12 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             delegate().deleteComposition(indexPath)
-            delegate().load { () -> () in
-                self.tableView.reloadData()
+            if typeControl.selectedSegmentIndex == 0 {
+                tableView.reloadData()
+            } else {
+                delegate().load { () -> () in
+                    self.tableView.reloadData()
+                }
             }
         }
     }
