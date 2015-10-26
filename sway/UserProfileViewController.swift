@@ -152,7 +152,10 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         displayNameLabel.text = user!.name
         if let screenName = user!.screenName {
             userNameLabel.text = "@\(screenName)"
+        } else if let email = user!.email {
+            userNameLabel.text = "\(email)"
         }
+        
         userInstrumentsLabel.text = "Instrument1, Instrument2" // TODO
         userDescriptionLabel.text = user!.tagLine
         
