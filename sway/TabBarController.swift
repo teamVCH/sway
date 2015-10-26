@@ -30,6 +30,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
 
         // Do any additional setup after loading the view.
+        let logoutButton = UIBarButtonItem()
+        logoutButton.title = "Sign Out"
+        logoutButton.action = Selector("logout")
+        logoutButton.target = self
+        navigationItem.leftBarButtonItem = logoutButton
+
     }
 
     
@@ -63,9 +69,14 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
+    func logout() {
+        PFUser.logOut()
+        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     func onSavedDraft() {
         showUserProfile(false, tune: nil)
-        
     }
     
     func onPublishedTune(notification: NSNotification) {
