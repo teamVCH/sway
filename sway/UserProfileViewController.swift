@@ -36,6 +36,9 @@ class DraftRecordingsUserProfileViewControllerDelegate: UserProfileViewControlle
     func load(onCompletion: () -> ()) {
         do {
             let fetchRequest = NSFetchRequest(entityName: recordingEntityName)
+            let sortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
+            let sortDescriptors = [sortDescriptor]
+            fetchRequest.sortDescriptors = sortDescriptors
             fetchRequest.predicate = NSPredicate(format: "publishedDate == nil")
             if let fetchResults = try managedObjectContext.executeFetchRequest(fetchRequest) as? [Recording] {
                 print("Found \(fetchResults.count) drafts")

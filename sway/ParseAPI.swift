@@ -184,10 +184,8 @@ class ParseAPI: NSObject {
                             PFUser.currentUser()?.setObject(screenName, forKey: "screenName")
                             
                             let urlString = result.objectForKey("profile_image_url_https") as! String
-                            PFUser.currentUser()?.setObject(urlString, forKey: "profileImageUrl")
-                      
-                            /*let hiResUrlString = urlString.stringByReplacingOccurrencesOfString("_normal", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-                            print("twitter: \(hiResUrlString)")*/
+                            let hiResUrlString = urlString.stringByReplacingOccurrencesOfString("_normal", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+                            PFUser.currentUser()?.setObject(hiResUrlString, forKey: "profileImageUrl")
                             
                             let description = result.objectForKey("description") as! String
                             PFUser.currentUser()?.setObject(description, forKey: "tagLine")
