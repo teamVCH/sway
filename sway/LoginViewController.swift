@@ -74,6 +74,7 @@ class LoginViewController: UIViewController {
 //MARK: PFLoginViewControllerDelegate
 extension LoginViewController : PFLogInViewControllerDelegate {
   func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
+    PFQuery.clearAllCachedResults()
     dismissViewControllerAnimated(true, completion: nil)
     performSegueWithIdentifier("loginSegue", sender: self)
     ParseAPI.sharedInstance.fetchAndSaveTwitterUser(user)

@@ -13,6 +13,7 @@ class ParseAPI: NSObject {
         let query = PFQuery(className:"Recordings")
         query.includeKey("originator")
         query.orderByDescending("updatedAt")
+        query.cachePolicy = .CacheThenNetwork
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -20,9 +21,9 @@ class ParseAPI: NSObject {
                 let tunes = Tune.initArray(objects!)
                 onCompletion(tunes: tunes, error: nil)
             } else {
-                // Log details of the failure
+                // Error could occur on first pass if no cached data
                 print("Error: \(error!) \(error!.userInfo)")
-                onCompletion(tunes: nil, error: error)
+                return
             }
         }
     }
@@ -75,15 +76,16 @@ class ParseAPI: NSObject {
         query.includeKey("originator")
         query.whereKey("originator", equalTo: user)
         query.orderByDescending("updatedAt")
+        query.cachePolicy = .CacheThenNetwork
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 print("Successfully retrieved \(objects!.count) recordings.")
                 let tunes = Tune.initArray(objects!)
                 onCompletion(tunes: tunes, error: nil)
             } else {
-                // Log details of the failure
+                // Error could occur on first pass when non cached data
                 print("Error: \(error!) \(error!.userInfo)")
-                onCompletion(tunes: nil, error: error)
+                return
             }
         }
     }
