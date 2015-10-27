@@ -12,6 +12,8 @@ class ParseAPI: NSObject {
     func getAllRecordings(onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let query = PFQuery(className:"Recordings")
         query.includeKey("originator")
+        query.includeKey("originalTune")
+        query.includeKey("originalTune.originator")
         query.orderByDescending("updatedAt")
         query.cachePolicy = .CacheThenNetwork
         query.findObjectsInBackgroundWithBlock {

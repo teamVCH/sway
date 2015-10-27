@@ -26,19 +26,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cV-Bl-bNg">
-                                <rect key="frame" x="50" y="8" width="176" height="19.5"/>
+                                <rect key="frame" x="50" y="8" width="166" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="#happy #lovesong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lh0-MI-w6q">
-                                <rect key="frame" x="50" y="52" width="176" height="14.5"/>
+                                <rect key="frame" x="50" y="52" width="166" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbA-so-xWo" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
-                                <rect key="frame" x="8" y="19" width="31" height="37"/>
+                                <rect key="frame" x="8" y="20.5" width="30" height="34"/>
                                 <connections>
                                     <action selector="playTapped:" destination="NsA-Qu-O5h" eventType="touchUpInside" id="Esv-by-QQH"/>
                                 </connections>
@@ -112,21 +112,21 @@
                                 </constraints>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mnr-Gk-vSL">
-                                <rect key="frame" x="234" y="0.0" width="45" height="75"/>
+                                <rect key="frame" x="224" y="0.0" width="55" height="75"/>
                                 <subviews>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSb-Vx-iHP">
-                                        <rect key="frame" x="0.0" y="15" width="45" height="45"/>
+                                        <rect key="frame" x="0.0" y="10" width="55" height="55"/>
                                         <subviews>
                                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TAF-XL-CnF">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                                <rect key="frame" x="5" y="5" width="45" height="45"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="2WM-SL-fYq"/>
-                                                    <constraint firstAttribute="width" constant="45" id="cql-Gu-5BV"/>
+                                                    <constraint firstAttribute="width" constant="45" id="3cN-8B-YXx"/>
+                                                    <constraint firstAttribute="height" constant="45" id="iF1-mp-bhz"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z2K-Jj-bIG">
-                                                <rect key="frame" x="20" y="20" width="25" height="25"/>
+                                                <rect key="frame" x="30" y="30" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="22J-ik-p5b"/>
                                                     <constraint firstAttribute="height" constant="25" id="Ca1-w4-KCc"/>
@@ -136,13 +136,11 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="z2K-Jj-bIG" secondAttribute="bottom" id="C6v-n3-WkJ"/>
-                                            <constraint firstItem="TAF-XL-CnF" firstAttribute="top" secondItem="NSb-Vx-iHP" secondAttribute="top" id="K3T-Ii-Iif"/>
-                                            <constraint firstAttribute="height" constant="45" id="SRv-pl-EfQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="TAF-XL-CnF" secondAttribute="bottom" id="WXj-ra-ZxY"/>
-                                            <constraint firstItem="TAF-XL-CnF" firstAttribute="leading" secondItem="NSb-Vx-iHP" secondAttribute="leading" id="iWu-uf-CZ4"/>
-                                            <constraint firstAttribute="trailing" secondItem="TAF-XL-CnF" secondAttribute="trailing" id="nEh-jX-rHO"/>
+                                            <constraint firstItem="TAF-XL-CnF" firstAttribute="centerX" secondItem="NSb-Vx-iHP" secondAttribute="centerX" id="GcW-eJ-vyX"/>
+                                            <constraint firstItem="TAF-XL-CnF" firstAttribute="centerY" secondItem="NSb-Vx-iHP" secondAttribute="centerY" id="Pis-Jm-iHu"/>
+                                            <constraint firstAttribute="height" constant="55" id="SRv-pl-EfQ"/>
                                             <constraint firstAttribute="trailing" secondItem="z2K-Jj-bIG" secondAttribute="trailing" id="pdH-Fh-lpl"/>
-                                            <constraint firstAttribute="width" constant="45" id="z0k-P2-nKG"/>
+                                            <constraint firstAttribute="width" constant="55" id="z0k-P2-nKG"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -151,7 +149,7 @@
                                     <constraint firstItem="NSb-Vx-iHP" firstAttribute="leading" secondItem="Mnr-Gk-vSL" secondAttribute="leading" id="Jn9-uM-lmp"/>
                                     <constraint firstItem="NSb-Vx-iHP" firstAttribute="centerY" secondItem="Mnr-Gk-vSL" secondAttribute="centerY" id="fqQ-gQ-a29"/>
                                     <constraint firstAttribute="trailing" secondItem="NSb-Vx-iHP" secondAttribute="trailing" id="ijl-4W-vAi"/>
-                                    <constraint firstAttribute="width" constant="45" id="vtf-iy-4Vj"/>
+                                    <constraint firstAttribute="width" constant="55" id="vtf-iy-4Vj"/>
                                 </constraints>
                             </view>
                         </subviews>

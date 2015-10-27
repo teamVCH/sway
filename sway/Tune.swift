@@ -23,7 +23,7 @@ class Tune: NSObject, Composition {
     let lastModified: NSDate?
     let tuneProfileImageUrl : String?
     let waveformImageUrl: NSURL?
-    let originalTune: Tune? = nil
+    let originalTune: Tune?
     
     let isDraft = false // tunes are always public
     var audioUrl: NSURL? = nil
@@ -61,11 +61,16 @@ class Tune: NSObject, Composition {
             waveformImageUrl = nil
         }
         
-        //originalTuneId = object["originalTuneId"] as? String
-        print(object)
+        if let originalTune = object["originalTune"] as? PFObject {
+            self.originalTune = Tune(object: originalTune)
+        } else {
+            self.originalTune = nil
+        }
     }
     
     static func initArray(objectArray: [PFObject]) -> [Tune] {
+        print("creating \(objectArray.count) tunes")
+
         var tunes = [Tune]()
         for object in objectArray {
             tunes.append(Tune(object: object))
