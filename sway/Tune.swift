@@ -23,6 +23,7 @@ class Tune: NSObject, Composition {
     let lastModified: NSDate?
     let tuneProfileImageUrl : String?
     let waveformImageUrl: NSURL?
+    let originalTune: Tune? = nil
     
     let isDraft = false // tunes are always public
     var audioUrl: NSURL? = nil
@@ -33,7 +34,7 @@ class Tune: NSObject, Composition {
         id = object.objectId!
         title = object["title"] as? String
         replayCount = object["replays"] as? Int
-        lastModified = object["updatedAt"] as? NSDate
+        lastModified = object.updatedAt
         originator = object["originator"] as? PFUser
         tuneProfileImageUrl = originator?.objectForKey("profileImageUrl") as? String
         
@@ -60,6 +61,8 @@ class Tune: NSObject, Composition {
             waveformImageUrl = nil
         }
         
+        //originalTuneId = object["originalTuneId"] as? String
+        print(object)
     }
     
     static func initArray(objectArray: [PFObject]) -> [Tune] {
@@ -70,6 +73,11 @@ class Tune: NSObject, Composition {
         return tunes
     }
 
+    func isCollaboration() -> Bool {
+        return originalTune != nil
+    }
+    
+    
     func downloadAndCacheAudio(completion: (NSURL?, NSError?) -> Void) {
         let request = NSURLRequest(URL: audioUrl!)
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()

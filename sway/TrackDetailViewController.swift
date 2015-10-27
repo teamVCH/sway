@@ -38,8 +38,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     override func viewWillAppear(animated: Bool) {
         if let tune = tune {
             titleLabel.text = tune.title!
-            if let audioUrl = tune.audioUrl {
-                
+            if let _ = tune.audioUrl {
                 tune.downloadAndCacheAudio({ (cachedUrl: NSURL?, error: NSError?) -> Void in
                     do {
                         try self.audioPlayer = AVAudioPlayerExt(contentsOfURL: cachedUrl!)

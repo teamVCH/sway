@@ -77,6 +77,17 @@ extension UIViewController {
         automaticallyAdjustsScrollViewInsets = false
     }
     
+    func getTargetViewController<T>(segue: UIStoryboardSegue) -> T {
+        var targetViewController: T
+        if let _ = segue.destinationViewController as? UINavigationController {
+            let destinationNavigationController = segue.destinationViewController as! UINavigationController
+            targetViewController = destinationNavigationController.topViewController as! T
+        } else {
+            targetViewController = segue.destinationViewController as! T
+        }
+        return targetViewController
+    }
+    
     
     
     func showErrorAlert(title: String, message: String, error: NSError?) {

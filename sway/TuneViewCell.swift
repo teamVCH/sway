@@ -24,6 +24,7 @@ class TuneViewCell: UITableViewCell {
     @IBOutlet weak var likeCount: UILabel!
     @IBOutlet weak var tags: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var collaboratorImageView: UIImageView!
     @IBOutlet weak var statsView: UIView!
     
     var playing : Bool = false
@@ -42,9 +43,20 @@ class TuneViewCell: UITableViewCell {
             
             if let url = tune.tuneProfileImageUrl {
                 userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+                
+                if tune.isCollaboration() {
+                    collaboratorImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+                    collaboratorImageView.hidden = false
+                } else {
+                    collaboratorImageView.hidden = true
+                }
+            
             } else {
                 userImageView.image = UIImage(named: "profile")
             }
+            
+
+            
         }
     }
     
@@ -120,7 +132,8 @@ class TuneViewCell: UITableViewCell {
         
         userImageView.layer.cornerRadius = 24
         userImageView.clipsToBounds = true
-        
+        collaboratorImageView.layer.cornerRadius = 13
+        collaboratorImageView.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

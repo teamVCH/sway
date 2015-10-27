@@ -201,8 +201,6 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     }
     
     func updateRecordingAudio() {
-        
-        
         if let recordingUrl = recording.getAudioUrl(.Recording, create: false) {
             if recordingUrl.checkResourceIsReachableAndReturnError(nil) {
                 recordingWaveformView.asset = AVAsset(URL: recordingUrl)
@@ -223,9 +221,6 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
             recordingWaveformView.hidden = true
             recordingWaver.hidden = false
             recordingAudioPlayer = nil
-            
-            
-            
         }
     }
     

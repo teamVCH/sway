@@ -131,7 +131,7 @@ class ParseAPI: NSObject {
                 
                 if let originalTuneId = recording.originalTuneId {
                     let pointer = PFObject(withoutDataWithClassName: "Recordings", objectId: originalTuneId)
-                    tune.setValue(pointer, forKey: "originalTuneId")
+                    tune.setValue(pointer, forKey: "originalTune")
                 }
                 
                 if let length = recording.length {
