@@ -5,9 +5,10 @@
         <attribute name="bouncedAudioPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="lastModified" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="publishedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="originalTuneId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recordingAudioPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tuneId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="waveformImagePath" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecordingTag" inverseName="recording" inverseEntity="RecordingTag" syncable="YES"/>
     </entity>
@@ -16,7 +17,7 @@
         <relationship name="recording" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recording" inverseName="tags" inverseEntity="Recording" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Recording" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="Recording" positionX="-63" positionY="-18" width="128" height="195"/>
         <element name="RecordingTag" positionX="-342" positionY="-18" width="128" height="73"/>
     </elements>
 </model>

@@ -19,7 +19,8 @@ extension Recording {
     @NSManaged var lastModified: NSDate?
     @NSManaged var recordingAudioPath: String?
     @NSManaged var title: String?
-    @NSManaged var publishedDate: NSDate?
+    @NSManaged var tuneId: String?
+    @NSManaged var originalTuneId: String?
     @NSManaged var duration: NSNumber?
     @NSManaged var tags: NSSet?
     @NSManaged var waveformImagePath: String?

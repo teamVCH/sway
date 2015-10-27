@@ -19,10 +19,8 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-19" translatesAutoresizingMaskIntoConstraints="NO" id="J3x-A1-lQn">
                     <rect key="frame" x="127" y="8" width="346" height="128"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18a-3R-75h">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18a-3R-75h" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                            <state key="normal" image="UIBarButtonPlay_2x"/>
-                            <state key="selected" image="UIBarButtonPause_2x"/>
                             <connections>
                                 <action selector="onTapPlay:" destination="iN0-l3-epB" eventType="touchUpInside" id="UI2-Pe-3J8"/>
                             </connections>
@@ -100,8 +98,6 @@
         </view>
     </objects>
     <resources>
-        <image name="UIBarButtonPause_2x" width="30" height="37"/>
-        <image name="UIBarButtonPlay_2x" width="31" height="37"/>
         <image name="record_off" width="256" height="256"/>
         <image name="record_on" width="128" height="128"/>
     </resources>

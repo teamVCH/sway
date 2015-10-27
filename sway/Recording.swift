@@ -39,7 +39,12 @@ class Recording: NSManagedObject, Composition {
 
     lazy var isDraft: Bool = {
         [unowned self] in
-        return self.publishedDate == nil
+        return self.tuneId == nil
+    }()
+
+    lazy var isCollaboration: Bool = {
+        [unowned self] in
+        return self.originalTuneId != nil
     }()
     
     lazy var audioUrl: NSURL? = {
@@ -66,9 +71,7 @@ class Recording: NSManagedObject, Composition {
         return array
     }()
     
-    var isCollaboration = false
-    
-    
+ 
     func getAudioUrl(audioTrack: AudioTrack, create: Bool = false) -> NSURL? {
         if let audioPath = getAudioPath(audioTrack) {
             return baseUrl.URLByAppendingPathComponent(audioPath)

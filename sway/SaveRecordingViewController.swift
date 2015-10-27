@@ -150,11 +150,16 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
             recording.cleanup()
             
             if saveTypeControl.selectedSegmentIndex == 0 {
-                recording.publishedDate = NSDate()
                 ParseAPI.sharedInstance.publishRecording(nil, recording: recording, onCompletion: { (tune: Tune?, error: NSError?) -> Void in
-                    print("complete publish recording")
-                    NSNotificationCenter.defaultCenter().postNotificationName(publishedTune, object: nil, userInfo:["Tune": tune!])
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    if let tune = tune {
+                        self.recording.tuneId = tune.id!
+                        print("complete publish recording")
+                        NSNotificationCenter.defaultCenter().postNotificationName(publishedTune, object: nil, userInfo:["Tune": tune])
+                        
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    } else {
+                        
+                    }
                 })
                 
                 

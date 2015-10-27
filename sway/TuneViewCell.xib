@@ -37,10 +37,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbA-so-xWo">
-                                <rect key="frame" x="8" y="19" width="31" height="37"/>
-                                <state key="normal" image="UIBarButtonPlay_2x"/>
-                                <state key="selected" image="UIBarButtonPause_2x"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbA-so-xWo" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
+                                <rect key="frame" x="8" y="18.5" width="31" height="37"/>
                                 <connections>
                                     <action selector="playTapped:" destination="NsA-Qu-O5h" eventType="touchUpInside" id="Esv-by-QQH"/>
                                 </connections>
@@ -173,8 +171,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="UIBarButtonPause_2x" width="30" height="37"/>
-        <image name="UIBarButtonPlay_2x" width="31" height="37"/>
         <image name="collaborate" width="700" height="700"/>
         <image name="noun_219" width="1200" height="1200"/>
         <image name="replay" width="167" height="167"/>

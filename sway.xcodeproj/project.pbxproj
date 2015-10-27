@@ -29,6 +29,7 @@
 		680A744B1BD4B14900D7D605 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74491BD4B14900D7D605 /* Recording.swift */; settings = {ASSET_TAGS = (); }; };
 		680A744F1BD4C4C400D7D605 /* TuneViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 680A744D1BD4C4C400D7D605 /* TuneViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		683C58B71BD42D2700CFECFF /* simple-drum-beat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */; settings = {ASSET_TAGS = (); }; };
+		684808261BDFEFE90040CD50 /* PlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684808251BDFEFE90040CD50 /* PlayPauseButton.swift */; settings = {ASSET_TAGS = (); }; };
 		6875FBBC1BDC179E00DBB6F9 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */; settings = {ASSET_TAGS = (); }; };
 		6875FBBD1BDC179E00DBB6F9 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */; settings = {ASSET_TAGS = (); }; };
 		68D97E6E1BDD78A600E769F4 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */; settings = {ASSET_TAGS = (); }; };
@@ -88,6 +89,7 @@
 		680A74491BD4B14900D7D605 /* Recording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		680A744D1BD4C4C400D7D605 /* TuneViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TuneViewCell.xib; sourceTree = "<group>"; };
 		683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "simple-drum-beat.wav"; sourceTree = "<group>"; };
+		684808251BDFEFE90040CD50 /* PlayPauseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayPauseButton.swift; sourceTree = "<group>"; };
 		6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
 		68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */,
 				6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */,
 				68D97E6F1BDD9ADE00E769F4 /* WaveformView.swift */,
+				684808251BDFEFE90040CD50 /* PlayPauseButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				68F425901BDB026900AED872 /* Composition.swift in Sources */,
 				F1E1E8851BD6EBD600AA5D6A /* SwiftyJSON.swift in Sources */,
 				2A6A233F1BD3313700ED0706 /* AVFoundationHelper.swift in Sources */,
+				684808261BDFEFE90040CD50 /* PlayPauseButton.swift in Sources */,
 				2A6A232E1BD0A9AD00ED0706 /* TrackDetailViewController.swift in Sources */,
 				2A6A23491BD40E8500ED0706 /* Tune.swift in Sources */,
 				2A6A23321BD0AA2800ED0706 /* TuneViewCell.swift in Sources */,
