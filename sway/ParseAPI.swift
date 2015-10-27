@@ -129,7 +129,16 @@ class ParseAPI: NSObject {
                     tune.setValue(tagNames, forKey: "tags")
                 }
                 
-                tune.setValue(recording.length, forKey: "length")
+                if let originalTuneId = recording.originalTuneId {
+                    let pointer = PFObject(withoutDataWithClassName: "Recordings", objectId: originalTuneId)
+                    tune.setValue(pointer, forKey: "originalTuneId")
+                }
+                
+                if let length = recording.length {
+                    tune.setValue(length, forKey: "length")
+                }
+                
+                
                 tune.setValue(1, forKey: "replays")
                 tune.saveInBackgroundWithBlock { (success, error ) -> Void in
                     print("Recording published: \(success)")

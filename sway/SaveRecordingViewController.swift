@@ -21,6 +21,8 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
     @IBOutlet weak var tagsTypeControl: UISegmentedControl!
     @IBOutlet weak var tagsCollectionView: UICollectionView!
     
+    var audioPlayer: AVAudioPlayerExt!
+    
     var recording: Recording!
     var tags : [[String:RecordingTag]] = [[:], [:]]
     
@@ -49,6 +51,10 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         recording.bounce(false, completion: { (bouncedAudioUrl: NSURL?, status: AVAssetExportSessionStatus?, error: NSError?) -> Void in
             if let bouncedAudioUrl = bouncedAudioUrl {
                 dispatch_async(dispatch_get_main_queue(),{
+                    self.audioPlayer = try! AVAudioPlayerExt(contentsOfURL: bouncedAudioUrl)
+                    self.audioPlayer.prepareToPlay()
+                    self.recording.length = self.audioPlayer.duration
+                    
                     self.waveformView.asset = AVAsset(URL: bouncedAudioUrl)
                     self.setupWaveformView()
                     self.waveformView.layoutIfNeeded()

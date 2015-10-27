@@ -117,6 +117,22 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 
                 try! NSFileManager.defaultManager().copyItemAtURL(tune.cachedAudioUrl!, toURL: backingAudioUrl!)
 
+                if let title = tune.title {
+                    recording.title = title
+                }
+                
+                if let tags = tune.tagNames {
+                    var rTags = Set<RecordingTag>()
+                    for tag in tags {
+                        let rTag = NSEntityDescription.insertNewObjectForEntityForName(recordingTagEntityName, inManagedObjectContext: managedObjectContext) as! RecordingTag
+                        rTag.tag = tag
+                        rTag.recording = recording
+                        rTags.insert(rTag)
+                    }
+                    
+                    recording.tags = rTags
+                }
+                
                 recordViewController.recording = recording
             }
         }
