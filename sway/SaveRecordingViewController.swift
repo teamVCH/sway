@@ -85,8 +85,8 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
     
     private func removeTag(tag: String) {
         let rTag: RecordingTag = tags[tagsTypeControl.selectedSegmentIndex][tag]!
-        managedObjectContext.delete(rTag)
         tags[tagsTypeControl.selectedSegmentIndex].removeValueForKey(tag)
+        //managedObjectContext.delete(rTag)
     }
     
     private func addTag(tag: String) {
@@ -96,7 +96,7 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         } else {
             rTag.tag = tag
         }
-        
+        rTag.recording = recording
         tags[tagsTypeControl.selectedSegmentIndex][tag] = rTag
     }
     
@@ -224,17 +224,13 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         addTag(tag)
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagCell
         cell.backgroundColor = tagCellSelectedColor
-        
     }
-    
-    
+
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         let tag = defaultTags[indexPath.item]
         removeTag(tag)
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagCell
         cell.backgroundColor = tagCellDeselectedColor
-        
-        
     }
 
     
