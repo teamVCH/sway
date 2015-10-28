@@ -109,7 +109,7 @@ class TuneViewCell: UITableViewCell {
 
         
         if let waveformImageUrl = composition.waveformImageUrl {
-            waveFormView.setImageURLWithFade(waveformImageUrl, alpha: 0.45, completion: nil)
+            waveFormView.setImageURLWithFade(waveformImageUrl, alpha: 0.35, completion: nil)
         }
         
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zfW-jB-znV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zfW-jB-znV">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
@@ -68,8 +68,8 @@
                                     <rect key="frame" x="0.0" y="64" width="320" height="137"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hina Sakazaki" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="min-3x-u30">
-                                            <rect key="frame" x="91" y="8" width="221" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Hina Sakazaki" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="min-3x-u30">
+                                            <rect key="frame" x="91" y="8" width="199" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -109,6 +109,17 @@
                                                 <action selector="onSwitchType:" destination="76W-HG-441" eventType="valueChanged" id="2qp-pt-k8T"/>
                                             </connections>
                                         </segmentedControl>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRU-fF-tdc">
+                                            <rect key="frame" x="292" y="7" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="24" id="Hpi-yV-4Nu"/>
+                                                <constraint firstAttribute="height" constant="24" id="hfg-ML-E0M"/>
+                                            </constraints>
+                                            <state key="normal" image="logout"/>
+                                            <connections>
+                                                <action selector="onTapLogout:" destination="76W-HG-441" eventType="touchUpInside" id="SKU-gq-0hW"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.74901960784313726" green="0.86274509803921573" blue="0.92156862745098034" alpha="0.089999999999999997" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -117,14 +128,16 @@
                                         <constraint firstItem="Z7M-Hj-XAx" firstAttribute="top" secondItem="min-3x-u30" secondAttribute="bottom" id="1eY-mE-bd2"/>
                                         <constraint firstAttribute="trailing" secondItem="mT3-tH-c7g" secondAttribute="trailing" constant="8" id="3I4-Hc-rzK"/>
                                         <constraint firstAttribute="trailing" secondItem="Z7M-Hj-XAx" secondAttribute="trailing" constant="8" id="7ie-2N-kM8"/>
+                                        <constraint firstItem="cRU-fF-tdc" firstAttribute="leading" secondItem="min-3x-u30" secondAttribute="trailing" constant="2" id="Byb-6u-Ic1"/>
                                         <constraint firstItem="mT3-tH-c7g" firstAttribute="top" secondItem="18Y-Yn-FjN" secondAttribute="bottom" id="CPo-FG-BEW"/>
                                         <constraint firstItem="min-3x-u30" firstAttribute="leading" secondItem="Nei-KW-XTZ" secondAttribute="trailing" constant="8" id="GfJ-n9-hOc"/>
                                         <constraint firstItem="mT3-tH-c7g" firstAttribute="leading" secondItem="min-3x-u30" secondAttribute="leading" id="Hhn-LQ-LUz"/>
-                                        <constraint firstAttribute="trailing" secondItem="min-3x-u30" secondAttribute="trailing" constant="8" id="NT3-XT-bS8"/>
+                                        <constraint firstItem="cRU-fF-tdc" firstAttribute="centerY" secondItem="min-3x-u30" secondAttribute="centerY" id="JGS-hc-eMn"/>
                                         <constraint firstItem="Z7M-Hj-XAx" firstAttribute="leading" secondItem="min-3x-u30" secondAttribute="leading" id="PZU-Qa-X6M"/>
                                         <constraint firstItem="YOA-1f-yw6" firstAttribute="centerX" secondItem="vr6-2j-AfJ" secondAttribute="centerX" id="UhG-jb-fWm"/>
                                         <constraint firstItem="Nei-KW-XTZ" firstAttribute="top" secondItem="vr6-2j-AfJ" secondAttribute="top" constant="8" id="VKi-sr-Ze1"/>
                                         <constraint firstItem="18Y-Yn-FjN" firstAttribute="leading" secondItem="min-3x-u30" secondAttribute="leading" id="d1l-bg-8gr"/>
+                                        <constraint firstAttribute="trailing" secondItem="cRU-fF-tdc" secondAttribute="trailing" constant="4" id="hzG-xj-fqh"/>
                                         <constraint firstItem="Nei-KW-XTZ" firstAttribute="leading" secondItem="vr6-2j-AfJ" secondAttribute="leading" constant="8" id="iMW-zh-Nch"/>
                                         <constraint firstItem="18Y-Yn-FjN" firstAttribute="top" secondItem="Z7M-Hj-XAx" secondAttribute="bottom" id="l7V-bP-cNA"/>
                                         <constraint firstItem="min-3x-u30" firstAttribute="top" secondItem="vr6-2j-AfJ" secondAttribute="top" constant="8" id="qBd-7u-Urg"/>
@@ -157,15 +170,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="You" image="profile" id="bG5-Tq-jZ4"/>
-                    <navigationItem key="navigationItem" title="Profile" id="eh4-vp-zy9">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="yP0-y0-zeI">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3So-g3-7Fb">
-                                <rect key="frame" x="233" y="7" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Profile" id="eh4-vp-zy9"/>
                     <connections>
                         <outlet property="displayNameLabel" destination="min-3x-u30" id="9zz-aM-XBs"/>
                         <outlet property="profileImageView" destination="Nei-KW-XTZ" id="VFn-eS-Sai"/>
@@ -392,11 +397,12 @@
     <resources>
         <image name="headphone" width="30" height="30"/>
         <image name="logo" width="800" height="400"/>
+        <image name="logout" width="128" height="128"/>
         <image name="profile" width="35" height="35"/>
         <image name="record" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pvx-cX-8yB"/>
+        <segue reference="wYk-7r-5IJ"/>
         <segue reference="66j-kX-y09"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

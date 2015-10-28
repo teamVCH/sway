@@ -138,6 +138,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var typeControl: UISegmentedControl!
     
+
     var delegates: [UserProfileViewControllerDelegate] = [
         PublishedTunesUserProfileViewControllerDelegate(),
         DraftRecordingsUserProfileViewControllerDelegate()
@@ -233,6 +234,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onTapLogout(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName(loggedOut, object: nil, userInfo: nil)
+    }
 
     
     // MARK: - Navigation

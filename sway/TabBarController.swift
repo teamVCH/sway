@@ -12,6 +12,7 @@ let recordTabTitle = "Record"
 let recordModalSegue = "RecordModalSegue"
 let savedDraft = "savedDraft"
 let publishedTune = "publishedTune"
+let loggedOut = "loggedOut"
 
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
@@ -23,19 +24,20 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         delegate = self
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSavedDraft", name: savedDraft, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onPublishedTune:", name: publishedTune, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onPublishedTune", name: publishedTune, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: loggedOut, object: nil)
         
         for tabBarItem in self.tabBar.items! {
             tabBarItem.image = tabBarItem.image!.imageWithRenderingMode(.AlwaysOriginal)
         }
-
+        /*
         // Do any additional setup after loading the view.
         let logoutButton = UIBarButtonItem()
         logoutButton.title = "Sign Out"
         logoutButton.action = Selector("logout")
         logoutButton.target = self
         navigationItem.leftBarButtonItem = logoutButton
-
+        */
     }
 
     
