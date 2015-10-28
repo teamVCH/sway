@@ -40,9 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //set colors
-        UINavigationBar.appearance().barTintColor = UIColor(hue: 0.4722, saturation: 0.2, brightness: 0.48, alpha: 1.0) /* #627b77 */
-        UITabBar.appearance().barTintColor = UIColor(hue: 0.4722, saturation: 0.2, brightness: 0.48, alpha: 1.0) /* #627b77 */
+        UINavigationBar.appearance().barTintColor = UIColor(hue: 0.5556, saturation: 0.18, brightness: 0.92, alpha: 1.0) /* #bfdceb */
+        UITabBar.appearance().barTintColor = UIColor(hue: 0.5556, saturation: 0.18, brightness: 0.92, alpha: 1.0) /* #bfdceb */
 
+        //color: http://design-seeds.com/home/entry/color-view31
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.blackColor()], forState: UIControlState.Normal)
 
 
