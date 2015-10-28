@@ -203,10 +203,25 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     func updateRecordingAudio() {
         if let recordingUrl = recording.getAudioUrl(.Recording, create: false) {
             if recordingUrl.checkResourceIsReachableAndReturnError(nil) {
-                recordingWaveformView.asset = AVAsset(URL: recordingUrl)
-                if let asset = backingWaveformView.asset {
-                    recordingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, asset.duration)
-                }
+                
+                dispatch_async(dispatch_get_main_queue(),{
+                    print("updateRecordingAudio")
+                    self.recordingWaveformView.asset = AVAsset(URL: recordingUrl)
+                    if let asset = self.recordingWaveformView.asset {
+                        self.recordingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, asset.duration)
+                    }
+                    if let backing = self.backingWaveformView.asset {
+                        self.recordingWaveformView.timeRange = CMTimeRangeMake(kCMTimeZero, backing.duration)
+                    }
+                    self.recordingWaveformView.setNeedsLayout()
+                    self.recordingWaveformView.layoutIfNeeded()
+        
+                    
+                    
+                })
+                
+                
+
                 
                 do {
                     recordingAudioPlayer = try AVAudioPlayerExt(contentsOfURL: recordingUrl)
@@ -218,9 +233,11 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
                 
             }
         } else {
-            recordingWaveformView.hidden = true
-            recordingWaver.hidden = false
-            recordingAudioPlayer = nil
+            dispatch_async(dispatch_get_main_queue(),{
+                self.recordingWaveformView.hidden = true
+                self.recordingWaver.hidden = false
+                self.recordingAudioPlayer = nil
+            })
         }
     }
     
