@@ -9,6 +9,7 @@
 import UIKit
 
 let tuneViewCell = "TuneViewCell"
+let defaultUserImage = UIImage(named: "profile")
 
 let formatter = NSDateComponentsFormatter()
 
@@ -41,21 +42,30 @@ class TuneViewCell: UITableViewCell {
             likeCount.text = "\(tune.likeCount!)"
             collabCount.text = "\(tune.collaboratorCount!)"
             
-            if let url = tune.tuneProfileImageUrl {
-                userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
-                
-                if tune.isCollaboration() {
-                    collaboratorImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
-                    collaboratorImageView.hidden = false
-                } else {
-                    collaboratorImageView.hidden = true
-                }
             
+            if let originalTune = tune.originalTune {
+                if let url = originalTune.tuneProfileImageUrl {
+                    userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+                } else {
+                    userImageView.image = defaultUserImage
+                }
+                collaboratorImageView.hidden = false
+                if let url = tune.tuneProfileImageUrl {
+                    collaboratorImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+                } else {
+                    collaboratorImageView.image = defaultUserImage
+                }
+                
             } else {
-                userImageView.image = UIImage(named: "profile")
+                if let url = tune.tuneProfileImageUrl {
+                    userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+                } else {
+                    userImageView.image = defaultUserImage
+                }
+                collaboratorImageView.hidden = true
             }
             
-
+            
             
         }
     }
