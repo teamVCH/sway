@@ -77,6 +77,8 @@ class ParseAPI: NSObject {
         let query = PFQuery(className:"Recordings")
         query.includeKey("originator")
         query.whereKey("originator", equalTo: user)
+        query.includeKey("originalTune")
+        query.includeKey("originalTune.originator")
         query.orderByDescending("updatedAt")
         query.cachePolicy = .CacheThenNetwork
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in

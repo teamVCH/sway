@@ -104,6 +104,7 @@ class PublishedTunesUserProfileViewControllerDelegate: UserProfileViewController
     func setComposition(cell: TuneViewCell, indexPath: NSIndexPath) {
         cell.tune = published[indexPath.row]
         cell.userImageView.hidden = true
+        cell.collaboratorImageView.hidden = true
         cell.accessoryType = UITableViewCellAccessoryType.None
     }
     
