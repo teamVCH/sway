@@ -147,9 +147,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        var searchTextList: [String] = [searchText]dy
-        
-        ParseAPI.sharedInstance.getRecordingsWithTagNames(searchTextList) { (tunes, error) -> Void in
+        ParseAPI.sharedInstance.getRecordingsWithSearchTerm(searchText) { (tunes, error) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 if tunes != nil {
                     self.tunes = tunes
@@ -159,7 +157,6 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         }
         self.tableView.reloadData()
     }
-    
-    
+
 
 }

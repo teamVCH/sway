@@ -29,15 +29,21 @@ class ParseAPI: NSObject {
             }
         }
     }
-  
-    func getRecordingsWithTagNames(tagNames: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
+    
+    func getRecordingsWithSearchTerm(searchTerm: String?, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let query = PFQuery(className: "Recordings")
         query.includeKey("originator")
         query.includeKey("originalTune")
         query.includeKey("originalTune.originator")
         query.orderByDescending("updatedAt")
         query.cachePolicy = .CacheThenNetwork
-        query.whereKey("tags", containsAllObjectsInArray:tagNames)
+        if let searchTerm = searchTerm {
+            let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
+            if searchTerm.stringByTrimmingCharactersInSet(whitespaceSet) != "" {
+                let searchArray: [String] = searchTerm.componentsSeparatedByString(" ")
+                query.whereKey("tags", containedIn: searchArray)
+            }
+        }
         query.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 print("Successfully retrieved \(objects!.count) recordings.")
@@ -49,6 +55,7 @@ class ParseAPI: NSObject {
             }
         })
     }
+    
     
     func getRecordingsForUser(user: PFUser, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let query = PFQuery(className:"Recordings")
