@@ -147,7 +147,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        var searchTextList: [String] = [searchText]dy
+        let searchTextList: [String] = [searchText]
         
         ParseAPI.sharedInstance.getRecordingsWithTagNames(searchTextList) { (tunes, error) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
