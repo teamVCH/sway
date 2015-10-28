@@ -8,7 +8,7 @@
 
 class ParseAPI: NSObject {
     static let sharedInstance = ParseAPI()
-    
+   
     func getAllRecordings(onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let query = PFQuery(className:"Recordings")
         query.includeKey("originator")
@@ -16,8 +16,8 @@ class ParseAPI: NSObject {
         query.includeKey("originalTune.originator")
         query.orderByDescending("updatedAt")
         query.cachePolicy = .CacheThenNetwork
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
+        
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 print("Successfully retrieved \(objects!.count) recordings.")
                 let tunes = Tune.initArray(objects!)
@@ -30,31 +30,46 @@ class ParseAPI: NSObject {
         }
     }
   
-  /*  func getRecordingsWithTagNames(tagNames: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
-        let tagQuery = PFQuery(className: "Tags")
-        tagQuery.whereKey("name", containedIn:tagNames)
-        tagQuery.findObjectsInBackgroundWithBlock({ (tags: [PFObject]?, error: NSError?) -> Void in
-            if error == nil && tags?.count > 0 {
-                // Get recordings for these tags
-                let recordingsQuery = PFQuery(className:"Recordings")
-                recordingsQuery.includeKey("originator")
-                recordingsQuery.whereKey("tags", containsAllObjectsInArray: tags!)
-                recordingsQuery.findObjectsInBackgroundWithBlock({
-                    (objects: [PFObject]?, error: NSError?) -> Void in
-                    if error == nil {
-                        print("Successfully retrieved \(objects!.count) recordings.")
-                        let tunes = Tune.initArray(objects!)
-                        onCompletion(tunes: tunes, error: nil)
-                    }
-                })
+    func getRecordingsWithTagNames(tagNames: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
+        let query = PFQuery(className: "Recordings")
+        query.includeKey("originator")
+        query.includeKey("originalTune")
+        query.includeKey("originalTune.originator")
+        query.orderByDescending("updatedAt")
+        query.cachePolicy = .CacheThenNetwork
+        query.whereKey("tags", containsAllObjectsInArray:tagNames)
+        query.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                print("Successfully retrieved \(objects!.count) recordings.")
+                let tunes = Tune.initArray(objects!)
+                onCompletion(tunes: tunes, error: nil)
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
                 onCompletion(tunes: nil, error: error)
             }
         })
     }
-*/
     
+    func getRecordingsForUser(user: PFUser, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
+        let query = PFQuery(className:"Recordings")
+        query.includeKey("originator")
+        query.includeKey("originalTune")
+        query.includeKey("originalTune.originator")
+        query.orderByDescending("updatedAt")
+        query.cachePolicy = .CacheThenNetwork
+        query.whereKey("originator", equalTo: user)
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                print("Successfully retrieved \(objects!.count) recordings.")
+                let tunes = Tune.initArray(objects!)
+                onCompletion(tunes: tunes, error: nil)
+            } else {
+                // Error could occur on first pass when non cached data
+                print("Error: \(error!) \(error!.userInfo)")
+                return
+            }
+        }
+    }
     
     func getRecordings(recordingIds: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let query = PFQuery(className:"Recordings")
@@ -69,27 +84,6 @@ class ParseAPI: NSObject {
                 // Log details of the failure
                 print("Error: \(error!) \(error!.userInfo)")
                 onCompletion(tunes: nil, error: error)
-            }
-        }
-    }
-    
-    func getRecordingsForUser(user: PFUser, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
-        let query = PFQuery(className:"Recordings")
-        query.includeKey("originator")
-        query.whereKey("originator", equalTo: user)
-        query.includeKey("originalTune")
-        query.includeKey("originalTune.originator")
-        query.orderByDescending("updatedAt")
-        query.cachePolicy = .CacheThenNetwork
-        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                print("Successfully retrieved \(objects!.count) recordings.")
-                let tunes = Tune.initArray(objects!)
-                onCompletion(tunes: tunes, error: nil)
-            } else {
-                // Error could occur on first pass when non cached data
-                print("Error: \(error!) \(error!.userInfo)")
-                return
             }
         }
     }
