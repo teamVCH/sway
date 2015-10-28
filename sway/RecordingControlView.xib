@@ -47,7 +47,7 @@
                     </subviews>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eof-qc-50b">
-                    <rect key="frame" x="180" y="136" width="240" height="73"/>
+                    <rect key="frame" x="180" y="136" width="240" height="47"/>
                     <subviews>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="whm-Ey-Oko">
                             <rect key="frame" x="48" y="8" width="51" height="31"/>
@@ -58,24 +58,15 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kvd-FT-7NS">
-                            <rect key="frame" x="53" y="39" width="135" height="30"/>
-                            <state key="normal" title="Load Backing Track"/>
-                            <connections>
-                                <action selector="loadBackingTrack:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZLU-lg-EJa"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="Kvd-FT-7NS" secondAttribute="bottom" constant="4" id="Brd-ZB-9ON"/>
                         <constraint firstAttribute="width" constant="240" id="K9A-1Q-jSN"/>
                         <constraint firstItem="whm-Ey-Oko" firstAttribute="top" secondItem="eof-qc-50b" secondAttribute="top" constant="8" id="Uo6-LY-WQw"/>
                         <constraint firstItem="whm-Ey-Oko" firstAttribute="leading" secondItem="eof-qc-50b" secondAttribute="leading" constant="48" id="Upy-dN-cGG"/>
                         <constraint firstItem="1bk-TU-lNF" firstAttribute="leading" secondItem="whm-Ey-Oko" secondAttribute="trailing" constant="8" id="dRc-LR-6yj"/>
-                        <constraint firstItem="Kvd-FT-7NS" firstAttribute="top" secondItem="whm-Ey-Oko" secondAttribute="bottom" id="mKd-n6-jad"/>
+                        <constraint firstAttribute="bottom" secondItem="whm-Ey-Oko" secondAttribute="bottom" constant="8" id="tw3-e8-YyP"/>
                         <constraint firstItem="1bk-TU-lNF" firstAttribute="centerY" secondItem="whm-Ey-Oko" secondAttribute="centerY" id="zLS-nz-gQ7"/>
-                        <constraint firstItem="Kvd-FT-7NS" firstAttribute="centerX" secondItem="eof-qc-50b" secondAttribute="centerX" id="zq9-MG-WEe"/>
                     </constraints>
                 </view>
             </subviews>

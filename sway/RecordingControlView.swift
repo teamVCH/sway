@@ -31,12 +31,14 @@ class RecordingControlView: UIView {
     var isRecording: Bool = false {
         didSet {
             recordButton.selected = isRecording
+            playButton.enabled = !isRecording
         }
     }
     
     var isPlaying: Bool = false {
         didSet {
             playButton.selected = isPlaying
+            recordButton.enabled = !isPlaying
         }
     }
     
@@ -75,7 +77,7 @@ class RecordingControlView: UIView {
 
     
     
-    
+    /*
     
     // just for demo purposes; this will happen automatically in collaborate mode
     @IBAction func loadBackingTrack(sender: AnyObject) {
@@ -83,5 +85,5 @@ class RecordingControlView: UIView {
         
         
     }
-    
+    */
 }

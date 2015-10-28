@@ -93,6 +93,19 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
             prepareToRecord()
         }
         
+        // headphone detection does not work on the simulator
+        if !Platform.isSimulator {
+            if helper.isHeadsetConnected() {
+                rcView.playBackingAudioWhileRecordingSwitch.on = true
+            } else {
+                let message = "For best results, we recommend connecting headphones"
+                let alertView = UIAlertController(title: "Headphones Recommended", message: message, preferredStyle: .Alert)
+                alertView.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
+                presentViewController(alertView, animated: true, completion: nil)
+            }
+        }
+        
+        
         
     }
     

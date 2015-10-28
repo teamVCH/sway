@@ -56,12 +56,8 @@ class AVFoundationHelper: NSObject {
     
     func isHeadsetConnected() -> Bool {
         let route = AVAudioSession.sharedInstance().currentRoute
-        for desc in route.outputs {
-            if desc.portType == AVAudioSessionPortHeadphones {
-                return true
-            }
-        }
-        return false
+        return (route.outputs).filter({ $0.portType == AVAudioSessionPortHeadphones }).count > 0
+
     }
     
     
