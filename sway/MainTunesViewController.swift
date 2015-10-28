@@ -10,18 +10,21 @@ import UIKit
 
 let tuneToDetailSegue = "TuneToDetailSegue"
 
-class MainTunesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainTunesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var searchBar: UISearchBar!
+
     var refreshControl:UIRefreshControl!
     var tunes:[Tune]?
+    var searchActive: Bool!
 
     var selectedTune: Tune?
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+
         addRefreshControl()
         renderTunes()
         
@@ -32,6 +35,8 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
+        
+        searchBar.delegate = self
     }
     
     private func renderTunes() {
@@ -123,10 +128,38 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
                 detailViewController.tune = selectedTune
             }
         }
-        
-        
-        
     }
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true
+    }
+    
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        var searchTextList: [String] = [searchText]dy
+        
+        ParseAPI.sharedInstance.getRecordingsWithTagNames(searchTextList) { (tunes, error) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                if tunes != nil {
+                    self.tunes = tunes
+                    self.tableView.reloadData()
+                }
+            })
+        }
+        self.tableView.reloadData()
+    }
+    
     
 
 }

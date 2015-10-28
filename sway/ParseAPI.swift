@@ -30,12 +30,11 @@ class ParseAPI: NSObject {
         }
     }
   
-  /*  func getRecordingsWithTagNames(tagNames: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
+    func getRecordingsWithTagNames(tagNames: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let tagQuery = PFQuery(className: "Tags")
         tagQuery.whereKey("name", containedIn:tagNames)
         tagQuery.findObjectsInBackgroundWithBlock({ (tags: [PFObject]?, error: NSError?) -> Void in
             if error == nil && tags?.count > 0 {
-                // Get recordings for these tags
                 let recordingsQuery = PFQuery(className:"Recordings")
                 recordingsQuery.includeKey("originator")
                 recordingsQuery.whereKey("tags", containsAllObjectsInArray: tags!)
@@ -53,7 +52,7 @@ class ParseAPI: NSObject {
             }
         })
     }
-*/
+
     
     
     func getRecordings(recordingIds: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
