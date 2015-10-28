@@ -17,21 +17,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PFH-V3-Awz">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="108" width="320" height="411"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="EC3-Wp-rD4">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PFH-V3-Awz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="282-zW-EhE"/>
-                            <constraint firstItem="PFH-V3-Awz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="cTI-AC-aEK"/>
+                            <constraint firstAttribute="trailing" secondItem="EC3-Wp-rD4" secondAttribute="trailing" id="AzX-9y-zfz"/>
+                            <constraint firstItem="EC3-Wp-rD4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="TBX-0l-sK5"/>
+                            <constraint firstItem="PFH-V3-Awz" firstAttribute="top" secondItem="EC3-Wp-rD4" secondAttribute="bottom" id="Z1N-hW-DXc"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PFH-V3-Awz" secondAttribute="bottom" id="t8M-dz-2GN"/>
                             <constraint firstAttribute="trailing" secondItem="PFH-V3-Awz" secondAttribute="trailing" id="tZE-PT-Zul"/>
+                            <constraint firstItem="EC3-Wp-rD4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uJN-Jx-ksN"/>
+                            <constraint firstItem="PFH-V3-Awz" firstAttribute="top" secondItem="EC3-Wp-rD4" secondAttribute="bottom" id="wrB-ho-tal"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Listen" image="headphone" id="9yV-Wq-Tpp"/>
                     <navigationItem key="navigationItem" title="Top Charts" id="S6R-rq-dEh"/>
                     <connections>
+                        <outlet property="searchBar" destination="EC3-Wp-rD4" id="6cO-Px-uxH"/>
                         <outlet property="tableView" destination="PFH-V3-Awz" id="Z9y-0b-Fpl"/>
                         <segue destination="E4S-Ni-YtX" kind="push" identifier="TuneToDetailSegue" id="Pvx-cX-8yB"/>
                     </connections>
@@ -387,7 +396,7 @@
         <image name="record" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wYk-7r-5IJ"/>
+        <segue reference="Pvx-cX-8yB"/>
         <segue reference="66j-kX-y09"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
