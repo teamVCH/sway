@@ -12,9 +12,23 @@ let tempDirectoryUrl = AppDelegate.createTempDirectory()!
 
 class Tune: NSObject, Composition {
     
+    
+    let object: PFObject
+    
     var id: String?
     let title: String?
-    var replayCount: Int? = 0
+    var replayCount: Int? {
+        get {
+            return object["replays"] as? Int
+        }
+        set(replays) {
+            object["replays"] = replays
+            object.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
+                print("replaysUpdated")
+                
+            }
+        }
+    }
     var likeCount: Int? = 0
     var collaboratorCount: Int? = 0
     var length : Double? = 0
@@ -31,9 +45,10 @@ class Tune: NSObject, Composition {
     var cachedAudioUrl: NSURL?
     
     init(object: PFObject) {
+        self.object = object
         id = object.objectId!
         title = object["title"] as? String
-        replayCount = object["replays"] as? Int
+        //replayCount = object["replays"] as? Int
         lastModified = object.updatedAt
         originator = object["originator"] as? PFUser
         tuneProfileImageUrl = originator?.objectForKey("profileImageUrl") as? String
