@@ -17,7 +17,6 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
 
     var refreshControl:UIRefreshControl!
     var tunes:[Tune]?
-    var searchActive: Bool!
 
     var selectedTune: Tune?
     
@@ -130,20 +129,18 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        searchActive = false
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        searchActive = true
     }
     
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchActive = false
+        self.searchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchActive = false
+        self.searchBar.resignFirstResponder()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
