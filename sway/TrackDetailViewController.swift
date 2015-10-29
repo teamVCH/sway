@@ -120,7 +120,8 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                     recordViewController = segue.destinationViewController as! RecordViewController
                 }
                 let recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
-                recording.originalTuneId = tune.id!
+                //recording.originalTuneId = tune.id!
+                recording.originalTune = tune
                 
                 let backingAudioUrl = recording.getAudioUrl(.Backing, create: true)
                 

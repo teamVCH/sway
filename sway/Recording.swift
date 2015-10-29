@@ -71,6 +71,15 @@ class Recording: NSManagedObject, Composition {
         return array
     }()
     
+    
+    var originalTune: Tune? {
+        didSet {
+            if let originalTune = originalTune {
+                originalTuneId = originalTune.id
+            }
+        }
+    }
+    
  
     func getAudioUrl(audioTrack: AudioTrack, create: Bool = false) -> NSURL? {
         if let audioPath = getAudioPath(audioTrack) {

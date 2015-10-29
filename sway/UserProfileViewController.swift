@@ -71,7 +71,17 @@ class DraftRecordingsUserProfileViewControllerDelegate: UserProfileViewControlle
 
     func prepareForSegue(destinationViewController: UIViewController, indexPath: NSIndexPath) {
         let recordViewController = destinationViewController as! RecordViewController
-        recordViewController.recording = drafts[indexPath.row]
+        let draft = drafts[indexPath.row]
+        if let originalTuneId = draft.originalTuneId {
+            ParseAPI.sharedInstance.getRecordings([originalTuneId], onCompletion: { (tunes, error) -> Void in
+                if let tunes = tunes {
+                    if !tunes.isEmpty {
+                        draft.originalTune = tunes[0]
+                    }
+                }
+            })
+        }
+        recordViewController.recording = draft
     }
     
     

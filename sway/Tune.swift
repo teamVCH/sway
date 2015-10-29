@@ -19,10 +19,10 @@ class Tune: NSObject, Composition {
     let title: String?
     var replayCount: Int? {
         get {
-            return object["replays"] as? Int
+            return object[kReplays] as? Int
         }
         set(replays) {
-            object["replays"] = replays
+            object[kReplays] = replays
             object.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
                 print("replaysUpdated")
                 
@@ -33,6 +33,7 @@ class Tune: NSObject, Composition {
     
     
     //var likeCount: Int? = 0
+    var collaborators: [PFUser]?
     var collaboratorCount: Int? = 0
     var length : Double? = 0
     let originator: PFUser?
@@ -50,38 +51,35 @@ class Tune: NSObject, Composition {
     init(object: PFObject) {
         self.object = object
         id = object.objectId!
-        title = object["title"] as? String
-        //replayCount = object["replays"] as? Int
+        title = object[kTitle] as? String
+
         lastModified = object.updatedAt
-        originator = object["originator"] as? PFUser
-        tuneProfileImageUrl = originator?.objectForKey("profileImageUrl") as? String
+        originator = object[kOriginator] as? PFUser
+        tuneProfileImageUrl = originator?.objectForKey(kProfileImageUrl) as? String
         
-        let audioData = object["audioData"] as? PFFile
+        let audioData = object[kAudioData] as? PFFile
         if let audioUrlString = audioData?.url {
             audioUrl = NSURL(string: audioUrlString)
         }
         
-        likers = object["likers"] as? [PFUser]
-        /*
-        if let likers = object["likers"] {
-            likeCount = likers.count
-        }
-        */
-        if let collaborators = object["collaborators"] {
-            collaboratorCount = collaborators.count
+        likers = object[kLikers] as? [PFUser]
+
+        if let collaborators = object[kCollaborators] as? [PFUser] {
+            self.collaborators = collaborators
+            self.collaboratorCount = collaborators.count
         }
         
-        length = object["length"] as? Double
-        tagNames = object["tags"] as? [String]
+        length = object[kLength] as? Double
+        tagNames = object[kTags] as? [String]
         
-        let waveform = object["waveform"] as? PFFile
+        let waveform = object[kWaveform] as? PFFile
         if let waveformUrlString = waveform?.url {
             waveformImageUrl = NSURL(string: waveformUrlString)
         } else {
             waveformImageUrl = nil
         }
         
-        if let originalTune = object["originalTune"] as? PFObject {
+        if let originalTune = object[kOriginalTune] as? PFObject {
             self.originalTune = Tune(object: originalTune)
         } else {
             self.originalTune = nil
@@ -120,7 +118,7 @@ class Tune: NSObject, Composition {
             }
         }
 
-        object["likers"] = likers
+        object[kLikers] = likers
         object.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
             print("likersUpdated")
             

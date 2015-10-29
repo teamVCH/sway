@@ -6,18 +6,40 @@
 //  Copyright © 2015 VCH. All rights reserved.
 //
 
+let kRecordings = "Recordings"
+let kOriginator = "originator"
+let kOriginalTune = "originalTune"
+let kLikers = "likers"
+let kCreatedAt = "createdAt"
+let kTags = "tags"
+let kTitle = "title"
+let kType = "type"
+let kLength = "length"
+let kAudioData = "audioData"
+let kReplays = "replays"
+let kWaveform = "waveform"
+let kProfileImageUrl = "profileImageUrl"
+let kCollaborators = "collaborators"
+
 class ParseAPI: NSObject {
+    
     static let sharedInstance = ParseAPI()
    
+    private func newRecordingsQuery(useCache: Bool = true) -> PFQuery {
+        let query = PFQuery(className: kRecordings)
+        query.includeKey(kOriginator)
+        query.includeKey(kOriginalTune)
+        query.includeKey("\(kOriginalTune).\(kOriginator)")
+        query.includeKey(kLikers)
+        query.orderByDescending(kCreatedAt)
+        if useCache {
+            query.cachePolicy = .CacheThenNetwork
+        }
+        return query
+    }
+    
     func getAllRecordings(onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
-        let query = PFQuery(className:"Recordings")
-        query.includeKey("originator")
-        query.includeKey("originalTune")
-        query.includeKey("originalTune.originator")
-        query.includeKey("likers")
-        query.orderByDescending("updatedAt")
-        query.cachePolicy = .CacheThenNetwork
-        
+        let query = newRecordingsQuery()
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 print("Successfully retrieved \(objects!.count) recordings.")
@@ -32,17 +54,12 @@ class ParseAPI: NSObject {
     }
     
     func getRecordingsWithSearchTerm(searchTerm: String?, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
-        let query = PFQuery(className: "Recordings")
-        query.includeKey("originator")
-        query.includeKey("originalTune")
-        query.includeKey("originalTune.originator")
-        query.orderByDescending("updatedAt")
-        query.cachePolicy = .CacheThenNetwork
+        let query = newRecordingsQuery()
         if let searchTerm = searchTerm {
             let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
             if searchTerm.stringByTrimmingCharactersInSet(whitespaceSet) != "" {
                 let searchArray: [String] = searchTerm.componentsSeparatedByString(" ")
-                query.whereKey("tags", containedIn: searchArray)
+                query.whereKey(kTags, containedIn: searchArray)
             }
         }
         query.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
@@ -59,13 +76,8 @@ class ParseAPI: NSObject {
     
     
     func getRecordingsForUser(user: PFUser, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
-        let query = PFQuery(className:"Recordings")
-        query.includeKey("originator")
-        query.includeKey("originalTune")
-        query.includeKey("originalTune.originator")
-        query.orderByDescending("updatedAt")
-        query.cachePolicy = .CacheThenNetwork
-        query.whereKey("originator", equalTo: user)
+        let query = newRecordingsQuery()
+        query.whereKey(kOriginator, equalTo: user)
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 print("Successfully retrieved \(objects!.count) recordings.")
@@ -80,13 +92,8 @@ class ParseAPI: NSObject {
     }
     
     func getRecordingsForUserId(userId : String, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
-        let query = PFQuery(className:"Recordings")
-        query.includeKey("originator")
-        query.includeKey("originalTune")
-        query.includeKey("originalTune.originator")
-        query.orderByDescending("updatedAt")
-        query.cachePolicy = .CacheThenNetwork
-        query.whereKey("originator", equalTo: userId)
+        let query = newRecordingsQuery()
+        query.whereKey(kOriginator, equalTo: userId)
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 print("Successfully retrieved \(objects!.count) recordings.")
@@ -101,8 +108,7 @@ class ParseAPI: NSObject {
     }
     
     func getRecordings(recordingIds: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
-        let query = PFQuery(className:"Recordings")
-        query.includeKey("originator")
+        let query = newRecordingsQuery()
         query.whereKey("objectId", containedIn: recordingIds)
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -118,7 +124,7 @@ class ParseAPI: NSObject {
     }
     
     func deleteRecording(tune: Tune, onCompletion: (error: NSError?) -> Void) {
-        let query = PFQuery(className: "Recordings")
+        let query = PFQuery(className: kRecordings)
         query.getObjectInBackgroundWithId(tune.id!) { (recording: PFObject?, error: NSError?) -> Void in
             if error == nil {
                 recording?.deleteInBackgroundWithBlock({ (deleted: Bool, error: NSError?) -> Void in
@@ -135,15 +141,15 @@ class ParseAPI: NSObject {
         if let audioUrl = recording.getAudioUrl(.Bounced) {
             if let data = recording.readFromUrl(audioUrl) {
 
-                let tune = PFObject(className: "Recordings")
-                tune.setValue(recording.title, forKey: "title")
-                tune.setValue(user, forKey: "originator")
-                tune.setValue("Original", forKey: "type")
-                tune.setValue(PFFile(name: audioUrl.lastPathComponent, data: data), forKey: "audioData")
+                let tune = PFObject(className: kRecordings)
+                tune.setValue(recording.title, forKey: kTitle)
+                tune.setValue(user, forKey: kOriginator)
+                
+                tune.setValue(PFFile(name: audioUrl.lastPathComponent, data: data), forKey: kAudioData)
                 
                 if let waveformUrl = recording.waveformImageUrl {
                     if let waveformData = recording.readFromUrl(waveformUrl) {
-                        tune.setValue(PFFile(name: waveformUrl.lastPathComponent, data: waveformData), forKey: "waveform")
+                        tune.setValue(PFFile(name: waveformUrl.lastPathComponent, data: waveformData), forKey: kWaveform)
                     }
                 }
                 
@@ -153,25 +159,33 @@ class ParseAPI: NSObject {
                         let rTag = tag as! RecordingTag
                         tagNames.append(rTag.tag!)
                     }
-                    tune.setValue(tagNames, forKey: "tags")
+                    tune.setValue(tagNames, forKey: kTags)
                 }
                 
-                if let originalTuneId = recording.originalTuneId {
-                    let pointer = PFObject(withoutDataWithClassName: "Recordings", objectId: originalTuneId)
-                    tune.setValue(pointer, forKey: "originalTune")
+                
+                tune.setValue(recording.originalTuneId != nil ? "Collaboration" : "Original", forKey: kType)
+                
+                if let originalTune = recording.originalTune {
+                    var collaborators = [PFUser]()
+                    if let previousCollaborators = originalTune.collaborators {
+                        collaborators.appendContentsOf(previousCollaborators)
+                    }
+                    collaborators.append(originalTune.originator!)
+                    tune.setValue(originalTune.object, forKey: kOriginalTune)
+                    tune.setValue(collaborators, forKey: kCollaborators)
                 }
                 
                 if let length = recording.length {
-                    tune.setValue(length, forKey: "length")
+                    tune.setValue(length, forKey: kLength)
                 }
                 
+                tune.setValue(1, forKey: kReplays)
                 
-                tune.setValue(1, forKey: "replays")
                 tune.saveInBackgroundWithBlock { (success, error ) -> Void in
                     print("Recording published: \(success)")
                     if success {
-                        let query = PFQuery(className: "Recordings")
-                        query.includeKey("originator")
+                        let query = PFQuery(className: kRecordings)
+                        query.includeKey(kOriginator)
                         query.getObjectInBackgroundWithId(tune.objectId!) {
                             (tune: PFObject?, error: NSError?) -> Void in
                             if let tune = tune {
