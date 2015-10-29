@@ -179,10 +179,12 @@ class TuneViewCell: UITableViewCell {
             //WaveFormView.progressTime = CMTimeMakeWithSeconds(0, 10000)
             playButton.selected = true
             audioPlayer?.play()
-            if let replayCount = tune.replayCount {
-                let newCount = replayCount + 1
-                tune.replayCount = newCount
-                self.replayCount.text = "\(newCount)"
+            if let tune = tune {
+                if let replayCount = tune.replayCount {
+                    let newCount = replayCount + 1
+                    tune.replayCount = newCount
+                    self.replayCount.text = "\(newCount)"
+                }
             }
         }
     }
