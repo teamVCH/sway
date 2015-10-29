@@ -45,43 +45,35 @@
                             </connections>
                         </button>
                     </subviews>
-                </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eof-qc-50b">
-                    <rect key="frame" x="180" y="136" width="240" height="47"/>
-                    <subviews>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="whm-Ey-Oko">
-                            <rect key="frame" x="48" y="8" width="51" height="31"/>
-                        </switch>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Headphones" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bk-TU-lNF">
-                            <rect key="frame" x="105" y="16" width="77" height="16"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="240" id="K9A-1Q-jSN"/>
-                        <constraint firstItem="whm-Ey-Oko" firstAttribute="top" secondItem="eof-qc-50b" secondAttribute="top" constant="8" id="Uo6-LY-WQw"/>
-                        <constraint firstItem="whm-Ey-Oko" firstAttribute="leading" secondItem="eof-qc-50b" secondAttribute="leading" constant="48" id="Upy-dN-cGG"/>
-                        <constraint firstItem="1bk-TU-lNF" firstAttribute="leading" secondItem="whm-Ey-Oko" secondAttribute="trailing" constant="8" id="dRc-LR-6yj"/>
-                        <constraint firstAttribute="bottom" secondItem="whm-Ey-Oko" secondAttribute="bottom" constant="8" id="tw3-e8-YyP"/>
-                        <constraint firstItem="1bk-TU-lNF" firstAttribute="centerY" secondItem="whm-Ey-Oko" secondAttribute="centerY" id="zLS-nz-gQ7"/>
+                        <constraint firstAttribute="height" constant="128" id="9xX-5J-aCK"/>
                     </constraints>
-                </view>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fW5-N2-wJC">
+                    <rect key="frame" x="560" y="8" width="32" height="32"/>
+                    <state key="normal" image="headphones"/>
+                    <state key="selected" image="headphones"/>
+                    <connections>
+                        <action selector="onTapHeadphones:" destination="iN0-l3-epB" eventType="touchUpInside" id="aGR-fY-cEn"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="eof-qc-50b" firstAttribute="top" secondItem="J3x-A1-lQn" secondAttribute="bottom" id="5Wn-JE-kvG"/>
                 <constraint firstItem="J3x-A1-lQn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9l0-3G-ztE"/>
                 <constraint firstItem="D3H-Lg-zun" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Qxk-v5-MxU"/>
+                <constraint firstAttribute="trailing" secondItem="fW5-N2-wJC" secondAttribute="trailing" constant="8" id="ngD-RP-zuU"/>
+                <constraint firstItem="fW5-N2-wJC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="tgf-xg-pOU"/>
                 <constraint firstItem="D3H-Lg-zun" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="trx-4V-mBY"/>
                 <constraint firstItem="J3x-A1-lQn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="yb3-am-dc8"/>
-                <constraint firstItem="eof-qc-50b" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="z6R-Qp-w9T"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <connections>
+                <outlet property="bounceButton" destination="ecn-nd-fex" id="brx-fm-ZqG"/>
                 <outlet property="currentTimeLabel" destination="D3H-Lg-zun" id="KVn-rH-gUn"/>
-                <outlet property="playBackingAudioWhileRecordingSwitch" destination="whm-Ey-Oko" id="sog-Wh-Zpb"/>
+                <outlet property="playBackingAudioWhileRecordingSwitch" destination="fW5-N2-wJC" id="dT5-93-gVg"/>
                 <outlet property="playButton" destination="18a-3R-75h" id="hee-KA-OXm"/>
                 <outlet property="recordButton" destination="Tqg-rx-RY4" id="87o-Wt-aMw"/>
             </connections>
@@ -89,6 +81,7 @@
         </view>
     </objects>
     <resources>
+        <image name="headphones" width="32" height="32"/>
         <image name="record_off" width="256" height="256"/>
         <image name="record_on" width="128" height="128"/>
     </resources>

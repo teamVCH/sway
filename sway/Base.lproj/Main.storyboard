@@ -506,11 +506,10 @@
         <image name="profile" width="35" height="35"/>
         <image name="record" width="32" height="32"/>
     </resources>
-    <inferredMeHEADtricsTieBreakers>
+    <inferredMetricsTieBreakers>
         <segue reference="Pvx-cX-8yB"/>
         <segue reference="66j-kX-y09"/>
         <segue reference="wYk-7r-5IJ"/>
-        <segue reference="Bgc-aC-mG4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
