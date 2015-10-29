@@ -138,6 +138,37 @@ class Tune: NSObject, Composition {
         return false
     }
     
+    // get the featured / inset originator
+    func getOriginators() -> (PFUser, PFUser?) {
+        let owner = originator!
+        if let collaborators = collaborators {
+            return (collaborators[0], owner)
+        } else {
+            return (owner, nil)
+        }
+    }
+
+    // get all the collaborators to display other than the featured originator
+    func getCollaborators() -> [PFUser]? {
+        if let collaborators = collaborators {
+            if collaborators.count > 1 {
+                var collabs = [PFUser]()
+                for index in 1..<collaborators.count {
+                    let collab = collaborators[index]
+                    if !collabs.contains(collab) {
+                        collabs.append(collab)
+                    }
+                }
+                collabs.append(originator!)
+                return collabs
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+    
     
     func downloadAndCacheAudio(completion: (NSURL?, NSError?) -> Void) {
         let request = NSURLRequest(URL: audioUrl!)

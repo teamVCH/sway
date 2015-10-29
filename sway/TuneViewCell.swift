@@ -49,7 +49,7 @@ class TuneViewCell: UITableViewCell {
             likeCount.text = "\(likerCount)"
             collabCount.text = "\(tune.collaboratorCount!)"
             
-            
+            /*
             if let originalTune = tune.originalTune {
                 if let url = originalTune.tuneProfileImageUrl {
                     userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
@@ -71,7 +71,25 @@ class TuneViewCell: UITableViewCell {
                 }
                 collaboratorImageView.hidden = true
             }
+            */
+            let originators = tune.getOriginators()
+            if let url = originators.0.objectForKey(kProfileImageUrl) as? String {
+                userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+            } else {
+                userImageView.image = defaultUserImage
+            }
             
+            if let insetOriginator = originators.1 {
+                collaboratorImageView.hidden = false
+                if let url = insetOriginator.objectForKey(kProfileImageUrl) as? String {
+                    collaboratorImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+                } else {
+                    collaboratorImageView.image = defaultUserImage
+                }
+                
+            } else {
+                collaboratorImageView.hidden = true
+            }
             
             
         }
@@ -175,8 +193,7 @@ class TuneViewCell: UITableViewCell {
             playButton.selected = false
         } else {
             playing = true
-            //audioPlayer?.currentTime = 0
-            //WaveFormView.progressTime = CMTimeMakeWithSeconds(0, 10000)
+
             playButton.selected = true
             audioPlayer?.play()
             if let tune = tune {

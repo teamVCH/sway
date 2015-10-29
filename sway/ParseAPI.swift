@@ -31,6 +31,7 @@ class ParseAPI: NSObject {
         query.includeKey(kOriginalTune)
         query.includeKey("\(kOriginalTune).\(kOriginator)")
         query.includeKey(kLikers)
+        query.includeKey(kCollaborators)
         query.orderByDescending(kCreatedAt)
         if useCache {
             query.cachePolicy = .CacheThenNetwork
