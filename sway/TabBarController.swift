@@ -24,7 +24,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         delegate = self
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "onSavedDraft", name: savedDraft, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onPublishedTune", name: publishedTune, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onPublishedTune:", name: publishedTune, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: loggedOut, object: nil)
         
         for tabBarItem in self.tabBar.items! {

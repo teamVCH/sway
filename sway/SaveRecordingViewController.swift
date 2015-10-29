@@ -45,6 +45,9 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         tagsCollectionView.registerNib(xib, forCellWithReuseIdentifier: tagCell)
         tagsCollectionView.dataSource = self
         tagsCollectionView.delegate = self
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -250,6 +253,10 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         // Dispose of any resources that can be recreated.
     }
     
+    func dismissKeyboard() {
+        print("tap")
+        titleField.resignFirstResponder()
+    }
 
     /*
     // MARK: - Navigation
