@@ -14,8 +14,10 @@ class User: NSObject {
     var screenName: String?
     var tagLine: String?
     var email: String?
-        
+    var userId: String?
+    
     init(object: PFUser) {
+        userId = object.objectId
         name = object.username
         profileImageURL = object.objectForKey("profileImageUrl") as? String
         email = object.email

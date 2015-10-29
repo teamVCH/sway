@@ -78,6 +78,27 @@ class ParseAPI: NSObject {
         }
     }
     
+    func getRecordingsForUserId(userId : String, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
+        let query = PFQuery(className:"Recordings")
+        query.includeKey("originator")
+        query.includeKey("originalTune")
+        query.includeKey("originalTune.originator")
+        query.orderByDescending("updatedAt")
+        query.cachePolicy = .CacheThenNetwork
+        query.whereKey("originator", equalTo: userId)
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                print("Successfully retrieved \(objects!.count) recordings.")
+                let tunes = Tune.initArray(objects!)
+                onCompletion(tunes: tunes, error: nil)
+            } else {
+                // Error could occur on first pass when non cached data
+                print("Error: \(error!) \(error!.userInfo)")
+                return
+            }
+        }
+    }
+    
     func getRecordings(recordingIds: [String], onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let query = PFQuery(className:"Recordings")
         query.includeKey("originator")

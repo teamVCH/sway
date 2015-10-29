@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A22068C1BE1C24500A91861 /* OtherUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A22068B1BE1C24500A91861 /* OtherUserProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2A6A231C1BD095A800ED0706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A231B1BD095A800ED0706 /* AppDelegate.swift */; };
 		2A6A23211BD095A800ED0706 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A231F1BD095A800ED0706 /* Main.storyboard */; };
 		2A6A23231BD095A800ED0706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A23221BD095A800ED0706 /* Assets.xcassets */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		115E2CB371C884526F352A59 /* libPods-sway.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sway.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A22068B1BE1C24500A91861 /* OtherUserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherUserProfileViewController.swift; sourceTree = "<group>"; };
 		2A6A23181BD095A800ED0706 /* sway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A6A231B1BD095A800ED0706 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A6A23201BD095A800ED0706 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				2A6A232F1BD0A9EF00ED0706 /* MainTunesViewController.swift */,
 				F102CE7F1BD24657007281E2 /* LoginViewController.swift */,
 				2A6A233A1BD2FE6000ED0706 /* UserProfileViewController.swift */,
+				2A22068B1BE1C24500A91861 /* OtherUserProfileViewController.swift */,
 				2A6A23361BD2F85000ED0706 /* TabBarController.swift */,
 				6800F9621BD6AAD600453AFF /* SaveRecordingViewController.swift */,
 			);
@@ -432,6 +435,7 @@
 				2A6A23391BD2FE4200ED0706 /* RecordViewController.swift in Sources */,
 				2A6A234B1BD40E9000ED0706 /* User.swift in Sources */,
 				F1A5F8FF1BDB20FC00570831 /* ParseAPI.swift in Sources */,
+				2A22068C1BE1C24500A91861 /* OtherUserProfileViewController.swift in Sources */,
 				2A6A23371BD2F85000ED0706 /* TabBarController.swift in Sources */,
 				F102CE801BD24657007281E2 /* LoginViewController.swift in Sources */,
 				2A6A23301BD0A9EF00ED0706 /* MainTunesViewController.swift in Sources */,

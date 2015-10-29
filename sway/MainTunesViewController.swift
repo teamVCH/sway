@@ -84,7 +84,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier(tuneViewCell, forIndexPath: indexPath) as! TuneViewCell
         cell.accessoryType = UITableViewCellAccessoryType.None
         cell.tune = tunes?[indexPath.row]
-
+        cell.delegate = self
         return cell
     }
 
@@ -120,6 +120,14 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
                     detailViewController = segue.destinationViewController as! TrackDetailViewController
                 }
                 detailViewController.tune = selectedTune
+            } else if (segueId == "tuneToUserSegue") {
+                let otherUserProfileViewController = segue.destinationViewController as! OtherUserProfileViewController
+                let senderAsTune : TuneViewCell = sender as! TuneViewCell
+                if (senderAsTune.tune.originalTune != nil) {
+                    otherUserProfileViewController.user = User.init(object: senderAsTune.tune.originalTune!.originator!)
+                } else {
+                    otherUserProfileViewController.user = User.init(object: senderAsTune.tune.originator!)
+                }
             }
         }
     }
@@ -150,9 +158,8 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView.reloadData()
     }
 
-    func tuneCellTapped(tuneCell: TuneViewCell) {
-        print("tapped")
-        //segue
+    func profileTapped(tuneCell: TuneViewCell) {
+       performSegueWithIdentifier("tuneToUserSegue", sender: tuneCell)
     }
 
 }

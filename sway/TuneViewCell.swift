@@ -14,7 +14,7 @@ let defaultUserImage = UIImage(named: "profile")
 let formatter = NSDateComponentsFormatter()
 
 @objc protocol TuneViewCellDelegate {
-    optional func tuneCellTapped(tuneCell: TuneViewCell)
+    optional func profileTapped(tuneCell: TuneViewCell)
 }
 
 class TuneViewCell: UITableViewCell {
@@ -149,6 +149,10 @@ class TuneViewCell: UITableViewCell {
         userImageView.clipsToBounds = true
         collaboratorImageView.layer.cornerRadius = 13
         collaboratorImageView.clipsToBounds = true
+        
+        let profileImageTapRecognizer = UITapGestureRecognizer(target:self, action:Selector("profileTapped:"))
+        userImageView.userInteractionEnabled = true
+        userImageView.addGestureRecognizer(profileImageTapRecognizer)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -158,8 +162,8 @@ class TuneViewCell: UITableViewCell {
     }
     
 
-    @IBAction func userImageTapped(sender: AnyObject) {
-        delegate?.tuneCellTapped!(self)
+    func profileTapped (sender: AnyObject){
+        delegate?.profileTapped!(self)
     }
     
     @IBAction func playTapped(sender: AnyObject) {

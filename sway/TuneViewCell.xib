@@ -37,7 +37,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbA-so-xWo" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbA-so-xWo" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
                                 <rect key="frame" x="8" y="19" width="31" height="37"/>
                                 <connections>
                                     <action selector="playTapped:" destination="NsA-Qu-O5h" eventType="touchUpInside" id="Esv-by-QQH"/>
