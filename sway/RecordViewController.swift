@@ -43,7 +43,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         
         //self.view.backgroundColor = UIColor(hue: 0.4694, saturation: 0.04, brightness: 0.92, alpha: 1.0) /* #e2edeb */
         
-        let rcView = UINib(nibName: "RecordingControlView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! RecordingControlView
+        rcView = UINib(nibName: "RecordingControlView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! RecordingControlView
         rcView.frame = controlView.bounds
         controlView.addSubview(rcView)
         
@@ -90,13 +90,14 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         } else {
              // if it wasn't set in the segue, make a new one
             recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
+            rcView.bounceButton.enabled = false
             prepareToRecord()
         }
         
         // headphone detection does not work on the simulator
         if !Platform.isSimulator {
             if helper.isHeadsetConnected() {
-                rcView.playBackingAudioWhileRecordingSwitch.on = true
+                rcView.playBackingAudioWhileRecordingSwitch.selected = true
             } else {
                 let message = "For best results, we recommend connecting headphones"
                 let alertView = UIAlertController(title: "Headphones Recommended", message: message, preferredStyle: .Alert)
@@ -217,6 +218,8 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         if let recordingUrl = recording.getAudioUrl(.Recording, create: false) {
             if recordingUrl.checkResourceIsReachableAndReturnError(nil) {
                 
+                rcView.bounceButton.enabled = true
+                
                 dispatch_async(dispatch_get_main_queue(),{
                     print("updateRecordingAudio")
                     self.recordingWaveformView.asset = AVAsset(URL: recordingUrl)
@@ -244,12 +247,18 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
                     print("Error = \(error)")
                 }
                 
+            } else {
+                rcView.bounceButton.enabled = false
             }
+            
         } else {
             dispatch_async(dispatch_get_main_queue(),{
                 self.recordingWaveformView.hidden = true
                 self.recordingWaver.hidden = false
                 self.recordingAudioPlayer = nil
+                if let rcView = self.rcView {
+                    rcView.bounceButton.enabled = false
+                }
             })
         }
     }

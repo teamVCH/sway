@@ -24,7 +24,9 @@ class RecordingControlView: UIView {
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var currentTimeLabel: UILabel!
-    @IBOutlet weak var playBackingAudioWhileRecordingSwitch: UISwitch!
+    @IBOutlet weak var playBackingAudioWhileRecordingSwitch: UIButton!
+    @IBOutlet weak var bounceButton: UIButton!
+    
     
     var delegate: RecordingControlViewDelegate?
     
@@ -54,11 +56,19 @@ class RecordingControlView: UIView {
             delegate?.stopRecording(self)
             isRecording = false
         } else {
-            delegate?.startRecording(self, playBackingAudio: playBackingAudioWhileRecordingSwitch.on)
+            delegate?.startRecording(self, playBackingAudio: playBackingAudioWhileRecordingSwitch.selected)
             isRecording = true
         }
     }
+
     
+    @IBAction func onTapHeadphones(sender: UIButton) {
+        print("headphones: \(sender.selected)")
+        sender.selected = !sender.selected
+        sender.tintColor = sender.selected ? UIColor.blueColor() : UIColor.blackColor()
+    }
+    
+
     @IBAction func onTapPlay(sender: UIButton) {
         //UIBarButtonPause_2x
         if sender.selected {
@@ -74,7 +84,14 @@ class RecordingControlView: UIView {
         delegate?.bounce(self)
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let image = UIImage(named: "headphones")?.imageWithRenderingMode(.AlwaysTemplate)
+        playBackingAudioWhileRecordingSwitch.setImage(image, forState: .Normal)
+        playBackingAudioWhileRecordingSwitch.setImage(image, forState: .Selected)
 
+        
+    }
     
     
     /*

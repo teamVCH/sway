@@ -157,8 +157,8 @@ class Recording: NSManagedObject, Composition {
     }
 
     func bounce(updateWorkingAudio: Bool, completion: (NSURL?, AVAssetExportSessionStatus?, NSError?) -> Void) {
+        let fileManager = NSFileManager.defaultManager()
         if let recordingAudioUrl = getAudioUrl(.Recording, create: false) {
-            let fileManager = NSFileManager.defaultManager()
             let bouncedAudioUrl = newAudioUrl(.Bounced)
             do {
                 if let backingAudioUrl = getAudioUrl(.Backing, create: false) {
@@ -189,8 +189,15 @@ class Recording: NSManagedObject, Composition {
                 print("bounce i/o error = \(error)")
                 completion(nil, nil, error)
             }
+        } else if let backingAudioUrl = getAudioUrl(.Backing, create: false) {
+            print("No recording to bounce; using backing")
+            let bouncedAudioUrl = newAudioUrl(.Bounced)
+            try! fileManager.copyItemAtURL(backingAudioUrl, toURL: bouncedAudioUrl)
+
+            completion(bouncedAudioUrl, nil, nil)
         } else {
             print("Nothing to bounce")
+            
             completion(nil, nil, nil)
         }
     }
