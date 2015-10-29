@@ -108,7 +108,7 @@ class Tune: NSObject, Composition {
             likers = [PFUser]()
         }
         if status {
-            if isLiked() {
+            if !isLiked() {
                 likers!.append(user)
             }
             
