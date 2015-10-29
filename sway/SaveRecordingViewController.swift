@@ -46,8 +46,8 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         tagsCollectionView.dataSource = self
         tagsCollectionView.delegate = self
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        view.addGestureRecognizer(tap)
+        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        //view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -235,6 +235,7 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let tag = defaultTags[indexPath.item]
+        print("select: \(tag)")
         addTag(tag)
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagCell
         cell.backgroundColor = tagCellSelectedColor
@@ -242,6 +243,7 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
 
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         let tag = defaultTags[indexPath.item]
+        print("deselect: \(tag)")
         removeTag(tag)
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagCell
         cell.backgroundColor = tagCellDeselectedColor

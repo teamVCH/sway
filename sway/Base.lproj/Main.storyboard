@@ -216,7 +216,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfK-WT-JQe" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
+                                    <button contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfK-WT-JQe" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
                                         <rect key="frame" x="8" y="44" width="31" height="37"/>
                                         <connections>
                                             <action selector="onTapPlayPause:" destination="E4S-Ni-YtX" eventType="touchUpInside" id="xya-jq-Gy6"/>
@@ -507,7 +507,6 @@
         <image name="record" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pvx-cX-8yB"/>
         <segue reference="66j-kX-y09"/>
         <segue reference="wYk-7r-5IJ"/>
     </inferredMetricsTieBreakers>
