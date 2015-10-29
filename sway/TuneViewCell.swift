@@ -13,6 +13,10 @@ let defaultUserImage = UIImage(named: "profile")
 
 let formatter = NSDateComponentsFormatter()
 
+@objc protocol TuneViewCellDelegate {
+    optional func tuneCellTapped(tuneCell: TuneViewCell)
+}
+
 class TuneViewCell: UITableViewCell {
 
     @IBOutlet weak var cellView: UIView!
@@ -32,6 +36,7 @@ class TuneViewCell: UITableViewCell {
     var audioItem : AVPlayerItem?
     var audioPlayer : AVPlayer?
     
+    weak var delegate : TuneViewCellDelegate?
     
     var tune : Tune! {
         didSet{
@@ -154,8 +159,7 @@ class TuneViewCell: UITableViewCell {
     
 
     @IBAction func userImageTapped(sender: AnyObject) {
-        // TODO: override default behavior and go to user profile
-        
+        delegate?.tuneCellTapped!(self)
     }
     
     @IBAction func playTapped(sender: AnyObject) {

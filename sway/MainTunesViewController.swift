@@ -10,7 +10,7 @@ import UIKit
 
 let tuneToDetailSegue = "TuneToDetailSegue"
 
-class MainTunesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class MainTunesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, TuneViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -84,8 +84,6 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier(tuneViewCell, forIndexPath: indexPath) as! TuneViewCell
         cell.accessoryType = UITableViewCellAccessoryType.None
         cell.tune = tunes?[indexPath.row]
-        //let tapGesture = UITapGestureRecognizer(target:self, action: Selector("handleTap"))
-        //cell.addGestureRecognizer(tapGesture)
 
         return cell
     }
@@ -94,6 +92,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         //self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectedTune = tunes![indexPath.row]
         self.performSegueWithIdentifier(tuneToDetailSegue, sender: nil)
+        self.searchBar.resignFirstResponder()
     }
     
     
@@ -103,10 +102,6 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         } else {
             return tunes!.count
         }
-    }
-
-    func handleTap(){
-        //self.performSegueWithIdentifier(tuneToDetailSegue, sender: nil)
     }
 
     // MARK: - Navigation
@@ -155,5 +150,9 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView.reloadData()
     }
 
+    func tuneCellTapped(tuneCell: TuneViewCell) {
+        print("tapped")
+        //segue
+    }
 
 }
