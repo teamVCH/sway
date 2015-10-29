@@ -256,6 +256,9 @@
                                 <rect key="frame" x="62" y="445" width="31" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Like"/>
+                                <connections>
+                                    <action selector="onTapLike:" destination="E4S-Ni-YtX" eventType="touchUpInside" id="4aS-ne-T6h"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Published on MM/DD/YYYY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfb-3K-UJ6">
                                 <rect key="frame" x="8" y="197" width="165.5" height="16"/>
@@ -287,6 +290,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Zc5-DP-2DP"/>
                     <connections>
+                        <outlet property="likeButton" destination="Dbd-VF-e57" id="4rw-hf-ck0"/>
                         <outlet property="originatorImageView" destination="HNJ-nU-wsU" id="x8R-v8-jiE"/>
                         <outlet property="playButton" destination="kfK-WT-JQe" id="aME-Q3-wTS"/>
                         <outlet property="publishedOnLabel" destination="Tfb-3K-UJ6" id="zBv-Oq-OSz"/>
@@ -403,7 +407,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wYk-7r-5IJ"/>
-        <segue reference="66j-kX-y09"/>
+        <segue reference="Bgc-aC-mG4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

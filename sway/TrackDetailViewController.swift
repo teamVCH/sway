@@ -22,6 +22,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     @IBOutlet weak var publishedOnLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var originatorImageView: UIImageView!
+    @IBOutlet weak var likeButton: UIButton!
     
     
     var tune: Tune!
@@ -56,6 +57,10 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 }
                 
             }
+            
+
+            likeButton.selected = tune.isLiked()
+            
         }
         
     }
@@ -80,6 +85,11 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
         }
     }
     
+    @IBAction func onTapLike(sender: UIButton) {
+        tune.like(!sender.selected)
+        sender.selected = !sender.selected
+    }
+
     func audioPlayerUpdateTime(player: AVAudioPlayer) {
         waveformView.updateTime(audioPlayer!.currentTime)
         

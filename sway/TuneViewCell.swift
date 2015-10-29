@@ -44,7 +44,9 @@ class TuneViewCell: UITableViewCell {
             if let replays = tune.replayCount {
                 replayCount.text = "\(replays)"
             }
-            likeCount.text = "\(tune.likeCount!)"
+            let likerCount = tune.likers != nil ? tune.likers!.count : 0
+            
+            likeCount.text = "\(likerCount)"
             collabCount.text = "\(tune.collaboratorCount!)"
             
             

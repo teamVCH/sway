@@ -29,7 +29,10 @@ class Tune: NSObject, Composition {
             }
         }
     }
-    var likeCount: Int? = 0
+    var likers: [PFUser]?
+    
+    
+    //var likeCount: Int? = 0
     var collaboratorCount: Int? = 0
     var length : Double? = 0
     let originator: PFUser?
@@ -58,10 +61,12 @@ class Tune: NSObject, Composition {
             audioUrl = NSURL(string: audioUrlString)
         }
         
+        likers = object["likers"] as? [PFUser]
+        /*
         if let likers = object["likers"] {
             likeCount = likers.count
         }
-        
+        */
         if let collaborators = object["collaborators"] {
             collaboratorCount = collaborators.count
         }
@@ -95,6 +100,44 @@ class Tune: NSObject, Composition {
 
     func isCollaboration() -> Bool {
         return originalTune != nil
+    }
+    
+    func like(status: Bool) {
+        let user = PFUser.currentUser()!
+        if likers == nil {
+            likers = [PFUser]()
+        }
+        if status {
+            if isLiked() {
+                likers!.append(user)
+            }
+            
+        } else {
+            for liker in likers! {
+                if liker.objectId == user.objectId {
+                    self.likers!.remove(liker)
+                }
+            }
+        }
+
+        object["likers"] = likers
+        object.saveInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
+            print("likersUpdated")
+            
+        }
+        
+    }
+    
+    func isLiked() -> Bool {
+        let user = PFUser.currentUser()!
+        if let likers = likers {
+            for liker in likers {
+                if liker.objectId == user.objectId {
+                    return true
+                }
+            }
+        }
+        return false
     }
     
     

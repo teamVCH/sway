@@ -14,6 +14,7 @@ class ParseAPI: NSObject {
         query.includeKey("originator")
         query.includeKey("originalTune")
         query.includeKey("originalTune.originator")
+        query.includeKey("likers")
         query.orderByDescending("updatedAt")
         query.cachePolicy = .CacheThenNetwork
         
