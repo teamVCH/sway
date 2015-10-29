@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SaveRecordingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class SaveRecordingViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 
     let kHorizontalInsets: CGFloat = 3.0
     let kVerticalInsets: CGFloat = 5.0
@@ -45,6 +45,8 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         tagsCollectionView.registerNib(xib, forCellWithReuseIdentifier: tagCell)
         tagsCollectionView.dataSource = self
         tagsCollectionView.delegate = self
+        
+        titleField.delegate = self
         
         //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         //view.addGestureRecognizer(tap)
@@ -90,6 +92,11 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
     private func currentTags() -> [String:RecordingTag] {
         return tags[tagsTypeControl.selectedSegmentIndex]
         
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        titleField.resignFirstResponder()
+        return false
     }
     
     private func removeTag(tag: String) {

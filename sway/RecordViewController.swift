@@ -64,20 +64,6 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         
         
         recordingWaver.backgroundColor = UIColor.darkGrayColor()
-        /*
-        if let recordingId = recordingId {
-            do {
-                self.recording = try managedObjectContext.existingObjectWithID(recordingId) as! Recording
-            } catch let error as NSError {
-                print("Error loading draft \(recordingId): \(error)")
-            }
-            
-        } else {
-            self.recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
-        }
-        */
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -90,7 +76,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         } else {
              // if it wasn't set in the segue, make a new one
             recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
-            rcView.bounceButton.enabled = false
+            enablePostRecordingFunctions(false)
             prepareToRecord()
         }
         
@@ -105,8 +91,10 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
                 presentViewController(alertView, animated: true, completion: nil)
             }
         }
-        
-        
+    }
+
+    private func enablePostRecordingFunctions(enabled: Bool) {
+        rcView.bounceButton.enabled = enabled
         
     }
     
@@ -248,7 +236,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
                 }
                 
             } else {
-                rcView.bounceButton.enabled = false
+                enablePostRecordingFunctions(false)
             }
             
         } else {
@@ -256,9 +244,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
                 self.recordingWaveformView.hidden = true
                 self.recordingWaver.hidden = false
                 self.recordingAudioPlayer = nil
-                if let rcView = self.rcView {
-                    rcView.bounceButton.enabled = false
-                }
+                self.enablePostRecordingFunctions(false)
             })
         }
     }
