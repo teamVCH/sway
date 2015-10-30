@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -19,12 +19,26 @@
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-19" translatesAutoresizingMaskIntoConstraints="NO" id="J3x-A1-lQn">
                     <rect key="frame" x="127" y="8" width="346" height="128"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18a-3R-75h" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1BZ-9U-FhG">
                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                            <connections>
-                                <action selector="onTapPlay:" destination="iN0-l3-epB" eventType="touchUpInside" id="UI2-Pe-3J8"/>
-                            </connections>
-                        </button>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18a-3R-75h" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
+                                    <rect key="frame" x="72" y="48" width="32" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="32" id="Jzd-sS-F46"/>
+                                        <constraint firstAttribute="height" constant="32" id="tnl-fZ-L18"/>
+                                    </constraints>
+                                    <connections>
+                                        <action selector="onTapPlay:" destination="iN0-l3-epB" eventType="touchUpInside" id="UI2-Pe-3J8"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="18a-3R-75h" secondAttribute="trailing" constant="24" id="051-q4-dos"/>
+                                <constraint firstItem="18a-3R-75h" firstAttribute="centerY" secondItem="1BZ-9U-FhG" secondAttribute="centerY" id="svv-z7-Mat"/>
+                            </constraints>
+                        </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqg-rx-RY4">
                             <rect key="frame" x="109" y="0.0" width="128" height="128"/>
                             <constraints>
@@ -37,20 +51,38 @@
                                 <action selector="onTapRecord:" destination="iN0-l3-epB" eventType="touchUpInside" id="DyV-CJ-KjC"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecn-nd-fex">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9s-xu-mjl">
                             <rect key="frame" x="218" y="0.0" width="128" height="128"/>
-                            <state key="normal" title="Bounce"/>
-                            <connections>
-                                <action selector="onTapBounce:" destination="iN0-l3-epB" eventType="touchUpInside" id="J8W-8r-g3o"/>
-                            </connections>
-                        </button>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecn-nd-fex">
+                                    <rect key="frame" x="24" y="48" width="32" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="32" id="4Zj-qw-V6f"/>
+                                        <constraint firstAttribute="width" constant="32" id="NuA-Qe-X0i"/>
+                                    </constraints>
+                                    <state key="normal" image="bounce"/>
+                                    <connections>
+                                        <action selector="onTapBounce:" destination="iN0-l3-epB" eventType="touchUpInside" id="J8W-8r-g3o"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="ecn-nd-fex" firstAttribute="centerY" secondItem="F9s-xu-mjl" secondAttribute="centerY" id="vIY-0n-6UU"/>
+                                <constraint firstItem="ecn-nd-fex" firstAttribute="leading" secondItem="F9s-xu-mjl" secondAttribute="leading" constant="24" id="vdO-G7-tVJ"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="128" id="9xX-5J-aCK"/>
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fW5-N2-wJC">
-                    <rect key="frame" x="560" y="8" width="32" height="32"/>
+                    <rect key="frame" x="568" y="8" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="EGh-do-Ap4"/>
+                        <constraint firstAttribute="width" constant="24" id="NFd-12-Tpd"/>
+                    </constraints>
                     <state key="normal" image="headphones"/>
                     <state key="selected" image="headphones"/>
                     <connections>
@@ -81,6 +113,7 @@
         </view>
     </objects>
     <resources>
+        <image name="bounce" width="32" height="32"/>
         <image name="headphones" width="32" height="32"/>
         <image name="record_off" width="256" height="256"/>
         <image name="record_on" width="128" height="128"/>
