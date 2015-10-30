@@ -49,29 +49,6 @@ class TuneViewCell: UITableViewCell {
             likeCount.text = "\(likerCount)"
             collabCount.text = "\(tune.collaboratorCount!)"
             
-            /*
-            if let originalTune = tune.originalTune {
-                if let url = originalTune.tuneProfileImageUrl {
-                    userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
-                } else {
-                    userImageView.image = defaultUserImage
-                }
-                collaboratorImageView.hidden = false
-                if let url = tune.tuneProfileImageUrl {
-                    collaboratorImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
-                } else {
-                    collaboratorImageView.image = defaultUserImage
-                }
-                
-            } else {
-                if let url = tune.tuneProfileImageUrl {
-                    userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
-                } else {
-                    userImageView.image = defaultUserImage
-                }
-                collaboratorImageView.hidden = true
-            }
-            */
             let originators = tune.getOriginators()
             if let url = originators.0.objectForKey(kProfileImageUrl) as? String {
                 userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
@@ -146,6 +123,17 @@ class TuneViewCell: UITableViewCell {
                 tagString += "#\(tag) "
             }
         }
+        if let collaborator = tune.getOriginators().1 {
+            if let username = collaborator.objectForKey("username") as? String {
+                if tagString.characters.count > 0 {
+                    tagString += "\n\n" //TODO: this is a hack
+                }
+                tagString += "\(username) contributed new audio"
+            }
+            
+        }
+        
+        
         return tagString
     }
     
