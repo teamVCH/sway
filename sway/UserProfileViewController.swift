@@ -39,7 +39,10 @@ class DraftRecordingsUserProfileViewControllerDelegate: UserProfileViewControlle
             let sortDescriptor = NSSortDescriptor(key: "lastModified", ascending: false)
             let sortDescriptors = [sortDescriptor]
             fetchRequest.sortDescriptors = sortDescriptors
-            fetchRequest.predicate = NSPredicate(format: "tuneId == nil")
+            let predicate1 = NSPredicate(format: "tuneId == nil")
+            let predicate2 = NSPredicate(format: "userId = %@", PFUser.currentUser()!.objectId!)
+            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1, predicate2])
+            
             if let fetchResults = try managedObjectContext.executeFetchRequest(fetchRequest) as? [Recording] {
                 print("Found \(fetchResults.count) drafts")
                 drafts = fetchResults

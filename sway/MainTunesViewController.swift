@@ -123,11 +123,15 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
             } else if (segueId == "tuneToUserSegue") {
                 let otherUserProfileViewController = segue.destinationViewController as! OtherUserProfileViewController
                 let senderAsTune : TuneViewCell = sender as! TuneViewCell
+                /*
                 if (senderAsTune.tune.originalTune != nil) {
                     otherUserProfileViewController.user = User.init(object: senderAsTune.tune.originalTune!.originator!)
                 } else {
                     otherUserProfileViewController.user = User.init(object: senderAsTune.tune.originator!)
                 }
+                */
+                
+                 otherUserProfileViewController.user = User.init(object: senderAsTune.tune.getOriginators().0)
             }
         }
     }

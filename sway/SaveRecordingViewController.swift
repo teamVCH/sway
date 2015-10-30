@@ -161,7 +161,7 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
             } else {
                 recording.title = "Untitled"
             }
-            
+            recording.userId = PFUser.currentUser()!.objectId!
             recording.tags = tagSet
             recording.cleanup()
             
@@ -172,10 +172,11 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
                         print("complete publish recording")
                         NSNotificationCenter.defaultCenter().postNotificationName(publishedTune, object: nil, userInfo:["Tune": tune])
                         
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    } else {
                         
+                    } else {
+                        print("publish returned no tune object: \(error)")
                     }
+                    
                 })
                 
                 
@@ -192,8 +193,9 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         
         if saveTypeControl.selectedSegmentIndex == 1 {
             NSNotificationCenter.defaultCenter().postNotificationName(savedDraft, object: nil)
-            self.dismissViewControllerAnimated(true, completion: nil)
         }
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
     }
 
     @IBAction func onChangeTagType(sender: UISegmentedControl) {

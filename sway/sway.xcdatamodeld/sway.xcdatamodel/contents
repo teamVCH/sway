@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F1021" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F1021" minimumToolsVersion="Xcode 7.0">
     <entity name="Recording" representedClassName=".Recording" syncable="YES">
         <attribute name="backingAudioPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="bouncedAudioPath" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,6 +9,7 @@
         <attribute name="recordingAudioPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tuneId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="waveformImagePath" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecordingTag" inverseName="recording" inverseEntity="RecordingTag" syncable="YES"/>
     </entity>
@@ -17,7 +18,7 @@
         <relationship name="recording" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recording" inverseName="tags" inverseEntity="Recording" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Recording" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="Recording" positionX="-63" positionY="-18" width="128" height="210"/>
         <element name="RecordingTag" positionX="-342" positionY="-18" width="128" height="73"/>
     </elements>
 </model>

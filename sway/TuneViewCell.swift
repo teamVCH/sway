@@ -161,7 +161,6 @@ class TuneViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
         layoutMargins = UIEdgeInsetsZero
         separatorInset = UIEdgeInsetsZero
         

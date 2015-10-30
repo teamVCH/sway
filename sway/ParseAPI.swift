@@ -28,8 +28,8 @@ class ParseAPI: NSObject {
     private func newRecordingsQuery(useCache: Bool = true) -> PFQuery {
         let query = PFQuery(className: kRecordings)
         query.includeKey(kOriginator)
-        query.includeKey(kOriginalTune)
-        query.includeKey("\(kOriginalTune).\(kOriginator)")
+        //query.includeKey(kOriginalTune)
+        //query.includeKey("\(kOriginalTune).\(kOriginator)")
         query.includeKey(kLikers)
         query.includeKey(kCollaborators)
         query.orderByDescending(kCreatedAt)

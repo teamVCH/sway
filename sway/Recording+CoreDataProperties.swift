@@ -14,6 +14,7 @@ import CoreData
 
 extension Recording {
 
+    @NSManaged var userId: String?
     @NSManaged var backingAudioPath: String?
     @NSManaged var bouncedAudioPath: String?
     @NSManaged var lastModified: NSDate?

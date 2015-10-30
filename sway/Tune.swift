@@ -41,7 +41,7 @@ class Tune: NSObject, Composition {
     let lastModified: NSDate?
     let tuneProfileImageUrl : String?
     let waveformImageUrl: NSURL?
-    let originalTune: Tune?
+    //let originalTune: Tune?
     
     let isDraft = false // tunes are always public
     var audioUrl: NSURL? = nil
@@ -78,12 +78,13 @@ class Tune: NSObject, Composition {
         } else {
             waveformImageUrl = nil
         }
-        
+        /*
         if let originalTune = object[kOriginalTune] as? PFObject {
             self.originalTune = Tune(object: originalTune)
         } else {
             self.originalTune = nil
         }
+        */
     }
     
     static func initArray(objectArray: [PFObject]) -> [Tune] {
@@ -97,7 +98,8 @@ class Tune: NSObject, Composition {
     }
 
     func isCollaboration() -> Bool {
-        return originalTune != nil
+        //return originalTune != nil
+        return collaborators != nil
     }
     
     func like(status: Bool) {
@@ -138,7 +140,7 @@ class Tune: NSObject, Composition {
         return false
     }
     
-    // get the featured / inset originator
+    // get the featured / inset (if not nil) originator
     func getOriginators() -> (PFUser, PFUser?) {
         let owner = originator!
         if let collaborators = collaborators {
