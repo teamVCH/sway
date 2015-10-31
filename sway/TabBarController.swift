@@ -30,14 +30,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         for tabBarItem in self.tabBar.items! {
             tabBarItem.image = tabBarItem.image!.imageWithRenderingMode(.AlwaysOriginal)
         }
-        /*
-        // Do any additional setup after loading the view.
-        let logoutButton = UIBarButtonItem()
-        logoutButton.title = "Sign Out"
-        logoutButton.action = Selector("logout")
-        logoutButton.target = self
-        navigationItem.leftBarButtonItem = logoutButton
-        */
+
     }
 
     
