@@ -11,9 +11,6 @@ class AVFoundationHelper: NSObject {
     
     init(completion: (allowed: Bool) -> ()) {
         AVFoundationHelper.initializeAudioSession(completion)
-        //self.documentsFolderUrl = AVFoundationHelper.getDocumentsFolderUrl()!
-        //self.documentsFolderUrl = NSURL(fileURLWithPath: AVFoundationHelper.createTempDirectory()!)
-        //print(documentsFolderUrl)
     }
     
     static func initializeAudioSession(completion: (allowed: Bool) -> ()) {
@@ -24,8 +21,15 @@ class AVFoundationHelper: NSObject {
             do {
                 try session.setActive(true)
                 print("Successfully activated the audio session")
-                
-                session.requestRecordPermission(completion)
+                session.requestRecordPermission({ (allowed: Bool) -> Void in
+                    completion(allowed: allowed)
+                    // the following addresses low playback volume issue
+                    do {
+                        try session.overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker)
+                    } catch let error as NSError {
+                        print("Error overriding output audio port: \(error)")
+                    }
+                })
             } catch {
                 print("Could not activate the audio session")
             }
@@ -34,14 +38,6 @@ class AVFoundationHelper: NSObject {
             print("An error occurred in setting the audio session category. Error = \(error)")
         }
     }
-    
-
-    
-
-    
-
-    
-    
     
     // AVAudioRecorder settings
     func audioRecordingSettings() -> [String : AnyObject] {
