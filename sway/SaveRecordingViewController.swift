@@ -163,7 +163,9 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
             recording.cleanup()
             
             if saveTypeControl.selectedSegmentIndex == 0 {
+                SwiftLoader.show("Publishing Tune", animated: true)
                 ParseAPI.sharedInstance.publishRecording(nil, recording: recording, onCompletion: { (tune: Tune?, error: NSError?) -> Void in
+                    SwiftLoader.hide()
                     if let tune = tune {
                         self.recording.tuneId = tune.id!
                         print("complete publish recording")
@@ -173,7 +175,7 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
                     } else {
                         print("publish returned no tune object: \(error)")
                     }
-                    
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 })
                 
                 
@@ -190,8 +192,9 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         
         if saveTypeControl.selectedSegmentIndex == 1 {
             NSNotificationCenter.defaultCenter().postNotificationName(savedDraft, object: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        
         
     }
 

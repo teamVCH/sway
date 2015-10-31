@@ -7,42 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A22068C1BE1C24500A91861 /* OtherUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A22068B1BE1C24500A91861 /* OtherUserProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2A22068C1BE1C24500A91861 /* OtherUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A22068B1BE1C24500A91861 /* OtherUserProfileViewController.swift */; };
 		2A6A231C1BD095A800ED0706 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A231B1BD095A800ED0706 /* AppDelegate.swift */; };
 		2A6A23211BD095A800ED0706 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A231F1BD095A800ED0706 /* Main.storyboard */; };
 		2A6A23231BD095A800ED0706 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A23221BD095A800ED0706 /* Assets.xcassets */; };
 		2A6A23261BD095A800ED0706 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A23241BD095A800ED0706 /* LaunchScreen.storyboard */; };
-		2A6A232E1BD0A9AD00ED0706 /* TrackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A232D1BD0A9AD00ED0706 /* TrackDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2A6A23301BD0A9EF00ED0706 /* MainTunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A232F1BD0A9EF00ED0706 /* MainTunesViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2A6A23321BD0AA2800ED0706 /* TuneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23311BD0AA2800ED0706 /* TuneViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		2A6A23371BD2F85000ED0706 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23361BD2F85000ED0706 /* TabBarController.swift */; settings = {ASSET_TAGS = (); }; };
-		2A6A23391BD2FE4200ED0706 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23381BD2FE4200ED0706 /* RecordViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2A6A233B1BD2FE6000ED0706 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A233A1BD2FE6000ED0706 /* UserProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2A6A233F1BD3313700ED0706 /* AVFoundationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A233E1BD3313700ED0706 /* AVFoundationHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		2A6A23451BD3391800ED0706 /* RecordingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23441BD3391800ED0706 /* RecordingControlView.swift */; settings = {ASSET_TAGS = (); }; };
-		2A6A23471BD3397800ED0706 /* RecordingControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A23461BD3397800ED0706 /* RecordingControlView.xib */; settings = {ASSET_TAGS = (); }; };
-		2A6A23491BD40E8500ED0706 /* Tune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23481BD40E8500ED0706 /* Tune.swift */; settings = {ASSET_TAGS = (); }; };
-		2A6A234B1BD40E9000ED0706 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A234A1BD40E9000ED0706 /* User.swift */; settings = {ASSET_TAGS = (); }; };
-		6800F9631BD6AAD600453AFF /* SaveRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6800F9621BD6AAD600453AFF /* SaveRecordingViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		6800F9661BD6AC0A00453AFF /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6800F9641BD6AC0A00453AFF /* Record.storyboard */; settings = {ASSET_TAGS = (); }; };
-		680A74431BD4AC6500D7D605 /* sway.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 680A74411BD4AC6500D7D605 /* sway.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
-		680A744A1BD4B14900D7D605 /* Recording+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74481BD4B14900D7D605 /* Recording+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
-		680A744B1BD4B14900D7D605 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74491BD4B14900D7D605 /* Recording.swift */; settings = {ASSET_TAGS = (); }; };
-		680A744F1BD4C4C400D7D605 /* TuneViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 680A744D1BD4C4C400D7D605 /* TuneViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		683C58B71BD42D2700CFECFF /* simple-drum-beat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */; settings = {ASSET_TAGS = (); }; };
-		684808261BDFEFE90040CD50 /* PlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684808251BDFEFE90040CD50 /* PlayPauseButton.swift */; settings = {ASSET_TAGS = (); }; };
-		6875FBBC1BDC179E00DBB6F9 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */; settings = {ASSET_TAGS = (); }; };
-		6875FBBD1BDC179E00DBB6F9 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */; settings = {ASSET_TAGS = (); }; };
-		68D97E6E1BDD78A600E769F4 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */; settings = {ASSET_TAGS = (); }; };
-		68D97E701BDD9ADE00E769F4 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D97E6F1BDD9ADE00E769F4 /* WaveformView.swift */; settings = {ASSET_TAGS = (); }; };
-		68F4258D1BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
-		68F4258E1BDAD96F00AED872 /* RecordingTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258A1BDAD96F00AED872 /* RecordingTag.swift */; settings = {ASSET_TAGS = (); }; };
-		68F425901BDB026900AED872 /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258F1BDB026900AED872 /* Composition.swift */; settings = {ASSET_TAGS = (); }; };
-		F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE791BD243B3007281E2 /* ParseCredentials.plist */; settings = {ASSET_TAGS = (); }; };
-		F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */; settings = {ASSET_TAGS = (); }; };
-		F102CE801BD24657007281E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102CE7F1BD24657007281E2 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		2A6A232E1BD0A9AD00ED0706 /* TrackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A232D1BD0A9AD00ED0706 /* TrackDetailViewController.swift */; };
+		2A6A23301BD0A9EF00ED0706 /* MainTunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A232F1BD0A9EF00ED0706 /* MainTunesViewController.swift */; };
+		2A6A23321BD0AA2800ED0706 /* TuneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23311BD0AA2800ED0706 /* TuneViewCell.swift */; };
+		2A6A23371BD2F85000ED0706 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23361BD2F85000ED0706 /* TabBarController.swift */; };
+		2A6A23391BD2FE4200ED0706 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23381BD2FE4200ED0706 /* RecordViewController.swift */; };
+		2A6A233B1BD2FE6000ED0706 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A233A1BD2FE6000ED0706 /* UserProfileViewController.swift */; };
+		2A6A233F1BD3313700ED0706 /* AVFoundationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A233E1BD3313700ED0706 /* AVFoundationHelper.swift */; };
+		2A6A23451BD3391800ED0706 /* RecordingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23441BD3391800ED0706 /* RecordingControlView.swift */; };
+		2A6A23471BD3397800ED0706 /* RecordingControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A6A23461BD3397800ED0706 /* RecordingControlView.xib */; };
+		2A6A23491BD40E8500ED0706 /* Tune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A23481BD40E8500ED0706 /* Tune.swift */; };
+		2A6A234B1BD40E9000ED0706 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A234A1BD40E9000ED0706 /* User.swift */; };
+		6800F9631BD6AAD600453AFF /* SaveRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6800F9621BD6AAD600453AFF /* SaveRecordingViewController.swift */; };
+		6800F9661BD6AC0A00453AFF /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6800F9641BD6AC0A00453AFF /* Record.storyboard */; };
+		680A74431BD4AC6500D7D605 /* sway.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 680A74411BD4AC6500D7D605 /* sway.xcdatamodeld */; };
+		680A744A1BD4B14900D7D605 /* Recording+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74481BD4B14900D7D605 /* Recording+CoreDataProperties.swift */; };
+		680A744B1BD4B14900D7D605 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680A74491BD4B14900D7D605 /* Recording.swift */; };
+		680A744F1BD4C4C400D7D605 /* TuneViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 680A744D1BD4C4C400D7D605 /* TuneViewCell.xib */; };
+		683C58B71BD42D2700CFECFF /* simple-drum-beat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 683C58B61BD42D2700CFECFF /* simple-drum-beat.wav */; };
+		684808261BDFEFE90040CD50 /* PlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684808251BDFEFE90040CD50 /* PlayPauseButton.swift */; };
+		6875FBBC1BDC179E00DBB6F9 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */; };
+		6875FBBD1BDC179E00DBB6F9 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */; };
+		689118A81BE57275005A36D4 /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689118A71BE57275005A36D4 /* SwiftLoader.swift */; };
+		68D97E6E1BDD78A600E769F4 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */; };
+		68D97E701BDD9ADE00E769F4 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D97E6F1BDD9ADE00E769F4 /* WaveformView.swift */; };
+		68F4258D1BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */; };
+		68F4258E1BDAD96F00AED872 /* RecordingTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258A1BDAD96F00AED872 /* RecordingTag.swift */; };
+		68F425901BDB026900AED872 /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258F1BDB026900AED872 /* Composition.swift */; };
+		F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE791BD243B3007281E2 /* ParseCredentials.plist */; };
+		F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */; };
+		F102CE801BD24657007281E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102CE7F1BD24657007281E2 /* LoginViewController.swift */; };
 		F1A4A2449414017605381302 /* libPods-sway.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 115E2CB371C884526F352A59 /* libPods-sway.a */; };
-		F1A5F8FF1BDB20FC00570831 /* ParseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5F8FE1BDB20FC00570831 /* ParseAPI.swift */; settings = {ASSET_TAGS = (); }; };
+		F1A5F8FF1BDB20FC00570831 /* ParseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5F8FE1BDB20FC00570831 /* ParseAPI.swift */; };
 		F1C519311BD23E2C00E57350 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519301BD23E2C00E57350 /* Foundation.framework */; };
 		F1C519331BD23E3700E57350 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519321BD23E3700E57350 /* UIKit.framework */; };
 		F1C519351BD23E4300E57350 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519341BD23E4300E57350 /* CoreGraphics.framework */; };
@@ -58,10 +59,10 @@
 		F1C519491BD23EBF00E57350 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C519481BD23EBF00E57350 /* Accounts.framework */; };
 		F1C5194B1BD23EC800E57350 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C5194A1BD23EC800E57350 /* Twitter.framework */; };
 		F1C5194D1BD23ED100E57350 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C5194C1BD23ED100E57350 /* Social.framework */; };
-		F1E1E8821BD6EBD600AA5D6A /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1E1E87D1BD6EBD600AA5D6A /* Info-iOS.plist */; settings = {ASSET_TAGS = (); }; };
-		F1E1E8831BD6EBD600AA5D6A /* Info-OSX.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1E1E87E1BD6EBD600AA5D6A /* Info-OSX.plist */; settings = {ASSET_TAGS = (); }; };
-		F1E1E8841BD6EBD600AA5D6A /* Info-watchOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1E1E87F1BD6EBD600AA5D6A /* Info-watchOS.plist */; settings = {ASSET_TAGS = (); }; };
-		F1E1E8851BD6EBD600AA5D6A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1E8811BD6EBD600AA5D6A /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
+		F1E1E8821BD6EBD600AA5D6A /* Info-iOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1E1E87D1BD6EBD600AA5D6A /* Info-iOS.plist */; };
+		F1E1E8831BD6EBD600AA5D6A /* Info-OSX.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1E1E87E1BD6EBD600AA5D6A /* Info-OSX.plist */; };
+		F1E1E8841BD6EBD600AA5D6A /* Info-watchOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1E1E87F1BD6EBD600AA5D6A /* Info-watchOS.plist */; };
+		F1E1E8851BD6EBD600AA5D6A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1E8811BD6EBD600AA5D6A /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		684808251BDFEFE90040CD50 /* PlayPauseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayPauseButton.swift; sourceTree = "<group>"; };
 		6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
+		689118A71BE57275005A36D4 /* SwiftLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLoader.swift; sourceTree = "<group>"; };
 		68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		68D97E6F1BDD9ADE00E769F4 /* WaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
 		68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecordingTag+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				F102CE7B1BD243D7007281E2 /* TwitterCredentials.plist */,
 				680A74411BD4AC6500D7D605 /* sway.xcdatamodeld */,
 				68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */,
+				689118A71BE57275005A36D4 /* SwiftLoader.swift */,
 			);
 			path = sway;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				2A6A23491BD40E8500ED0706 /* Tune.swift in Sources */,
 				2A6A23321BD0AA2800ED0706 /* TuneViewCell.swift in Sources */,
 				68F4258E1BDAD96F00AED872 /* RecordingTag.swift in Sources */,
+				689118A81BE57275005A36D4 /* SwiftLoader.swift in Sources */,
 				680A74431BD4AC6500D7D605 /* sway.xcdatamodeld in Sources */,
 				2A6A23391BD2FE4200ED0706 /* RecordViewController.swift in Sources */,
 				2A6A234B1BD40E9000ED0706 /* User.swift in Sources */,
