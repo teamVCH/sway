@@ -13,7 +13,7 @@ let tuneToDetailSegue = "TuneToDetailSegue"
 class MainTunesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, TuneViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    var searchBar: UISearchBar!
 
     var refreshControl:UIRefreshControl!
     var tunes:[Tune]?
@@ -35,7 +35,24 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
         
+        searchBar = UISearchBar()
+        searchBar.showsCancelButton = false
+        searchBar.sizeToFit()
         searchBar.delegate = self
+    
+        automaticallyAdjustsScrollViewInsets = false
+        definesPresentationContext = true
+        parentViewController?.navigationItem.titleView = searchBar
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        searchBar.hidden = false
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        searchBar.hidden = true
+        
     }
     
     private func renderTunes() {
