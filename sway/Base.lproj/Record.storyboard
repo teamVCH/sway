@@ -55,7 +55,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8M-b3-kar">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="252"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yPk-O4-m7j" customClass="Waver">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPk-O4-m7j" customClass="Waver">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="252"/>
                                                                 <animations/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -77,14 +77,18 @@
                                                         <animations/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="yPk-O4-m7j" secondAttribute="bottom" id="6bo-lr-F9F"/>
                                                             <constraint firstItem="uie-lJ-SwH" firstAttribute="centerX" secondItem="J8M-b3-kar" secondAttribute="centerX" id="Duo-w6-EbM"/>
                                                             <constraint firstItem="uie-lJ-SwH" firstAttribute="centerY" secondItem="J8M-b3-kar" secondAttribute="centerY" id="px0-Yc-eIM"/>
+                                                            <constraint firstItem="yPk-O4-m7j" firstAttribute="top" secondItem="J8M-b3-kar" secondAttribute="top" id="tom-K9-myi"/>
+                                                            <constraint firstAttribute="trailing" secondItem="yPk-O4-m7j" secondAttribute="trailing" id="uul-LO-az4"/>
+                                                            <constraint firstItem="yPk-O4-m7j" firstAttribute="leading" secondItem="J8M-b3-kar" secondAttribute="leading" id="xRq-rO-YcA"/>
                                                         </constraints>
                                                     </view>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJg-YJ-ids">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="252"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kqz-X8-dsj" customClass="WaveformView" customModule="sway" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqz-X8-dsj" customClass="WaveformView" customModule="sway" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="252"/>
                                                                 <animations/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -154,10 +158,14 @@
                                                         <animations/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="kqz-X8-dsj" secondAttribute="bottom" id="5a9-w2-qZk"/>
+                                                            <constraint firstItem="kqz-X8-dsj" firstAttribute="leading" secondItem="hJg-YJ-ids" secondAttribute="leading" id="CmX-Po-xsA"/>
                                                             <constraint firstItem="Xmf-6T-GFk" firstAttribute="top" secondItem="hJg-YJ-ids" secondAttribute="top" id="WO1-lz-YsV"/>
                                                             <constraint firstAttribute="trailing" secondItem="Xmf-6T-GFk" secondAttribute="trailing" id="Y0o-lh-h3u"/>
                                                             <constraint firstItem="Xmf-6T-GFk" firstAttribute="leading" secondItem="hJg-YJ-ids" secondAttribute="leading" id="bpz-kw-DZg"/>
+                                                            <constraint firstItem="kqz-X8-dsj" firstAttribute="top" secondItem="hJg-YJ-ids" secondAttribute="top" id="hhq-kM-gJZ"/>
                                                             <constraint firstAttribute="bottom" secondItem="Xmf-6T-GFk" secondAttribute="bottom" id="iaF-du-R6K"/>
+                                                            <constraint firstAttribute="trailing" secondItem="kqz-X8-dsj" secondAttribute="trailing" id="pFh-Eh-6pf"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3k-fg-eRM">
