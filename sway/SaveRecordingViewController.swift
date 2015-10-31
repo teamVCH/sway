@@ -47,9 +47,6 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         tagsCollectionView.delegate = self
         
         titleField.delegate = self
-        
-        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        //view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -100,7 +97,7 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
     }
     
     private func removeTag(tag: String) {
-        let rTag: RecordingTag = tags[tagsTypeControl.selectedSegmentIndex][tag]!
+        let _ = tags[tagsTypeControl.selectedSegmentIndex][tag]!
         tags[tagsTypeControl.selectedSegmentIndex].removeValueForKey(tag)
         //managedObjectContext.delete(rTag)
     }
