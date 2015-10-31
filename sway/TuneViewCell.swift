@@ -123,6 +123,7 @@ class TuneViewCell: UITableViewCell {
                 tagString += "#\(tag) "
             }
         }
+        if tune != nil {
         if let collaborator = tune.getOriginators().1 {
             if let username = collaborator.objectForKey("username") as? String {
                 if tagString.characters.count > 0 {
@@ -132,7 +133,7 @@ class TuneViewCell: UITableViewCell {
             }
             
         }
-        
+        }
         
         return tagString
     }

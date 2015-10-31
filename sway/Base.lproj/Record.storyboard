@@ -7,7 +7,6 @@
         <!--Record View Controller-->
         <scene sceneID="7oR-Mg-YnA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i2h-pw-T1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="w4D-iw-MiP" customClass="RecordViewController" customModule="sway" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bfA-6h-Cto"/>
@@ -40,7 +39,7 @@
                                                     </view>
                                                 </subviews>
                                                 <animations/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.42369002525252508" green="0.42369002525252508" blue="0.42369002525252508" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="sDG-A8-dP6" secondAttribute="trailing" constant="8" id="2ru-iK-amV"/>
                                                     <constraint firstAttribute="bottom" secondItem="lCi-4K-PWW" secondAttribute="bottom" id="39x-ta-eOO"/>
@@ -277,6 +276,7 @@
                         <outlet property="rejectRecordingButton" destination="IzX-Dv-tkd" id="9xx-K5-GRf"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i2h-pw-T1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3075" y="-462"/>
         </scene>
