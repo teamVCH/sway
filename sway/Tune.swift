@@ -153,7 +153,7 @@ class Tune: NSObject, Composition {
     // get all the collaborators to display other than the featured originator
     func getCollaborators() -> [PFUser]? {
         if let collaborators = collaborators {
-            if collaborators.count > 1 {
+            if collaborators.count > 0 {
                 var collabs = [PFUser]()
                 for index in 1..<collaborators.count {
                     let collab = collaborators[index]
