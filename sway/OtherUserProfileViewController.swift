@@ -187,17 +187,32 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedIndex = indexPath
-        performSegueWithIdentifier("tuneToDetail", sender: self)
+        performSegueWithIdentifier("tuneToDetail", sender: indexPath)
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let segueId = segue.identifier {
+            if segueId == "tuneToDetail" {
+                if let _ = segue.destinationViewController as? UINavigationController {
+                    let destinationNavigationController = segue.destinationViewController as! UINavigationController
+                    if let tuneDetailViewController = destinationNavigationController.topViewController! as? TrackDetailViewController {
+                        tuneDetailViewController.tune = tunes[sender!.row]
+                    }
+                } else {
+                    if let tuneDetailViewController = segue.destinationViewController as? TrackDetailViewController {
+                        tuneDetailViewController.tune = tunes[sender!.row]
+                    }
+                }
+            }
+        }
+
     }
-    */
+
 
 }
