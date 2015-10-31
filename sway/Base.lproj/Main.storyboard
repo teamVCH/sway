@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zfW-jB-znV">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
@@ -486,7 +485,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l6H-kt-hGN">
-                                <rect key="frame" x="0.0" y="64" width="320" height="103"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="ACR-VO-Wt8">
                                         <rect key="frame" x="8" y="8" width="75" height="75"/>
@@ -501,10 +500,6 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTI-o2-OVS">
-                                        <rect key="frame" x="268" y="0.0" width="44" height="30"/>
-                                        <state key="normal" title="Follow"/>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trombone, voice, beatbox" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9F0-Rn-lAo">
                                         <rect key="frame" x="91" y="44" width="221" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -517,16 +512,29 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epe-D6-wSQ" userLabel="border">
+                                        <rect key="frame" x="0.0" y="99" width="320" height="4"/>
+                                        <color key="backgroundColor" red="0.34901960784313724" green="0.45098039215686275" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTI-o2-OVS">
+                                        <rect key="frame" x="263" y="4" width="44" height="30"/>
+                                        <state key="normal" title="Follow"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.74901960779999999" green="0.86274509799999999" blue="0.92156862750000001" alpha="0.089999999999999997" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="epe-D6-wSQ" secondAttribute="trailing" id="4R9-Tj-nr8"/>
                                     <constraint firstItem="fhZ-Lo-jWD" firstAttribute="leading" secondItem="ACR-VO-Wt8" secondAttribute="trailing" constant="8" id="5WO-qv-VgG"/>
                                     <constraint firstAttribute="trailing" secondItem="9F0-Rn-lAo" secondAttribute="trailing" constant="8" id="7Td-7R-4ri"/>
                                     <constraint firstItem="s8K-ZB-QvX" firstAttribute="top" secondItem="fhZ-Lo-jWD" secondAttribute="bottom" id="JMV-fb-wdq"/>
+                                    <constraint firstAttribute="bottom" secondItem="epe-D6-wSQ" secondAttribute="bottom" id="K4W-XC-hqp"/>
+                                    <constraint firstItem="epe-D6-wSQ" firstAttribute="leading" secondItem="l6H-kt-hGN" secondAttribute="leading" id="QNu-eq-evQ"/>
                                     <constraint firstAttribute="trailing" secondItem="s8K-ZB-QvX" secondAttribute="trailing" constant="8" id="XRa-lT-4GD"/>
                                     <constraint firstItem="fhZ-Lo-jWD" firstAttribute="top" secondItem="l6H-kt-hGN" secondAttribute="top" constant="8" id="YvA-h7-Zto"/>
                                     <constraint firstItem="9F0-Rn-lAo" firstAttribute="top" secondItem="s8K-ZB-QvX" secondAttribute="bottom" id="b8j-jx-Puc"/>
+                                    <constraint firstAttribute="trailing" secondItem="YTI-o2-OVS" secondAttribute="trailing" constant="13" id="dqF-EM-P0I"/>
                                     <constraint firstItem="ACR-VO-Wt8" firstAttribute="top" secondItem="l6H-kt-hGN" secondAttribute="top" constant="8" id="fwm-ZB-ZWI"/>
+                                    <constraint firstItem="YTI-o2-OVS" firstAttribute="top" secondItem="l6H-kt-hGN" secondAttribute="top" constant="4" id="lJ6-p4-RFd"/>
                                     <constraint firstItem="s8K-ZB-QvX" firstAttribute="leading" secondItem="fhZ-Lo-jWD" secondAttribute="leading" id="o0n-3x-t2n"/>
                                     <constraint firstItem="ACR-VO-Wt8" firstAttribute="leading" secondItem="l6H-kt-hGN" secondAttribute="leading" constant="8" id="p0z-uI-dVZ"/>
                                     <constraint firstItem="9F0-Rn-lAo" firstAttribute="leading" secondItem="fhZ-Lo-jWD" secondAttribute="leading" id="y0C-e8-S7U"/>
@@ -567,11 +575,12 @@
                         <outlet property="userHandle" destination="s8K-ZB-QvX" id="Xt1-Ht-xJX"/>
                         <outlet property="userName" destination="fhZ-Lo-jWD" id="dFR-QW-TCj"/>
                         <outlet property="userProfileImage" destination="ACR-VO-Wt8" id="RIl-SH-FrO"/>
+                        <segue destination="E4S-Ni-YtX" kind="push" identifier="tuneToDetail" id="sAM-hZ-hiM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZ4-ow-QLC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1183" y="1986"/>
+            <point key="canvasLocation" x="1203" y="1974"/>
         </scene>
     </scenes>
     <resources>
@@ -585,7 +594,7 @@
         <image name="replay" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pvx-cX-8yB"/>
+        <segue reference="sAM-hZ-hiM"/>
         <segue reference="Bgc-aC-mG4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

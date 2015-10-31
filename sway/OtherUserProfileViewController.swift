@@ -79,6 +79,8 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var userDescription: UILabel!
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var tuneViewCell: TuneViewCell!
+    var selectedIndex: NSIndexPath?
+
     var tunes : [Tune] = []
     
     @IBOutlet weak var tableView: UITableView!
@@ -166,9 +168,6 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
         cell.collaboratorImageView.hidden = true
         cell.accessoryType = UITableViewCellAccessoryType.None
 
-//        delegate().setComposition(cell, indexPath: indexPath)
-        
-        // hide user button from user profile page
         return cell
         
     }
@@ -187,8 +186,8 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        selectedIndex = indexPath
-//        performSegueWithIdentifier(delegate().detailSegue, sender: self)
+        selectedIndex = indexPath
+        performSegueWithIdentifier("tuneToDetail", sender: self)
     }
 
     /*
