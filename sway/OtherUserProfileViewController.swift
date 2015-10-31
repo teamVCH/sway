@@ -97,6 +97,8 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 160.0
         
+        tableView.registerNib(UINib(nibName: "TuneViewCell", bundle: nil), forCellReuseIdentifier: "TuneViewCell")
+
         super.viewDidLoad()
         if (user != nil) {
             self.userName.text = user.name
@@ -118,6 +120,7 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
             
             load({ () -> () in
                 //do stuff
+                self.tableView.reloadData()
             })
         }
         
@@ -150,13 +153,19 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
 //    }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return tableView.delegate().rowCount()
+        if (tunes.count > 0) {
+            return tunes.count
+        }
         return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TuneViewCell", forIndexPath: indexPath) as! TuneViewCell
-        
+        cell.tune = tunes[indexPath.row]
+        cell.userImageView.hidden = true
+        cell.collaboratorImageView.hidden = true
+        cell.accessoryType = UITableViewCellAccessoryType.None
+
 //        delegate().setComposition(cell, indexPath: indexPath)
         
         // hide user button from user profile page
