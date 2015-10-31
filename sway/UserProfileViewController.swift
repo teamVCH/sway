@@ -150,7 +150,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var typeControl: UISegmentedControl!
-    
+
+    let logoutButton = UIBarButtonItem()
 
     var delegates: [UserProfileViewControllerDelegate] = [
         PublishedTunesUserProfileViewControllerDelegate(),
@@ -191,15 +192,26 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             profileImageView.layer.cornerRadius = 36.5
             profileImageView.clipsToBounds = true
         }
+        
+
+        logoutButton.title = "Sign Out"
+        logoutButton.action = Selector("logout")
+        logoutButton.target = self
+        
     }
     
     override func viewWillAppear(animated: Bool) {
+        parentViewController?.navigationItem.rightBarButtonItem = logoutButton
         typeControl.selectedSegmentIndex = selectedType
         delegate().load { () -> () in
             self.tableView.reloadData()
         }
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        parentViewController?.navigationItem.rightBarButtonItem = nil
+    }
+    
     @IBAction func onSwitchType(sender: UISegmentedControl) {
         delegate().load { () -> () in
             self.tableView.reloadData()
@@ -246,11 +258,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func onTapLogout(sender: AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName(loggedOut, object: nil, userInfo: nil)
-    }
 
+    func logout() {
+        NSNotificationCenter.defaultCenter().postNotificationName(loggedOut, object: nil, userInfo: nil)
+        
+    }
     
     // MARK: - Navigation
 
