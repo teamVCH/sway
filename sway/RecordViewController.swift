@@ -103,6 +103,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
         recordingWaveformView.normalColor = UIColor.whiteColor()
         recordingWaveformView.progressColor = UIColor.lightGrayColor()
         recordingWaveformView.alpha = 0.45
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -112,11 +113,20 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
             updateRecordingAudio()
             print("Base: \(recording.baseUrl.path!)")
             print("Bounced: \(recording.bouncedAudioPath)")
+            
+            if recording.originalTune != nil {
+                title = "New Collaboration"
+            } else {
+                title = "Recording"
+            }
+            
         } else {
              // if it wasn't set in the segue, make a new one
             recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
             enablePostRecordingFunctions(false)
             prepareToRecord()
+            
+            title = "New Recording"
         }
 
         updatePlayButton()
