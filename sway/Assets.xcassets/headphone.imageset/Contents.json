@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "headphone.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "iconmonstr-headphones-2-icon-64 (1).png",
       "scale" : "2x"
     },
     {
