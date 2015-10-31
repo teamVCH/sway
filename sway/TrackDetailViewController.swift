@@ -59,9 +59,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 })
                 
                 if let date = tune.lastModified {
-                    let formatter = NSDateFormatter()
-                    formatter.dateStyle = .MediumStyle
-                    publishedOnLabel.text = formatter.stringFromDate(date)
+                    publishedOnLabel.text = formatTimeElapsed(date)
                 }
                 
                 if let length = tune.length {
@@ -89,6 +87,8 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 collaboratorCount.text = (tune.collaboratorCount == 1) ?
                     "\(tune.collaboratorCount!) collaborator" : "\(tune.collaboratorCount!) collaborators"
                 
+                tagsLabel.text = getTagsAsString(tune.tagNames)
+                
             }
             
 
@@ -96,6 +96,38 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
             
         }
         
+    }
+    
+    private func getTagsAsString(tags: [String]?) -> String {
+        var tagString = ""
+        if let tags = tags {
+            for tag in tags {
+                tagString += "#\(tag) "
+            }
+        }
+        if tune != nil {
+            if let collaborator = tune.getOriginators().1 {
+                if let username = collaborator.objectForKey("username") as? String {
+                    if tagString.characters.count > 0 {
+                        tagString += "\n\n" //TODO: this is a hack
+                    }
+                    tagString += "\(username) contributed new audio"
+                }
+                
+            }
+        }
+        
+        return tagString
+    }
+    
+    
+    private func formatTimeElapsed(sinceDate: NSDate) -> String {
+        let formatter = NSDateComponentsFormatter()
+        formatter.unitsStyle =  NSDateComponentsFormatterUnitsStyle.Abbreviated
+        formatter.collapsesLargestUnit = true
+        formatter.maximumUnitCount = 1
+        let interval = NSDate().timeIntervalSinceDate(sinceDate)
+        return formatter.stringFromTimeInterval(interval)!
     }
     
     override func viewWillDisappear(animated: Bool) {
