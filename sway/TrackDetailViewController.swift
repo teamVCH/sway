@@ -13,6 +13,8 @@ let collaborateSegue = "collaborateSegue"
 
 // Retreive the managedObjectContext from AppDelegate
 let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+let favoriteImage = UIImage(named: "favorite")
+let favoriteOutlineImage = UIImage(named: "favorite_outline")
 
 class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
 
@@ -31,6 +33,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     @IBOutlet weak var collaboratorCount: UILabel!
     @IBOutlet weak var likeCount: UILabel!
     @IBOutlet weak var replayCount: UILabel!
+    @IBOutlet weak var collabButton: UIButton!
     
     var tune: Tune!
     
@@ -40,7 +43,10 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        originatorImage.layer.cornerRadius = 18
+        originatorImage.clipsToBounds = true
+        collabButton.layer.cornerRadius = 4
+        collabButton.clipsToBounds = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -74,9 +80,6 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 } else {
                     originatorImage.image = defaultUserImage
                 }
-                    
-                originatorImage.layer.cornerRadius = 18
-                originatorImage.clipsToBounds = true
                 
                 if let replays = tune.replayCount {
                     replayCount.text = (replays == 1) ? "\(replays) replay" : "\(replays) replays"
@@ -91,8 +94,11 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 
             }
             
-
-            likeButton.selected = tune.isLiked()
+            if tune.isLiked() {
+                likeButton.setImage(favoriteImage, forState: .Normal)
+            } else {
+                likeButton.setImage(favoriteOutlineImage, forState: .Normal)
+            }
             
         }
         
@@ -151,8 +157,10 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     }
     
     @IBAction func onTapLike(sender: UIButton) {
-        tune.like(!sender.selected)
-        sender.selected = !sender.selected
+        let previouslyLiked = tune.isLiked()
+        tune.like(!previouslyLiked)
+        //sender.selected = !sender.selected
+        previouslyLiked ? sender.setImage(favoriteOutlineImage, forState: .Normal) : sender.setImage(favoriteImage, forState: .Normal)
     }
 
     func audioPlayerUpdateTime(player: AVAudioPlayer) {
