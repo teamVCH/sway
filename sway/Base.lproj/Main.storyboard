@@ -606,14 +606,6 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-<<<<<<< HEAD
-=======
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTI-o2-OVS">
-                                        <rect key="frame" x="268" y="0.0" width="44" height="30"/>
-                                        <animations/>
-                                        <state key="normal" title="Follow"/>
-                                    </button>
->>>>>>> b25aa8761214139a9024b5f69eaa3dd848ed362f
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trombone, voice, beatbox" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9F0-Rn-lAo">
                                         <rect key="frame" x="91" y="44" width="221" height="16"/>
                                         <animations/>
@@ -630,10 +622,12 @@
                                     </label>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epe-D6-wSQ" userLabel="border">
                                         <rect key="frame" x="0.0" y="99" width="320" height="4"/>
+                                        <animations/>
                                         <color key="backgroundColor" red="0.34901960784313724" green="0.45098039215686275" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTI-o2-OVS">
-                                        <rect key="frame" x="263" y="4" width="44" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTI-o2-OVS">
+                                        <rect key="frame" x="268" y="0.0" width="44" height="30"/>
+                                        <animations/>
                                         <state key="normal" title="Follow"/>
                                     </button>
                                 </subviews>
@@ -706,12 +700,12 @@
     </scenes>
     <resources>
         <image name="collaborate" width="350" height="350"/>
-        <image name="headphone" width="30" height="30"/>
+        <image name="headphone" width="32" height="32"/>
         <image name="heart" width="32" height="32"/>
         <image name="logo" width="800" height="400"/>
         <image name="logout" width="128" height="128"/>
         <image name="profile" width="35" height="35"/>
-        <image name="record" width="32" height="32"/>
+        <image name="record" width="48" height="48"/>
         <image name="replay" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
