@@ -35,6 +35,11 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     @IBOutlet weak var replayCount: UILabel!
     @IBOutlet weak var collabButton: UIButton!
     
+    @IBOutlet weak var collaborator0: UIImageView!
+    @IBOutlet weak var collaborator1: UIImageView!
+    @IBOutlet weak var collaborator2: UIImageView!
+    @IBOutlet weak var collaborator3: UIImageView!
+    
     var tune: Tune!
     
     var audioPlayer: AVAudioPlayerExt?
@@ -158,9 +163,17 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     
     @IBAction func onTapLike(sender: UIButton) {
         let previouslyLiked = tune.isLiked()
+        var count = tune.likers != nil ? tune.likers!.count : 0
+        
+        // Like or unlike
         tune.like(!previouslyLiked)
-        //sender.selected = !sender.selected
+        
+        // Update UI immediately
         previouslyLiked ? sender.setImage(favoriteOutlineImage, forState: .Normal) : sender.setImage(favoriteImage, forState: .Normal)
+        count = previouslyLiked ? count - 1 : count + 1
+        likeCount.text = (count == 1) ? "\(count) like" : "\(count) likes"
+        
+        // TODO: Need delegate to update like count for main view
     }
 
     func audioPlayerUpdateTime(player: AVAudioPlayer) {

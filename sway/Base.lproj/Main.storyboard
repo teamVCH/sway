@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zfW-jB-znV">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Top Charts-->
@@ -333,28 +333,63 @@
                                     <segue destination="jEz-L9-uHD" kind="modal" identifier="collaborateSegue" id="Bgc-aC-mG4"/>
                                 </connections>
                             </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bjD-sf-q9P">
+                                <rect key="frame" x="142" y="263" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="1vP-SB-fbV"/>
+                                    <constraint firstAttribute="width" constant="20" id="Q6V-bC-7vG"/>
+                                </constraints>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mo5-kW-9zA">
+                                <rect key="frame" x="179" y="263" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="9fv-tM-G4M"/>
+                                    <constraint firstAttribute="width" constant="20" id="hmI-AJ-Vxy"/>
+                                </constraints>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uxT-eQ-fQi">
+                                <rect key="frame" x="212" y="263" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="EBF-fd-cj5"/>
+                                    <constraint firstAttribute="width" constant="20" id="Fie-ih-8ti"/>
+                                </constraints>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XTY-QM-SZe">
+                                <rect key="frame" x="246" y="263" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="DlF-b9-aPe"/>
+                                    <constraint firstAttribute="width" constant="20" id="R7j-mj-kvT"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bjD-sf-q9P" firstAttribute="centerY" secondItem="O8B-gk-gJv" secondAttribute="centerY" id="2Q5-2z-QYk"/>
                             <constraint firstItem="IGY-Xy-Exb" firstAttribute="top" secondItem="tOf-xH-MXh" secondAttribute="bottom" constant="22" id="3JL-2V-OLT"/>
                             <constraint firstItem="O8B-gk-gJv" firstAttribute="centerY" secondItem="Efu-Zd-6om" secondAttribute="centerY" id="3g9-Su-sLy"/>
                             <constraint firstItem="74b-Xe-kSG" firstAttribute="centerY" secondItem="tOf-xH-MXh" secondAttribute="centerY" id="5Gw-la-uuh"/>
                             <constraint firstItem="IGY-Xy-Exb" firstAttribute="leading" secondItem="YXO-7R-zuZ" secondAttribute="leading" constant="8" id="5sa-WU-XAf"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="XTY-QM-SZe" secondAttribute="trailing" constant="8" id="70a-h1-XsH"/>
+                            <constraint firstItem="uxT-eQ-fQi" firstAttribute="centerY" secondItem="O8B-gk-gJv" secondAttribute="centerY" id="7OG-G5-SpR"/>
                             <constraint firstItem="y1b-FL-fYk" firstAttribute="leading" secondItem="YXO-7R-zuZ" secondAttribute="leading" id="7mA-rr-pdB"/>
                             <constraint firstItem="CuU-CR-KpK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dbd-VF-e57" secondAttribute="trailing" constant="20" id="7p3-Pf-geQ"/>
                             <constraint firstItem="tOf-xH-MXh" firstAttribute="leading" secondItem="YXO-7R-zuZ" secondAttribute="leading" constant="8" id="96z-Ov-jZw"/>
                             <constraint firstItem="Zx3-Co-IS0" firstAttribute="leading" secondItem="IGY-Xy-Exb" secondAttribute="trailing" constant="2" id="9TS-Ye-x7e"/>
                             <constraint firstItem="HaY-6N-Xs7" firstAttribute="leading" secondItem="YXO-7R-zuZ" secondAttribute="leading" id="A94-td-Z02"/>
+                            <constraint firstItem="mo5-kW-9zA" firstAttribute="leading" secondItem="bjD-sf-q9P" secondAttribute="trailing" constant="8" id="AJq-2d-uNH"/>
                             <constraint firstItem="Dbd-VF-e57" firstAttribute="leading" secondItem="YXO-7R-zuZ" secondAttribute="leading" constant="8" id="AZB-FJ-ODb"/>
                             <constraint firstItem="sX3-wG-ISI" firstAttribute="leading" secondItem="YXO-7R-zuZ" secondAttribute="leading" constant="8" id="BUm-KG-K6u"/>
                             <constraint firstAttribute="trailing" secondItem="CuU-CR-KpK" secondAttribute="trailing" constant="8" id="Cuc-V2-i9s"/>
+                            <constraint firstItem="XTY-QM-SZe" firstAttribute="centerY" secondItem="O8B-gk-gJv" secondAttribute="centerY" id="CzV-Oz-XOI"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sX3-wG-ISI" secondAttribute="trailing" constant="4" id="DJt-nu-jXO"/>
                             <constraint firstItem="sX3-wG-ISI" firstAttribute="top" secondItem="IGY-Xy-Exb" secondAttribute="bottom" constant="28" id="EDO-HS-gqf"/>
                             <constraint firstAttribute="trailing" secondItem="HaY-6N-Xs7" secondAttribute="trailing" id="EmM-yD-vG6"/>
                             <constraint firstItem="HaY-6N-Xs7" firstAttribute="top" secondItem="Dbd-VF-e57" secondAttribute="bottom" constant="13" id="J2F-5H-jxx"/>
                             <constraint firstAttribute="trailing" secondItem="HNJ-nU-wsU" secondAttribute="trailing" constant="8" id="JJx-gz-GJI"/>
                             <constraint firstItem="Efu-Zd-6om" firstAttribute="leading" secondItem="YXO-7R-zuZ" secondAttribute="leading" constant="8" id="JWa-PZ-uPB"/>
+                            <constraint firstItem="uxT-eQ-fQi" firstAttribute="leading" secondItem="mo5-kW-9zA" secondAttribute="trailing" constant="8" id="KbI-Tc-tnG"/>
                             <constraint firstItem="74b-Xe-kSG" firstAttribute="leading" secondItem="tOf-xH-MXh" secondAttribute="trailing" constant="8" id="LQe-z8-7pV"/>
+                            <constraint firstItem="XTY-QM-SZe" firstAttribute="leading" secondItem="uxT-eQ-fQi" secondAttribute="trailing" constant="8" id="Uoy-K1-mJF"/>
                             <constraint firstItem="Dbd-VF-e57" firstAttribute="top" secondItem="y1b-FL-fYk" secondAttribute="bottom" constant="6" id="WkZ-mQ-z1j"/>
                             <constraint firstItem="0BH-RT-UuC" firstAttribute="top" secondItem="ztd-22-E83" secondAttribute="bottom" constant="8" id="Yhf-vj-F3Z"/>
                             <constraint firstItem="CuU-CR-KpK" firstAttribute="top" secondItem="y1b-FL-fYk" secondAttribute="bottom" constant="4" id="ZOD-rY-TJ0"/>
@@ -372,13 +407,19 @@
                             <constraint firstItem="ztd-22-E83" firstAttribute="leading" secondItem="YXO-7R-zuZ" secondAttribute="leading" constant="8" id="tbb-xg-Uwx"/>
                             <constraint firstAttribute="trailing" secondItem="Tfb-3K-UJ6" secondAttribute="trailing" constant="12" id="vGE-6M-QKs"/>
                             <constraint firstItem="0BH-RT-UuC" firstAttribute="leading" secondItem="YXO-7R-zuZ" secondAttribute="leading" constant="8" id="vkp-eg-4te"/>
+                            <constraint firstItem="bjD-sf-q9P" firstAttribute="leading" secondItem="Efu-Zd-6om" secondAttribute="trailing" constant="8" id="wBG-dB-rlD"/>
                             <constraint firstItem="Efu-Zd-6om" firstAttribute="top" secondItem="HaY-6N-Xs7" secondAttribute="bottom" constant="13" id="xT9-s5-7xC"/>
+                            <constraint firstItem="mo5-kW-9zA" firstAttribute="centerY" secondItem="O8B-gk-gJv" secondAttribute="centerY" id="zIi-qi-bpp"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="Zc5-DP-2DP"/>
                     <connections>
                         <outlet property="collabButton" destination="CuU-CR-KpK" id="w8V-Pr-ATs"/>
+                        <outlet property="collaborator0" destination="bjD-sf-q9P" id="eQf-R4-ASi"/>
+                        <outlet property="collaborator1" destination="mo5-kW-9zA" id="gpf-wv-edf"/>
+                        <outlet property="collaborator2" destination="uxT-eQ-fQi" id="pdi-q0-LZG"/>
+                        <outlet property="collaborator3" destination="XTY-QM-SZe" id="PfR-AQ-GfL"/>
                         <outlet property="collaboratorCount" destination="O8B-gk-gJv" id="yio-HV-ONl"/>
                         <outlet property="lengthLabel" destination="0BH-RT-UuC" id="hSA-dp-gwN"/>
                         <outlet property="likeButton" destination="Dbd-VF-e57" id="4rw-hf-ck0"/>
