@@ -19,56 +19,6 @@ protocol OtherUserProfileViewControllerDelegate {
     func prepareForSegue(destinationViewController: UIViewController, indexPath: NSIndexPath)
     
 }
-/*
-class OtherPublishedTunesUserProfileViewControllerDelegate: UserProfileViewControllerDelegate {
-    var user : User?
-    let detailSegue = userTuneDetailSegue
-    var published = [Tune]()
-    
-    func load(onCompletion: () -> ()) {
-        ParseAPI.sharedInstance.getRecordingsForUser(user!) { (tunes: [Tune]?, error: NSError?) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                if tunes != nil {
-                    self.published = tunes!
-                    onCompletion()
-                }
-            })
-        }
-    }
-    
-    func rowCount() -> Int {
-        return published.count
-    }
-    
-    func addTune(tune: Tune) {
-        published.append(tune)
-    }
-    
-    func setComposition(cell: TuneViewCell, indexPath: NSIndexPath) {
-        cell.tune = published[indexPath.row]
-        cell.userImageView.hidden = true
-        cell.collaboratorImageView.hidden = true
-        cell.accessoryType = UITableViewCellAccessoryType.None
-    }
-    
-    func deleteComposition(indexPath: NSIndexPath) {
-        ParseAPI.sharedInstance.deleteRecording(published[indexPath.row]) { (error) -> Void in
-            if (error != nil) {
-                print("error while deleting: \(error)")
-            }
-        }
-        // Remove immediately
-        published.removeAtIndex(indexPath.row)
-    }
-    
-    func prepareForSegue(destinationViewController: UIViewController, indexPath: NSIndexPath) {
-        if let tuneDetailViewController = destinationViewController as? TrackDetailViewController {
-            tuneDetailViewController.tune = published[indexPath.row]
-        }
-    }
-}
-*/
-
 
 
 class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -173,16 +123,6 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-//            delegate().deleteComposition(indexPath)
-//            if typeControl.selectedSegmentIndex == 0 {
-//                tableView.reloadData()
-//            } else {
-//                delegate().load { () -> () in
-//                    self.tableView.reloadData()
-//                }
-//            }
-//        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
