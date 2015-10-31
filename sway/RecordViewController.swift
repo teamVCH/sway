@@ -58,10 +58,18 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
             
         }
     }
+   
+    var hasBackingAudio: Bool = false {
+        didSet {
+            updatePlayButton()
+        }
+    }
     
-    
-    
-    
+    var hasRecordingAudio: Bool = false {
+        didSet {
+            updatePlayButton()
+        }
+    }
 
     var isNew = true
     var recording: Recording!
@@ -94,6 +102,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
 
         recordingWaveformView.normalColor = UIColor.whiteColor()
         recordingWaveformView.progressColor = UIColor.lightGrayColor()
+        recordingWaveformView.alpha = 0.45
         
     }
     
@@ -104,12 +113,23 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
             updateRecordingAudio()
             print("Base: \(recording.baseUrl.path!)")
             print("Bounced: \(recording.bouncedAudioPath)")
+            
+            if recording.originalTune != nil {
+                title = "New Collaboration"
+            } else {
+                title = "Recording"
+            }
+            
         } else {
              // if it wasn't set in the segue, make a new one
             recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording
             enablePostRecordingFunctions(false)
             prepareToRecord()
+            
+            title = "New Recording"
         }
+
+        updatePlayButton()
         
         // headphone detection does not work on the simulator
         if !Platform.isSimulator {
@@ -126,13 +146,27 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
 
     private func enablePostRecordingFunctions(enabled: Bool) {
         //rcView.bounceButton.enabled = enabled
-    
-        recordingToggleView.hidden = enabled
-        recordingCompletionView.hidden = !enabled
+        let fromView = enabled ? recordingToggleView : recordingCompletionView
+        let toView = enabled ? recordingCompletionView : recordingToggleView
         
-        recordingWaveformView.alpha = enabled ? 0.5 : 1.0
+        dispatch_async(dispatch_get_main_queue(),{
+    
+            UIView.transitionFromView(fromView, toView: toView, duration: 0.1, options: [UIViewAnimationOptions.TransitionCrossDissolve, UIViewAnimationOptions.ShowHideTransitionViews, UIViewAnimationOptions.AllowUserInteraction], completion: nil)
+        })
+        
+        //recordingToggleView.hidden = enabled
+        //recordingCompletionView.hidden = !enabled
+        
+        //recordingWaveformView.alpha = enabled ? 0.5 : 1.0
         
     }
+    
+
+    private func updatePlayButton() {
+        playButton.enabled = hasRecordingAudio || hasBackingAudio
+        
+    }
+    
     
     @IBAction func onTapAcceptRecording(sender: UIButton) {
         recording.bounce(true, completion: { (bouncedAudioUrl: NSURL?, status: AVAssetExportSessionStatus?, error: NSError?) -> Void in
@@ -150,6 +184,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
     }
 
     @IBAction func onTapRecord(sender: UIButton) {
+        print("onTapRecord")
         if sender.selected {
             stopRecording()
             isRecording = false
@@ -208,8 +243,8 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
                     waver.level = normalizedValue
                 }
             }
-            recordingWaver.hidden = false
-            recordingWaveformView.hidden = true
+            //recordingWaver.hidden = false
+            //recordingWaveformView.hidden = true
             
             resetPositions()
             
@@ -249,8 +284,11 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
         recorder.stop()
         backingAudioPlayer?.stop()
         
-        recordingWaver.hidden = true
-        recordingWaveformView.hidden = false
+        //recordingWaver.hidden = true
+        //recordingWaveformView.hidden = false
+        //UIView.transitionFromView(recordingWaver, toView: recordingWaveformView, duration: 0.1, options: [UIViewAnimationOptions.TransitionCrossDissolve, UIViewAnimationOptions.ShowHideTransitionViews], completion: nil)
+        
+        
         
         updateRecordingAudio()
         
@@ -289,20 +327,24 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
                     print("Error = \(error)")
                 }
                 
+                hasRecordingAudio = true
             } else {
+                hasRecordingAudio = false
                 enablePostRecordingFunctions(false)
                 clearRecording()
             }
             
         } else {
             clearRecording()
+            hasRecordingAudio = false
         }
     }
     
     private func clearRecording() {
+
         dispatch_async(dispatch_get_main_queue(),{
-            self.recordingWaveformView.hidden = true
-            self.recordingWaver.hidden = false
+            //self.recordingWaveformView.hidden = true
+            //self.recordingWaver.hidden = false
             self.recordingAudioPlayer = nil
             self.enablePostRecordingFunctions(false)
         })
@@ -335,6 +377,8 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
         
         backingWaveformView.progressTime = CMTimeMakeWithSeconds(0, 10000)
         recordingWaveformView.progressTime = CMTimeMakeWithSeconds(0, 10000)
+ 
+        currentTime = 0
         
     }
     
@@ -389,6 +433,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
         
         if allStop {
             isPlaying = false
+            resetPositions()
         }
         
     }
@@ -398,9 +443,6 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
         isRecording = false
         stopRecording()
     }
-
-
-    
     
     func updateBackingAudio() {
         if let url = recording.getAudioUrl(.Backing, create: false) {
@@ -420,9 +462,13 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
                     
                 })
                 
+                hasBackingAudio = true
+                
             } catch let error as NSError {
                 print("setBackingAudio: Error = \(error.localizedDescription)")
             }
+        } else {
+            hasBackingAudio = false
         }
     }
     

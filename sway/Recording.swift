@@ -107,6 +107,14 @@ class Recording: NSManagedObject, Composition {
         }
     }
     
+    func hasAudioFor(audioTrack: AudioTrack) -> Bool {
+        if let audioUrl = getAudioUrl(audioTrack) {
+            return audioUrl.checkResourceIsReachableAndReturnError(nil)
+        } else {
+            return false
+        }
+    }
+    
     func cleanup(unusedOnly: Bool = true) {
         if !audioPaths.isEmpty {
             var paths = Set<String>(audioPaths)
@@ -212,6 +220,10 @@ class Recording: NSManagedObject, Composition {
     }
     
 
+    
+    
+    
+
     func writeToUrl(outputUrl: NSURL, data: NSData) -> Bool {
         return data.writeToURL(outputUrl, atomically: true)
     }
@@ -231,7 +243,7 @@ class Recording: NSManagedObject, Composition {
         let seconds = ti % 60
         let minutes = (ti / 60) % 60
         if includeMs {
-            return String(format: "%0.2d:%0.2d.%0.2d", minutes, seconds, ms)
+            return String(format: "%0.2d:%0.2d.%0.3d", minutes, seconds, ms)
         } else {
             return String(format: "%0.2d:%0.2d", minutes, seconds)
         }

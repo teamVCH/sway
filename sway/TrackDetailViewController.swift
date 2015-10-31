@@ -13,6 +13,8 @@ let collaborateSegue = "collaborateSegue"
 
 // Retreive the managedObjectContext from AppDelegate
 let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+let favoriteImage = UIImage(named: "favorite")
+let favoriteOutlineImage = UIImage(named: "favorite_outline")
 
 class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
 
@@ -31,6 +33,12 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     @IBOutlet weak var collaboratorCount: UILabel!
     @IBOutlet weak var likeCount: UILabel!
     @IBOutlet weak var replayCount: UILabel!
+    @IBOutlet weak var collabButton: UIButton!
+    
+    @IBOutlet weak var collaborator0: UIImageView!
+    @IBOutlet weak var collaborator1: UIImageView!
+    @IBOutlet weak var collaborator2: UIImageView!
+    @IBOutlet weak var collaborator3: UIImageView!
     
     var tune: Tune!
     
@@ -40,7 +48,10 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        originatorImage.layer.cornerRadius = 18
+        originatorImage.clipsToBounds = true
+        collabButton.layer.cornerRadius = 4
+        collabButton.clipsToBounds = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -59,9 +70,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 })
                 
                 if let date = tune.lastModified {
-                    let formatter = NSDateFormatter()
-                    formatter.dateStyle = .MediumStyle
-                    publishedOnLabel.text = formatter.stringFromDate(date)
+                    publishedOnLabel.text = formatTimeElapsed(date)
                 }
                 
                 if let length = tune.length {
@@ -76,9 +85,6 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 } else {
                     originatorImage.image = defaultUserImage
                 }
-                    
-                originatorImage.layer.cornerRadius = 18
-                originatorImage.clipsToBounds = true
                 
                 if let replays = tune.replayCount {
                     replayCount.text = (replays == 1) ? "\(replays) replay" : "\(replays) replays"
@@ -89,13 +95,50 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 collaboratorCount.text = (tune.collaboratorCount == 1) ?
                     "\(tune.collaboratorCount!) collaborator" : "\(tune.collaboratorCount!) collaborators"
                 
+                tagsLabel.text = getTagsAsString(tune.tagNames)
+                
             }
             
-
-            likeButton.selected = tune.isLiked()
+            if tune.isLiked() {
+                likeButton.setImage(favoriteImage, forState: .Normal)
+            } else {
+                likeButton.setImage(favoriteOutlineImage, forState: .Normal)
+            }
             
         }
         
+    }
+    
+    private func getTagsAsString(tags: [String]?) -> String {
+        var tagString = ""
+        if let tags = tags {
+            for tag in tags {
+                tagString += "#\(tag) "
+            }
+        }
+        if tune != nil {
+            if let collaborator = tune.getOriginators().1 {
+                if let username = collaborator.objectForKey("username") as? String {
+                    if tagString.characters.count > 0 {
+                        tagString += "\n\n" //TODO: this is a hack
+                    }
+                    tagString += "\(username) contributed new audio"
+                }
+                
+            }
+        }
+        
+        return tagString
+    }
+    
+    
+    private func formatTimeElapsed(sinceDate: NSDate) -> String {
+        let formatter = NSDateComponentsFormatter()
+        formatter.unitsStyle =  NSDateComponentsFormatterUnitsStyle.Abbreviated
+        formatter.collapsesLargestUnit = true
+        formatter.maximumUnitCount = 1
+        let interval = NSDate().timeIntervalSinceDate(sinceDate)
+        return formatter.stringFromTimeInterval(interval)!
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -119,8 +162,18 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     }
     
     @IBAction func onTapLike(sender: UIButton) {
-        tune.like(!sender.selected)
-        sender.selected = !sender.selected
+        let previouslyLiked = tune.isLiked()
+        var count = tune.likers != nil ? tune.likers!.count : 0
+        
+        // Like or unlike
+        tune.like(!previouslyLiked)
+        
+        // Update UI immediately
+        previouslyLiked ? sender.setImage(favoriteOutlineImage, forState: .Normal) : sender.setImage(favoriteImage, forState: .Normal)
+        count = previouslyLiked ? count - 1 : count + 1
+        likeCount.text = (count == 1) ? "\(count) like" : "\(count) likes"
+        
+        // TODO: Need delegate to update like count for main view
     }
 
     func audioPlayerUpdateTime(player: AVAudioPlayer) {
