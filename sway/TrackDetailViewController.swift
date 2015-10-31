@@ -18,12 +18,19 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
 
     @IBOutlet weak var waveformView: WaveformView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var originatorImage: UIImageView!
     
+    @IBOutlet weak var lengthLabel: UILabel!
     @IBOutlet weak var publishedOnLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var originatorImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
     
+    
+    @IBOutlet weak var tagsLabel: UILabel!
+    @IBOutlet weak var collaboratorCount: UILabel!
+    @IBOutlet weak var likeCount: UILabel!
+    @IBOutlet weak var replayCount: UILabel!
     
     var tune: Tune!
     
@@ -51,10 +58,36 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                     self.waveformView.audioUrl = cachedUrl!
                 })
                 
-                // TODO: use published date & format properly
                 if let date = tune.lastModified {
-                    publishedOnLabel.text = "Published on \(date)"
+                    let formatter = NSDateFormatter()
+                    formatter.dateStyle = .MediumStyle
+                    publishedOnLabel.text = formatter.stringFromDate(date)
                 }
+                
+                if let length = tune.length {
+                    lengthLabel.text = Recording.formatTime(Double(length), includeMs: false)
+                } else {
+                    lengthLabel.text = "0:00"
+                }
+                
+                let originator = tune.getOriginators().0
+                if let url = originator.objectForKey(kProfileImageUrl) as? String {
+                    originatorImage.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+                } else {
+                    originatorImage.image = defaultUserImage
+                }
+                    
+                originatorImage.layer.cornerRadius = 18
+                originatorImage.clipsToBounds = true
+                
+                if let replays = tune.replayCount {
+                    replayCount.text = (replays == 1) ? "\(replays) replay" : "\(replays) replays"
+                }
+                
+                let likerCount = tune.likers != nil ? tune.likers!.count : 0
+                likeCount.text = (likerCount == 1) ? "\(likerCount) like" : "\(likerCount) likes"
+                collaboratorCount.text = (tune.collaboratorCount == 1) ?
+                    "\(tune.collaboratorCount!) collaborator" : "\(tune.collaboratorCount!) collaborators"
                 
             }
             
