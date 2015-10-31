@@ -423,6 +423,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
         
         if allStop {
             isPlaying = false
+            resetPositions()
         }
         
     }
@@ -432,9 +433,6 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
         isRecording = false
         stopRecording()
     }
-
-
-    
     
     func updateBackingAudio() {
         if let url = recording.getAudioUrl(.Backing, create: false) {
