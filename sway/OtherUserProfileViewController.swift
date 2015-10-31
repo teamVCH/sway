@@ -109,8 +109,13 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
                 userProfileImage.clipsToBounds = true
             }
             
-            self.userHandle.text = "@\(user.screenName!)"
+            if (user.screenName != nil){
+                self.userHandle.text = "@\(user.screenName!)"
+            } else {
+                self.userHandle.text = ""
+            }
             self.userDescription.text = user.tagLine
+            
             load({ () -> () in
                 //do stuff
             })
@@ -131,6 +136,9 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
                     self.tunes = tunes!
                     print(tunes)
                     onCompletion()
+                }
+                if (error != nil) {
+                    print("Error in getting user's recordings \(error)")
                 }
             })
         }

@@ -94,7 +94,7 @@ class ParseAPI: NSObject {
     
     func getRecordingsForUserId(userId : String, onCompletion: (tunes: [Tune]?, error: NSError?) -> Void) {
         let query = newRecordingsQuery()
-        query.whereKey(kOriginator, equalTo: userId)
+        query.whereKey(kOriginator, equalTo: PFObject(withoutDataWithClassName:"_User", objectId:userId))
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 print("Successfully retrieved \(objects!.count) recordings.")
