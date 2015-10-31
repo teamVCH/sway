@@ -151,7 +151,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        ParseAPI.sharedInstance.getRecordingsWithSearchTerm(searchText) { (tunes, error) -> Void in
+        ParseAPI.sharedInstance.getRecordingsWithSearchTerm(searchText.lowercaseString) { (tunes, error) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 if tunes != nil {
                     self.tunes = tunes
