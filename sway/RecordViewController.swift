@@ -8,27 +8,60 @@
 
 import UIKit
 import CoreData
+import QuartzCore
 
 let saveRecordingSegue = "saveRecordingSegue"
 
-class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAudioPlayerExtDelegate, AVAudioRecorderDelegate {
+class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioRecorderDelegate {
     
     @IBOutlet weak var backingWaveformView: SCWaveformView!
-    @IBOutlet weak var controlView: UIView!
     @IBOutlet weak var recordingWaver: Waver!
     @IBOutlet weak var recordingWaveformView: SCWaveformView!
+    @IBOutlet weak var recordingToggleView: UIView!
+    @IBOutlet weak var recordingCompletionView: UIView!
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    @IBOutlet weak var acceptRecordingButton: UIButton!
+    @IBOutlet weak var rejectRecordingButton: UIButton!
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var headphonesButton: UIButton!
+    @IBOutlet weak var playButton: PlayPauseButton!
+
     
     var helper: AVFoundationHelper!
     
     var backingAudioPlayer, recordingAudioPlayer: AVAudioPlayerExt?
     var recorder: AVAudioRecorderExt!
-    var rcView: RecordingControlView!
+ 
+    var isRecording: Bool = false {
+        didSet {
+            recordButton.selected = isRecording
+            playButton.enabled = !isRecording
+        }
+    }
+    
+    var isPlaying: Bool = false {
+        didSet {
+            playButton.selected = isPlaying
+            recordButton.enabled = !isPlaying
+        }
+    }
+    
+    var currentTime: NSTimeInterval = 0 {
+        didSet {
+            currentTimeLabel.text = Recording.formatTime(currentTime, includeMs: true)
+        }
+    }
+    
     var duration: NSTimeInterval? {
         didSet {
             recording.duration = duration
             
         }
     }
+    
+    
+    
+    
 
     var isNew = true
     var recording: Recording!
@@ -39,15 +72,6 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        //self.view.backgroundColor = UIColor(hue: 0.4694, saturation: 0.04, brightness: 0.92, alpha: 1.0) /* #e2edeb */
-        
-        rcView = UINib(nibName: "RecordingControlView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! RecordingControlView
-        rcView.frame = controlView.bounds
-        controlView.addSubview(rcView)
-        
-        
         self.helper = AVFoundationHelper.init(completion: { (allowed) -> () in
             if allowed {
                 print("Audio recording is allowed")
@@ -55,15 +79,22 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
                 print("Audio recording is NOT allowed")
             }
         })
-        
-        
-        rcView.delegate = self
-        
-        setupWaveformView(backingWaveformView)
-        setupWaveformView(recordingWaveformView)
-        
-        
         recordingWaver.backgroundColor = UIColor.darkGrayColor()
+
+        let image = UIImage(named: "headphones")?.imageWithRenderingMode(.AlwaysTemplate)
+        headphonesButton.setImage(image, forState: .Normal)
+        headphonesButton.setImage(image, forState: .Selected)
+        
+        playButton.layer.borderWidth = 2.0
+        playButton.layer.borderColor = UIColor.blueColor().CGColor
+        playButton.layer.cornerRadius = 24
+        
+        backingWaveformView.normalColor = UIColor.whiteColor()
+        backingWaveformView.progressColor = UIColor.lightGrayColor()
+
+        recordingWaveformView.normalColor = UIColor.whiteColor()
+        recordingWaveformView.progressColor = UIColor.lightGrayColor()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -83,7 +114,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         // headphone detection does not work on the simulator
         if !Platform.isSimulator {
             if helper.isHeadsetConnected() {
-                rcView.playBackingAudioWhileRecordingSwitch.selected = true
+                headphonesButton.selected = true
             } else {
                 let message = "For best results, we recommend connecting headphones"
                 let alertView = UIAlertController(title: "Headphones Recommended", message: message, preferredStyle: .Alert)
@@ -94,38 +125,66 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     }
 
     private func enablePostRecordingFunctions(enabled: Bool) {
-        rcView.bounceButton.enabled = enabled
+        //rcView.bounceButton.enabled = enabled
+    
+        recordingToggleView.hidden = enabled
+        recordingCompletionView.hidden = !enabled
+        
+        recordingWaveformView.alpha = enabled ? 0.5 : 1.0
         
     }
     
-    
-    func setupWaveformView(waveformView: SCWaveformView) {
-        // Setting the waveform colors
-        waveformView.normalColor = UIColor.whiteColor()
-        waveformView.progressColor = UIColor.lightGrayColor()
-        
-        // Use it inside a scrollView
-        //SCScrollableWaveformView *scrollableWaveformView = [SCScrollableWaveformView new];
-        //scrollableWaveformView.waveformView; // Access the waveformView from there
-        
-        // Set the precision, 1 being the maximum
-        waveformView.precision = 1 // 0.25 = one line per four pixels
-        
-        // Set the lineWidth so we have some space between the lines
-        waveformView.lineWidthRatio = 1
-        
-        // Show stereo if available
-        //waveformView.channelStartIndex = 0//0;
-        //waveformView.channelEndIndex = 0
-        
-        // Show only right channel
-        waveformView.channelStartIndex = 0
-        waveformView.channelEndIndex = 0
-        
-        // Add some padding between the channels
-        waveformView.channelsPadding = 10;
-        
+    @IBAction func onTapAcceptRecording(sender: UIButton) {
+        recording.bounce(true, completion: { (bouncedAudioUrl: NSURL?, status: AVAssetExportSessionStatus?, error: NSError?) -> Void in
+            self.updateRecordingAudio()
+            self.updateBackingAudio()
+            self.enablePostRecordingFunctions(false)
+        })
     }
+    
+    @IBAction func onTapRejectRecording(sender: UIButton) {
+        recording.newAudioUrl(.Recording)
+        self.updateRecordingAudio()
+        self.enablePostRecordingFunctions(false)
+    
+    }
+
+    @IBAction func onTapRecord(sender: UIButton) {
+        if sender.selected {
+            stopRecording()
+            isRecording = false
+        } else {
+            startRecording(headphonesButton.selected)
+            isRecording = true
+        }
+    }
+    
+    
+    @IBAction func onTapHeadphones(sender: UIButton) {
+        print("headphones: \(sender.selected)")
+        sender.selected = !sender.selected
+        sender.tintColor = sender.selected ? UIColor.blueColor() : UIColor.blackColor()
+    }
+    
+    
+    @IBAction func onTapPlay(sender: UIButton) {
+        //UIBarButtonPause_2x
+        if sender.selected {
+            stopPlaying()
+            isPlaying = false
+        } else {
+            startPlaying()
+            isPlaying = true
+        }
+    }
+    
+
+    
+    
+    
+    
+    
+    
     
     func prepareToRecord() -> Bool {
         do {
@@ -163,34 +222,30 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     }
     
     
-    func startRecording(view: RecordingControlView, playBackingAudio: Bool) {
-        rcView = view
-
-            if prepareToRecord() {
-                let shortStartDelay: NSTimeInterval = 0.01
-                let now = recorder.deviceCurrentTime
-                
-                 if playBackingAudio {
-                    backingAudioPlayer?.playAtTime(now + shortStartDelay)
-                }
-                if let duration = duration {
-                    print("willRecord for duration: \(duration)")
-                    let delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(duration) * Double(NSEC_PER_SEC)))
-                    dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), {
-                        self.recorder!.stop()
-                    })
-                }
-                recorder.recordAtTime(now + shortStartDelay)
-                
-            } else {
-                print("Failed to record.")
+    func startRecording(playBackingAudio: Bool) {
+        //rcView = view
+        if prepareToRecord() {
+            let shortStartDelay: NSTimeInterval = 0.01
+            let now = recorder.deviceCurrentTime
+            
+             if playBackingAudio {
+                backingAudioPlayer?.playAtTime(now + shortStartDelay)
             }
-
-        
-        
+            if let duration = duration {
+                print("willRecord for duration: \(duration)")
+                let delayInNanoSeconds = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(duration) * Double(NSEC_PER_SEC)))
+                dispatch_after(delayInNanoSeconds, dispatch_get_main_queue(), {
+                    self.recorder!.stop()
+                })
+            }
+            recorder.recordAtTime(now + shortStartDelay)
+            
+        } else {
+            print("Failed to record.")
+        }
     }
     
-    func stopRecording(view: RecordingControlView) {
+    func stopRecording() {
         recorder.stop()
         backingAudioPlayer?.stop()
         
@@ -198,6 +253,8 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         recordingWaveformView.hidden = false
         
         updateRecordingAudio()
+        
+        enablePostRecordingFunctions(true)
         print("stopRecording")
 
     }
@@ -206,7 +263,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         if let recordingUrl = recording.getAudioUrl(.Recording, create: false) {
             if recordingUrl.checkResourceIsReachableAndReturnError(nil) {
                 
-                rcView.bounceButton.enabled = true
+                //rcView.bounceButton.enabled = true
                 
                 dispatch_async(dispatch_get_main_queue(),{
                     print("updateRecordingAudio")
@@ -223,10 +280,7 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
                     
                     
                 })
-                
-                
 
-                
                 do {
                     recordingAudioPlayer = try AVAudioPlayerExt(contentsOfURL: recordingUrl)
                     recordingAudioPlayer!.delegate = self
@@ -237,21 +291,26 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
                 
             } else {
                 enablePostRecordingFunctions(false)
+                clearRecording()
             }
             
         } else {
-            dispatch_async(dispatch_get_main_queue(),{
-                self.recordingWaveformView.hidden = true
-                self.recordingWaver.hidden = false
-                self.recordingAudioPlayer = nil
-                self.enablePostRecordingFunctions(false)
-            })
+            clearRecording()
         }
     }
     
+    private func clearRecording() {
+        dispatch_async(dispatch_get_main_queue(),{
+            self.recordingWaveformView.hidden = true
+            self.recordingWaver.hidden = false
+            self.recordingAudioPlayer = nil
+            self.enablePostRecordingFunctions(false)
+        })
+    }
     
-    func startPlaying(view: RecordingControlView) {
-        rcView = view
+    
+    func startPlaying() {
+        //rcView = view
     
         resetPositions()
     
@@ -281,18 +340,18 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     
     
     func trackRecorder() {
-        rcView.currentTime = recorder.currentTime
+        currentTime = recorder.currentTime
         
     }
     
     
-    func stopPlaying(view: RecordingControlView) {
+    func stopPlaying() {
         backingAudioPlayer?.stop()
         recordingAudioPlayer?.stop()
     }
     
     func audioPlayerUpdateTime(player: AVAudioPlayer) {
-        rcView.currentTime = player.currentTime
+        currentTime = player.currentTime
         
         if let backingAudioPlayer = backingAudioPlayer {
             if backingAudioPlayer == player {
@@ -329,24 +388,18 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
         }
         
         if allStop {
-            rcView.isPlaying = false
+            isPlaying = false
         }
         
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         print("finishRecording")
-        rcView.isRecording = false
-        stopRecording(rcView)
+        isRecording = false
+        stopRecording()
     }
 
-    func bounce(view: RecordingControlView) {
-        recording.bounce(true, completion: { (bouncedAudioUrl: NSURL?, status: AVAssetExportSessionStatus?, error: NSError?) -> Void in
-            self.updateRecordingAudio()
-            self.updateBackingAudio()
-        })
-    }
-    
+
     
     
     func updateBackingAudio() {
@@ -374,8 +427,8 @@ class RecordViewController: UIViewController, RecordingControlViewDelegate, AVAu
     }
     
     
-    func setBackingAudio(view: RecordingControlView, url: NSURL) {
-        rcView = view
+    func setBackingAudio(url: NSURL) {
+        //rcView = view
         recording.setAudioUrl(.Backing, audioUrl: url)
         updateBackingAudio()
 

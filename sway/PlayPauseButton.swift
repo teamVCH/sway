@@ -9,7 +9,6 @@
 import UIKit
 
 let playImage = UIImage(named: "play", inBundle: NSBundle(forClass: PlayPauseButton.self), compatibleWithTraitCollection: nil)
-
 let pauseImage = UIImage(named: "pause", inBundle: NSBundle(forClass: PlayPauseButton.self), compatibleWithTraitCollection: nil)
 
 
