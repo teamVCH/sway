@@ -58,8 +58,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FeI-Hz-gLi">
-                                <rect key="frame" x="0.0" y="201" width="320" height="310"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FeI-Hz-gLi">
+                                <rect key="frame" x="0.0" y="204" width="320" height="315"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="vsq-ir-y3B">
@@ -173,7 +173,11 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FeI-Hz-gLi" secondAttribute="trailing" id="D78-x8-9rn"/>
                             <constraint firstItem="vr6-2j-AfJ" firstAttribute="leading" secondItem="xOp-Bh-dCI" secondAttribute="leading" id="JFv-df-19j"/>
+                            <constraint firstItem="FeI-Hz-gLi" firstAttribute="top" secondItem="A9g-Hl-WhD" secondAttribute="bottom" constant="140" id="KA2-Gf-XM3"/>
+                            <constraint firstItem="xSA-Vr-KWk" firstAttribute="top" secondItem="FeI-Hz-gLi" secondAttribute="bottom" id="KCt-8o-HlM"/>
+                            <constraint firstItem="FeI-Hz-gLi" firstAttribute="leading" secondItem="xOp-Bh-dCI" secondAttribute="leading" id="Kpw-CS-uqI"/>
                             <constraint firstItem="vr6-2j-AfJ" firstAttribute="top" secondItem="A9g-Hl-WhD" secondAttribute="bottom" id="ah8-5e-hH4"/>
                             <constraint firstAttribute="trailing" secondItem="vr6-2j-AfJ" secondAttribute="trailing" id="yNE-Pd-l9D"/>
                         </constraints>
