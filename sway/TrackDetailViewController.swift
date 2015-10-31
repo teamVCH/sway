@@ -35,10 +35,8 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     @IBOutlet weak var replayCount: UILabel!
     @IBOutlet weak var collabButton: UIButton!
     
-    @IBOutlet weak var collaborator0: UIImageView!
-    @IBOutlet weak var collaborator1: UIImageView!
-    @IBOutlet weak var collaborator2: UIImageView!
-    @IBOutlet weak var collaborator3: UIImageView!
+    
+    @IBOutlet weak var collaboratorsView: UIView!
     
     var tune: Tune!
     
@@ -95,6 +93,8 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 collaboratorCount.text = (tune.collaboratorCount == 1) ?
                     "\(tune.collaboratorCount!) collaborator" : "\(tune.collaboratorCount!) collaborators"
                 
+                renderCollaborators()
+                
                 tagsLabel.text = getTagsAsString(tune.tagNames)
                 
             }
@@ -107,6 +107,26 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
             
         }
         
+    }
+    
+    
+    private func renderCollaborators() {
+        if let collaborators = tune.getCollaborators() {
+            let imageviews = collaboratorsView.subviews as! [UIImageView]
+            for (index, elem) in collaborators.reverse().enumerate() {
+                if (index < 5) {
+                    imageviews[index].hidden = false
+                    if let url = elem.objectForKey(kProfileImageUrl) as? String {
+                        print("item \(index):" + url)
+                        imageviews[index].setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+                    } else {
+                        imageviews[index].image = defaultUserImage
+                    }
+                    imageviews[index].layer.cornerRadius = 12
+                    imageviews[index].clipsToBounds = true
+                }
+            }
+        }
     }
     
     private func getTagsAsString(tags: [String]?) -> String {
