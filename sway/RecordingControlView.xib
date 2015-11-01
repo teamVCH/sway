@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
@@ -12,6 +12,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3H-Lg-zun">
                     <rect key="frame" x="8" y="8" width="36" height="20.5"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -24,6 +25,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18a-3R-75h" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
                                     <rect key="frame" x="72" y="48" width="32" height="32"/>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="32" id="Jzd-sS-F46"/>
                                         <constraint firstAttribute="height" constant="32" id="tnl-fZ-L18"/>
@@ -33,6 +35,7 @@
                                     </connections>
                                 </button>
                             </subviews>
+                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="18a-3R-75h" secondAttribute="trailing" constant="24" id="051-q4-dos"/>
@@ -41,6 +44,7 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqg-rx-RY4">
                             <rect key="frame" x="109" y="0.0" width="128" height="128"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="128" id="JYI-D4-pRR"/>
                                 <constraint firstAttribute="height" constant="128" id="Qc2-sk-gnN"/>
@@ -56,6 +60,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecn-nd-fex">
                                     <rect key="frame" x="24" y="48" width="32" height="32"/>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="32" id="4Zj-qw-V6f"/>
                                         <constraint firstAttribute="width" constant="32" id="NuA-Qe-X0i"/>
@@ -66,6 +71,7 @@
                                     </connections>
                                 </button>
                             </subviews>
+                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="ecn-nd-fex" firstAttribute="centerY" secondItem="F9s-xu-mjl" secondAttribute="centerY" id="vIY-0n-6UU"/>
@@ -73,12 +79,14 @@
                             </constraints>
                         </view>
                     </subviews>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="128" id="9xX-5J-aCK"/>
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fW5-N2-wJC">
                     <rect key="frame" x="568" y="8" width="24" height="24"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="EGh-do-Ap4"/>
                         <constraint firstAttribute="width" constant="24" id="NFd-12-Tpd"/>
@@ -90,6 +98,7 @@
                     </connections>
                 </button>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="J3x-A1-lQn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9l0-3G-ztE"/>

@@ -34,6 +34,8 @@
 		6875FBBC1BDC179E00DBB6F9 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */; };
 		6875FBBD1BDC179E00DBB6F9 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */; };
 		689118A81BE57275005A36D4 /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689118A71BE57275005A36D4 /* SwiftLoader.swift */; };
+		689B2A3E1BE690A500A4F1E1 /* TuneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689B2A3C1BE690A500A4F1E1 /* TuneCell.swift */; };
+		689B2A3F1BE690A500A4F1E1 /* TuneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 689B2A3D1BE690A500A4F1E1 /* TuneCell.xib */; };
 		68D97E6E1BDD78A600E769F4 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */; };
 		68D97E701BDD9ADE00E769F4 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D97E6F1BDD9ADE00E769F4 /* WaveformView.swift */; };
 		68F4258D1BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */; };
@@ -96,6 +98,8 @@
 		6875FBBA1BDC179E00DBB6F9 /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
 		689118A71BE57275005A36D4 /* SwiftLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLoader.swift; sourceTree = "<group>"; };
+		689B2A3C1BE690A500A4F1E1 /* TuneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuneCell.swift; sourceTree = "<group>"; };
+		689B2A3D1BE690A500A4F1E1 /* TuneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TuneCell.xib; sourceTree = "<group>"; };
 		68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		68D97E6F1BDD9ADE00E769F4 /* WaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
 		68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecordingTag+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -281,6 +285,8 @@
 				6875FBBB1BDC179E00DBB6F9 /* TagCell.xib */,
 				68D97E6F1BDD9ADE00E769F4 /* WaveformView.swift */,
 				684808251BDFEFE90040CD50 /* PlayPauseButton.swift */,
+				689B2A3C1BE690A500A4F1E1 /* TuneCell.swift */,
+				689B2A3D1BE690A500A4F1E1 /* TuneCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				6875FBBD1BDC179E00DBB6F9 /* TagCell.xib in Resources */,
 				2A6A23261BD095A800ED0706 /* LaunchScreen.storyboard in Resources */,
 				6800F9661BD6AC0A00453AFF /* Record.storyboard in Resources */,
+				689B2A3F1BE690A500A4F1E1 /* TuneCell.xib in Resources */,
 				F1E1E8841BD6EBD600AA5D6A /* Info-watchOS.plist in Resources */,
 				F102CE7C1BD243D7007281E2 /* TwitterCredentials.plist in Resources */,
 				F102CE7A1BD243B3007281E2 /* ParseCredentials.plist in Resources */,
@@ -429,6 +436,7 @@
 				68F425901BDB026900AED872 /* Composition.swift in Sources */,
 				F1E1E8851BD6EBD600AA5D6A /* SwiftyJSON.swift in Sources */,
 				2A6A233F1BD3313700ED0706 /* AVFoundationHelper.swift in Sources */,
+				689B2A3E1BE690A500A4F1E1 /* TuneCell.swift in Sources */,
 				684808261BDFEFE90040CD50 /* PlayPauseButton.swift in Sources */,
 				2A6A232E1BD0A9AD00ED0706 /* TrackDetailViewController.swift in Sources */,
 				2A6A23491BD40E8500ED0706 /* Tune.swift in Sources */,

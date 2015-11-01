@@ -10,7 +10,7 @@ import UIKit
 
 let tuneToDetailSegue = "TuneToDetailSegue"
 
-class MainTunesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, TuneViewCellDelegate {
+class MainTunesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, TuneViewCellDelegate, TuneCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var searchBar: UISearchBar!
@@ -27,7 +27,8 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         addRefreshControl()
         
         tableView.registerNib(UINib(nibName: tuneViewCell, bundle: nil), forCellReuseIdentifier: tuneViewCell)
-
+        tableView.registerNib(UINib(nibName: tuneCell, bundle: nil), forCellReuseIdentifier: tuneCell)
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -97,8 +98,13 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        /*
         let cell = tableView.dequeueReusableCellWithIdentifier(tuneViewCell, forIndexPath: indexPath) as! TuneViewCell
         cell.accessoryType = UITableViewCellAccessoryType.None
+        cell.tune = tunes?[indexPath.row]
+        cell.delegate = self
+        */
+        let cell = tableView.dequeueReusableCellWithIdentifier(tuneCell, forIndexPath: indexPath) as! TuneCell
         cell.tune = tunes?[indexPath.row]
         cell.delegate = self
         return cell
@@ -138,7 +144,8 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
                 detailViewController.tune = selectedTune
             } else if (segueId == "tuneToUserSegue") {
                 let otherUserProfileViewController = segue.destinationViewController as! OtherUserProfileViewController
-                let senderAsTune : TuneViewCell = sender as! TuneViewCell
+                //let senderAsTune : TuneViewCell = sender as! TuneViewCell
+                let senderAsTune: TuneCell = sender as! TuneCell
                 /*
                 if (senderAsTune.tune.originalTune != nil) {
                     otherUserProfileViewController.user = User.init(object: senderAsTune.tune.originalTune!.originator!)
@@ -182,4 +189,9 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
        performSegueWithIdentifier("tuneToUserSegue", sender: tuneCell)
     }
 
+    func onProfileTapped(tuneCell: TuneCell) {
+        performSegueWithIdentifier("tuneToUserSegue", sender: tuneCell)
+    }
+
+    
 }
