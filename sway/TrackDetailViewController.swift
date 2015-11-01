@@ -68,7 +68,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 })
                 
                 if let date = tune.lastModified {
-                    publishedOnLabel.text = formatTimeElapsed(date) + " ago"
+                    publishedOnLabel.text = "Published " + formatTimeElapsed(date) + " ago"
                 }
                 
                 if let length = tune.length {
