@@ -11,6 +11,7 @@ import CoreData
 import QuartzCore
 
 let saveRecordingSegue = "saveRecordingSegue"
+let darkBlueColor = UIColor(hue: 0.5917, saturation: 0.39, brightness: 0.58, alpha: 1.0) /* #597394 */
 
 class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioRecorderDelegate {
     
@@ -94,7 +95,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
         headphonesButton.setImage(image, forState: .Selected)
         
         playButton.layer.borderWidth = 2.0
-        playButton.layer.borderColor = UIColor.blueColor().CGColor
+        playButton.layer.borderColor = darkBlueColor.CGColor
         playButton.layer.cornerRadius = 24
         
         backingWaveformView.normalColor = UIColor.whiteColor()
