@@ -28,15 +28,13 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     @IBOutlet weak var originatorImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
     
-    
     @IBOutlet weak var tagsLabel: UILabel!
     @IBOutlet weak var collaboratorCount: UILabel!
     @IBOutlet weak var likeCount: UILabel!
     @IBOutlet weak var replayCount: UILabel!
     @IBOutlet weak var collabButton: UIButton!
-    
-    
     @IBOutlet weak var collaboratorsView: UIView!
+    
     
     var tune: Tune!
     
@@ -55,6 +53,14 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     override func viewWillAppear(animated: Bool) {
         if let tune = tune {
             titleLabel.text = tune.title!
+            
+            let originator = tune.getOriginators().0
+            if let url = originator.objectForKey(kProfileImageUrl) as? String {
+                originatorImage.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+            } else {
+                originatorImage.image = defaultUserImage
+            }
+
             if let _ = tune.audioUrl {
                 tune.downloadAndCacheAudio({ (cachedUrl: NSURL?, error: NSError?) -> Void in
                     do {
@@ -66,49 +72,29 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                     }
                     self.waveformView.audioUrl = cachedUrl!
                 })
-                
-                if let date = tune.createDate {
-                    publishedOnLabel.text = "Published " + formatTimeElapsed(date) + " ago"
-                }
-                
-                if let length = tune.length {
-                    lengthLabel.text = Recording.formatTime(Double(length), includeMs: false)
-                } else {
-                    lengthLabel.text = "0:00"
-                }
-                
-                let originator = tune.getOriginators().0
-                if let url = originator.objectForKey(kProfileImageUrl) as? String {
-                    originatorImage.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
-                } else {
-                    originatorImage.image = defaultUserImage
-                }
-                
-                if let replays = tune.replayCount {
-                    replayCount.text = (replays == 1) ? "\(replays) replay" : "\(replays) replays"
-                }
-                
-                let likerCount = tune.likers != nil ? tune.likers!.count : 0
-                likeCount.text = (likerCount == 1) ? "\(likerCount) like" : "\(likerCount) likes"
-                collaboratorCount.text = (tune.collaboratorCount == 1) ?
-                    "\(tune.collaboratorCount!) collaborator" : "\(tune.collaboratorCount!) collaborators"
-                
-                renderCollaborators()
-                
-                tagsLabel.text = getTagsAsString(tune.tagNames)
-                
             }
+            
+            if let date = tune.createDate {
+                publishedOnLabel.text = "Published " + formatTimeElapsed(date) + " ago"
+            }
+            
+            if let length = tune.length {
+                lengthLabel.text = Recording.formatTime(Double(length), includeMs: false)
+            } else {
+                lengthLabel.text = "0:00"
+            }
+            
+            renderCounts()
+            renderCollaborators()
+            tagsLabel.text = getTagsAsString(tune.tagNames)
             
             if tune.isLiked() {
                 likeButton.setImage(favoriteImage, forState: .Normal)
             } else {
                 likeButton.setImage(favoriteOutlineImage, forState: .Normal)
             }
-            
         }
-        
     }
-    
     
     private func renderCollaborators() {
         if let collaborators = tune.getCollaborators() {
@@ -117,7 +103,6 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 if (index < 5) {
                     imageviews[index].hidden = false
                     if let url = elem.objectForKey(kProfileImageUrl) as? String {
-                        print("item \(index):" + url)
                         imageviews[index].setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
                     } else {
                         imageviews[index].image = defaultUserImage
@@ -127,6 +112,18 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 }
             }
         }
+    }
+    
+    private func renderCounts() {
+        if let replays = tune.replayCount {
+            replayCount.text = (replays == 1) ? "\(replays) replay" : "\(replays) replays"
+        }
+        
+        let likerCount = tune.likers != nil ? tune.likers!.count : 0
+        likeCount.text = (likerCount == 1) ? "\(likerCount) like" : "\(likerCount) likes"
+        collaboratorCount.text = (tune.collaboratorCount == 1) ?
+            "\(tune.collaboratorCount!) collaborator" : "\(tune.collaboratorCount!) collaborators"
+
     }
     
     private func getTagsAsString(tags: [String]?) -> String {
@@ -177,6 +174,11 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
             } else {
                 audioPlayer.play()
                 sender.selected = true
+                if let replayCount = tune.replayCount {
+                    let newCount = replayCount + 1
+                    tune.replayCount = newCount
+                    self.replayCount.text = (newCount == 1) ? "\(newCount) replay" : "\(newCount) replays"
+                }
             }
         }
     }
