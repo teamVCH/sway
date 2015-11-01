@@ -38,6 +38,7 @@ class Tune: NSObject, Composition {
     var length : Double? = 0
     let originator: PFUser?
     var tagNames: [String]? = []
+    let createDate: NSDate?
     let lastModified: NSDate?
     let tuneProfileImageUrl : String?
     let waveformImageUrl: NSURL?
@@ -53,6 +54,7 @@ class Tune: NSObject, Composition {
         id = object.objectId!
         title = object[kTitle] as? String
 
+        createDate = object.createdAt
         lastModified = object.updatedAt
         originator = object[kOriginator] as? PFUser
         tuneProfileImageUrl = originator?.objectForKey(kProfileImageUrl) as? String

@@ -67,7 +67,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                     self.waveformView.audioUrl = cachedUrl!
                 })
                 
-                if let date = tune.lastModified {
+                if let date = tune.createDate {
                     publishedOnLabel.text = "Published " + formatTimeElapsed(date) + " ago"
                 }
                 
