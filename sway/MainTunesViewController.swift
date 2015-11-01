@@ -25,7 +25,6 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
 
         addRefreshControl()
-        renderTunes()
         
         tableView.registerNib(UINib(nibName: tuneViewCell, bundle: nil), forCellReuseIdentifier: tuneViewCell)
 
@@ -43,11 +42,11 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         automaticallyAdjustsScrollViewInsets = false
         definesPresentationContext = true
         parentViewController?.navigationItem.titleView = searchBar
-
     }
     
     override func viewWillAppear(animated: Bool) {
         searchBar.hidden = false
+        renderTunes()
     }
     
     override func viewWillDisappear(animated: Bool) {
