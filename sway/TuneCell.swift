@@ -72,7 +72,7 @@ class TuneCell: UITableViewCell {
                 collaboratorImageView.hidden = true
             }
             
-            
+            publishedAtLabel.text = formatTimeElapsed(tune.createDate!,style: .Full) + " ago"
         }
     }
     
@@ -89,7 +89,7 @@ class TuneCell: UITableViewCell {
     func setComposition(composition: Composition) {
         let title = composition.title != nil ? composition.title! : "Untitled"
         if composition.lastModified != nil && composition.isDraft {
-            let age = formatTimeElapsed(composition.lastModified!)
+            let age = formatTimeElapsed(composition.lastModified!, style: .Abbreviated)
             tuneTitle.text =  "\(title) (\(age) ago)"
         } else {
             tuneTitle.text = title
@@ -144,8 +144,8 @@ class TuneCell: UITableViewCell {
     }
     
     
-    func formatTimeElapsed(sinceDate: NSDate) -> String {
-        formatter.unitsStyle =  NSDateComponentsFormatterUnitsStyle.Abbreviated
+    func formatTimeElapsed(sinceDate: NSDate, style: NSDateComponentsFormatterUnitsStyle) -> String {
+        formatter.unitsStyle = style
         formatter.collapsesLargestUnit = true
         formatter.maximumUnitCount = 1
         let interval = NSDate().timeIntervalSinceDate(sinceDate)
