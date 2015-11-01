@@ -91,24 +91,17 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@hinerz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7M-Hj-XAx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@hinerz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7M-Hj-XAx">
                                         <rect key="frame" x="91" y="28" width="221" height="16"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trombone, voice, beatbox" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18Y-Yn-FjN">
-                                        <rect key="frame" x="91" y="44" width="221" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nice to jam with you all!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mT3-tH-c7g">
+                                        <rect key="frame" x="91" y="44" width="221" height="12"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice to jam with you all!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mT3-tH-c7g">
-                                        <rect key="frame" x="91" y="60" width="221" height="12"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -140,19 +133,16 @@
                                     <constraint firstItem="Z7M-Hj-XAx" firstAttribute="top" secondItem="min-3x-u30" secondAttribute="bottom" id="1eY-mE-bd2"/>
                                     <constraint firstAttribute="trailing" secondItem="mT3-tH-c7g" secondAttribute="trailing" constant="8" id="3I4-Hc-rzK"/>
                                     <constraint firstAttribute="trailing" secondItem="Z7M-Hj-XAx" secondAttribute="trailing" constant="8" id="7ie-2N-kM8"/>
-                                    <constraint firstItem="mT3-tH-c7g" firstAttribute="top" secondItem="18Y-Yn-FjN" secondAttribute="bottom" id="CPo-FG-BEW"/>
+                                    <constraint firstItem="mT3-tH-c7g" firstAttribute="top" secondItem="Z7M-Hj-XAx" secondAttribute="bottom" id="E9X-m7-Y5G"/>
                                     <constraint firstItem="min-3x-u30" firstAttribute="leading" secondItem="Nei-KW-XTZ" secondAttribute="trailing" constant="8" id="GfJ-n9-hOc"/>
                                     <constraint firstItem="mT3-tH-c7g" firstAttribute="leading" secondItem="min-3x-u30" secondAttribute="leading" id="Hhn-LQ-LUz"/>
                                     <constraint firstAttribute="height" constant="140" id="Osl-1O-Q8w"/>
                                     <constraint firstItem="Z7M-Hj-XAx" firstAttribute="leading" secondItem="min-3x-u30" secondAttribute="leading" id="PZU-Qa-X6M"/>
                                     <constraint firstItem="YOA-1f-yw6" firstAttribute="centerX" secondItem="vr6-2j-AfJ" secondAttribute="centerX" id="UhG-jb-fWm"/>
                                     <constraint firstItem="Nei-KW-XTZ" firstAttribute="top" secondItem="vr6-2j-AfJ" secondAttribute="top" constant="8" id="VKi-sr-Ze1"/>
-                                    <constraint firstItem="18Y-Yn-FjN" firstAttribute="leading" secondItem="min-3x-u30" secondAttribute="leading" id="d1l-bg-8gr"/>
                                     <constraint firstAttribute="trailing" secondItem="min-3x-u30" secondAttribute="trailing" constant="8" id="hoc-ML-i7B"/>
                                     <constraint firstItem="Nei-KW-XTZ" firstAttribute="leading" secondItem="vr6-2j-AfJ" secondAttribute="leading" constant="8" id="iMW-zh-Nch"/>
-                                    <constraint firstItem="18Y-Yn-FjN" firstAttribute="top" secondItem="Z7M-Hj-XAx" secondAttribute="bottom" id="l7V-bP-cNA"/>
                                     <constraint firstItem="min-3x-u30" firstAttribute="top" secondItem="vr6-2j-AfJ" secondAttribute="top" constant="8" id="qBd-7u-Urg"/>
-                                    <constraint firstAttribute="trailing" secondItem="18Y-Yn-FjN" secondAttribute="trailing" constant="8" id="ube-4O-gdv"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -176,7 +166,6 @@
                         <outlet property="tableView" destination="FeI-Hz-gLi" id="ft3-hj-46s"/>
                         <outlet property="typeControl" destination="YOA-1f-yw6" id="NhM-Pw-Bpq"/>
                         <outlet property="userDescriptionLabel" destination="mT3-tH-c7g" id="aWa-Mu-niT"/>
-                        <outlet property="userInstrumentsLabel" destination="18Y-Yn-FjN" id="C2c-By-BUH"/>
                         <outlet property="userNameLabel" destination="Z7M-Hj-XAx" id="5wu-p7-6N5"/>
                         <segue destination="jEz-L9-uHD" kind="modal" identifier="loadDraftSegue" id="66j-kX-y09"/>
                         <segue destination="E4S-Ni-YtX" kind="push" identifier="userToTuneDetailSegue" id="wYk-7r-5IJ"/>
@@ -626,17 +615,17 @@
                                             <constraint firstAttribute="height" constant="75" id="kC2-0l-7Qq"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@hinerz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8K-ZB-QvX">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@hinerz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8K-ZB-QvX">
                                         <rect key="frame" x="91" y="28" width="221" height="16"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Trombone, voice, beatbox" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9F0-Rn-lAo">
-                                        <rect key="frame" x="91" y="44" width="221" height="16"/>
+                                        <rect key="frame" x="91" y="44" width="221" height="12"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -732,7 +721,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wYk-7r-5IJ"/>
-        <segue reference="Bgc-aC-mG4"/>
+        <segue reference="66j-kX-y09"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

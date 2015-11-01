@@ -181,7 +181,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             userNameLabel.text = "\(email)"
         }
         
-        userInstrumentsLabel.text = "Instrument1, Instrument2" // TODO
         userDescriptionLabel.text = user!.tagLine
         
         let profileImageUrl = PFUser.currentUser()?.objectForKey("profileImageUrl")
