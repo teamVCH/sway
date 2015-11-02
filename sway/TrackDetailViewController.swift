@@ -77,6 +77,8 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                         print("Error loading audio player: \(error)")
                     }
                     self.waveformView.audioUrl = cachedUrl!
+                    self.waveformView.normalColor = UIColor.whiteColor()
+                    self.waveformView.progressColor = UIColor.lightGrayColor()
                 })
             }
             
