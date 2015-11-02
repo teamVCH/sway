@@ -208,7 +208,7 @@
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ple-nI-WTq" customClass="WaveformView" customModule="sway" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.52000000000000002" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="180" id="7gQ-GL-fDz"/>
                                         </constraints>
@@ -246,8 +246,8 @@
                                     <constraint firstAttribute="width" constant="18" id="YrA-As-99q"/>
                                 </constraints>
                             </imageView>
-                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfK-WT-JQe" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
-                                <rect key="frame" x="288" y="261" width="24" height="24"/>
+                            <button contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfK-WT-JQe" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
+                                <rect key="frame" x="284" y="257" width="32" height="32"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="WwK-RK-A3g"/>
@@ -305,7 +305,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuU-CR-KpK">
                                 <rect key="frame" x="110" y="259" width="100" height="30"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GWq-VR-IuM"/>
                                     <constraint firstAttribute="width" constant="100" id="o5Q-wS-3c1"/>
@@ -313,7 +312,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="-5" maxX="0.0" maxY="-5"/>
                                 <state key="normal" title="Collaborate">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.34901960784313724" green="0.45098039215686275" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="jEz-L9-uHD" kind="modal" identifier="collaborateSegue" id="Bgc-aC-mG4"/>
@@ -722,7 +721,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sAM-hZ-hiM"/>
-        <segue reference="66j-kX-y09"/>
+        <segue reference="Bgc-aC-mG4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
