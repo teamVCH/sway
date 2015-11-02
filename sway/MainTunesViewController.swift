@@ -17,7 +17,8 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
 
     var refreshControl:UIRefreshControl!
     var tunes:[Tune]?
-
+    var filteredTunes : [Tune]?
+    var searchTerm : String?
     var selectedTune: Tune?
     
     override func viewDidLoad() {
@@ -60,6 +61,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
             dispatch_async(dispatch_get_main_queue(), {
                 if tunes != nil {
                     self.tunes = tunes
+                    self.filteredTunes = tunes
                     self.tableView.reloadData()
                 }
             })
@@ -105,24 +107,24 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         cell.delegate = self
         */
         let cell = tableView.dequeueReusableCellWithIdentifier(tuneCell, forIndexPath: indexPath) as! TuneCell
-        cell.tune = tunes?[indexPath.row]
+        cell.tune = filteredTunes?[indexPath.row]
         cell.delegate = self
         return cell
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        selectedTune = tunes![indexPath.row]
+        selectedTune = filteredTunes![indexPath.row]
         self.performSegueWithIdentifier(tuneToDetailSegue, sender: nil)
         self.searchBar.resignFirstResponder()
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tunes == nil {
+        if filteredTunes == nil {
             return 0
         } else {
-            return tunes!.count
+            return filteredTunes!.count
         }
     }
 
@@ -166,23 +168,34 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        self.searchBar.resignFirstResponder()
+        searchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        self.searchBar.resignFirstResponder()
+        searchBar.resignFirstResponder()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        ParseAPI.sharedInstance.getRecordingsWithSearchTerm(searchText.lowercaseString) { (tunes, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                if tunes != nil {
-                    self.tunes = tunes
-                    self.tableView.reloadData()
+        searchTerm = searchText.lowercaseString
+        NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: "filterTunes", object: nil)
+        performSelector("filterTunes", withObject: nil, afterDelay: 1)
+    }
+    
+    func filterTunes() {
+        searchBar.resignFirstResponder()
+        if searchTerm!.isEmpty {
+            filteredTunes = tunes
+        } else {
+            filteredTunes = tunes?.filter({ (tune: Tune) -> Bool in
+                if let tags = tune.tagNames {
+                    return tune.title!.lowercaseString.containsString(searchTerm!) || tags.contains(searchTerm!)
+                } else if tune.title!.lowercaseString.containsString(searchTerm!) {
+                    return true
                 }
+                return false
             })
         }
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 
     func profileTapped(tuneCell: TuneViewCell) {
