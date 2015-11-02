@@ -45,7 +45,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        originatorImage.layer.cornerRadius = 18
+        originatorImage.layer.cornerRadius = 20
         originatorImage.clipsToBounds = true
         collabButton.layer.cornerRadius = 4
         collabButton.clipsToBounds = true
@@ -62,11 +62,6 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 originatorImage.image = defaultUserImage
             }
             
-            if let name = originator.objectForKey("username") as? String {
-                self.originatorName.text = name
-            }
-            
-
             if let _ = tune.audioUrl {
                 tune.downloadAndCacheAudio({ (cachedUrl: NSURL?, error: NSError?) -> Void in
                     do {
@@ -80,6 +75,10 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                     self.waveformView.normalColor = UIColor.whiteColor()
                     self.waveformView.progressColor = UIColor.lightGrayColor()
                 })
+            }
+            
+            if let name = originator.objectForKey("username") as? String {
+                self.originatorName.text = "By " + name
             }
             
             if let date = tune.createDate {
@@ -159,7 +158,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     
     private func formatTimeElapsed(sinceDate: NSDate) -> String {
         let formatter = NSDateComponentsFormatter()
-        formatter.unitsStyle =  NSDateComponentsFormatterUnitsStyle.Full
+        formatter.unitsStyle =  NSDateComponentsFormatterUnitsStyle.Short
         formatter.collapsesLargestUnit = true
         formatter.maximumUnitCount = 1
         let interval = NSDate().timeIntervalSinceDate(sinceDate)
