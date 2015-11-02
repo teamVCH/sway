@@ -108,7 +108,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
         if let collaborators = tune.getCollaborators() {
             let imageviews = collaboratorsView.subviews as! [UIImageView]
             for (index, elem) in collaborators.reverse().enumerate() {
-                if (index < 5) {
+                if (index < 4) {
                     imageviews[index].hidden = false
                     if let url = elem.objectForKey(kProfileImageUrl) as? String {
                         imageviews[index].setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
