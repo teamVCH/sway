@@ -150,7 +150,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
                 let senderAsTune: TuneCell = sender as! TuneCell
                 /*
                 if (senderAsTune.tune.originalTune != nil) {
-                    otherUserProfileViewController.user = User.init(object: senderAsTune.tune.originalTune!.originator!)
+        t            otherUserProfileViewController.user = User.init(object: senderAsTune.tune.originalTune!.originator!)
                 } else {
                     otherUserProfileViewController.user = User.init(object: senderAsTune.tune.originator!)
                 }

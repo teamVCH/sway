@@ -18,7 +18,7 @@ protocol UserProfileViewControllerDelegate {
     
     func load(onCompletion: () -> ())
     func rowCount() -> Int
-    func setComposition(cell: TuneViewCell, indexPath: NSIndexPath)
+    func setComposition(cell: TuneCell, indexPath: NSIndexPath)
     func deleteComposition(indexPath: NSIndexPath)
     func prepareForSegue(destinationViewController: UIViewController, indexPath: NSIndexPath)
     
@@ -57,7 +57,7 @@ class DraftRecordingsUserProfileViewControllerDelegate: UserProfileViewControlle
         return drafts.count
     }
     
-    func setComposition(cell: TuneViewCell, indexPath: NSIndexPath) {
+    func setComposition(cell: TuneCell, indexPath: NSIndexPath) {
         cell.recording = drafts[indexPath.row]
         cell.userImageView.hidden = true
         cell.accessoryType = UITableViewCellAccessoryType.None
@@ -114,7 +114,7 @@ class PublishedTunesUserProfileViewControllerDelegate: UserProfileViewController
         published.append(tune)
     }
     
-    func setComposition(cell: TuneViewCell, indexPath: NSIndexPath) {
+    func setComposition(cell: TuneCell, indexPath: NSIndexPath) {
         cell.tune = published[indexPath.row]
         cell.userImageView.hidden = true
         cell.collaboratorImageView.hidden = true
@@ -165,7 +165,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         print("user profile load")
-        tableView.registerNib(UINib(nibName: tuneViewCell, bundle: nil), forCellReuseIdentifier: tuneViewCell)
+        tableView.registerNib(UINib(nibName: tuneCell, bundle: nil), forCellReuseIdentifier: tuneCell)
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -226,7 +226,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(tuneViewCell, forIndexPath: indexPath) as! TuneViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(tuneCell, forIndexPath: indexPath) as! TuneCell
         
         delegate().setComposition(cell, indexPath: indexPath)
 
