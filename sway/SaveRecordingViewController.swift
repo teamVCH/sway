@@ -105,7 +105,7 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
     private func addTag(tag: String) {
         let rTag = NSEntityDescription.insertNewObjectForEntityForName(recordingTagEntityName, inManagedObjectContext: managedObjectContext) as! RecordingTag
         if tagsTypeControl.selectedSegmentIndex == 1 {
-            rTag.tag = "\(needsTagPrefix)_\(tag)"
+            rTag.tag = "\(needsTagPrefix)\(tag)"
         } else {
             rTag.tag = tag
         }

@@ -36,61 +36,62 @@ class TuneCell: UITableViewCell {
     
     weak var delegate : TuneCellDelegate?
     
-    var tune : Tune! {
-        didSet{
-            setComposition(tune)
-            if let replays = tune.replayCount {
-                replayCount.text = "\(replays)"
-            }
-            let likerCount = tune.likers != nil ? tune.likers!.count : 0
-            
-            likeCount.text = "\(likerCount)"
-            collabCount.text = "\(tune.collaboratorCount!)"
-            
-            let originators = tune.getOriginators()
-            if let url = originators.0.objectForKey(kProfileImageUrl) as? String {
-                userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
-            } else {
-                userImageView.image = defaultUserImage
-            }
-            
-            usernameLabel.text = originators.0.objectForKey("username") as? String
-            
-            if let insetOriginator = originators.1 {
-                if insetOriginator.objectId! != originators.0.objectId! {
-                    collaboratorImageView.hidden = false
-                    if let url = insetOriginator.objectForKey(kProfileImageUrl) as? String {
-                        collaboratorImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
-                    } else {
-                        collaboratorImageView.image = defaultUserImage
-                    }
+    var composition: Composition!
+    
+    func setTune(tune: Tune) {
+        setComposition(tune)
+        if let replays = tune.replayCount {
+            replayCount.text = "\(replays)"
+        }
+        let likerCount = tune.likers != nil ? tune.likers!.count : 0
+        
+        likeCount.text = "\(likerCount)"
+        collabCount.text = "\(tune.collaboratorCount!)"
+        
+        let originators = tune.getOriginators()
+        if let url = originators.0.objectForKey(kProfileImageUrl) as? String {
+            userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+        } else {
+            userImageView.image = defaultUserImage
+        }
+        
+        usernameLabel.text = originators.0.objectForKey("username") as? String
+        
+        if let insetOriginator = originators.1 {
+            if insetOriginator.objectId! != originators.0.objectId! {
+                collaboratorImageView.hidden = false
+                if let url = insetOriginator.objectForKey(kProfileImageUrl) as? String {
+                    collaboratorImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
                 } else {
-                    collaboratorImageView.hidden = true
+                    collaboratorImageView.image = defaultUserImage
                 }
-                
             } else {
                 collaboratorImageView.hidden = true
             }
             
-            publishedAtLabel.text = formatTimeElapsed(tune.createDate!,style: .Full) + " ago"
+        } else {
+            collaboratorImageView.hidden = true
         }
+        
+        publishedAtLabel.text = formatTimeElapsed(tune.createDate!,style: .Full) + " ago"
+        
+        
     }
     
-    var recording: Recording! {
-        didSet {
-            setComposition(recording) // set basic values
-        }
-    }
     
-    var composition: Composition {
-        return tune != nil ? tune! : recording!
+    func setRecording(recording: Recording) {
+
+        setComposition(recording) // set basic values
     }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+
+    
     func setComposition(composition: Composition) {
+        self.composition = composition
         let title = composition.title != nil ? composition.title! : "Untitled"
         if composition.lastModified != nil && composition.isDraft {
             let age = formatTimeElapsed(composition.lastModified!, style: .Abbreviated)
@@ -178,7 +179,7 @@ class TuneCell: UITableViewCell {
             
             playButton.selected = true
             audioPlayer?.play()
-            if let tune = tune {
+            if let tune = composition as? Tune {
                 if let replayCount = tune.replayCount {
                     let newCount = replayCount + 1
                     tune.replayCount = newCount
