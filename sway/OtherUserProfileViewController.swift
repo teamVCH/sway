@@ -113,7 +113,7 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TuneCell", forIndexPath: indexPath) as! TuneCell
-        cell.tune = tunes[indexPath.row]
+        cell.setTune(tunes[indexPath.row])
         //cell.userImageView.hidden = true
         //cell.collaboratorImageView.hidden = true
         cell.accessoryType = UITableViewCellAccessoryType.None

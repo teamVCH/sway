@@ -107,7 +107,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
         cell.delegate = self
         */
         let cell = tableView.dequeueReusableCellWithIdentifier(tuneCell, forIndexPath: indexPath) as! TuneCell
-        cell.tune = filteredTunes?[indexPath.row]
+        cell.setTune((filteredTunes?[indexPath.row])!)
         cell.delegate = self
         return cell
     }
@@ -156,7 +156,7 @@ class MainTunesViewController: UIViewController, UITableViewDataSource, UITableV
                 }
                 */
                 
-                 otherUserProfileViewController.user = User.init(object: senderAsTune.tune.getOriginators().0)
+                 otherUserProfileViewController.user = User.init(object: (senderAsTune.composition as! Tune).getOriginators().0)
             }
         }
     }
