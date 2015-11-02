@@ -82,6 +82,10 @@ class TuneCell: UITableViewCell {
         }
     }
     
+    var composition: Composition {
+        return tune != nil ? tune! : recording!
+    }
+    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -96,15 +100,6 @@ class TuneCell: UITableViewCell {
         }
         statsView.hidden = composition.isDraft
         
-        // remove the observer from a previous item
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-        
-        if let audioUrl = composition.audioUrl {
-            audioItem = AVPlayerItem(URL: audioUrl)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerDidFinishPlaying:", name: AVPlayerItemDidPlayToEndTimeNotification, object: audioItem!)
-            audioPlayer = AVPlayer(playerItem: audioItem!)
-        }
-        
         if let length = composition.length {
             self.length.text = Recording.formatTime(Double(length), includeMs: false)
         } else {
@@ -118,6 +113,12 @@ class TuneCell: UITableViewCell {
             waveFormView.setImageURLWithFade(waveformImageUrl, alpha: 0.25, completion: nil)
         }
         
+        audioPlayer = nil
+        audioItem = nil
+        playing = false
+        playButton.selected = false
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        
     }
     
     func getTagsAsString(tags: [String]?) -> String {
@@ -127,19 +128,7 @@ class TuneCell: UITableViewCell {
                 tagString += "#\(tag) "
             }
         }
-        /*
-        if tune != nil {
-            if let collaborator = tune.getOriginators().1 {
-                if let username = collaborator.objectForKey("username") as? String {
-                    if tagString.characters.count > 0 {
-                        tagString += "\n\n" //TODO: this is a hack
-                    }
-                    tagString += "\(username) contributed new audio"
-                }
-                
-            }
-        }
-        */
+
         return tagString
     }
     
@@ -171,6 +160,15 @@ class TuneCell: UITableViewCell {
     }
     
     @IBAction func playTapped(sender: AnyObject) {
+        if audioPlayer == nil {
+            // remove the observer from a previous item
+            if let audioUrl = composition.audioUrl {
+                audioItem = AVPlayerItem(URL: audioUrl)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerDidFinishPlaying:", name: AVPlayerItemDidPlayToEndTimeNotification, object: audioItem!)
+                audioPlayer = AVPlayer(playerItem: audioItem!)
+            }
+        }
+        
         if (playing) {
             audioPlayer?.pause()
             playing = false
