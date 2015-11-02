@@ -246,8 +246,8 @@
                                     <constraint firstAttribute="width" constant="18" id="YrA-As-99q"/>
                                 </constraints>
                             </imageView>
-                            <button contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfK-WT-JQe" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
-                                <rect key="frame" x="284" y="257" width="32" height="32"/>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfK-WT-JQe" customClass="PlayPauseButton" customModule="sway" customModuleProvider="target">
+                                <rect key="frame" x="288" y="261" width="24" height="24"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="WwK-RK-A3g"/>
@@ -412,6 +412,12 @@
                                     <action selector="onTapLike:" destination="E4S-Ni-YtX" eventType="touchUpInside" id="4aS-ne-T6h"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="by User " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOe-L5-Tw3">
+                                <rect key="frame" x="218" y="17" width="54" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -472,6 +478,7 @@
                         <outlet property="likeCount" destination="74b-Xe-kSG" id="hrr-PE-pkU"/>
                         <outlet property="originatorImage" destination="HNJ-nU-wsU" id="wlB-8e-cNW"/>
                         <outlet property="originatorImageView" destination="HNJ-nU-wsU" id="x8R-v8-jiE"/>
+                        <outlet property="originatorName" destination="jOe-L5-Tw3" id="2Md-Qw-mOe"/>
                         <outlet property="playButton" destination="kfK-WT-JQe" id="aME-Q3-wTS"/>
                         <outlet property="publishedOnLabel" destination="Tfb-3K-UJ6" id="zBv-Oq-OSz"/>
                         <outlet property="replayCount" destination="Zx3-Co-IS0" id="2ve-CK-TOi"/>
@@ -720,7 +727,7 @@
         <image name="replay" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sAM-hZ-hiM"/>
+        <segue reference="Pvx-cX-8yB"/>
         <segue reference="Bgc-aC-mG4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

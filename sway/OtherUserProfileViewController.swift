@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol OtherUserProfileViewControllerDelegate {
     
@@ -14,7 +15,7 @@ protocol OtherUserProfileViewControllerDelegate {
     
     func load(onCompletion: () -> ())
     func rowCount() -> Int
-    func setComposition(cell: TuneViewCell, indexPath: NSIndexPath)
+    func setComposition(cell: TuneCell, indexPath: NSIndexPath)
     func deleteComposition(indexPath: NSIndexPath)
     func prepareForSegue(destinationViewController: UIViewController, indexPath: NSIndexPath)
     
@@ -28,7 +29,7 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var userHandle: UILabel!
     @IBOutlet weak var userDescription: UILabel!
     @IBOutlet weak var followButton: UIButton!
-    @IBOutlet weak var tuneViewCell: TuneViewCell!
+    @IBOutlet weak var tuneCell: TuneCell!
     var selectedIndex: NSIndexPath?
 
     var tunes : [Tune] = []
@@ -49,7 +50,7 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 160.0
         
-        tableView.registerNib(UINib(nibName: "TuneViewCell", bundle: nil), forCellReuseIdentifier: "TuneViewCell")
+        tableView.registerNib(UINib(nibName: "TuneCell", bundle: nil), forCellReuseIdentifier: "TuneCell")
 
         super.viewDidLoad()
         if (user != nil) {
@@ -112,7 +113,7 @@ class OtherUserProfileViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TuneViewCell", forIndexPath: indexPath) as! TuneViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("TuneCell", forIndexPath: indexPath) as! TuneCell
         cell.tune = tunes[indexPath.row]
         cell.userImageView.hidden = true
         cell.collaboratorImageView.hidden = true

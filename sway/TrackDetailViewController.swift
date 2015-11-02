@@ -22,6 +22,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var originatorImage: UIImageView!
     
+    @IBOutlet weak var originatorName: UILabel!
     @IBOutlet weak var lengthLabel: UILabel!
     @IBOutlet weak var publishedOnLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
@@ -60,6 +61,11 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
             } else {
                 originatorImage.image = defaultUserImage
             }
+            
+            if let name = originator.objectForKey("username") as? String {
+                self.originatorName.text = name
+            }
+            
 
             if let _ = tune.audioUrl {
                 tune.downloadAndCacheAudio({ (cachedUrl: NSURL?, error: NSError?) -> Void in
