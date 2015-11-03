@@ -274,6 +274,7 @@
                         <outlet property="recordingWaveformView" destination="kqz-X8-dsj" id="Qy8-N7-14E"/>
                         <outlet property="recordingWaver" destination="yPk-O4-m7j" id="kCM-tF-EKJ"/>
                         <outlet property="rejectRecordingButton" destination="IzX-Dv-tkd" id="9xx-K5-GRf"/>
+                        <outlet property="saveButton" destination="mQt-Kr-stW" id="Arf-ra-Ifp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i2h-pw-T1K" userLabel="First Responder" sceneMemberID="firstResponder"/>

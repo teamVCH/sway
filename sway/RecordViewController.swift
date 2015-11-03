@@ -26,6 +26,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var headphonesButton: UIButton!
     @IBOutlet weak var playButton: PlayPauseButton!
+    @IBOutlet weak var saveButton: UIButton!
 
     
     var helper: AVFoundationHelper!
@@ -165,7 +166,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
 
     private func updatePlayButton() {
         playButton.enabled = hasRecordingAudio || hasBackingAudio
-        
+        saveButton.enabled = hasRecordingAudio || hasBackingAudio
     }
     
     
