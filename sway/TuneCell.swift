@@ -95,6 +95,17 @@ class TuneCell: UITableViewCell {
     func setComposition(composition: Composition) {
         self.composition = composition
         
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            // background thread
+            if let audioUrl = composition.audioUrl {
+                self.audioItem = AVPlayerItem(URL: audioUrl)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerDidFinishPlaying:", name: AVPlayerItemDidPlayToEndTimeNotification, object: self.audioItem!)
+                self.audioPlayer = AVPlayer(playerItem: self.audioItem!)
+            }
+        }
+        
+        
         if let title = composition.title {
             tuneTitle.text = (title == "") ?  "(Untitled)" : title
         }
@@ -123,13 +134,17 @@ class TuneCell: UITableViewCell {
             waveFormView.setImageURLWithFade(waveformImageUrl, alpha: 0.25, completion: nil)
         }
         
+        
+    }
+    
+    override func prepareForReuse() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
         audioPlayer = nil
         audioItem = nil
         playing = false
         playButton.selected = false
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-        
     }
+    
     
     func getTagsAsString(tags: [String]?) -> String {
         var tagString = ""
@@ -170,15 +185,6 @@ class TuneCell: UITableViewCell {
     }
     
     @IBAction func playTapped(sender: AnyObject) {
-        if audioPlayer == nil {
-            // remove the observer from a previous item
-            if let audioUrl = composition.audioUrl {
-                audioItem = AVPlayerItem(URL: audioUrl)
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerDidFinishPlaying:", name: AVPlayerItemDidPlayToEndTimeNotification, object: audioItem!)
-                audioPlayer = AVPlayer(playerItem: audioItem!)
-            }
-        }
-        
         if (playing) {
             audioPlayer?.pause()
             playing = false
