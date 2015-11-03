@@ -30,6 +30,8 @@ class TuneCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var publishedAtLabel: UILabel!
     
+    @IBOutlet weak var imageContainerWidth: NSLayoutConstraint!
+    
     var playing : Bool = false
     var audioItem : AVPlayerItem?
     var audioPlayer : AVPlayer?
@@ -49,33 +51,33 @@ class TuneCell: UITableViewCell {
         collabCount.text = "\(tune.collaboratorCount!)"
         
         let originators = tune.getOriginators()
-        if let url = originators.0.objectForKey(kProfileImageUrl) as? String {
-            userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
-        } else {
-            userImageView.image = defaultUserImage
-        }
-        
-        usernameLabel.text = originators.0.objectForKey("username") as? String
-        
-        if let insetOriginator = originators.1 {
-            if insetOriginator.objectId! != originators.0.objectId! {
-                collaboratorImageView.hidden = false
-                if let url = insetOriginator.objectForKey(kProfileImageUrl) as? String {
-                    collaboratorImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+        if !tune.isDraft {
+            if let url = originators.0.objectForKey(kProfileImageUrl) as? String {
+                userImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+            } else {
+                userImageView.image = defaultUserImage
+            }
+            usernameLabel.text = originators.0.objectForKey("username") as? String
+            
+            if let insetOriginator = originators.1 {
+                if insetOriginator.objectId! != originators.0.objectId! {
+                    collaboratorImageView.hidden = false
+                    if let url = insetOriginator.objectForKey(kProfileImageUrl) as? String {
+                        collaboratorImageView.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
+                    } else {
+                        collaboratorImageView.image = defaultUserImage
+                    }
                 } else {
-                    collaboratorImageView.image = defaultUserImage
+                    collaboratorImageView.hidden = true
                 }
+                
             } else {
                 collaboratorImageView.hidden = true
             }
-            
-        } else {
-            collaboratorImageView.hidden = true
         }
         
-        publishedAtLabel.text = formatTimeElapsed(tune.createDate!,style: .Full) + " ago"
-        
-        
+        publishedAtLabel.text = formatTimeElapsed(tune.createDate!, style: .Full) + " ago"
+    
     }
     
     
@@ -92,14 +94,24 @@ class TuneCell: UITableViewCell {
     
     func setComposition(composition: Composition) {
         self.composition = composition
-        let title = composition.title != nil ? composition.title! : "Untitled"
-        if composition.lastModified != nil && composition.isDraft {
-            let age = formatTimeElapsed(composition.lastModified!, style: .Abbreviated)
-            tuneTitle.text =  "\(title) (\(age) ago)"
+        let title = composition.title == "" ?  "(Untitled)" : composition.title!
+        tuneTitle.text = title
+        /*if composition.lastModified != nil && composition.isDraft {
+            tuneTitle.text =  "(Untitled)"
         } else {
             tuneTitle.text = title
-        }
+        }*/
+        
+        userImageView.hidden = composition.isDraft
+        collaboratorImageView.hidden = composition.isDraft
+        
+        composition.isDraft ? (imageContainerWidth.constant = 0): (imageContainerWidth.constant = 65)
+
         statsView.hidden = composition.isDraft
+        
+        if composition.isDraft {
+            publishedAtLabel.text = formatTimeElapsed(composition.lastModified!, style: .Full) + " ago"
+        }
         
         if let length = composition.length {
             self.length.text = Recording.formatTime(Double(length), includeMs: false)
