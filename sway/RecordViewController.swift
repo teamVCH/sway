@@ -122,6 +122,12 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
                 title = "Recording"
             }
             
+            if hasRecordingAudio {
+                enablePostRecordingFunctions(true)
+            } else {
+                enablePostRecordingFunctions(false)
+            }
+            
         } else {
              // if it wasn't set in the segue, make a new one
             recording = NSEntityDescription.insertNewObjectForEntityForName(recordingEntityName, inManagedObjectContext: managedObjectContext) as! Recording

@@ -30,6 +30,8 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
     var token: dispatch_once_t = 0
     var sizingCell: TagCell?
     
+    var tapGestureRecognizer: UITapGestureRecognizer!
+    
     let xib = UINib(nibName: tagCell, bundle: nil)
     
     // Retreive the managedObjectContext from AppDelegate
@@ -47,6 +49,12 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         tagsCollectionView.delegate = self
         
         titleField.delegate = self
+        
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -85,6 +93,11 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         let waveformUrl = recording.getAudioUrl(.Waveform, create: true)
         SaveRecordingViewController.saveImage(waveformImage, fileUrl: waveformUrl!)
     }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self);
+    }
+    
     
     private func currentTags() -> [String:RecordingTag] {
         return tags[tagsTypeControl.selectedSegmentIndex]
@@ -211,7 +224,12 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(tagCell, forIndexPath: indexPath) as! TagCell
         let tag = defaultTags[indexPath.item]
-        cell.configCell(tag, selected: currentTags().keys.contains(tag))
+        cell.configCell(tag)
+        if currentTags().keys.contains(tag) {
+            // not sure why both are necessary, but http://stackoverflow.com/questions/15330844/uicollectionview-select-and-deselect-issue
+            cell.selected = true
+            collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.None)
+        }
         return cell
     }
     
@@ -222,7 +240,7 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
             self.sizingCell = self.xib.instantiateWithOwner(nil, options: nil)[0] as? TagCell
         }
         
-        sizingCell!.configCell(defaultTags[indexPath.item], selected: false)
+        sizingCell!.configCell(defaultTags[indexPath.item])
         sizingCell!.setNeedsLayout()
         sizingCell!.layoutIfNeeded()
         var size: CGSize = sizingCell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
@@ -258,15 +276,21 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         cell.backgroundColor = tagCellDeselectedColor
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func dismissKeyboard() {
-        print("tap")
         titleField.resignFirstResponder()
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        self.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        self.view.removeGestureRecognizer(tapGestureRecognizer)
     }
 
     /*

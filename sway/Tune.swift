@@ -90,7 +90,7 @@ class Tune: NSObject, Composition {
     }
     
     static func initArray(objectArray: [PFObject]) -> [Tune] {
-        print("creating \(objectArray.count) tunes")
+        //print("creating \(objectArray.count) tunes")
 
         var tunes = [Tune]()
         for object in objectArray {

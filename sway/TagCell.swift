@@ -19,11 +19,24 @@ class TagCell: UICollectionViewCell {
 
     @IBOutlet weak var tagLabel: UILabel!
     
+    
+    override var selected: Bool {
+        didSet {
+            super.selected = selected
+            if self.selected {
+                backgroundColor = tagCellSelectedColor
+            } else {
+                backgroundColor = tagCellDeselectedColor
+            }
+        }
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Need set autoresizingMask to let contentView always occupy this view's bounds, key for iOS7
         self.contentView.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleWidth]
-        self.layer.masksToBounds = true
+        //self.layer.masksToBounds = true
     }
     
     // In layoutSubViews, need set preferredMaxLayoutWidth for multiple lines label
@@ -33,14 +46,12 @@ class TagCell: UICollectionViewCell {
         tagLabel.preferredMaxLayoutWidth = self.bounds.width - 2 * kLabelHorizontalInsets
     }
     
-    func configCell(tag: String, selected: Bool) {
+    func configCell(tag: String) {
         tagLabel.text = tag
-        self.selected = selected
-        backgroundColor = selected ? tagCellSelectedColor : tagCellDeselectedColor
         self.setNeedsLayout()
         self.layoutIfNeeded()
     }
 
     
-
+    
 }
