@@ -94,11 +94,12 @@ class TuneCell: UITableViewCell {
     
     func setComposition(composition: Composition) {
         self.composition = composition
-        
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+
+        if let audioUrl = composition.audioUrl {
+
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
             // background thread
-            if let audioUrl = composition.audioUrl {
                 self.audioItem = AVPlayerItem(URL: audioUrl)
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerDidFinishPlaying:", name: AVPlayerItemDidPlayToEndTimeNotification, object: self.audioItem!)
                 self.audioPlayer = AVPlayer(playerItem: self.audioItem!)

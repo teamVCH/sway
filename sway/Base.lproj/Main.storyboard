@@ -105,7 +105,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice to jam with you all!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mT3-tH-c7g">
-                                        <rect key="frame" x="91" y="46" width="221" height="14.5"/>
+                                        <rect key="frame" x="91" y="51" width="221" height="14.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -139,7 +139,7 @@
                                     <constraint firstItem="Z7M-Hj-XAx" firstAttribute="top" secondItem="min-3x-u30" secondAttribute="bottom" id="1eY-mE-bd2"/>
                                     <constraint firstAttribute="trailing" secondItem="mT3-tH-c7g" secondAttribute="trailing" constant="8" id="3I4-Hc-rzK"/>
                                     <constraint firstAttribute="trailing" secondItem="Z7M-Hj-XAx" secondAttribute="trailing" constant="8" id="7ie-2N-kM8"/>
-                                    <constraint firstItem="mT3-tH-c7g" firstAttribute="top" secondItem="Z7M-Hj-XAx" secondAttribute="bottom" id="E9X-m7-Y5G"/>
+                                    <constraint firstItem="mT3-tH-c7g" firstAttribute="top" secondItem="Z7M-Hj-XAx" secondAttribute="bottom" constant="5" id="E9X-m7-Y5G"/>
                                     <constraint firstItem="min-3x-u30" firstAttribute="leading" secondItem="Nei-KW-XTZ" secondAttribute="trailing" constant="8" id="GfJ-n9-hOc"/>
                                     <constraint firstItem="mT3-tH-c7g" firstAttribute="leading" secondItem="min-3x-u30" secondAttribute="leading" id="Hhn-LQ-LUz"/>
                                     <constraint firstAttribute="height" constant="140" id="Osl-1O-Q8w"/>
@@ -727,8 +727,8 @@
         <image name="replay" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sAM-hZ-hiM"/>
-        <segue reference="Bgc-aC-mG4"/>
+        <segue reference="wYk-7r-5IJ"/>
+        <segue reference="66j-kX-y09"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
