@@ -94,13 +94,10 @@ class TuneCell: UITableViewCell {
     
     func setComposition(composition: Composition) {
         self.composition = composition
-        let title = composition.title == "" ?  "(Untitled)" : composition.title!
-        tuneTitle.text = title
-        /*if composition.lastModified != nil && composition.isDraft {
-            tuneTitle.text =  "(Untitled)"
-        } else {
-            tuneTitle.text = title
-        }*/
+        
+        if let title = composition.title {
+            tuneTitle.text = (title == "") ?  "(Untitled)" : title
+        }
         
         userImageView.hidden = composition.isDraft
         collaboratorImageView.hidden = composition.isDraft
