@@ -614,21 +614,21 @@
                                             <constraint firstAttribute="height" constant="75" id="kC2-0l-7Qq"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@hinerz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8K-ZB-QvX">
-                                        <rect key="frame" x="91" y="28" width="221" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" text="@hinerz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8K-ZB-QvX">
+                                        <rect key="frame" x="91" y="28.5" width="221" height="18"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trombone, voice, beatbox" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9F0-Rn-lAo">
-                                        <rect key="frame" x="91" y="46" width="221" height="14.5"/>
+                                        <rect key="frame" x="91" y="46.5" width="221" height="14.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Hina Sakazaki" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhZ-Lo-jWD">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Hina Sakazaki" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhZ-Lo-jWD">
                                         <rect key="frame" x="91" y="8" width="111.5" height="20.5"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
@@ -652,6 +652,7 @@
                                     <constraint firstItem="s8K-ZB-QvX" firstAttribute="top" secondItem="fhZ-Lo-jWD" secondAttribute="bottom" id="JMV-fb-wdq"/>
                                     <constraint firstAttribute="trailing" secondItem="epe-D6-wSQ" secondAttribute="trailing" id="KVs-GR-m0Y"/>
                                     <constraint firstAttribute="trailing" secondItem="s8K-ZB-QvX" secondAttribute="trailing" constant="8" id="XRa-lT-4GD"/>
+                                    <constraint firstItem="epe-D6-wSQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9F0-Rn-lAo" secondAttribute="bottom" constant="4" id="YCg-xo-ele"/>
                                     <constraint firstItem="fhZ-Lo-jWD" firstAttribute="top" secondItem="l6H-kt-hGN" secondAttribute="top" constant="8" id="YvA-h7-Zto"/>
                                     <constraint firstItem="9F0-Rn-lAo" firstAttribute="top" secondItem="s8K-ZB-QvX" secondAttribute="bottom" id="b8j-jx-Puc"/>
                                     <constraint firstAttribute="bottom" secondItem="epe-D6-wSQ" secondAttribute="bottom" id="fIM-vI-CVA"/>
@@ -719,7 +720,7 @@
         <image name="replay" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wYk-7r-5IJ"/>
+        <segue reference="sAM-hZ-hiM"/>
         <segue reference="Bgc-aC-mG4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
