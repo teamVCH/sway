@@ -225,7 +225,7 @@ class ParseAPI: NSObject {
             sess.dataTaskWithRequest(request, completionHandler: {(data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
                 dispatch_async(dispatch_get_main_queue()) {
                     if let error = error {
-                        print("error requesting twitter data")
+                        print("error requesting twitter data: \(error)")
                         return
                     }
                     else {
