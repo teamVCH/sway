@@ -82,7 +82,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
             }
             
             if let date = tune.createDate {
-                publishedOnLabel.text = "Published " + formatTimeElapsed(date) + " ago"
+                publishedOnLabel.text = "Published " + formatTimeElapsed(date)
             }
             
             if let length = tune.length {
@@ -159,10 +159,14 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
     private func formatTimeElapsed(sinceDate: NSDate) -> String {
         let formatter = NSDateComponentsFormatter()
         formatter.unitsStyle =  NSDateComponentsFormatterUnitsStyle.Short
-        formatter.collapsesLargestUnit = true
+        formatter.collapsesLargestUnit = false
         formatter.maximumUnitCount = 1
         let interval = NSDate().timeIntervalSinceDate(sinceDate)
-        return formatter.stringFromTimeInterval(interval)!
+        if interval < 30.0  {
+            return "Just Now"
+        } else {
+            return formatter.stringFromTimeInterval(interval)! + " ago"
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {

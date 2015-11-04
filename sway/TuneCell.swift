@@ -76,7 +76,7 @@ class TuneCell: UITableViewCell {
             }
         }
         
-        publishedAtLabel.text = formatTimeElapsed(tune.createDate!, style: .Full) + " ago"
+        publishedAtLabel.text = formatTimeElapsed(tune.createDate!, style: .Full)
     
     }
     
@@ -119,7 +119,7 @@ class TuneCell: UITableViewCell {
         statsView.hidden = composition.isDraft
         
         if composition.isDraft {
-            publishedAtLabel.text = formatTimeElapsed(composition.lastModified!, style: .Full) + " ago"
+            publishedAtLabel.text = formatTimeElapsed(composition.lastModified!, style: .Full)
         }
         
         if let length = composition.length {
@@ -161,10 +161,14 @@ class TuneCell: UITableViewCell {
     
     func formatTimeElapsed(sinceDate: NSDate, style: NSDateComponentsFormatterUnitsStyle) -> String {
         formatter.unitsStyle = style
-        formatter.collapsesLargestUnit = true
+        formatter.collapsesLargestUnit = false
         formatter.maximumUnitCount = 1
         let interval = NSDate().timeIntervalSinceDate(sinceDate)
-        return formatter.stringFromTimeInterval(interval)!
+        if interval < 30.0  {
+            return "Just Now"
+        } else {
+            return formatter.stringFromTimeInterval(interval)! + " ago"
+        }
     }
     
     
