@@ -54,6 +54,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sharedCache = NSURLCache(memoryCapacity: 2 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, diskPath: nil)
         NSURLCache.setSharedURLCache(sharedCache!)
         
+        _ = AVFoundationHelper.init(completion: { (allowed) -> () in
+            if allowed {
+                print("Audio recording is allowed")
+            } else {
+                print("Audio recording is NOT allowed")
+            }
+        })
         
         return true
     }
