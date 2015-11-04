@@ -55,7 +55,11 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
         if let tune = tune {
             titleLabel.text = tune.title!
             
-            let originator = tune.getOriginators().0
+            var originator = tune.getOriginators().0
+            if !originator.isDataAvailable() {
+                originator = try! originator.fetchIfNeeded()
+            }
+            
             if let url = originator.objectForKey(kProfileImageUrl) as? String {
                 originatorImage.setImageURLWithFade(NSURL(string: url)!, alpha: CGFloat(1.0), completion: nil)
             } else {
@@ -231,6 +235,8 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
         // Pass the selected object to the new view controller.
         if let segueId = segue.identifier {
             if segueId == collaborateSegue {
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: "onPublishedTune:", name: publishedTune, object: nil)
+                
                 var recordViewController: RecordViewController!
                 if let _ = segue.destinationViewController as? UINavigationController {
                     let destinationNavigationController = segue.destinationViewController as! UINavigationController
@@ -267,4 +273,13 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
         }
     }
 
+    func onPublishedTune(notification: NSNotification) {
+        // Get the Tune passed in fron the NSNotification
+        if let userInfo = notification.userInfo as? [String: Tune] {
+            self.tune = userInfo["Tune"]
+            self.view.setNeedsLayout()
+        }
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
 }
