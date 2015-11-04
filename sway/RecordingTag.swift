@@ -36,7 +36,7 @@ class RecordingTag: NSManagedObject {
             let asRange = tag.rangeOfString(needsTagPrefix)
             if let asRange = asRange where asRange.startIndex == tag.startIndex {
                 self.isNeedsTag = true
-                return tag.substringFromIndex(tag.startIndex.advancedBy(needsTagPrefix.characters.count + 1))
+                return tag.substringFromIndex(tag.startIndex.advancedBy(needsTagPrefix.characters.count))
             } else {
                 return tag
             }
