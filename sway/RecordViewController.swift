@@ -89,7 +89,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
                 print("Audio recording is NOT allowed")
             }
         })
-        recordingWaver.backgroundColor = UIColor.darkGrayColor()
+//        recordingWaver.backgroundColor = UIColor.darkGrayColor()
 
         let image = UIImage(named: "headphones")?.imageWithRenderingMode(.AlwaysTemplate)
         headphonesButton.setImage(image, forState: .Normal)
