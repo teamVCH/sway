@@ -33,7 +33,7 @@ An app for capturing, sharing, and collaborating on musical ideas.
 
 ### Compositions List
 * [x] The user can filter the list by tags without leaving the screen
-* [ x Click on any avatar, which will open that user's **User Profile** page
+* [x] Click on any avatar, which will open that user's **User Profile** page
 
 
 ### Composition Details
@@ -41,13 +41,13 @@ An app for capturing, sharing, and collaborating on musical ideas.
 * [x] The user can:
      * [x] Play the composition
      * [ ] Scrub the composition - Move the player cursor to a specific point to listen (optional) 
-     * [ ] Like the composition
+     * [x] Like the composition
      * [ ] Comment on the composition
 
 ### Record New Composition/Collaborate on Existing Composition
 * [x] **Save as Draft** - The user can save recorded audio as a Draft
 * [x] **Load from Draft** - The user can load an existing composition from their own profile or their drafts to create a new composition. 
-* [ x **Record Options** - The user can select a backing track as a simple audio template, which is meant as a guide to get started. It will not be mixed into the final audio. (optional)
+* [x] **Record Options** - The user can select a backing track as a simple audio template, which is meant as a guide to get started. It will not be mixed into the final audio. (optional)
 
 
 ### General
@@ -84,6 +84,9 @@ An app for capturing, sharing, and collaborating on musical ideas.
 Thanks to icons from the Noun Project: Edward Boatman, useiconic.com, Kirill Ulitin, & Pantelis Gkavos
 
 ## Walkthrough 
+![Walkthrough 3](walkthrough3.gif)
+
+### Previous walkthroughs iterations: 
 ![Walkthrough 1](walkthrough1.gif)
 ![Walkthrough 2](walkthrough2.gif)
-![Walkthrough 3](walkthrough3.gif)
+
