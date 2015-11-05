@@ -86,7 +86,7 @@ Thanks to icons from the Noun Project: Edward Boatman, useiconic.com, Kirill Uli
 ## Walkthrough 
 ![Walkthrough 3](walkthrough3.gif)
 
-### Previous walkthroughs iterations: 
+### Previous walkthroughs: 
 ![Walkthrough 1](walkthrough1.gif)
 ![Walkthrough 2](walkthrough2.gif)
 
