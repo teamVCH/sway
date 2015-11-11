@@ -307,7 +307,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuU-CR-KpK">
                                 <rect key="frame" x="110" y="259" width="100" height="30"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.34901960784313724" green="0.45098039215686275" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GWq-VR-IuM"/>
                                     <constraint firstAttribute="width" constant="100" id="o5Q-wS-3c1"/>
@@ -734,7 +734,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wYk-7r-5IJ"/>
-        <segue reference="66j-kX-y09"/>
+        <segue reference="Bgc-aC-mG4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
