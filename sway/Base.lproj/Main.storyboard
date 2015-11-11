@@ -104,10 +104,10 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice to jam with you all!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mT3-tH-c7g">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nice to jam with you all!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mT3-tH-c7g">
                                         <rect key="frame" x="91" y="51" width="221" height="14.5"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -501,17 +501,21 @@
                         <viewControllerLayoutGuide type="top" id="SQB-ap-eMj"/>
                         <viewControllerLayoutGuide type="bottom" id="J7t-W8-WQM"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="moe-ek-IJU">
+                    <view key="view" contentMode="scaleAspectFit" id="moe-ek-IJU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="PQ5-dG-yoA">
-                                <rect key="frame" x="70" y="80" width="240" height="119"/>
-                                <animations/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon-loading" translatesAutoresizingMaskIntoConstraints="NO" id="4Ps-Z3-qEC">
+                                <rect key="frame" x="85" y="207" width="150" height="154"/>
                             </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Ps-Z3-qEC" firstAttribute="centerY" secondItem="moe-ek-IJU" secondAttribute="centerY" id="hBR-MZ-eKu"/>
+                            <constraint firstItem="4Ps-Z3-qEC" firstAttribute="centerX" secondItem="moe-ek-IJU" secondAttribute="centerX" id="jk6-hH-tz4"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ITx-4Z-b5E"/>
                     <connections>
@@ -724,7 +728,7 @@
         <image name="collaborate" width="350" height="350"/>
         <image name="headphone" width="32" height="32"/>
         <image name="heart" width="32" height="32"/>
-        <image name="logo" width="800" height="400"/>
+        <image name="icon-loading" width="150" height="154"/>
         <image name="profile" width="32" height="32"/>
         <image name="record" width="48" height="48"/>
         <image name="replay" width="32" height="32"/>
