@@ -99,7 +99,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
         playButton.layer.borderColor = darkBlueColor.CGColor
         playButton.layer.cornerRadius = 24
         
-        backingWaveformView.normalColor = UIColor.whiteColor()
+        backingWaveformView.normalColor = UIColor.blackColor()
         backingWaveformView.progressColor = UIColor.lightGrayColor()
 
         recordingWaveformView.normalColor = UIColor.whiteColor()
