@@ -39,7 +39,7 @@
                                                     </view>
                                                 </subviews>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.34901960784313724" green="0.45098039215686275" blue="0.58039215686274503" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.34901960784313724" green="0.45098039215686275" blue="0.58039215686274503" alpha="0.17000000000000001" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="sDG-A8-dP6" secondAttribute="trailing" constant="8" id="2ru-iK-amV"/>
                                                     <constraint firstAttribute="bottom" secondItem="lCi-4K-PWW" secondAttribute="bottom" id="39x-ta-eOO"/>
@@ -91,7 +91,6 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqz-X8-dsj" customClass="WaveformView" customModule="sway" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="252"/>
                                                                 <animations/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Xmf-6T-GFk">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="252"/>
@@ -113,7 +112,6 @@
                                                                             </button>
                                                                         </subviews>
                                                                         <animations/>
-                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <constraints>
                                                                             <constraint firstItem="Mhb-bg-fAx" firstAttribute="centerX" secondItem="Mfd-KC-Ruu" secondAttribute="centerX" id="8LQ-70-4bL"/>
                                                                             <constraint firstItem="Mhb-bg-fAx" firstAttribute="centerY" secondItem="Mfd-KC-Ruu" secondAttribute="centerY" id="knS-XA-541"/>
@@ -136,7 +134,6 @@
                                                                             </button>
                                                                         </subviews>
                                                                         <animations/>
-                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <constraints>
                                                                             <constraint firstItem="IzX-Dv-tkd" firstAttribute="centerX" secondItem="8EE-v1-qyP" secondAttribute="centerX" id="CRm-pQ-Skg"/>
                                                                             <constraint firstItem="IzX-Dv-tkd" firstAttribute="centerY" secondItem="8EE-v1-qyP" secondAttribute="centerY" id="mIm-LS-VcX"/>
@@ -178,7 +175,7 @@
                                                     </button>
                                                 </subviews>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.27450980392156865" green="0.3529411764705882" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="w3k-fg-eRM" secondAttribute="trailing" constant="8" id="1cJ-H1-woY"/>
                                                     <constraint firstAttribute="trailing" secondItem="hJg-YJ-ids" secondAttribute="trailing" id="3kA-Wy-UZi"/>
