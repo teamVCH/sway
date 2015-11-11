@@ -15,6 +15,8 @@ let darkBlueColor = UIColor(hue: 0.5917, saturation: 0.39, brightness: 0.58, alp
 
 class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioRecorderDelegate {
     
+    static var showHeadphonesWarning = true
+    
     @IBOutlet weak var backingWaveformView: SCWaveformView!
     @IBOutlet weak var recordingWaver: Waver!
     @IBOutlet weak var recordingWaveformView: SCWaveformView!
@@ -45,6 +47,14 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
         didSet {
             playButton.selected = isPlaying
             recordButton.enabled = !isPlaying
+        }
+    }
+    
+    var isHeadsetConnected: Bool = false {
+        didSet {
+            print("isHeadsetConnected: \(isHeadsetConnected)")
+            headphonesButton.selected = isHeadsetConnected
+            headphonesButton.tintColor = headphonesButton.selected ? UIColor.blueColor() : UIColor.blackColor()
         }
     }
     
@@ -106,8 +116,11 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
         recordingWaveformView.progressColor = UIColor.lightGrayColor()
         recordingWaveformView.alpha = 0.45
         
+        
+        
     }
     
+  
     override func viewWillAppear(animated: Bool) {
         if let recording = recording {
             isNew = false
@@ -141,17 +154,45 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
         
         // headphone detection does not work on the simulator
         if !Platform.isSimulator {
+            headphonesButton.hidden = true
             if helper.isHeadsetConnected() {
-                headphonesButton.selected = true
+                isHeadsetConnected = true
             } else {
-                let message = "For best results, we recommend connecting headphones"
-                let alertView = UIAlertController(title: "Headphones Recommended", message: message, preferredStyle: .Alert)
-                alertView.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
-                presentViewController(alertView, animated: true, completion: nil)
+                isHeadsetConnected = false
+                if RecordViewController.showHeadphonesWarning {
+                    RecordViewController.showHeadphonesWarning = false
+                    let message = "For best results, we recommend connecting headphones to prevent audio from the speakers bleeding into the microphone."
+                    let alertView = UIAlertController(title: "Headphones Recommended", message: message, preferredStyle: .Alert)
+                    alertView.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
+                    presentViewController(alertView, animated: true, completion: nil)
+                }
             }
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioRouteChangeListener:", name: AVAudioSessionRouteChangeNotification, object: nil)
+
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        if isRecording {
+            stopRecording()
+        }
+        stopPlaying()
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+
+        
+    }
+    
+    dynamic private func audioRouteChangeListener(notification:NSNotification) {
+        let audioRouteChangeReason = notification.userInfo![AVAudioSessionRouteChangeReasonKey] as! UInt
+        
+        switch audioRouteChangeReason {
+            case AVAudioSessionRouteChangeReason.NewDeviceAvailable.rawValue: isHeadsetConnected = true
+            case AVAudioSessionRouteChangeReason.OldDeviceUnavailable.rawValue: isHeadsetConnected = false
+            default: break
+        }
+    }
+    
     private func enablePostRecordingFunctions(enabled: Bool) {
         //rcView.bounceButton.enabled = enabled
         let fromView = enabled ? recordingToggleView : recordingCompletionView
@@ -177,6 +218,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
     
     
     @IBAction func onTapAcceptRecording(sender: UIButton) {
+        stopPlaying()
         recording.bounce(true, completion: { (bouncedAudioUrl: NSURL?, status: AVAssetExportSessionStatus?, error: NSError?) -> Void in
             self.updateRecordingAudio()
             self.updateBackingAudio()
@@ -185,6 +227,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
     }
     
     @IBAction func onTapRejectRecording(sender: UIButton) {
+        stopPlaying()
         recording.newAudioUrl(.Recording)
         self.updateRecordingAudio()
         self.enablePostRecordingFunctions(false)
@@ -197,7 +240,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
             stopRecording()
             isRecording = false
         } else {
-            startRecording(headphonesButton.selected)
+            startRecording(isHeadsetConnected)
             isRecording = true
         }
     }
@@ -205,8 +248,9 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
     
     @IBAction func onTapHeadphones(sender: UIButton) {
         print("headphones: \(sender.selected)")
-        sender.selected = !sender.selected
-        sender.tintColor = sender.selected ? UIColor.blueColor() : UIColor.blackColor()
+        isHeadsetConnected = !sender.selected
+        //sender.selected = !sender.selected
+        
     }
     
     

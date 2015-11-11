@@ -24,11 +24,14 @@ class AVFoundationHelper: NSObject {
                 session.requestRecordPermission({ (allowed: Bool) -> Void in
                     completion(allowed: allowed)
                     // the following addresses low playback volume issue
+                    /*
+                    // interferes with headset detection
                     do {
                         try session.overrideOutputAudioPort(AVAudioSessionPortOverride.Speaker)
                     } catch let error as NSError {
                         print("Error overriding output audio port: \(error)")
                     }
+                    */
                 })
             } catch {
                 print("Could not activate the audio session")
@@ -52,7 +55,7 @@ class AVFoundationHelper: NSObject {
     
     func isHeadsetConnected() -> Bool {
         let route = AVAudioSession.sharedInstance().currentRoute
-        return (route.outputs).filter({ $0.portType == AVAudioSessionPortHeadphones }).count > 0
+        return (route.outputs).filter({ $0.portType == AVAudioSessionPortHeadphones}).count > 0
 
     }
     
