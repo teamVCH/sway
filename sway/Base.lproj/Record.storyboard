@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tGF-z4-rSj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tGF-z4-rSj">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Record View Controller-->
@@ -29,7 +29,7 @@
                                                         <rect key="frame" x="232" y="225" width="79.5" height="18.5"/>
                                                         <animations/>
                                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCi-4K-PWW" customClass="WaveformView" customModule="sway" customModuleProvider="target">
@@ -95,17 +95,16 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Xmf-6T-GFk">
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="252"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-KC-Ruu">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-KC-Ruu" userLabel="AcceptView">
                                                                         <rect key="frame" x="0.0" y="0.0" width="160" height="252"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhb-bg-fAx">
-                                                                                <rect key="frame" x="56" y="102" width="48" height="48"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhb-bg-fAx" customClass="CenteredButton" customModule="sway" customModuleProvider="target">
+                                                                                <rect key="frame" x="25" y="94" width="111" height="64"/>
                                                                                 <animations/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="height" constant="48" id="Kpx-BG-B9C"/>
-                                                                                    <constraint firstAttribute="width" constant="48" id="rBX-eX-eTA"/>
-                                                                                </constraints>
-                                                                                <state key="normal" title="Accept" image="accept"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                                <state key="normal" title="Merge" image="accept">
+                                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                </state>
                                                                                 <connections>
                                                                                     <action selector="onTapAcceptRecording:" destination="w4D-iw-MiP" eventType="touchUpInside" id="HhU-fH-RYY"/>
                                                                                 </connections>
@@ -117,17 +116,14 @@
                                                                             <constraint firstItem="Mhb-bg-fAx" firstAttribute="centerY" secondItem="Mfd-KC-Ruu" secondAttribute="centerY" id="knS-XA-541"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8EE-v1-qyP">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8EE-v1-qyP" userLabel="RejectView">
                                                                         <rect key="frame" x="160" y="0.0" width="160" height="252"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzX-Dv-tkd">
-                                                                                <rect key="frame" x="56" y="102" width="48" height="48"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzX-Dv-tkd" customClass="CenteredButton" customModule="sway" customModuleProvider="target">
+                                                                                <rect key="frame" x="20" y="94" width="120" height="64"/>
                                                                                 <animations/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="height" constant="48" id="LeV-ZV-ZoP"/>
-                                                                                    <constraint firstAttribute="width" constant="48" id="mcw-Cw-oFF"/>
-                                                                                </constraints>
-                                                                                <state key="normal" title="Reject" image="reject"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                                <state key="normal" title="Discard" image="reject"/>
                                                                                 <connections>
                                                                                     <action selector="onTapRejectRecording:" destination="w4D-iw-MiP" eventType="touchUpInside" id="Y8D-8y-snQ"/>
                                                                                 </connections>
@@ -141,15 +137,6 @@
                                                                     </view>
                                                                 </subviews>
                                                                 <animations/>
-                                                                <constraints>
-                                                                    <constraint firstItem="8EE-v1-qyP" firstAttribute="top" secondItem="Xmf-6T-GFk" secondAttribute="top" id="NRt-Ms-SaB"/>
-                                                                    <constraint firstItem="8EE-v1-qyP" firstAttribute="leading" secondItem="Mfd-KC-Ruu" secondAttribute="trailing" id="O0D-YM-VAm"/>
-                                                                    <constraint firstItem="Mfd-KC-Ruu" firstAttribute="leading" secondItem="Xmf-6T-GFk" secondAttribute="leading" id="Os2-rF-kUS"/>
-                                                                    <constraint firstItem="Mfd-KC-Ruu" firstAttribute="top" secondItem="Xmf-6T-GFk" secondAttribute="top" id="VMG-qJ-9Uh"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="8EE-v1-qyP" secondAttribute="bottom" id="lbk-Wc-m6J"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="Mfd-KC-Ruu" secondAttribute="bottom" id="oQO-e6-17E"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="8EE-v1-qyP" secondAttribute="trailing" id="qDW-OB-D98"/>
-                                                                </constraints>
                                                             </stackView>
                                                         </subviews>
                                                         <animations/>
@@ -175,7 +162,7 @@
                                                     </button>
                                                 </subviews>
                                                 <animations/>
-                                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="w3k-fg-eRM" secondAttribute="trailing" constant="8" id="1cJ-H1-woY"/>
                                                     <constraint firstAttribute="trailing" secondItem="hJg-YJ-ids" secondAttribute="trailing" id="3kA-Wy-UZi"/>
@@ -199,15 +186,11 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j17-12-6me">
-                                        <rect key="frame" x="136" y="228" width="48" height="48"/>
+                                        <rect key="frame" x="128" y="220" width="64" height="64"/>
                                         <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="5Mf-Bh-LXy"/>
-                                            <constraint firstAttribute="height" constant="48" id="EwN-n9-FSo"/>
-                                        </constraints>
                                         <state key="normal" image="play_round"/>
                                         <state key="selected" image="pause_round">
-                                            <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="onTapPlay:" destination="w4D-iw-MiP" eventType="touchUpInside" id="rEB-f7-WTl"/>

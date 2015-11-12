@@ -38,6 +38,7 @@
 		689B2A3F1BE690A500A4F1E1 /* TuneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 689B2A3D1BE690A500A4F1E1 /* TuneCell.xib */; };
 		68D97E6E1BDD78A600E769F4 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */; };
 		68D97E701BDD9ADE00E769F4 /* WaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D97E6F1BDD9ADE00E769F4 /* WaveformView.swift */; };
+		68F38F411BF505A8005F41A5 /* CenteredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F38F401BF505A8005F41A5 /* CenteredButton.swift */; };
 		68F4258D1BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */; };
 		68F4258E1BDAD96F00AED872 /* RecordingTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258A1BDAD96F00AED872 /* RecordingTag.swift */; };
 		68F425901BDB026900AED872 /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4258F1BDB026900AED872 /* Composition.swift */; };
@@ -102,6 +103,7 @@
 		689B2A3D1BE690A500A4F1E1 /* TuneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TuneCell.xib; sourceTree = "<group>"; };
 		68D97E6D1BDD78A600E769F4 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		68D97E6F1BDD9ADE00E769F4 /* WaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformView.swift; sourceTree = "<group>"; };
+		68F38F401BF505A8005F41A5 /* CenteredButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteredButton.swift; sourceTree = "<group>"; };
 		68F425891BDAD96F00AED872 /* RecordingTag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecordingTag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		68F4258A1BDAD96F00AED872 /* RecordingTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingTag.swift; sourceTree = "<group>"; };
 		68F4258F1BDB026900AED872 /* Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				684808251BDFEFE90040CD50 /* PlayPauseButton.swift */,
 				689B2A3C1BE690A500A4F1E1 /* TuneCell.swift */,
 				689B2A3D1BE690A500A4F1E1 /* TuneCell.xib */,
+				68F38F401BF505A8005F41A5 /* CenteredButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				689118A81BE57275005A36D4 /* SwiftLoader.swift in Sources */,
 				680A74431BD4AC6500D7D605 /* sway.xcdatamodeld in Sources */,
 				2A6A23391BD2FE4200ED0706 /* RecordViewController.swift in Sources */,
+				68F38F411BF505A8005F41A5 /* CenteredButton.swift in Sources */,
 				2A6A234B1BD40E9000ED0706 /* User.swift in Sources */,
 				F1A5F8FF1BDB20FC00570831 /* ParseAPI.swift in Sources */,
 				2A22068C1BE1C24500A91861 /* OtherUserProfileViewController.swift in Sources */,
