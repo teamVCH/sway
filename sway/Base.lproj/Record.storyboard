@@ -67,8 +67,8 @@
                                                                     <constraint firstAttribute="height" constant="128" id="MON-iI-61a"/>
                                                                     <constraint firstAttribute="width" constant="128" id="pzj-Ew-zse"/>
                                                                 </constraints>
-                                                                <state key="normal" image="record_off"/>
-                                                                <state key="selected" image="record_on"/>
+                                                                <state key="normal" image="record-1"/>
+                                                                <state key="selected" image="record-off"/>
                                                                 <connections>
                                                                     <action selector="onTapRecord:" destination="w4D-iw-MiP" eventType="touchUpInside" id="hnG-Te-zAy"/>
                                                                 </connections>
@@ -448,8 +448,8 @@
         <image name="headphones" width="32" height="32"/>
         <image name="pause_round" width="64" height="64"/>
         <image name="play_round" width="64" height="64"/>
-        <image name="record_off" width="256" height="256"/>
-        <image name="record_on" width="128" height="128"/>
+        <image name="record-1" width="100" height="100"/>
+        <image name="record-off" width="100" height="100"/>
         <image name="reject" width="64" height="64"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
