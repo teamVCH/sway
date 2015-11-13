@@ -249,6 +249,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("didSelect: \(indexPath)")
         selectedIndex = indexPath
         performSegueWithIdentifier(delegate().detailSegue, sender: self)
     }

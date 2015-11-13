@@ -67,18 +67,21 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
             }
             
             if let _ = tune.audioUrl {
-                tune.downloadAndCacheAudio({ (cachedUrl: NSURL?, error: NSError?) -> Void in
-                    do {
-                        try self.audioPlayer = AVAudioPlayerExt(contentsOfURL: cachedUrl!)
-                        self.audioPlayer!.delegate = self
-                        self.audioPlayer!.prepareToPlay()
-                    } catch let error as NSError {
-                        print("Error loading audio player: \(error)")
-                    }
-                    self.waveformView.audioUrl = cachedUrl!
-                    self.waveformView.normalColor = UIColor.whiteColor()
-                    self.waveformView.progressColor = UIColor.lightGrayColor()
-                })
+                if let cachedAudioUrl = tune.cachedAudioUrl {
+                    setAudio(cachedAudioUrl)
+                } else {
+                    SwiftLoader.show("Loading audio...", animated: true)
+                    tune.downloadAndCacheAudio({ (cachedUrl: NSURL?, error: NSError?) -> Void in
+                        dispatch_async(dispatch_get_main_queue(),{
+                            SwiftLoader.hide()
+                            if let cachedUrl = cachedUrl {
+                                self.setAudio(cachedUrl)
+                            }
+                        })
+                        
+                    })
+                    
+                }
             }
             
             if let name = originator.objectForKey("username") as? String {
@@ -105,6 +108,21 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
                 likeButton.setImage(favoriteOutlineImage, forState: .Normal)
             }
         }
+    }
+    
+    private func setAudio(cachedUrl: NSURL) {
+        do {
+            try self.audioPlayer = AVAudioPlayerExt(contentsOfURL: cachedUrl)
+            self.audioPlayer!.delegate = self
+            self.audioPlayer!.prepareToPlay()
+            print("Cached audio downloaded")
+        } catch let error as NSError {
+            print("Error loading audio player: \(error)")
+        }
+        self.waveformView.audioUrl = cachedUrl
+        self.waveformView.normalColor = UIColor.whiteColor()
+        self.waveformView.progressColor = UIColor.lightGrayColor()
+
     }
     
     private func renderCollaborators() {
