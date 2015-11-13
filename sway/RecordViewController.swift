@@ -130,7 +130,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
             print("Bounced: \(recording.bouncedAudioPath)")
             
             if recording.originalTune != nil {
-                title = "New Collaboration"
+                title = "Collaboration"
             } else {
                 title = "Recording"
             }
@@ -147,7 +147,7 @@ class RecordViewController: UIViewController, AVAudioPlayerExtDelegate, AVAudioR
             enablePostRecordingFunctions(false)
             prepareToRecord()
             
-            title = "New Recording"
+            title = "Recording"
         }
 
         updatePlayButton()
