@@ -431,8 +431,8 @@
         <image name="headphones" width="32" height="32"/>
         <image name="pause_round" width="64" height="64"/>
         <image name="play_round" width="64" height="64"/>
-        <image name="record-1" width="100" height="100"/>
-        <image name="record-off" width="100" height="100"/>
+        <image name="record-1" width="300" height="300"/>
+        <image name="record-off" width="300" height="300"/>
         <image name="reject" width="64" height="64"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
