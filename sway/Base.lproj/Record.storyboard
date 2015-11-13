@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tGF-z4-rSj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tGF-z4-rSj">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Record View Controller-->
@@ -232,10 +232,10 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" id="K4G-9w-bJE">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mQt-Kr-stW">
-                                <rect key="frame" x="270" y="7" width="34" height="30"/>
+                                <rect key="frame" x="272" y="7" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <state key="normal" title="Save"/>
+                                <state key="normal" title="Next"/>
                                 <connections>
                                     <segue destination="RVh-CL-ebO" kind="push" identifier="saveRecordingSegue" id="l0V-5w-FXK"/>
                                 </connections>
@@ -273,16 +273,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MIH-y2-3La">
-                                <rect key="frame" x="64" y="80" width="191" height="29"/>
-                                <animations/>
-                                <segments>
-                                    <segment title="Publish Tune"/>
-                                    <segment title="Save as Draft"/>
-                                </segments>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9d-yC-SWl">
-                                <rect key="frame" x="0.0" y="203" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="157" width="320" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZs-az-d9Q">
                                         <rect key="frame" x="16" y="-1" width="36.5" height="31"/>
@@ -310,16 +302,8 @@
                                     <constraint firstItem="oZs-az-d9Q" firstAttribute="leading" secondItem="u9d-yC-SWl" secondAttribute="leading" constant="16" id="nWz-PI-Aaf"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1J-wA-MFs" customClass="SCWaveformView">
-                                <rect key="frame" x="10" y="118" width="300" height="75"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="kFT-xk-5XG"/>
-                                </constraints>
-                            </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtI-lh-OrT">
-                                <rect key="frame" x="8" y="241" width="304" height="72"/>
+                                <rect key="frame" x="8" y="195" width="304" height="72"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="72" id="1eW-vt-zAh"/>
@@ -328,7 +312,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="edo-io-abF">
-                                <rect key="frame" x="64" y="321" width="191" height="29"/>
+                                <rect key="frame" x="64" y="275" width="191" height="29"/>
                                 <animations/>
                                 <segments>
                                     <segment title="Content Tags"/>
@@ -339,7 +323,7 @@
                                 </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OeG-QD-XKr">
-                                <rect key="frame" x="8" y="357" width="304" height="203"/>
+                                <rect key="frame" x="8" y="311" width="304" height="249"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="riM-ms-2BA">
@@ -363,6 +347,14 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1J-wA-MFs" customClass="SCWaveformView">
+                                <rect key="frame" x="10" y="72" width="300" height="75"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="kFT-xk-5XG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -372,29 +364,26 @@
                             <constraint firstItem="MtI-lh-OrT" firstAttribute="leading" secondItem="jH2-tH-Kp6" secondAttribute="leading" constant="8" id="5TX-KZ-qzo"/>
                             <constraint firstAttribute="trailing" secondItem="MtI-lh-OrT" secondAttribute="trailing" constant="8" id="8Lz-6N-UKZ"/>
                             <constraint firstItem="OeG-QD-XKr" firstAttribute="top" secondItem="edo-io-abF" secondAttribute="bottom" constant="8" id="DKH-EN-Kdl"/>
-                            <constraint firstItem="p1J-wA-MFs" firstAttribute="top" secondItem="MIH-y2-3La" secondAttribute="bottom" constant="10" id="Jec-aJ-dEm"/>
                             <constraint firstItem="u9d-yC-SWl" firstAttribute="leading" secondItem="jH2-tH-Kp6" secondAttribute="leading" id="TaU-Os-gcd"/>
                             <constraint firstAttribute="trailing" secondItem="u9d-yC-SWl" secondAttribute="trailing" id="U8e-BV-ZLn"/>
+                            <constraint firstItem="p1J-wA-MFs" firstAttribute="top" secondItem="36L-RR-VV2" secondAttribute="bottom" constant="8" id="UfQ-GX-7iA"/>
                             <constraint firstItem="edo-io-abF" firstAttribute="top" secondItem="MtI-lh-OrT" secondAttribute="bottom" constant="8" id="gJE-Hp-359"/>
                             <constraint firstItem="p1J-wA-MFs" firstAttribute="leading" secondItem="jH2-tH-Kp6" secondAttribute="leading" constant="10" id="ga6-Kg-LCe"/>
                             <constraint firstAttribute="trailing" secondItem="p1J-wA-MFs" secondAttribute="trailing" constant="10" id="hau-NS-Qe9"/>
-                            <constraint firstItem="MIH-y2-3La" firstAttribute="centerX" secondItem="jH2-tH-Kp6" secondAttribute="centerX" id="hhF-OK-zgu"/>
                             <constraint firstItem="edo-io-abF" firstAttribute="centerX" secondItem="jH2-tH-Kp6" secondAttribute="centerX" id="jG7-PM-m0E"/>
                             <constraint firstItem="Uda-Gf-Kss" firstAttribute="top" secondItem="OeG-QD-XKr" secondAttribute="bottom" constant="8" id="kHb-Mw-Iag"/>
-                            <constraint firstItem="MIH-y2-3La" firstAttribute="top" secondItem="36L-RR-VV2" secondAttribute="bottom" constant="16" id="mH4-9y-wCo"/>
                             <constraint firstItem="MtI-lh-OrT" firstAttribute="top" secondItem="u9d-yC-SWl" secondAttribute="bottom" constant="8" id="rO0-Rz-frI"/>
                             <constraint firstAttribute="trailing" secondItem="OeG-QD-XKr" secondAttribute="trailing" constant="8" id="rmo-DD-14c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Iva-tj-7ca">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="jwc-Zh-OKw">
+                        <barButtonItem key="rightBarButtonItem" title="Publish" id="jwc-Zh-OKw">
                             <connections>
                                 <action selector="onTapDone:" destination="RVh-CL-ebO" id="OWY-ds-cc9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="saveTypeControl" destination="MIH-y2-3La" id="UUz-Jl-rCY"/>
                         <outlet property="tagsCollectionView" destination="OeG-QD-XKr" id="W0y-BY-hvX"/>
                         <outlet property="tagsTextView" destination="MtI-lh-OrT" id="AhB-A1-qNA"/>
                         <outlet property="tagsTypeControl" destination="edo-io-abF" id="Vyv-jn-qA4"/>
@@ -431,8 +420,8 @@
         <image name="headphones" width="32" height="32"/>
         <image name="pause_round" width="64" height="64"/>
         <image name="play_round" width="64" height="64"/>
-        <image name="record-1" width="100" height="100"/>
-        <image name="record-off" width="100" height="100"/>
+        <image name="record-1" width="300" height="300"/>
+        <image name="record-off" width="300" height="300"/>
         <image name="reject" width="64" height="64"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

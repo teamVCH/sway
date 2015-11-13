@@ -14,7 +14,6 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
     let kHorizontalInsets: CGFloat = 3.0
     let kVerticalInsets: CGFloat = 5.0
     
-    @IBOutlet weak var saveTypeControl: UISegmentedControl!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var waveformView: SCWaveformView!
     @IBOutlet weak var tagsTextView: UITextView!
@@ -49,6 +48,15 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         tagsCollectionView.delegate = self
         
         titleField.delegate = self
+       
+        let saveAsDraftButton =  UIButton(type: UIButtonType.Custom)
+        saveAsDraftButton.frame = CGRectMake(0, 0, 100, 44) as CGRect
+        saveAsDraftButton.setTitle("Save as Draft", forState: UIControlState.Normal)
+        saveAsDraftButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
+        saveAsDraftButton.addTarget(self, action: Selector("clickOnDraftsButton"), forControlEvents: UIControlEvents.TouchUpInside)
+        self.navigationItem.titleView = saveAsDraftButton
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "barButtonBackPressed")
         
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         
@@ -126,7 +134,6 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         tags[tagsTypeControl.selectedSegmentIndex][tag] = rTag
     }
     
-    
     private func setupWaveformView() {
         // Setting the waveform colors
         waveformView.normalColor = UIColor.darkGrayColor()
@@ -155,6 +162,39 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         UIImagePNGRepresentation(image)!.writeToURL(fileUrl, atomically: true)
     }
 
+    func barButtonBackPressed() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func clickOnDraftsButton() {
+        print("save draft")
+        do {
+            var tagSet = Set<RecordingTag>()
+            for index in 0...1 {
+                for rTag in tags[index].values {
+                    tagSet.insert(rTag)
+                }
+            }
+            
+            recording.lastModified = NSDate()
+            if let title = titleField.text {
+                recording.title = title
+            } else {
+                recording.title = "Untitled"
+            }
+            recording.userId = PFUser.currentUser()!.objectId!
+            recording.tags = tagSet
+            recording.cleanup()
+            
+            try managedObjectContext.save()
+            
+        } catch let error as NSError {
+            print("Error saving recording: \(error)")
+        }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(savedDraft, object: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     @IBAction func onTapDone(sender: UIBarButtonItem) {
         do {
@@ -174,38 +214,26 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
             recording.userId = PFUser.currentUser()!.objectId!
             recording.tags = tagSet
             recording.cleanup()
-            
-            if saveTypeControl.selectedSegmentIndex == 0 {
-                SwiftLoader.show("Publishing Tune", animated: true)
-                ParseAPI.sharedInstance.publishRecording(nil, recording: recording, onCompletion: { (tune: Tune?, error: NSError?) -> Void in
-                    SwiftLoader.hide()
-                    if let tune = tune {
-                        self.recording.tuneId = tune.id!
-                        print("complete publish recording")
-                        NSNotificationCenter.defaultCenter().postNotificationName(publishedTune, object: nil, userInfo:["Tune": tune])
-                        
-                        
-                    } else {
-                        print("publish returned no tune object: \(error)")
-                    }
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                })
-                
-                
-            } else {
-                // draft
-                
-            }
+        
+            SwiftLoader.show("Publishing Tune", animated: true)
+            ParseAPI.sharedInstance.publishRecording(nil, recording: recording, onCompletion: { (tune: Tune?, error: NSError?) -> Void in
+                SwiftLoader.hide()
+                if let tune = tune {
+                    self.recording.tuneId = tune.id!
+                    print("complete publish recording")
+                    NSNotificationCenter.defaultCenter().postNotificationName(publishedTune, object: nil, userInfo:["Tune": tune])
+                    
+                    
+                } else {
+                    print("publish returned no tune object: \(error)")
+                }
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
 
             try managedObjectContext.save()
 
         } catch let error as NSError {
             print("Error saving recording: \(error)")
-        }
-        
-        if saveTypeControl.selectedSegmentIndex == 1 {
-            NSNotificationCenter.defaultCenter().postNotificationName(savedDraft, object: nil)
-            self.dismissViewControllerAnimated(true, completion: nil)
         }
         
         
