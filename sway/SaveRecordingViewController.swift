@@ -48,15 +48,6 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         tagsCollectionView.delegate = self
         
         titleField.delegate = self
-       
-        let saveAsDraftButton =  UIButton(type: UIButtonType.Custom)
-        saveAsDraftButton.frame = CGRectMake(0, 0, 100, 44) as CGRect
-        saveAsDraftButton.setTitle("Save as Draft", forState: UIControlState.Normal)
-        saveAsDraftButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
-        saveAsDraftButton.addTarget(self, action: Selector("clickOnDraftsButton"), forControlEvents: UIControlEvents.TouchUpInside)
-        self.navigationItem.titleView = saveAsDraftButton
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "barButtonBackPressed")
         
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         
@@ -162,12 +153,11 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         UIImagePNGRepresentation(image)!.writeToURL(fileUrl, atomically: true)
     }
 
-    func barButtonBackPressed() {
+    @IBAction func onTapBack(sender: UIButton) {
         self.navigationController?.popViewControllerAnimated(true)
     }
-    
-    func clickOnDraftsButton() {
-        print("save draft")
+
+    @IBAction func onTapSave(sender: UIButton) {
         do {
             var tagSet = Set<RecordingTag>()
             for index in 0...1 {
@@ -196,7 +186,7 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func onTapDone(sender: UIBarButtonItem) {
+    @IBAction func onTapPublish(sender: UIButton) {
         do {
             var tagSet = Set<RecordingTag>()
             for index in 0...1 {
@@ -214,7 +204,7 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
             recording.userId = PFUser.currentUser()!.objectId!
             recording.tags = tagSet
             recording.cleanup()
-        
+            
             SwiftLoader.show("Publishing Tune", animated: true)
             ParseAPI.sharedInstance.publishRecording(nil, recording: recording, onCompletion: { (tune: Tune?, error: NSError?) -> Void in
                 SwiftLoader.hide()
@@ -229,14 +219,12 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
                 }
                 self.dismissViewControllerAnimated(true, completion: nil)
             })
-
+            
             try managedObjectContext.save()
-
+            
         } catch let error as NSError {
             print("Error saving recording: \(error)")
         }
-        
-        
     }
 
     @IBAction func onChangeTagType(sender: UISegmentedControl) {
