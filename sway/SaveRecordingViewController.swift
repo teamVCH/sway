@@ -181,10 +181,14 @@ class SaveRecordingViewController: UIViewController, UICollectionViewDataSource,
                     SwiftLoader.hide()
                     if let tune = tune {
                         self.recording.tuneId = tune.id!
+                        if self.recording.originalTune != nil {
+                            
+                            tune.cachedAudioUrl = self.recording.audioUrl
+                        }
                         print("complete publish recording")
                         NSNotificationCenter.defaultCenter().postNotificationName(publishedTune, object: nil, userInfo:["Tune": tune])
                         
-                        
+
                     } else {
                         print("publish returned no tune object: \(error)")
                     }

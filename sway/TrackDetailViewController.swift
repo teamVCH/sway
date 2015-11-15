@@ -67,6 +67,7 @@ class TrackDetailViewController: UIViewController, AVAudioPlayerExtDelegate {
             }
             
             if let _ = tune.audioUrl {
+                print("hasAudioUrl")
                 if let cachedAudioUrl = tune.cachedAudioUrl {
                     setAudio(cachedAudioUrl)
                 } else {
