@@ -187,6 +187,7 @@ class ParseAPI: NSObject {
                     if success {
                         let query = PFQuery(className: kRecordings)
                         query.includeKey(kOriginator)
+                        query.includeKey(kCollaborators)
                         query.getObjectInBackgroundWithId(tune.objectId!) {
                             (tune: PFObject?, error: NSError?) -> Void in
                             if let tune = tune {
